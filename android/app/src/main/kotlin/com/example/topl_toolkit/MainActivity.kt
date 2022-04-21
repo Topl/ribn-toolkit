@@ -1,4 +1,4 @@
-package com.example.topl_toolkit
+package com.example.ribn_toolkit
 
 import io.flutter.embedding.android.FlutterActivity
 

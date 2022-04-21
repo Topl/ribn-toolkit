@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(topl_toolkit LANGUAGES CXX)
+project(ribn_toolkit LANGUAGES CXX)
 
-set(BINARY_NAME "topl_toolkit")
+set(BINARY_NAME "ribn_toolkit")
 
 cmake_policy(SET CMP0063 NEW)
 

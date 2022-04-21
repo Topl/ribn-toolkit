@@ -1,7 +1,7 @@
 // import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:topl_toolkit/constants/styles.dart';
-import 'package:topl_toolkit/utils.dart';
+import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/utils.dart';
 
 class InputDropdown extends StatefulWidget {
   @override
@@ -65,7 +65,7 @@ class _InputDropdownState extends State<InputDropdown> {
               child: Center(
                 child: Text(
                   capitalize(selectedNetwork),
-                  style: RibnTextStyles.h3.copyWith(color: Colors.white, fontSize: 10),
+                  style: RibnToolkitTextStyles.h3.copyWith(color: Colors.white, fontSize: 10),
                 ),
               ),
             ),

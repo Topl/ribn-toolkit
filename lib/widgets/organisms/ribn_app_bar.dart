@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:topl_toolkit/constants/assets.dart';
-import 'package:topl_toolkit/constants/colors.dart';
-import 'package:topl_toolkit/constants/styles.dart';
-import 'package:topl_toolkit/utils.dart';
-import 'package:topl_toolkit/widgets/molecules/input_dropdown.dart';
+import 'package:ribn_toolkit/constants/assets.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
+import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/utils.dart';
+import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
 
 /// Builds the top AppBar in the extension view.
 /// Displays the network drop down and settings drop down.

@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:topl_toolkit/constants/colors.dart';
-import 'package:topl_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
+import 'package:ribn_toolkit/constants/styles.dart';
 
 /// A custom styled large button used on several screens, e.g. login, asset transfer, and mint screens.
 class LargeButton extends StatelessWidget {
   const LargeButton({
-    required this.label,
+    required this.buttonChild,
     required this.onPressed,
     this.backgroundColor = RibnColors.primary,
-    this.textColor = Colors.white,
     this.buttonWidth = 310,
     this.buttonHeight = 43,
     Key? key,
   }) : super(key: key);
-  final String label;
+  final dynamic buttonChild;
   final VoidCallback onPressed;
   final Color backgroundColor;
-  final Color textColor;
   final double buttonWidth;
   final double buttonHeight;
-  final double borderRadius = 2.2;
+  final double borderRadius = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +27,7 @@ class LargeButton extends StatelessWidget {
       child: MaterialButton(
         elevation: 0,
         color: backgroundColor,
-        child: Text(
-          label,
-          style: RibnTextStyles.btnMedium.copyWith(
-            color: textColor,
-          ),
-        ),
+        child: buttonChild,
         onPressed: onPressed,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(

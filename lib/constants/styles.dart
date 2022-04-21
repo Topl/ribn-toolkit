@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:topl_toolkit/constants/colors.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
 
 /// The custom [TextStyle]s being used in the app.
-class RibnTextStyles {
-  RibnTextStyles._();
+class RibnToolkitTextStyles {
+  RibnToolkitTextStyles._();
   static const TextStyle h1 = TextStyle(
     fontFamily: 'Poppins',
     fontSize: 40,
@@ -108,5 +108,18 @@ class RibnTextStyles {
     fontFamily: 'Nunito',
     fontSize: 12,
     decoration: TextDecoration.none,
+  );
+
+  static const TextStyle assetShortNameStyle = TextStyle(
+    fontFamily: 'Nunito',
+    fontWeight: FontWeight.w600,
+    fontSize: 15,
+    color: RibnColors.defaultText,
+  );
+
+  static const TextStyle assetLongNameStyle = TextStyle(
+    fontFamily: 'Nunito',
+    fontSize: 12,
+    color: Color(0xff585858),
   );
 }
