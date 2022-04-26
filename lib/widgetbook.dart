@@ -4,6 +4,7 @@ import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
@@ -17,11 +18,17 @@ import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class WidgetBook extends StatelessWidget {
+class WidgetBook extends StatefulWidget {
+  @override
+  State<WidgetBook> createState() => _WidgetBookState();
+}
+
+class _WidgetBookState extends State<WidgetBook> {
   final TextEditingController _controller = TextEditingController();
   final canvasWidth = 500.00;
   final canvasHeight = 500.00;
   final String tooltipUrl = 'https://topl.services';
+  bool checked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +101,66 @@ class WidgetBook extends StatelessWidget {
                 ),
               ],
             ),
+            WidgetbookComponent(
+              name: 'Custom Page Title',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: CustomPageTitle(title: Strings.mint),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Custom Text Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: CustomTextField(
+                      controller: _controller,
+                      hintText: Strings.hintSeedPhrase,
+                      width: 268,
+                      maxLength: 16,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Checkbox',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: CustomCheckbox(
+                      fillColor: MaterialStateProperty.all(Colors.transparent),
+                      checkColor: RibnColors.active,
+                      borderColor: RibnColors.active,
+                      value: checked,
+                      onChanged: (val) {
+                        setState(() {
+                          checked = val;
+                        });
+                      },
+                      label: const Text('Checkbox label'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        WidgetbookCategory(
+          name: 'Molecules',
+          widgets: [
             WidgetbookComponent(
               name: 'Asset Card',
               useCases: [
@@ -175,44 +242,6 @@ class WidgetBook extends StatelessWidget {
                 ),
               ],
             ),
-            WidgetbookComponent(
-              name: 'Custom Page Title',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Standard',
-                  builder: (context) => Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: CustomPageTitle(title: Strings.mint),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            WidgetbookComponent(
-              name: 'Custom Text Field',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Standard',
-                  builder: (context) => Center(
-                    child: CustomTextField(
-                      controller: _controller,
-                      hintText: Strings.hintSeedPhrase,
-                      width: 268,
-                      maxLength: 16,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-        WidgetbookCategory(
-          name: 'Molecules',
-          widgets: [
             WidgetbookComponent(
               name: 'Dropdown',
               useCases: [
