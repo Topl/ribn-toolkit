@@ -162,14 +162,24 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: CustomCheckbox(
                       fillColor: MaterialStateProperty.all(Colors.transparent),
                       checkColor: RibnColors.active,
-                      borderColor: RibnColors.active,
+                      borderColor: checked ? RibnColors.active : RibnColors.inactive,
                       value: checked,
                       onChanged: (val) {
                         setState(() {
                           checked = val;
                         });
                       },
-                      label: const Text('Checkbox label'),
+                      label: RichText(
+                        text: TextSpan(
+                          style: RibnToolkitTextStyles.body1
+                              .copyWith(color: checked ? RibnColors.defaultText : RibnColors.inactive),
+                          children: const [
+                            TextSpan(
+                              text: 'Checkbox text',
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
