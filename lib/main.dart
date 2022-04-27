@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portal/flutter_portal.dart';
 import 'package:ribn_toolkit/widgetbook.dart';
 
 void main() {
   runApp(
-    MaterialApp(
-      home: WidgetBook(),
+    Portal(
+      child: MaterialApp(
+        home: WidgetBook(),
+      ),
     ),
   );
 }

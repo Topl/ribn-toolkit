@@ -5,6 +5,7 @@ import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
@@ -115,6 +116,19 @@ class _WidgetBookState extends State<WidgetBook> {
                       ),
                       buttonIcon: Image.asset(RibnAssets.editIcon),
                       onPressed: () {},
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Custom Copy Button',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: CustomCopyButton(
+                      textToBeCopied: 'Copied text!',
                     ),
                   ),
                 ),
