@@ -50,16 +50,7 @@ class _HoverIconButtonState extends State<HoverIconButton> {
           width: 35,
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: [
-              // showHoverIcon ? Image.asset(RibnAssets.editIcon) : const SizedBox(),
-              showHoverIcon ? widget.buttonIcon : const SizedBox(),
-              const Spacer(),
-              // Text(
-              //   'Edit',
-              //   style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.primary),
-              // ),
-              widget.buttonText
-            ],
+            children: [showHoverIcon ? widget.buttonIcon : const SizedBox(), const Spacer(), widget.buttonText],
           ),
         ),
       ),
