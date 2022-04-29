@@ -5,38 +5,45 @@ import 'package:ribn_toolkit/constants/colors.dart';
 class RibnToolkitTextStyles {
   RibnToolkitTextStyles._();
   static const TextStyle h1 = TextStyle(
-    fontFamily: 'Poppins',
-    fontSize: 40,
+    fontFamily: 'DM Sans',
+    fontSize: 32,
     fontWeight: FontWeight.w500,
     color: RibnColors.defaultText,
-    height: 1.26,
+    height: 1.57,
   );
   static const TextStyle h2 = TextStyle(
-    fontFamily: 'Poppins',
-    fontSize: 28,
+    fontFamily: 'DM Sans',
+    fontSize: 24,
     fontWeight: FontWeight.w500,
     color: RibnColors.defaultText,
+    height: 1.34,
   );
   static const TextStyle h3 = TextStyle(
-    fontFamily: 'Poppins',
-    fontSize: 20,
+    fontFamily: 'DM Sans',
+    fontSize: 16,
     fontWeight: FontWeight.w500,
     color: RibnColors.defaultText,
+  );
+  static const TextStyle h4 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
   );
   static const TextStyle body1 = TextStyle(
-    fontFamily: 'Roboto',
-    fontSize: 20,
+    fontFamily: 'DM Sans',
+    fontSize: 12,
     color: RibnColors.defaultText,
-    height: 2.13,
+    height: 2.67,
   );
   static const TextStyle body1Bold = TextStyle(
-    fontFamily: 'Roboto',
-    fontSize: 20,
+    fontFamily: 'DM Sans',
+    fontSize: 26.59,
     color: RibnColors.defaultText,
     fontWeight: FontWeight.w500,
+    height: 1.2,
   );
   static const TextStyle smallBoldLabel = TextStyle(
-    fontFamily: 'Roboto',
+    fontFamily: 'DM Sans',
     fontSize: 13,
     color: RibnColors.defaultText,
     fontWeight: FontWeight.w500,
@@ -44,53 +51,47 @@ class RibnToolkitTextStyles {
   );
 
   static const TextStyle extH2 = TextStyle(
-    fontFamily: 'Spectral',
+    fontFamily: 'DM Sans',
     fontSize: 24,
     fontWeight: FontWeight.bold,
   );
   static const TextStyle extH3 = TextStyle(
-    fontFamily: 'Spectral',
+    fontFamily: 'DM Sans',
     fontSize: 16,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
   );
-  static const TextStyle extH4 = TextStyle(
-    fontFamily: 'Spectral',
-    fontSize: 13,
-    fontWeight: FontWeight.bold,
-  );
-
   static const TextStyle hintStyle = TextStyle(
-    fontFamily: 'Nunito',
+    fontFamily: 'DM Sans',
     fontSize: 12,
     color: RibnColors.hintTextColor,
   );
 
   static const TextStyle btnLarge = TextStyle(
-    fontFamily: 'Nunito',
-    fontSize: 28,
+    fontFamily: 'DM Sans',
+    fontSize: 17,
     color: RibnColors.accent,
     fontWeight: FontWeight.w500,
-    letterSpacing: 2.5,
+    letterSpacing: 1.9,
   );
 
   static const TextStyle btnMedium = TextStyle(
-    fontFamily: 'Nunito',
-    fontSize: 18,
+    fontFamily: 'DM Sans',
+    fontSize: 14,
     color: Colors.white,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w500,
   );
 
   static const TextStyle dropdownButtonStyle = TextStyle(
     color: RibnColors.whiteBackground,
-    fontWeight: FontWeight.w600,
-    fontFamily: 'Nunito',
+    fontWeight: FontWeight.w500,
+    fontFamily: 'DM Sans',
     fontSize: 12,
   );
 
   static const TextStyle smallBody = TextStyle(
     color: RibnColors.defaultText,
     fontWeight: FontWeight.w400,
-    fontFamily: 'Nunito',
+    fontFamily: 'DM Sans',
     fontSize: 12.0,
     decoration: TextDecoration.none,
   );
@@ -98,27 +99,27 @@ class RibnToolkitTextStyles {
   static const TextStyle settingsSmallText = TextStyle(
     fontSize: 9.3,
     fontWeight: FontWeight.w400,
-    fontFamily: 'Nunito',
+    fontFamily: 'DM Sans',
     color: Color(0xFF585858),
   );
 
   static const TextStyle toolTipTextStyle = TextStyle(
     color: RibnColors.defaultText,
     fontWeight: FontWeight.w400,
-    fontFamily: 'Nunito',
+    fontFamily: 'DM Sans',
     fontSize: 12,
     decoration: TextDecoration.none,
   );
 
   static const TextStyle assetShortNameStyle = TextStyle(
-    fontFamily: 'Nunito',
-    fontWeight: FontWeight.w600,
+    fontFamily: 'DM Sans',
+    fontWeight: FontWeight.w500,
     fontSize: 15,
     color: RibnColors.defaultText,
   );
 
   static const TextStyle assetLongNameStyle = TextStyle(
-    fontFamily: 'Nunito',
+    fontFamily: 'DM Sans',
     fontSize: 12,
     color: Color(0xff585858),
   );

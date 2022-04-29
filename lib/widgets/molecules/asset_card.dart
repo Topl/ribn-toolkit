@@ -67,7 +67,7 @@ class AssetCard extends StatelessWidget {
                       style: TextStyle(
                         color: RibnColors.primary,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Nunito',
+                        fontFamily: 'DM Sans',
                         fontStyle: FontStyle.normal,
                         fontSize: 10.4,
                         decoration: TextDecoration.underline,

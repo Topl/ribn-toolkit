@@ -51,7 +51,7 @@ class CustomTextField extends StatelessWidget {
       child: TextField(
         controller: controller,
         style: const TextStyle(
-          fontFamily: 'Nunito',
+          fontFamily: 'DM Sans',
           fontSize: 12,
           color: RibnColors.defaultText,
         ),
