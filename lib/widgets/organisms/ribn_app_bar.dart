@@ -52,7 +52,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
     return Container(
       color: RibnColors.primary,
       child: PopupMenuButton<String>(
-        child: SizedBox(width: 30, child: SvgPicture.asset(RibnAssets.menuIcon)),
+        child: SizedBox(width: 30, child: Image.asset(RibnAssets.newRibnLogo)),
         offset: const Offset(0, 30),
         // onSelected: onSelected,
         padding: const EdgeInsets.all(0.0),

@@ -47,11 +47,14 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: LargeButton(
                       buttonChild: Text(
-                        'BUTTON TEXT',
-                        style: RibnToolkitTextStyles.btnMedium.copyWith(
+                        'Button Text',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
                           color: Colors.white,
                         ),
                       ),
+                      backgroundColor: RibnColors.primary,
+                      hoverColor: RibnColors.primaryButtonHover,
+                      dropShadowColor: RibnColors.primaryButtonShadow,
                       onPressed: () {},
                     ),
                   ),
@@ -61,12 +64,32 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: LargeButton(
                       buttonChild: Text(
-                        'BUTTON TEXT',
-                        style: RibnToolkitTextStyles.btnMedium.copyWith(
+                        'Button Text',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
                           color: RibnColors.primary,
                         ),
                       ),
                       backgroundColor: RibnColors.secondary,
+                      hoverColor: RibnColors.secondaryButtonHover,
+                      dropShadowColor: RibnColors.secondaryButtonShadow,
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Ghost',
+                  builder: (context) => Center(
+                    child: LargeButton(
+                      buttonChild: Text(
+                        'Button Text',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
+                          color: RibnColors.ghostButtonText,
+                        ),
+                      ),
+                      backgroundColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      dropShadowColor: Colors.transparent,
+                      borderColor: RibnColors.ghostButtonText,
                       onPressed: () {},
                     ),
                   ),
@@ -418,7 +441,7 @@ class _WidgetBookState extends State<WidgetBook> {
           name: 'Light',
           data: ThemeData(
             // You can change the background color of the canvas as so:
-            scaffoldBackgroundColor: const Color(0xffE9E9E9),
+            scaffoldBackgroundColor: const Color(0xFFF8F8F8),
           ),
         ),
       ],
