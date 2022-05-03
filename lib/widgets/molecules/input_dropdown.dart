@@ -1,20 +1,27 @@
-// import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/utils.dart';
 
 class InputDropdown extends StatefulWidget {
+  const InputDropdown({
+    required this.selectedNetwork,
+    required this.networks,
+    required this.onChange,
+    required this.chevronIconLink,
+    Key? key,
+  }) : super(key: key);
+
+  final String selectedNetwork;
+  final List<String> networks;
+  final Function(String) onChange;
+  final String chevronIconLink;
+
   @override
   State<InputDropdown> createState() => _InputDropdownState();
 }
 
 class _InputDropdownState extends State<InputDropdown> {
-  String selectedNetwork = 'valhalla';
-
-  List<String> networks = ['valhalla', 'toplnet', 'private'];
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +37,7 @@ class _InputDropdownState extends State<InputDropdown> {
         padding: const EdgeInsets.all(0.0),
         elevation: 0,
         itemBuilder: (context) {
-          return networks.map(
+          return widget.networks.map(
             (String networkName) {
               return PopupMenuItem(
                 value: networkName,
@@ -42,7 +49,7 @@ class _InputDropdownState extends State<InputDropdown> {
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: CircleAvatar(
                         backgroundColor:
-                            networkName == selectedNetwork ? const Color(0xFF80FF00) : const Color(0xffbdbdbd),
+                            networkName == widget.selectedNetwork ? const Color(0xFF80FF00) : const Color(0xffbdbdbd),
                         radius: 3,
                       ),
                     ),
@@ -66,20 +73,19 @@ class _InputDropdownState extends State<InputDropdown> {
               width: 50,
               child: Center(
                 child: Text(
-                  capitalize(selectedNetwork),
+                  capitalize(widget.selectedNetwork),
                   style: RibnToolkitTextStyles.h3.copyWith(color: Colors.white, fontSize: 10),
                 ),
               ),
             ),
             Image.asset(
-              RibnAssets.chevronDown,
+              widget.chevronIconLink,
+              width: 10.0,
             ),
           ],
         ),
         onSelected: (String network) {
-          setState(() {
-            selectedNetwork = network;
-          });
+          widget.onChange(network);
         },
       ),
     );

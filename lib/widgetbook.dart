@@ -31,6 +31,12 @@ class _WidgetBookState extends State<WidgetBook> {
   final canvasHeight = 500.00;
   final String tooltipUrl = 'https://topl.services';
   bool checked = false;
+  String selectedNetwork = 'valhalla';
+  dynamic onPress(string) {
+    setState(() {
+      selectedNetwork = string;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -317,7 +323,11 @@ class _WidgetBookState extends State<WidgetBook> {
                 WidgetbookUseCase(
                   name: 'App bar version',
                   builder: (context) => Center(
-                    child: InputDropdown(),
+                    child: InputDropdown(
+                        selectedNetwork: selectedNetwork,
+                        networks: ['valhalla', 'toplnet', 'private'],
+                        onChange: onPress,
+                        chevronIconLink: RibnAssets.chevronDown),
                   ),
                 ),
               ],

@@ -37,7 +37,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            InputDropdown(),
+            // InputDropdown(),
             const Spacer(),
             _buildSettingsMenu(settingsOptions),
           ],
