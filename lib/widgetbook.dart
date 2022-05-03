@@ -105,7 +105,10 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: SquareButtonWithIcon(
                       backgroundColor: RibnColors.primary,
                       icon: SvgPicture.asset(RibnAssets.plusIcon, width: 30),
-                      text: Text('BUTTON TEXT', style: RibnToolkitTextStyles.btnLarge),
+                      text: Text(
+                        'BUTTON TEXT',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(color: Colors.white),
+                      ),
                       onPressed: () {},
                     ),
                   ),
@@ -182,7 +185,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: CustomTextField(
                       controller: _controller,
-                      hintText: Strings.hintSeedPhrase,
+                      hintText: 'Type Something',
                       width: 268,
                       maxLength: 16,
                     ),

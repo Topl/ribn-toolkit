@@ -67,17 +67,17 @@ class CustomTextField extends StatelessWidget {
           hintText: hintText,
           hintStyle: RibnToolkitTextStyles.hintStyle,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.7),
+            borderRadius: BorderRadius.circular(5),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: hasError ? Colors.red : Colors.transparent),
+            borderSide: BorderSide(color: hasError ? Colors.red : RibnColors.lightGrey),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: hasError ? Colors.red : RibnColors.primary),
+            borderSide: BorderSide(color: hasError ? Colors.red : RibnColors.active),
           ),
           filled: true,
           contentPadding: const EdgeInsets.all(5),
-          fillColor: RibnColors.whiteBackground,
+          fillColor: Colors.white,
           floatingLabelBehavior: FloatingLabelBehavior.never,
         ),
       ),
