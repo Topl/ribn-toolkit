@@ -1,5 +1,7 @@
 // import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:ribn_toolkit/constants/assets.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/utils.dart';
 
@@ -16,10 +18,10 @@ class _InputDropdownState extends State<InputDropdown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 90,
+      width: 95,
       height: 25,
       decoration: BoxDecoration(
-        color: const Color(0xFF25B0A3),
+        color: RibnColors.primary,
         borderRadius: BorderRadius.circular(15),
       ),
       padding: const EdgeInsets.all(5),
@@ -69,7 +71,9 @@ class _InputDropdownState extends State<InputDropdown> {
                 ),
               ),
             ),
-            const Icon(Icons.arrow_drop_down, color: Colors.white, size: 10),
+            Image.asset(
+              RibnAssets.chevronDown,
+            ),
           ],
         ),
         onSelected: (String network) {
