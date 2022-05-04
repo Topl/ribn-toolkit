@@ -27,16 +27,24 @@ class WidgetBook extends StatefulWidget {
 
 class _WidgetBookState extends State<WidgetBook> {
   final TextEditingController _controller = TextEditingController();
-  final canvasWidth = 500.00;
-  final canvasHeight = 500.00;
   final String tooltipUrl = 'https://topl.services';
   bool checked = false;
-  String selectedNetwork = 'valhalla';
   dynamic onPress(string) {
     setState(() {
       selectedNetwork = string;
     });
   }
+
+  String selectedNetwork = 'valhalla';
+  dynamic selectSettingsOption(string) {}
+
+  List<String> networks = ['valhalla', 'toplnet', 'private'];
+  final Map<String, SvgPicture> settingsOptions = {
+    'Support': SvgPicture.asset(RibnAssets.supportIcon),
+    'Settings': SvgPicture.asset(RibnAssets.settingsIcon),
+  };
+  final chevronIconLink = RibnAssets.chevronDown;
+  dynamic selectSettings(string) {}
 
   @override
   Widget build(BuildContext context) {
@@ -416,9 +424,15 @@ class _WidgetBookState extends State<WidgetBook> {
                 WidgetbookUseCase(
                   name: 'Standard',
                   builder: (context) => SizedBox(
-                    width: canvasWidth,
+                    width: 500.00,
                     height: 40,
-                    child: RibnAppBar(),
+                    child: RibnAppBar(
+                        currentNetworkName: selectedNetwork,
+                        networks: networks,
+                        updateNetwork: onPress,
+                        settingsOptions: settingsOptions,
+                        selectSettingsOption: selectSettings,
+                        chevronIconLink: chevronIconLink),
                   ),
                 ),
               ],
@@ -462,8 +476,17 @@ class _WidgetBookState extends State<WidgetBook> {
         Device(
           name: 'Square Canvas',
           resolution: Resolution.dimensions(
-            nativeWidth: canvasWidth,
-            nativeHeight: canvasHeight,
+            nativeWidth: 500.00,
+            nativeHeight: 500.00,
+            scaleFactor: 1,
+          ),
+          type: DeviceType.desktop,
+        ),
+        Device(
+          name: 'iPhone 12 Pro',
+          resolution: Resolution.dimensions(
+            nativeWidth: 390,
+            nativeHeight: 844,
             scaleFactor: 1,
           ),
           type: DeviceType.desktop,

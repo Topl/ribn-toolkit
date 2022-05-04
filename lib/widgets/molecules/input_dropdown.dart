@@ -26,7 +26,7 @@ class _InputDropdownState extends State<InputDropdown> {
   Widget build(BuildContext context) {
     return Container(
       width: 95,
-      height: 25,
+      height: 21,
       decoration: BoxDecoration(
         color: RibnColors.primary,
         borderRadius: BorderRadius.circular(15),
@@ -69,12 +69,16 @@ class _InputDropdownState extends State<InputDropdown> {
               child: CircleAvatar(backgroundColor: Color(0xFF80FF00), radius: 3),
             ),
             SizedBox(
-              height: 15,
+              height: 20,
               width: 50,
               child: Center(
                 child: Text(
                   capitalize(widget.selectedNetwork),
-                  style: RibnToolkitTextStyles.h3.copyWith(color: Colors.white, fontSize: 10),
+                  style: RibnToolkitTextStyles.h3.copyWith(
+                    color: Colors.white,
+                    fontSize: 10,
+                    height: 1.2,
+                  ),
                 ),
               ),
             ),

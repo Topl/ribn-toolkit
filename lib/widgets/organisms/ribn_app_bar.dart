@@ -8,38 +8,67 @@ import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
 
 /// Builds the top AppBar in the extension view.
 /// Displays the network drop down and settings drop down.
-class RibnAppBar extends StatefulWidget {
+class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
+  const RibnAppBar({
+    Key? key,
+    required this.currentNetworkName,
+    required this.networks,
+    required this.updateNetwork,
+    required this.settingsOptions,
+    required this.selectSettingsOption,
+    required this.chevronIconLink,
+  })  : preferredSize = const Size.fromHeight(40),
+        super(key: key);
+
+  final String currentNetworkName;
+  final List<String> networks;
+  final Function(String) updateNetwork;
+  final Map<String, SvgPicture> settingsOptions;
+  final Function(String) selectSettingsOption;
+  final String chevronIconLink;
+
+  @override
+  final Size preferredSize;
+
   @override
   _RibnAppBarState createState() => _RibnAppBarState();
 }
 
 class _RibnAppBarState extends State<RibnAppBar> {
-  String selectedNetwork = 'valhalla';
-  Map selectedSettingsOption = {};
-
-  List<String> networks = ['valhalla', 'toplnet', 'private'];
-  final Map<String, SvgPicture> settingsOptions = {
-    'Support': SvgPicture.asset(RibnAssets.supportIcon),
-    'Settings': SvgPicture.asset(RibnAssets.settingsIcon),
-  };
-
-  dynamic updateNetwork() {}
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: RibnColors.primary,
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: <Color>[RibnColors.tertiary, RibnColors.primaryOffColor],
+          ),
+        ),
+      ),
       automaticallyImplyLeading: false,
       titleSpacing: 0,
-      elevation: 0,
+      elevation: 3,
       title: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // InputDropdown(),
-            const Spacer(),
-            _buildSettingsMenu(settingsOptions),
+            _buildSettingsMenu(widget.settingsOptions, widget.selectSettingsOption),
+            const Spacer(flex: 2),
+            Image.asset(
+              RibnAssets.newRibnLogo,
+              width: 46,
+            ),
+            const Spacer(flex: 1),
+            InputDropdown(
+              selectedNetwork: widget.currentNetworkName,
+              networks: widget.networks,
+              onChange: widget.updateNetwork,
+              chevronIconLink: widget.chevronIconLink,
+            ),
           ],
         ),
       ),
@@ -48,13 +77,13 @@ class _RibnAppBarState extends State<RibnAppBar> {
   }
 
   /// Builds the settings drop down menu.
-  Widget _buildSettingsMenu(Map<String, SvgPicture> settingsOptions) {
+  Widget _buildSettingsMenu(Map<String, SvgPicture> settingsOptions, Function(String)? onSelected) {
     return Container(
-      color: RibnColors.primary,
+      color: Colors.transparent,
       child: PopupMenuButton<String>(
-        child: SizedBox(width: 30, child: Image.asset(RibnAssets.newRibnLogo)),
+        child: SizedBox(width: 24, child: Image.asset(RibnAssets.hamburgerMenu)),
         offset: const Offset(0, 30),
-        // onSelected: onSelected,
+        onSelected: onSelected,
         padding: const EdgeInsets.all(0.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
@@ -79,7 +108,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
                           style: const TextStyle(
                             color: RibnColors.primary,
                             fontSize: 12,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'DM Sans',
                             fontWeight: FontWeight.w500,
                           ),
                         ),
