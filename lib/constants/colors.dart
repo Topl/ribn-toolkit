@@ -14,7 +14,7 @@ class RibnColors {
   // static const Color hintTextColor = Color(0xffbcbcbc);
   // static const Color greyedOut = Color(0xff585858);
   static const Color primary = Color(0xFF144C5F);
-  static const Color primaryOffColor = Color(0xFF145061);
+  static const Color primaryOffColor = Color(0xFF155464);
   static const Color accent = Color(0xFF175F6B);
   static const Color secondary = Color(0xFF86DFCC);
   static const Color tertiary = Color(0xFF259E95);
