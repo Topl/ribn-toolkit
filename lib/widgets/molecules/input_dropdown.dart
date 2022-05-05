@@ -33,6 +33,9 @@ class _InputDropdownState extends State<InputDropdown> {
       ),
       padding: const EdgeInsets.all(5),
       child: PopupMenuButton<String>(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.32),
+        ),
         offset: const Offset(0, 25),
         padding: const EdgeInsets.all(0.0),
         elevation: 0,
@@ -94,21 +97,4 @@ class _InputDropdownState extends State<InputDropdown> {
       ),
     );
   }
-}
-
-Row renderDropdownRow(item, currentNetworkName, text) {
-  return Row(
-    mainAxisSize: MainAxisSize.min,
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: [
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: CircleAvatar(
-          backgroundColor: item == currentNetworkName ? const Color(0xFF80FF00) : const Color(0xffbdbdbd),
-          radius: 3,
-        ),
-      ),
-      text
-    ],
-  );
 }
