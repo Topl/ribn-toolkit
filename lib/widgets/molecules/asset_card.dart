@@ -92,7 +92,7 @@ class AssetCard extends StatelessWidget {
             ),
             const Spacer(),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 const SizedBox(height: 10),
                 // display asset units
