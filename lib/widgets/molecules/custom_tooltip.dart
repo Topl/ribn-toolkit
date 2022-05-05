@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_close_button.dart';
 
 /// A custom widget for displaying tooltips.
@@ -21,7 +22,7 @@ class CustomToolTip extends StatefulWidget {
   const CustomToolTip({
     Key? key,
     this.offsetPositionLeftValue = 150,
-    this.toolTipBackgroundColor = const Color(0xffeef9f8),
+    this.toolTipBackgroundColor = RibnColors.background,
     this.toolTipIcon,
     required this.toolTipChild,
   }) : super(key: key);
@@ -44,11 +45,7 @@ class _CustomToolTipState extends State<CustomToolTip> {
     return Container(
       margin: const EdgeInsets.only(left: 2),
       child: GestureDetector(
-        child: widget.toolTipIcon ??
-            Image.asset(
-              RibnAssets.roundInfoCircle,
-              width: 10,
-            ),
+        child: widget.toolTipIcon ?? widget.toolTipIcon,
         onTap: () {
           // build tooltip if it is not already being displayed
           if (!overlayEntry.mounted) _buildTooltip(context);
@@ -86,11 +83,13 @@ class _CustomToolTipState extends State<CustomToolTip> {
                   decoration: BoxDecoration(
                     color: widget.toolTipBackgroundColor,
                     borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
+                    border: Border.all(color: RibnColors.lightGrey),
+                    boxShadow: const [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 2,
+                        color: RibnColors.blackShadow,
+                        spreadRadius: 0,
+                        blurRadius: 22,
+                        offset: Offset(0, 6),
                       ),
                     ],
                   ),
@@ -101,7 +100,7 @@ class _CustomToolTipState extends State<CustomToolTip> {
                   right: 0,
                   top: 0,
                   child: CustomCloseButton(
-                    iconSize: 10,
+                    iconSize: 16,
                     onPressed: () => overlayEntry.remove(),
                   ),
                 ),

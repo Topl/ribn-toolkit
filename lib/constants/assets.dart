@@ -73,4 +73,5 @@ class RibnAssets {
   static const newRibnLogo = 'assets/icons/new_ribn_logo.png';
   static const chevronDown = 'assets/icons/chevron_down.png';
   static const hamburgerMenu = 'assets/icons/hamburger_menu.png';
+  static const circleExclamation = 'assets/icons/error.png';
 }

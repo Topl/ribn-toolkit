@@ -30,7 +30,9 @@ class RibnColors {
   static const Color secondaryButtonHover = Color(0xFF92e2d1);
   static const Color primaryButtonShadow = Color(0x4D16586E);
   static const Color secondaryButtonShadow = Color(0x4D87E2CE);
+  static const Color whiteButtonShadow = Color(0x4D8AE3CF);
   static const Color ghostButtonText = Color(0xFF979797);
   static const Color assetCardShadow = Color(0x80E2ECF9);
   static const Color assetCardHoverColor = Color(0xFFFBFCFC);
+  static const Color blackShadow = Color(0x0D000000);
 }
