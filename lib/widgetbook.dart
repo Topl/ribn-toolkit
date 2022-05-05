@@ -345,9 +345,13 @@ class _WidgetBookState extends State<WidgetBook> {
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
-                  builder: (context) => const Center(
+                  builder: (context) => Center(
                     child: CustomToolTip(
-                      toolTipChild: Text(
+                      toolTipIcon: Image.asset(
+                        RibnAssets.greyHelpBubble,
+                        width: 18,
+                      ),
+                      toolTipChild: const Text(
                         Strings.assetCodeShortInfo,
                         style: RibnToolkitTextStyles.toolTipTextStyle,
                       ),
@@ -358,6 +362,10 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Subtitled',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      toolTipIcon: Image.asset(
+                        RibnAssets.greyHelpBubble,
+                        width: 18,
+                      ),
                       toolTipChild: Column(
                         children: [
                           Text(
@@ -379,6 +387,10 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'With link',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      toolTipIcon: Image.asset(
+                        RibnAssets.greyHelpBubble,
+                        width: 18,
+                      ),
                       toolTipChild: RichText(
                         text: TextSpan(
                           style: RibnToolkitTextStyles.toolTipTextStyle,

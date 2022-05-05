@@ -23,7 +23,7 @@ class CustomToolTip extends StatefulWidget {
     Key? key,
     this.offsetPositionLeftValue = 150,
     this.toolTipBackgroundColor = RibnColors.background,
-    this.toolTipIcon,
+    required this.toolTipIcon,
     required this.toolTipChild,
   }) : super(key: key);
 
@@ -45,7 +45,7 @@ class _CustomToolTipState extends State<CustomToolTip> {
     return Container(
       margin: const EdgeInsets.only(left: 2),
       child: GestureDetector(
-        child: widget.toolTipIcon ?? widget.toolTipIcon,
+        child: widget.toolTipIcon,
         onTap: () {
           // build tooltip if it is not already being displayed
           if (!overlayEntry.mounted) _buildTooltip(context);
