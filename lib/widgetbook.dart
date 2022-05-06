@@ -11,6 +11,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
+import 'package:ribn_toolkit/widgets/atoms/wave_container.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
 import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
@@ -235,6 +236,17 @@ class _WidgetBookState extends State<WidgetBook> {
                         ),
                       ),
                     ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Wave Container',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: WaveContainer(),
                   ),
                 ),
               ],
