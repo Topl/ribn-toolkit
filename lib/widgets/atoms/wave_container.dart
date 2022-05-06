@@ -4,19 +4,22 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class WaveContainer extends StatelessWidget {
-  const WaveContainer({Key? key}) : super(key: key);
+  const WaveContainer({required this.containerHeight, required this.containerChild, Key? key}) : super(key: key);
+
+  // This sets the height of the container
+  final double containerHeight;
+
+  // This renders what you pass through as a child on top of the wave background
+  final Widget containerChild;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 500,
-      height: 500,
-      // constraints: const BoxConstraints.expand(height: 183),
+      height: containerHeight,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
-          // colors: <Color>[RibnColors.tertiary, RibnColors.primaryOffColor],
           colors: <Color>[RibnColors.tertiary, RibnColors.primaryOffColor],
         ),
       ),
@@ -28,10 +31,10 @@ class WaveContainer extends StatelessWidget {
                 [const Color(0xFF155464), const Color(0xEE155464)],
                 [const Color(0xFF1e7e80), const Color(0x661e7e80)],
                 [const Color(0xFF1e7e80), const Color(0x661e7e80)],
-                [const Color(0xFF23968E), const Color(0x661e7e80)]
+                [const Color(0xFF23968E), const Color(0xFF155464)]
               ],
               durations: [35000, 19440, 10800, 6000],
-              heightPercentages: [0.20, 0.23, 0.25, 0.30],
+              heightPercentages: [0.25, 0.25, 0.25, 0.25],
               blur: const MaskFilter.blur(BlurStyle.inner, 60),
               gradientBegin: Alignment.bottomLeft,
               gradientEnd: Alignment.topRight,
@@ -42,31 +45,7 @@ class WaveContainer extends StatelessWidget {
               double.infinity,
             ),
           ),
-          // Column(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     Padding(
-          //       padding: const EdgeInsets.only(top: 8.0),
-          //       child: Text(
-          //         '\$${vm.polyBalance}',
-          //         style: RibnToolkitTextStyles.h3.copyWith(
-          //           color: RibnColors.secondary,
-          //         ),
-          //       ),
-          //     ),
-          //     const SizedBox(height: 20),
-          //     Row(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: [
-          //         _buildButton(Strings.send, vm.navigateToSendPolys),
-          //         const SizedBox(width: 10),
-          //         _buildButton(Strings.receive, () async {
-          //           await showReceivingAddress();
-          //         }),
-          //       ],
-          //     ),
-          //   ],
-          // ),
+          containerChild,
         ],
       ),
     );
