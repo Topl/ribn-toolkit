@@ -58,14 +58,17 @@ class _InputDropdownState extends State<InputDropdown> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 5),
                         child: CircleAvatar(
                           backgroundColor:
                               networkName == widget.selectedNetwork ? const Color(0xFF80FF00) : const Color(0xffbdbdbd),
                           radius: 3,
                         ),
                       ),
-                      Text(capitalize(networkName)),
+                      Text(
+                        capitalize(networkName),
+                        style: RibnToolkitTextStyles.body1,
+                      ),
                     ],
                   ),
                 );

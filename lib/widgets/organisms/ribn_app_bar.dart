@@ -113,12 +113,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
                         width: 50,
                         child: Text(
                           currOption,
-                          style: const TextStyle(
-                            color: RibnColors.primary,
-                            fontSize: 12,
-                            fontFamily: 'DM Sans',
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: RibnToolkitTextStyles.body1,
                         ),
                       ),
                     ],
