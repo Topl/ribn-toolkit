@@ -247,10 +247,19 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: WaveContainer(
-                      containerHeight: 500,
-                      containerChild: Text(
-                        'You can place elements on top of this background as so...',
-                        style: RibnToolkitTextStyles.h3.copyWith(color: Colors.white),
+                      containerHeight: double.infinity,
+                      containerWidth: double.infinity,
+                      waveAmplitude: 0,
+                      containerChild: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'You can place elements on top of this background as so...',
+                              style: RibnToolkitTextStyles.h4.copyWith(color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

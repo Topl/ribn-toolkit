@@ -7,7 +7,7 @@ class RibnToolkitTextStyles {
   static const TextStyle h1 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 32,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.bold,
     color: RibnColors.defaultText,
     height: 1.57,
   );

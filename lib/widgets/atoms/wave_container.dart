@@ -4,10 +4,22 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class WaveContainer extends StatelessWidget {
-  const WaveContainer({required this.containerHeight, required this.containerChild, Key? key}) : super(key: key);
+  const WaveContainer(
+      {required this.containerHeight,
+      required this.containerWidth,
+      required this.waveAmplitude,
+      required this.containerChild,
+      Key? key})
+      : super(key: key);
 
   // This sets the height of the container
   final double containerHeight;
+
+  // This sets the width of the container
+  final double containerWidth;
+
+  // This sets the height of the animated waves
+  final double waveAmplitude;
 
   // This renders what you pass through as a child on top of the wave background
   final Widget containerChild;
@@ -16,6 +28,7 @@ class WaveContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: containerHeight,
+      width: containerWidth,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.centerLeft,
@@ -39,7 +52,7 @@ class WaveContainer extends StatelessWidget {
               gradientBegin: Alignment.bottomLeft,
               gradientEnd: Alignment.topRight,
             ),
-            waveAmplitude: 0,
+            waveAmplitude: waveAmplitude,
             size: const Size(
               double.infinity,
               double.infinity,
