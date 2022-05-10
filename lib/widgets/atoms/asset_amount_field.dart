@@ -26,12 +26,16 @@ class AssetAmountField extends StatefulWidget {
   /// True if the unit type can be edited, e.g. when minting a new asset.
   final bool allowEditingUnit;
 
+  /// The link to render the down arrow chevron
+  final String chevronIconLink;
+
   const AssetAmountField({
     Key? key,
     required this.onUnitSelected,
     required this.controller,
     this.allowEditingUnit = true,
     this.selectedUnit,
+    required this.chevronIconLink,
   }) : super(key: key);
 
   @override
@@ -42,11 +46,11 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
   /// True if dropdown needs to be displayed.
   bool showUnitDropdown = false;
 
-  final double _fieldHeight = 36;
+  final double _fieldHeight = 30;
 
   @override
   Widget build(BuildContext context) {
-    final double textFieldWidth = widget.allowEditingUnit ? 310 : 82;
+    final double textFieldWidth = widget.allowEditingUnit ? 116 : 82;
 
     return CustomInputField(
       itemLabel: Strings.amount,
@@ -72,7 +76,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
                         showUnitDropdown = false;
                       });
                     },
-                    childAlignment: Alignment.bottomCenter,
+                    childAlignment: Alignment.bottomLeft,
                     dropDownAlignment: Alignment.topCenter,
                     dropdownButton: _buildUnitDropdownButton(),
                     dropdownChild: _buildUnitDropdownChild(),
@@ -80,7 +84,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
                 )
               : Positioned(
                   right: 2,
-                  top: 8,
+                  top: 6,
                   child: SizedBox(
                     width: 26,
                     child: Center(
@@ -112,8 +116,8 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            margin: EdgeInsets.only(top: 4, bottom: 4),
-            width: 98,
+            margin: const EdgeInsets.only(top: 4, bottom: 4),
+            width: 26,
             height: _fieldHeight - 10,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -134,12 +138,14 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
           Padding(
             padding: const EdgeInsets.only(left: 2),
             child: Container(
-              width: 24,
+              width: 20,
               height: _fieldHeight - 10,
-              child: Image.asset(
-                RibnAssets.chevronDownDark,
-                width: 24,
-              ),
+              child: widget.allowEditingUnit
+                  ? Image.asset(
+                      widget.chevronIconLink,
+                      width: 24,
+                    )
+                  : null,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(1),
@@ -160,32 +166,43 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
   ///
   /// Allows user to select from a list of custom units, i.e. [UIConstants.assetUnitsList].
   Widget _buildUnitDropdownChild() {
-    return Container(
-      width: 125,
-      height: 148,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(4)),
-        border: Border.all(color: const Color(0xffeeeeee), width: 1),
-        color: const Color(0xffffffff),
-      ),
-      child: ListView(
-        children: UIConstants.assetUnitsList
-            .map(
-              (unit) => MaterialButton(
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(unit,
-                      style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
+    return Padding(
+      padding: const EdgeInsets.only(left: 5.0),
+      child: Container(
+        width: 115,
+        height: 148,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(4)),
+          border: Border.all(color: RibnColors.lightGrey, width: 1),
+          color: const Color(0xffffffff),
+          boxShadow: const [
+            BoxShadow(
+              color: RibnColors.blackShadow,
+              spreadRadius: 0,
+              blurRadius: 22.4,
+              offset: Offset(0, 6),
+            ),
+          ],
+        ),
+        child: ListView(
+          children: UIConstants.assetUnitsList
+              .map(
+                (unit) => MaterialButton(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(unit,
+                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
+                  ),
+                  onPressed: () {
+                    widget.onUnitSelected(unit);
+                    setState(() {
+                      showUnitDropdown = false;
+                    });
+                  },
                 ),
-                onPressed: () {
-                  widget.onUnitSelected(unit);
-                  setState(() {
-                    showUnitDropdown = false;
-                  });
-                },
-              ),
-            )
-            .toList(),
+              )
+              .toList(),
+        ),
       ),
     );
   }

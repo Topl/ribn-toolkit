@@ -47,7 +47,7 @@ class _WidgetBookState extends State<WidgetBook> {
   };
   final chevronIconLink = RibnAssets.chevronDown;
   dynamic selectSettings(string) {}
-  String _selectedUnit = 'Select Unit';
+  String _selectedUnit = 'Unit';
 
   @override
   Widget build(BuildContext context) {
@@ -227,6 +227,7 @@ class _WidgetBookState extends State<WidgetBook> {
                               _selectedUnit = unit;
                             });
                           },
+                          chevronIconLink: RibnAssets.chevronDownDark,
                         ),
                       ),
                     ],
@@ -240,7 +241,7 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetAmountField(
-                          selectedUnit: _selectedUnit == 'Select Unit' ? 'G' : _selectedUnit,
+                          selectedUnit: _selectedUnit == _selectedUnit ? 'G' : _selectedUnit,
                           controller: _controller,
                           allowEditingUnit: false,
                           onUnitSelected: (String unit) {
@@ -248,6 +249,7 @@ class _WidgetBookState extends State<WidgetBook> {
                               _selectedUnit = unit;
                             });
                           },
+                          chevronIconLink: RibnAssets.chevronDownDark,
                         ),
                       ),
                     ],

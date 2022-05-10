@@ -10,24 +10,25 @@ class RibnToolkitTextStyles {
     fontWeight: FontWeight.bold,
     color: RibnColors.defaultText,
     height: 1.57,
+    letterSpacing: 1.42,
   );
   static const TextStyle h2 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 24,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
     color: RibnColors.defaultText,
     height: 1.34,
   );
   static const TextStyle h3 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 16,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
     color: RibnColors.defaultText,
   );
   static const TextStyle h4 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 13,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
   );
   static const TextStyle body1 = TextStyle(
     fontFamily: 'DM Sans',
@@ -54,42 +55,45 @@ class RibnToolkitTextStyles {
     fontFamily: 'DM Sans',
     fontSize: 24,
     fontWeight: FontWeight.bold,
+    letterSpacing: 1,
   );
   static const TextStyle extH3 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 16,
     fontWeight: FontWeight.w500,
+    letterSpacing: 1,
   );
   static const TextStyle hintStyle = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 12,
     color: RibnColors.hintTextColor,
+    fontWeight: FontWeight.w300,
   );
 
   static const TextStyle btnLarge = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 19.6,
     color: RibnColors.accent,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w300,
   );
 
   static const TextStyle btnMedium = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 14,
     color: Colors.white,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w300,
   );
 
   static const TextStyle dropdownButtonStyle = TextStyle(
     color: RibnColors.greyText,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w300,
     fontFamily: 'DM Sans',
     fontSize: 12,
   );
 
   static const TextStyle smallBody = TextStyle(
     color: RibnColors.defaultText,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w300,
     fontFamily: 'DM Sans',
     fontSize: 12.0,
     decoration: TextDecoration.none,
@@ -97,14 +101,14 @@ class RibnToolkitTextStyles {
 
   static const TextStyle settingsSmallText = TextStyle(
     fontSize: 9.3,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w300,
     fontFamily: 'DM Sans',
     color: Color(0xFF585858),
   );
 
   static const TextStyle toolTipTextStyle = TextStyle(
     color: RibnColors.defaultText,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w300,
     fontFamily: 'DM Sans',
     fontSize: 12,
     decoration: TextDecoration.none,
@@ -115,11 +119,13 @@ class RibnToolkitTextStyles {
     fontWeight: FontWeight.w500,
     fontSize: 15,
     color: RibnColors.defaultText,
+    letterSpacing: 1,
   );
 
   static const TextStyle assetLongNameStyle = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 12,
     color: Color(0xff585858),
+    letterSpacing: 1,
   );
 }
