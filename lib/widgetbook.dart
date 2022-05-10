@@ -41,9 +41,9 @@ class _WidgetBookState extends State<WidgetBook> {
   dynamic selectSettingsOption(string) {}
 
   List<String> networks = ['valhalla', 'toplnet', 'private'];
-  final Map<String, SvgPicture> settingsOptions = {
-    'Support': SvgPicture.asset(RibnAssets.supportIcon),
-    'Settings': SvgPicture.asset(RibnAssets.settingsIcon),
+  final Map<String, Image> settingsOptions = {
+    'Support': Image.asset(RibnAssets.supportIcon),
+    'Settings': Image.asset(RibnAssets.settingsIcon),
   };
   final chevronIconLink = RibnAssets.chevronDown;
   dynamic selectSettings(string) {}
