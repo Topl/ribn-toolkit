@@ -227,7 +227,10 @@ class _WidgetBookState extends State<WidgetBook> {
                               _selectedUnit = unit;
                             });
                           },
-                          chevronIconLink: RibnAssets.chevronDownDark,
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
                         ),
                       ),
                     ],
@@ -249,7 +252,10 @@ class _WidgetBookState extends State<WidgetBook> {
                               _selectedUnit = unit;
                             });
                           },
-                          chevronIconLink: RibnAssets.chevronDownDark,
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
                         ),
                       ),
                     ],

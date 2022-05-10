@@ -26,8 +26,8 @@ class AssetAmountField extends StatefulWidget {
   /// True if the unit type can be edited, e.g. when minting a new asset.
   final bool allowEditingUnit;
 
-  /// The link to render the down arrow chevron
-  final String chevronIconLink;
+  /// Conditionally add an icon for the dropdown
+  final Image? chevronIcon;
 
   const AssetAmountField({
     Key? key,
@@ -35,7 +35,7 @@ class AssetAmountField extends StatefulWidget {
     required this.controller,
     this.allowEditingUnit = true,
     this.selectedUnit,
-    required this.chevronIconLink,
+    this.chevronIcon,
   }) : super(key: key);
 
   @override
@@ -140,12 +140,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
             child: Container(
               width: 20,
               height: _fieldHeight - 10,
-              child: widget.allowEditingUnit
-                  ? Image.asset(
-                      widget.chevronIconLink,
-                      width: 24,
-                    )
-                  : null,
+              child: widget.allowEditingUnit ? widget.chevronIcon : null,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(1),
