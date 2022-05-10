@@ -289,32 +289,6 @@ class _WidgetBookState extends State<WidgetBook> {
                 ),
               ],
             ),
-            WidgetbookComponent(
-              name: 'Wave Container',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Standard',
-                  builder: (context) => Center(
-                    child: WaveContainer(
-                      containerHeight: double.infinity,
-                      containerWidth: double.infinity,
-                      waveAmplitude: 0,
-                      containerChild: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'You can place elements on top of this background as so...',
-                              style: RibnToolkitTextStyles.h4.copyWith(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ],
         ),
         WidgetbookCategory(
@@ -492,6 +466,32 @@ class _WidgetBookState extends State<WidgetBook> {
                                   ],
                                 ),
                               ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Wave Container',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: WaveContainer(
+                      containerHeight: double.infinity,
+                      containerWidth: double.infinity,
+                      waveAmplitude: 0,
+                      containerChild: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'You can place elements on top of this background as so...',
+                              style: RibnToolkitTextStyles.h4.copyWith(color: Colors.white),
                             ),
                           ],
                         ),
