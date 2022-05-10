@@ -1,0 +1,192 @@
+import 'package:flutter/material.dart';
+import 'package:ribn_toolkit/constants/assets.dart';
+
+import 'package:ribn_toolkit/constants/colors.dart';
+import 'package:ribn_toolkit/constants/strings.dart';
+import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/constants/ui_constants.dart';
+import 'package:ribn_toolkit/utils.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_input_field.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
+
+/// An input field used on the [MintInputPage] and [AssetTransferInputPage].
+///
+/// Allows the user to define the amount of asset to be minted/transfered and a custom unit associated with it.
+class AssetAmountField extends StatefulWidget {
+  /// Controller for the amount textfield.
+  final TextEditingController controller;
+
+  /// The selected unit for the asset to be minted/transfered.
+  final String? selectedUnit;
+
+  /// Handler for when a unit is selected.
+  final Function(String) onUnitSelected;
+
+  /// True if the unit type can be edited, e.g. when minting a new asset.
+  final bool allowEditingUnit;
+
+  const AssetAmountField({
+    Key? key,
+    required this.onUnitSelected,
+    required this.controller,
+    this.allowEditingUnit = true,
+    this.selectedUnit,
+  }) : super(key: key);
+
+  @override
+  _AssetAmountFieldState createState() => _AssetAmountFieldState();
+}
+
+class _AssetAmountFieldState extends State<AssetAmountField> {
+  /// True if dropdown needs to be displayed.
+  bool showUnitDropdown = false;
+
+  final double _fieldHeight = 36;
+
+  @override
+  Widget build(BuildContext context) {
+    final double textFieldWidth = widget.allowEditingUnit ? 310 : 82;
+
+    return CustomInputField(
+      itemLabel: Strings.amount,
+      item: Stack(
+        children: [
+          // textfield for entering the asset amount
+          CustomTextField(
+            width: textFieldWidth,
+            height: _fieldHeight,
+            controller: widget.controller,
+            hintText: Strings.amountHint,
+          ),
+          // show dropdown for selecting a custom unit if [widget.allowEditingUnit] is true.
+          // otherwise show the unit already associated with the asset.
+          widget.allowEditingUnit
+              ? Positioned(
+                  right: -3,
+                  top: 1,
+                  child: CustomDropDown(
+                    visible: showUnitDropdown,
+                    onDismissed: () {
+                      setState(() {
+                        showUnitDropdown = false;
+                      });
+                    },
+                    childAlignment: Alignment.bottomCenter,
+                    dropDownAlignment: Alignment.topCenter,
+                    dropdownButton: _buildUnitDropdownButton(),
+                    dropdownChild: _buildUnitDropdownChild(),
+                  ),
+                )
+              : Positioned(
+                  right: 2,
+                  top: 8,
+                  child: SizedBox(
+                    width: 26,
+                    child: Center(
+                      child: Text(
+                        formatAssetUnit(widget.selectedUnit),
+                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.primary),
+                      ),
+                    ),
+                  ),
+                ),
+        ],
+      ),
+    );
+  }
+
+  /// Builds the Unit dropdown button.
+  ///
+  /// If [showDropdownArrow] is true, a drop down arrow is also displayed.
+  Widget _buildUnitDropdownButton() {
+    return MaterialButton(
+      minWidth: 0,
+      onPressed: () {
+        setState(() {
+          // show dropdown if unit can be edited.
+          showUnitDropdown = widget.allowEditingUnit;
+        });
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 4, bottom: 4),
+            width: 98,
+            height: _fieldHeight - 10,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(5),
+                topRight: Radius.circular(1),
+                bottomRight: Radius.circular(1),
+                bottomLeft: Radius.circular(5),
+              ),
+              color: RibnColors.lightGrey,
+            ),
+            child: Center(
+              child: Text(
+                formatAssetUnit(widget.selectedUnit),
+                style: RibnToolkitTextStyles.dropdownButtonStyle,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 2),
+            child: Container(
+              width: 24,
+              height: _fieldHeight - 10,
+              child: Image.asset(
+                RibnAssets.chevronDownDark,
+                width: 24,
+              ),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(1),
+                  topRight: Radius.circular(5),
+                  bottomRight: Radius.circular(5),
+                  bottomLeft: Radius.circular(1),
+                ),
+                color: RibnColors.lightGrey,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Builds the Unit dropdown widget.
+  ///
+  /// Allows user to select from a list of custom units, i.e. [UIConstants.assetUnitsList].
+  Widget _buildUnitDropdownChild() {
+    return Container(
+      width: 125,
+      height: 148,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
+        border: Border.all(color: const Color(0xffeeeeee), width: 1),
+        color: const Color(0xffffffff),
+      ),
+      child: ListView(
+        children: UIConstants.assetUnitsList
+            .map(
+              (unit) => MaterialButton(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(unit,
+                      style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
+                ),
+                onPressed: () {
+                  widget.onUnitSelected(unit);
+                  setState(() {
+                    showUnitDropdown = false;
+                  });
+                },
+              ),
+            )
+            .toList(),
+      ),
+    );
+  }
+}

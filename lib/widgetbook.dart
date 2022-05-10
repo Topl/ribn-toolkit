@@ -4,6 +4,7 @@ import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/widgets/atoms/asset_amount_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
@@ -46,6 +47,7 @@ class _WidgetBookState extends State<WidgetBook> {
   };
   final chevronIconLink = RibnAssets.chevronDown;
   dynamic selectSettings(string) {}
+  String _selectedUnit = 'Select Unit';
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +169,7 @@ class _WidgetBookState extends State<WidgetBook> {
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
-                  builder: (context) => Center(
+                  builder: (context) => const Center(
                     child: CustomCopyButton(
                       textToBeCopied: 'Copied text!',
                     ),
@@ -201,9 +203,54 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: CustomTextField(
                       controller: _controller,
                       hintText: 'Type Something',
-                      width: 268,
-                      maxLength: 16,
                     ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Amount Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Minting',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetAmountField(
+                          selectedUnit: _selectedUnit,
+                          controller: _controller,
+                          allowEditingUnit: true,
+                          onUnitSelected: (String unit) {
+                            setState(() {
+                              _selectedUnit = unit;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Reminting',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetAmountField(
+                          selectedUnit: _selectedUnit == 'Select Unit' ? 'G' : _selectedUnit,
+                          controller: _controller,
+                          allowEditingUnit: false,
+                          onUnitSelected: (String unit) {
+                            setState(() {
+                              _selectedUnit = unit;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

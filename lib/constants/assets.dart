@@ -72,6 +72,7 @@ class RibnAssets {
   static const roundInfoCircle = 'assets/icons/round_info_circle.png';
   static const newRibnLogo = 'assets/icons/new_ribn_logo.png';
   static const chevronDown = 'assets/icons/chevron_down.png';
+  static const chevronDownDark = 'assets/icons/chevron_down_dark.png';
   static const hamburgerMenu = 'assets/icons/hamburger_menu.png';
   static const circleExclamation = 'assets/icons/error.png';
   static const greyHelpBubble = 'assets/icons/gray_help_bubble.png';

@@ -81,7 +81,7 @@ class RibnToolkitTextStyles {
   );
 
   static const TextStyle dropdownButtonStyle = TextStyle(
-    color: RibnColors.whiteBackground,
+    color: RibnColors.greyText,
     fontWeight: FontWeight.w500,
     fontFamily: 'DM Sans',
     fontSize: 12,
