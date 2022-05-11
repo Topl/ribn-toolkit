@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class SquareButtonWithIcon extends StatelessWidget {
   const SquareButtonWithIcon(
@@ -7,7 +6,7 @@ class SquareButtonWithIcon extends StatelessWidget {
       : super(key: key);
 
   final Color backgroundColor;
-  final SvgPicture icon;
+  final Image icon;
   final Widget text;
   final void Function()? onPressed;
 

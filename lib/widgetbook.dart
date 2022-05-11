@@ -19,6 +19,7 @@ import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
 import 'package:ribn_toolkit/widgets/organisms/progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
+import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -48,6 +49,23 @@ class _WidgetBookState extends State<WidgetBook> {
   final chevronIconLink = RibnAssets.chevronDown;
   dynamic selectSettings(string) {}
   String _selectedUnit = 'Unit';
+
+  final List _pages = [0, 1];
+  final List<Image> _pageIcons = [
+    Image.asset(RibnAssets.walletGrey),
+    Image.asset(RibnAssets.plusGrey),
+  ];
+  final List<Image> _activePageIcons = [
+    Image.asset(RibnAssets.walletBlue),
+    Image.asset(RibnAssets.plusBlue),
+  ];
+  int _currPage = 0;
+
+  void setCurrentPage(key) {
+    setState(() {
+      _currPage = key;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +139,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: SquareButtonWithIcon(
                       backgroundColor: RibnColors.primary,
-                      icon: SvgPicture.asset(RibnAssets.plusIcon, width: 30),
+                      icon: Image.asset(RibnAssets.plusBlue, width: 30),
                       text: Text(
                         'BUTTON TEXT',
                         style: RibnToolkitTextStyles.btnLarge.copyWith(color: Colors.white),
@@ -139,7 +157,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: CustomIconButton(
-                      icon: SvgPicture.asset(RibnAssets.plusIcon, width: 30),
+                      icon: Image.asset(RibnAssets.plusBlue, width: 30),
                       onPressed: () {},
                     ),
                   ),
@@ -553,6 +571,26 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Final Step',
                   builder: (context) => const Center(
                     child: CustomProgressBar(3),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Ribn Bottom App Bar',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Scaffold(
+                    // appBar: const RibnAppBarWrapper(),
+                    bottomNavigationBar: RibnBottomAppBar(
+                      pages: _pages,
+                      currPage: _currPage,
+                      activePageIcons: _activePageIcons,
+                      pageIcons: _pageIcons,
+                      setCurrentPage: setCurrentPage,
+                    ),
+                    backgroundColor: RibnColors.background,
+                    // body: _pages[_currPage],
                   ),
                 ),
               ],
