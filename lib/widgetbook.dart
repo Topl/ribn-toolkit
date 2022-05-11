@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
@@ -407,7 +406,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: InputDropdown(
                         selectedNetwork: selectedNetwork,
-                        networks: ['valhalla', 'toplnet', 'private'],
+                        networks: networks,
                         onChange: onPress,
                         chevronIconLink: RibnAssets.chevronDown),
                   ),

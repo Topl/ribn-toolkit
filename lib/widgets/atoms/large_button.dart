@@ -13,6 +13,7 @@ class LargeButton extends StatelessWidget {
     this.borderColor = Colors.transparent,
     this.buttonWidth = 310,
     this.buttonHeight = 43,
+    this.disabled = false,
     Key? key,
   }) : super(key: key);
   final dynamic buttonChild;
@@ -24,34 +25,40 @@ class LargeButton extends StatelessWidget {
   final double buttonWidth;
   final double buttonHeight;
   final double borderRadius = 50;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: buttonWidth,
       height: buttonHeight,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: dropShadowColor,
-            spreadRadius: 0,
-            blurRadius: 22,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
+      decoration: disabled
+          ? null
+          : BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: dropShadowColor,
+                  spreadRadius: 0,
+                  blurRadius: 22,
+                  offset: const Offset(0, 6),
+                ),
+              ],
+            ),
       child: MaterialButton(
         elevation: 0,
         hoverElevation: 0,
-        color: backgroundColor,
+        color: disabled ? RibnColors.inactive : backgroundColor,
         child: buttonChild,
-        onPressed: onPressed,
-        hoverColor: hoverColor,
+        onPressed: disabled ? null : onPressed,
+        hoverColor: disabled ? null : hoverColor,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              borderRadius,
-            ),
-            side: BorderSide(color: borderColor)),
+          borderRadius: BorderRadius.circular(
+            borderRadius,
+          ),
+          side: BorderSide(
+            color: disabled ? RibnColors.inactive : borderColor,
+          ),
+        ),
       ),
     );
   }
