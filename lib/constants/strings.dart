@@ -1,6 +1,8 @@
 /// All the strings that are being used throughout the app.
 class Strings {
   Strings._();
+  static const String useToplMainKey = 'USE TOPL MAIN KEY';
+  static const String advancedOption = 'Advanced option';
   static const String amount = 'Amount';
   static const String amountHint = '250,000';
   static const String mint = 'Mint';

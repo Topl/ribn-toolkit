@@ -10,6 +10,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
@@ -126,6 +127,43 @@ class _WidgetBookState extends State<WidgetBook> {
                       borderColor: RibnColors.ghostButtonText,
                       onPressed: () {},
                     ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Peekaboo Button',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: PeekabooButton(
+                          buttonText: Text(
+                            'Button Text',
+                            style: RibnToolkitTextStyles.smallBody.copyWith(fontSize: 15),
+                          ),
+                          buttonChild: SizedBox(
+                            width: 137,
+                            height: 22,
+                            child: LargeButton(
+                              buttonChild: Text(
+                                'Do This Action',
+                                style: RibnToolkitTextStyles.dropdownButtonStyle
+                                    .copyWith(fontSize: 11, color: RibnColors.ghostButtonText),
+                              ),
+                              backgroundColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              dropShadowColor: Colors.transparent,
+                              borderColor: RibnColors.ghostButtonText,
+                              onPressed: () {},
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
