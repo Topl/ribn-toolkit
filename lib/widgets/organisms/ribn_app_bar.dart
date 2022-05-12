@@ -49,11 +49,19 @@ class _RibnAppBarState extends State<RibnAppBar> {
             end: Alignment.centerRight,
             colors: <Color>[RibnColors.tertiary, RibnColors.primaryOffColor],
           ),
+          boxShadow: [
+            BoxShadow(
+              color: RibnColors.blackShadow,
+              spreadRadius: 0,
+              blurRadius: 4,
+              offset: Offset(0, 4),
+            ),
+          ],
         ),
       ),
       automaticallyImplyLeading: false,
       titleSpacing: 0,
-      elevation: 3,
+      elevation: 0,
       title: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
