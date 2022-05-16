@@ -7,7 +7,7 @@ class RibnToolkitTextStyles {
   static const TextStyle h1 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 32,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.bold,
     color: RibnColors.defaultText,
     height: 1.57,
   );
@@ -68,10 +68,9 @@ class RibnToolkitTextStyles {
 
   static const TextStyle btnLarge = TextStyle(
     fontFamily: 'DM Sans',
-    fontSize: 17,
+    fontSize: 19.6,
     color: RibnColors.accent,
     fontWeight: FontWeight.w500,
-    letterSpacing: 1.9,
   );
 
   static const TextStyle btnMedium = TextStyle(

@@ -11,6 +11,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
+import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
 import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
@@ -27,10 +28,24 @@ class WidgetBook extends StatefulWidget {
 
 class _WidgetBookState extends State<WidgetBook> {
   final TextEditingController _controller = TextEditingController();
-  final canvasWidth = 500.00;
-  final canvasHeight = 500.00;
   final String tooltipUrl = 'https://topl.services';
   bool checked = false;
+  dynamic onPress(string) {
+    setState(() {
+      selectedNetwork = string;
+    });
+  }
+
+  String selectedNetwork = 'valhalla';
+  dynamic selectSettingsOption(string) {}
+
+  List<String> networks = ['valhalla', 'toplnet', 'private'];
+  final Map<String, SvgPicture> settingsOptions = {
+    'Support': SvgPicture.asset(RibnAssets.supportIcon),
+    'Settings': SvgPicture.asset(RibnAssets.settingsIcon),
+  };
+  final chevronIconLink = RibnAssets.chevronDown;
+  dynamic selectSettings(string) {}
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +62,14 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: LargeButton(
                       buttonChild: Text(
-                        'BUTTON TEXT',
-                        style: RibnToolkitTextStyles.btnMedium.copyWith(
+                        'Button Text',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
                           color: Colors.white,
                         ),
                       ),
+                      backgroundColor: RibnColors.primary,
+                      hoverColor: RibnColors.primaryButtonHover,
+                      dropShadowColor: RibnColors.primaryButtonShadow,
                       onPressed: () {},
                     ),
                   ),
@@ -61,12 +79,32 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: LargeButton(
                       buttonChild: Text(
-                        'BUTTON TEXT',
-                        style: RibnToolkitTextStyles.btnMedium.copyWith(
+                        'Button Text',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
                           color: RibnColors.primary,
                         ),
                       ),
                       backgroundColor: RibnColors.secondary,
+                      hoverColor: RibnColors.secondaryButtonHover,
+                      dropShadowColor: RibnColors.secondaryButtonShadow,
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Ghost',
+                  builder: (context) => Center(
+                    child: LargeButton(
+                      buttonChild: Text(
+                        'Button Text',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
+                          color: RibnColors.ghostButtonText,
+                        ),
+                      ),
+                      backgroundColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      dropShadowColor: Colors.transparent,
+                      borderColor: RibnColors.ghostButtonText,
                       onPressed: () {},
                     ),
                   ),
@@ -82,7 +120,10 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: SquareButtonWithIcon(
                       backgroundColor: RibnColors.primary,
                       icon: SvgPicture.asset(RibnAssets.plusIcon, width: 30),
-                      text: Text('BUTTON TEXT', style: RibnToolkitTextStyles.btnLarge),
+                      text: Text(
+                        'BUTTON TEXT',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(color: Colors.white),
+                      ),
                       onPressed: () {},
                     ),
                   ),
@@ -159,7 +200,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: CustomTextField(
                       controller: _controller,
-                      hintText: Strings.hintSeedPhrase,
+                      hintText: 'Type Something',
                       width: 268,
                       maxLength: 16,
                     ),
@@ -190,6 +231,32 @@ class _WidgetBookState extends State<WidgetBook> {
                           children: const [
                             TextSpan(
                               text: 'Checkbox text',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Wave Container',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: WaveContainer(
+                      containerHeight: double.infinity,
+                      containerWidth: double.infinity,
+                      waveAmplitude: 0,
+                      containerChild: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'You can place elements on top of this background as so...',
+                              style: RibnToolkitTextStyles.h4.copyWith(color: Colors.white),
                             ),
                           ],
                         ),
@@ -291,7 +358,11 @@ class _WidgetBookState extends State<WidgetBook> {
                 WidgetbookUseCase(
                   name: 'App bar version',
                   builder: (context) => Center(
-                    child: InputDropdown(),
+                    child: InputDropdown(
+                        selectedNetwork: selectedNetwork,
+                        networks: ['valhalla', 'toplnet', 'private'],
+                        onChange: onPress,
+                        chevronIconLink: RibnAssets.chevronDown),
                   ),
                 ),
               ],
@@ -301,9 +372,13 @@ class _WidgetBookState extends State<WidgetBook> {
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
-                  builder: (context) => const Center(
+                  builder: (context) => Center(
                     child: CustomToolTip(
-                      toolTipChild: Text(
+                      toolTipIcon: Image.asset(
+                        RibnAssets.greyHelpBubble,
+                        width: 18,
+                      ),
+                      toolTipChild: const Text(
                         Strings.assetCodeShortInfo,
                         style: RibnToolkitTextStyles.toolTipTextStyle,
                       ),
@@ -314,6 +389,10 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Subtitled',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      toolTipIcon: Image.asset(
+                        RibnAssets.greyHelpBubble,
+                        width: 18,
+                      ),
                       toolTipChild: Column(
                         children: [
                           Text(
@@ -335,6 +414,10 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'With link',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      toolTipIcon: Image.asset(
+                        RibnAssets.greyHelpBubble,
+                        width: 18,
+                      ),
                       toolTipChild: RichText(
                         text: TextSpan(
                           style: RibnToolkitTextStyles.toolTipTextStyle,
@@ -380,9 +463,18 @@ class _WidgetBookState extends State<WidgetBook> {
                 WidgetbookUseCase(
                   name: 'Standard',
                   builder: (context) => SizedBox(
-                    width: canvasWidth,
+                    width: 500.00,
                     height: 40,
-                    child: RibnAppBar(),
+                    child: RibnAppBar(
+                      currentNetworkName: selectedNetwork,
+                      networks: networks,
+                      updateNetwork: onPress,
+                      settingsOptions: settingsOptions,
+                      selectSettingsOption: selectSettings,
+                      chevronIconLink: chevronIconLink,
+                      ribnLogoIconLink: RibnAssets.newRibnLogo,
+                      hamburgerIconLink: RibnAssets.hamburgerMenu,
+                    ),
                   ),
                 ),
               ],
@@ -418,7 +510,7 @@ class _WidgetBookState extends State<WidgetBook> {
           name: 'Light',
           data: ThemeData(
             // You can change the background color of the canvas as so:
-            scaffoldBackgroundColor: const Color(0xffE9E9E9),
+            scaffoldBackgroundColor: const Color(0xFFF8F8F8),
           ),
         ),
       ],
@@ -426,8 +518,17 @@ class _WidgetBookState extends State<WidgetBook> {
         Device(
           name: 'Square Canvas',
           resolution: Resolution.dimensions(
-            nativeWidth: canvasWidth,
-            nativeHeight: canvasHeight,
+            nativeWidth: 500.00,
+            nativeHeight: 500.00,
+            scaleFactor: 1,
+          ),
+          type: DeviceType.desktop,
+        ),
+        Device(
+          name: 'iPhone 12 Pro',
+          resolution: Resolution.dimensions(
+            nativeWidth: 390,
+            nativeHeight: 844,
             scaleFactor: 1,
           ),
           type: DeviceType.desktop,
