@@ -33,6 +33,7 @@ class _AssetShortNameFieldState extends State<AssetShortNameField> {
         maxLength: 8,
         controller: widget.controller,
         hintText: Strings.assetShortNameHint,
+        height: 36,
       ),
       tooltipIcon: widget.tooltipIcon,
     );

@@ -22,4 +22,8 @@ class Strings {
   static const String assetTransferToHint = 'Paste Recipient’s address.';
   static const String assetShortName = 'Asset code • short';
   static const String assetShortNameHint = 'YLW JACK2, max 8 characters.';
+  static const String assetLongNameInfo =
+      'The descriptive name used to identify your\nassets locally in your Ribn Wallet.';
+  static const String assetLongName = 'Asset';
+  static const String assetLongNameHint = 'Jackfruit, max 16 characters.';
 }

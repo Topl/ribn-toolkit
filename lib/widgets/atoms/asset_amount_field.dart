@@ -46,7 +46,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
   /// True if dropdown needs to be displayed.
   bool showUnitDropdown = false;
 
-  final double _fieldHeight = 30;
+  final double _fieldHeight = 36;
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +78,15 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
                     },
                     childAlignment: Alignment.bottomLeft,
                     dropDownAlignment: Alignment.topCenter,
-                    dropdownButton: _buildUnitDropdownButton(),
+                    chevronIcon: widget.chevronIcon,
                     dropdownChild: _buildUnitDropdownChild(),
+                    selectedItem: widget.selectedUnit != null
+                        ? Text(
+                            formatAssetUnit(widget.selectedUnit),
+                            style: RibnToolkitTextStyles.dropdownButtonStyle,
+                          )
+                        : null,
+                    hintText: 'Unit',
                   ),
                 )
               : Positioned(
@@ -100,63 +107,6 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
       tooltipIcon: Image.asset(
         RibnAssets.greyHelpBubble,
         width: 18,
-      ),
-    );
-  }
-
-  /// Builds the Unit dropdown button.
-  ///
-  /// If [showDropdownArrow] is true, a drop down arrow is also displayed.
-  Widget _buildUnitDropdownButton() {
-    return MaterialButton(
-      minWidth: 0,
-      onPressed: () {
-        setState(() {
-          // show dropdown if unit can be edited.
-          showUnitDropdown = widget.allowEditingUnit;
-        });
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 4, bottom: 4),
-            width: 26,
-            height: _fieldHeight - 10,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(5),
-                topRight: Radius.circular(1),
-                bottomRight: Radius.circular(1),
-                bottomLeft: Radius.circular(5),
-              ),
-              color: RibnColors.lightGrey,
-            ),
-            child: Center(
-              child: Text(
-                formatAssetUnit(widget.selectedUnit),
-                style: RibnToolkitTextStyles.dropdownButtonStyle,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 2),
-            child: Container(
-              width: 20,
-              height: _fieldHeight - 10,
-              child: widget.allowEditingUnit ? widget.chevronIcon : null,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(1),
-                  topRight: Radius.circular(5),
-                  bottomRight: Radius.circular(5),
-                  bottomLeft: Radius.circular(1),
-                ),
-                color: RibnColors.lightGrey,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

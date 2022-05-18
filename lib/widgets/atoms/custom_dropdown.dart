@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
+import 'package:ribn_toolkit/constants/styles.dart';
 
 /// A custom drop down widget.
 ///
@@ -8,9 +10,6 @@ import 'package:flutter_portal/flutter_portal.dart';
 /// Note: In the build method, the outer [PortalEntry] is added to handle dismissing the dropdown menu, in case
 /// the user clicks elesewhere on the screen, hence the usage of [GestureDetector] and [onDismissed].
 class CustomDropDown extends StatefulWidget {
-  /// The dropdown button widget that opens the dropdown menu when pressed.
-  final Widget dropdownButton;
-
   /// The widget that's displayed upon the [dropdownButton] being pressed.
   final Widget dropdownChild;
 
@@ -21,18 +20,30 @@ class CustomDropDown extends StatefulWidget {
   final Alignment dropDownAlignment;
 
   /// True if [dropdownChild] is currently visible.
-  final bool visible;
+  bool visible;
 
   /// Callback function to handle dismiss event.
   final Function()? onDismissed;
-  const CustomDropDown({
+
+  /// Chevron icon to display at the end of the input field
+  final Image? chevronIcon;
+
+  /// The selected dropdown item
+  final dynamic selectedItem;
+
+  /// Displays this hint text when no item is selected
+  final String hintText;
+
+  CustomDropDown({
     Key? key,
-    required this.dropdownButton,
     required this.dropdownChild,
     required this.childAlignment,
     required this.dropDownAlignment,
     required this.visible,
     required this.onDismissed,
+    required this.chevronIcon,
+    required this.selectedItem,
+    required this.hintText,
   }) : super(key: key);
 
   @override
@@ -40,6 +51,63 @@ class CustomDropDown extends StatefulWidget {
 }
 
 class _CustomDropDownState extends State<CustomDropDown> {
+  final double _fieldHeight = 36;
+
+  Widget _buildIconDropdownButton() {
+    return MaterialButton(
+      minWidth: 0,
+      onPressed: () {
+        setState(() {
+          widget.visible = true;
+        });
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 4, bottom: 4),
+            padding: const EdgeInsets.all(2),
+            width: 28,
+            height: _fieldHeight - 10,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(5),
+                topRight: Radius.circular(1),
+                bottomRight: Radius.circular(1),
+                bottomLeft: Radius.circular(5),
+              ),
+              color: RibnColors.lightGrey,
+            ),
+            child: Center(
+              child: widget.selectedItem ??
+                  Text(
+                    widget.hintText,
+                    style: RibnToolkitTextStyles.dropdownButtonStyle,
+                  ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 2),
+            child: Container(
+              width: 20,
+              height: _fieldHeight - 10,
+              child: widget.chevronIcon,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(1),
+                  topRight: Radius.circular(5),
+                  bottomRight: Radius.circular(5),
+                  bottomLeft: Radius.circular(1),
+                ),
+                color: RibnColors.lightGrey,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return PortalEntry(
@@ -50,7 +118,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
       ),
       child: PortalEntry(
         visible: widget.visible,
-        child: widget.dropdownButton,
+        child: _buildIconDropdownButton(),
         portal: widget.dropdownChild,
         childAnchor: widget.childAlignment,
         portalAnchor: widget.dropDownAlignment,

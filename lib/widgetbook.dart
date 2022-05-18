@@ -4,6 +4,7 @@ import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/widgets/atoms/asset_amount_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/asset_short_name_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
@@ -16,6 +17,7 @@ import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_long_name_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
@@ -35,6 +37,7 @@ class WidgetBook extends StatefulWidget {
 class _WidgetBookState extends State<WidgetBook> {
   final TextEditingController _controller = TextEditingController();
   final TextEditingController _assetShortNameController = TextEditingController();
+  final TextEditingController _assetLongNameController = TextEditingController();
   final String tooltipUrl = 'https://topl.services';
   bool checked = false;
   dynamic onPress(string) {
@@ -53,7 +56,7 @@ class _WidgetBookState extends State<WidgetBook> {
   };
   final chevronIconLink = RibnAssets.chevronDown;
   dynamic selectSettings(string) {}
-  String _selectedUnit = 'Unit';
+  String? _selectedUnit;
 
   final List _pages = [0, 1];
   final List<Image> _pageIcons = [
@@ -69,6 +72,14 @@ class _WidgetBookState extends State<WidgetBook> {
   void setCurrentPage(key) {
     setState(() {
       _currPage = key;
+    });
+  }
+
+  String? _selectedIcon;
+
+  void onIconSelected(icon) {
+    setState(() {
+      _selectedIcon = icon;
     });
   }
 
@@ -579,6 +590,36 @@ class _WidgetBookState extends State<WidgetBook> {
                         networks: networks,
                         onChange: onPress,
                         chevronIconLink: RibnAssets.chevronDown),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Long Name Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetLongNameField(
+                          selectedIcon: _selectedIcon,
+                          controller: _assetLongNameController,
+                          onIconSelected: onIconSelected,
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
+                          assetsIconList: UIConstants.assetIconsList,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
