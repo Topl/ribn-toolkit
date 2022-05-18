@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
@@ -11,6 +12,8 @@ import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/recipient_field.dart';
+import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
@@ -66,6 +69,8 @@ class _WidgetBookState extends State<WidgetBook> {
       _currPage = key;
     });
   }
+
+  var _validRecipientAddress = '';
 
   @override
   Widget build(BuildContext context) {
@@ -224,9 +229,13 @@ class _WidgetBookState extends State<WidgetBook> {
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
-                  builder: (context) => const Center(
+                  builder: (context) => Center(
                     child: CustomCopyButton(
                       textToBeCopied: 'Copied text!',
+                      icon: Image.asset(
+                        RibnAssets.copyIcon,
+                        width: 26,
+                      ),
                     ),
                   ),
                 ),
@@ -311,6 +320,104 @@ class _WidgetBookState extends State<WidgetBook> {
                             RibnAssets.chevronDownDark,
                             width: 24,
                           ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Rounded Copy Text Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: RoundedCopyTextField(
+                      text: 'This is some text',
+                      icon: SvgPicture.asset(
+                        RibnAssets.myFingerprint,
+                      ),
+                      copyText: 'This is some text',
+                      copyIcon: Image.asset(
+                        RibnAssets.copyIcon,
+                        width: 26,
+                      ),
+                      width: 200,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Recipient Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Minting to Recipient',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: RecipientField(
+                          controller: _controller,
+                          validRecipientAddress: '',
+                          onBackspacePressed: () {
+                            setState(() {
+                              _controller.clear();
+                              _validRecipientAddress = '';
+                            });
+                          },
+                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
+                          alternativeDisplayChild: RoundedCopyTextField(
+                            text: 'This is some text',
+                            icon: SvgPicture.asset(
+                              RibnAssets.myFingerprint,
+                            ),
+                            copyText: 'This is some text',
+                            copyIcon: Image.asset(
+                              RibnAssets.copyIcon,
+                              width: 26,
+                            ),
+                            width: 200,
+                          ),
+                          errorBubbleIcon: Image.asset('assets/icons/invalid_recipient.png'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Minting to My Wallet',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: RecipientField(
+                          mintingToMyWallet: true,
+                          controller: _controller,
+                          validRecipientAddress: '',
+                          onBackspacePressed: () {
+                            setState(() {
+                              _controller.clear();
+                              _validRecipientAddress = '';
+                            });
+                          },
+                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
+                          alternativeDisplayChild: RoundedCopyTextField(
+                            text: 'This is some text',
+                            icon: SvgPicture.asset(
+                              RibnAssets.myFingerprint,
+                            ),
+                            copyText: 'This is some text',
+                            copyIcon: Image.asset(
+                              RibnAssets.copyIcon,
+                              width: 26,
+                            ),
+                            width: 200,
+                          ),
+                          errorBubbleIcon: Image.asset('assets/icons/invalid_recipient.png'),
                         ),
                       ),
                     ],

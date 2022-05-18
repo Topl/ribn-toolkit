@@ -17,4 +17,7 @@ class Strings {
   static const String assetCodeShortInfo =
       'This is used to view the short name for your \nasset as this will be the information used to\nidentify a particular asset on the blockchain.';
   static const String refillCurrentPolyBalance = 'You can refill your Poly balance anytime by\n signing into';
+  static const String to = 'To';
+  static const String yourRibnWalletAddress = 'Your Ribn Wallet address';
+  static const String assetTransferToHint = 'Paste Recipient’s address.';
 }
