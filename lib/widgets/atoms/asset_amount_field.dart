@@ -97,6 +97,10 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
                 ),
         ],
       ),
+      tooltipIcon: Image.asset(
+        RibnAssets.greyHelpBubble,
+        width: 18,
+      ),
     );
   }
 

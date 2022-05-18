@@ -103,6 +103,10 @@ class _RecipientFieldState extends State<RecipientField> {
                   widget.isValidRecipient() ? _buildValidAddressDisplay() : const SizedBox(),
                 ],
               ),
+        tooltipIcon: Image.asset(
+          RibnAssets.greyHelpBubble,
+          width: 18,
+        ),
       ),
     );
   }

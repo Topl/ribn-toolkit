@@ -20,4 +20,6 @@ class Strings {
   static const String to = 'To';
   static const String yourRibnWalletAddress = 'Your Ribn Wallet address';
   static const String assetTransferToHint = 'Paste Recipient’s address.';
+  static const String assetShortName = 'Asset code • short';
+  static const String assetShortNameHint = 'YLW JACK2, max 8 characters.';
 }

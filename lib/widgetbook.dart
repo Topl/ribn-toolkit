@@ -5,6 +5,7 @@ import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/widgets/atoms/asset_amount_field.dart';
+import 'package:ribn_toolkit/widgets/atoms/asset_short_name_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
@@ -33,6 +34,7 @@ class WidgetBook extends StatefulWidget {
 
 class _WidgetBookState extends State<WidgetBook> {
   final TextEditingController _controller = TextEditingController();
+  final TextEditingController _assetShortNameController = TextEditingController();
   final String tooltipUrl = 'https://topl.services';
   bool checked = false;
   dynamic onPress(string) {
@@ -268,6 +270,29 @@ class _WidgetBookState extends State<WidgetBook> {
                       controller: _controller,
                       hintText: 'Type Something',
                     ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Short Name Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetShortNameField(
+                          controller: _assetShortNameController,
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

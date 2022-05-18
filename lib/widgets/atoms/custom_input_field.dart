@@ -20,6 +20,9 @@ class CustomInputField extends StatelessWidget {
   /// Optional information text used in a [CustomToolTip].
   final String? informationText;
 
+  // tooltipIcon
+  final Image tooltipIcon;
+
   const CustomInputField({
     Key? key,
     required this.itemLabel,
@@ -27,6 +30,7 @@ class CustomInputField extends StatelessWidget {
     this.inbetweenPadding = 8,
     this.bottomPadding = 8,
     this.informationText,
+    required this.tooltipIcon,
   }) : super(key: key);
 
   @override
@@ -51,10 +55,7 @@ class CustomInputField extends StatelessWidget {
                           style: RibnToolkitTextStyles.toolTipTextStyle,
                         ),
                         offsetPositionLeftValue: 100,
-                        toolTipIcon: Image.asset(
-                          RibnAssets.greyHelpBubble,
-                          width: 18,
-                        ),
+                        toolTipIcon: tooltipIcon,
                       ),
                     )
                   : const SizedBox(),
