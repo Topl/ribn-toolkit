@@ -26,4 +26,6 @@ class Strings {
       'The descriptive name used to identify your\nassets locally in your Ribn Wallet.';
   static const String assetLongName = 'Asset';
   static const String assetLongNameHint = 'Jackfruit, max 16 characters.';
+  static const String note = 'Note';
+  static const String noteHint = 'Origin Brazil, max 127 characters';
 }

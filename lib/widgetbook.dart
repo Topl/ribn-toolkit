@@ -17,6 +17,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
@@ -38,9 +39,14 @@ class WidgetBook extends StatefulWidget {
 }
 
 class _WidgetBookState extends State<WidgetBook> {
-  final TextEditingController _controller = TextEditingController();
-  final TextEditingController _assetShortNameController = TextEditingController();
+  final TextEditingController _textController = TextEditingController();
+  final TextEditingController _noteController = TextEditingController();
   final TextEditingController _assetLongNameController = TextEditingController();
+  final TextEditingController _assetShortNameController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
+  final TextEditingController _recipientController = TextEditingController();
+  late List<TextEditingController> _controllers;
+
   final String tooltipUrl = 'https://topl.services';
   bool checked = false;
   dynamic onPress(string) {
@@ -138,6 +144,37 @@ class _WidgetBookState extends State<WidgetBook> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    _controllers = [
+      _textController,
+      _noteController,
+      _assetLongNameController,
+      _assetShortNameController,
+      _amountController,
+      _recipientController
+    ];
+    // initialize listeners for each of the TextEditingControllers
+    _controllers.forEach(initListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controllers.forEach(disposeController);
+    super.dispose();
+  }
+
+  initListener(TextEditingController controller) {
+    controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  disposeController(TextEditingController controller) {
+    controller.dispose();
   }
 
   @override
@@ -333,7 +370,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: CustomTextField(
-                      controller: _controller,
+                      controller: _textController,
                       hintText: 'Type Something',
                     ),
                   ),
@@ -407,7 +444,10 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: AssetCard(
                       onCardPress: () {},
-                      iconImage: Image.asset(RibnAssets.coffGreenIcon),
+                      iconImage: Image.asset(
+                        RibnAssets.coffGreenIcon,
+                        width: 31,
+                      ),
                       shortName: const Text(
                         'TstAst',
                         style: RibnToolkitTextStyles.assetShortNameStyle,
@@ -586,11 +626,11 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: RecipientField(
-                          controller: _controller,
+                          controller: _recipientController,
                           validRecipientAddress: '',
                           onBackspacePressed: () {
                             setState(() {
-                              _controller.clear();
+                              _recipientController.clear();
                               _validRecipientAddress = '';
                             });
                           },
@@ -622,11 +662,11 @@ class _WidgetBookState extends State<WidgetBook> {
                         padding: const EdgeInsets.only(left: 70),
                         child: RecipientField(
                           mintingToMyWallet: true,
-                          controller: _controller,
+                          controller: _recipientController,
                           validRecipientAddress: '',
                           onBackspacePressed: () {
                             setState(() {
-                              _controller.clear();
+                              _recipientController.clear();
                               _validRecipientAddress = '';
                             });
                           },
@@ -663,7 +703,7 @@ class _WidgetBookState extends State<WidgetBook> {
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetAmountField(
                           selectedUnit: _selectedUnit,
-                          controller: _controller,
+                          controller: _amountController,
                           allowEditingUnit: true,
                           onUnitSelected: (String unit) {
                             setState(() {
@@ -688,7 +728,7 @@ class _WidgetBookState extends State<WidgetBook> {
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetAmountField(
                           selectedUnit: _selectedUnit == _selectedUnit ? 'G' : _selectedUnit,
-                          controller: _controller,
+                          controller: _amountController,
                           allowEditingUnit: false,
                           onUnitSelected: (String unit) {
                             setState(() {
@@ -698,6 +738,30 @@ class _WidgetBookState extends State<WidgetBook> {
                           chevronIcon: Image.asset(
                             RibnAssets.chevronDownDark,
                             width: 24,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Note Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: NoteField(
+                          controller: _noteController,
+                          noteLength: _noteController.text.length,
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
                           ),
                         ),
                       ),
