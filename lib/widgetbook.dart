@@ -6,8 +6,8 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
-import 'package:ribn_toolkit/widgets/atoms/asset_amount_field.dart';
-import 'package:ribn_toolkit/widgets/atoms/asset_short_name_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
@@ -16,7 +16,8 @@ import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
-import 'package:ribn_toolkit/widgets/atoms/recipient_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_long_name_field.dart';
@@ -340,84 +341,6 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Asset Short Name Field',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Standard',
-                  builder: (context) => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 70),
-                        child: AssetShortNameField(
-                          controller: _assetShortNameController,
-                          tooltipIcon: Image.asset(
-                            RibnAssets.greyHelpBubble,
-                            width: 18,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            WidgetbookComponent(
-              name: 'Asset Amount Field',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Minting',
-                  builder: (context) => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 70),
-                        child: AssetAmountField(
-                          selectedUnit: _selectedUnit,
-                          controller: _controller,
-                          allowEditingUnit: true,
-                          onUnitSelected: (String unit) {
-                            setState(() {
-                              _selectedUnit = unit;
-                            });
-                          },
-                          chevronIcon: Image.asset(
-                            RibnAssets.chevronDownDark,
-                            width: 24,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                WidgetbookUseCase(
-                  name: 'Reminting',
-                  builder: (context) => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 70),
-                        child: AssetAmountField(
-                          selectedUnit: _selectedUnit == _selectedUnit ? 'G' : _selectedUnit,
-                          controller: _controller,
-                          allowEditingUnit: false,
-                          onUnitSelected: (String unit) {
-                            setState(() {
-                              _selectedUnit = unit;
-                            });
-                          },
-                          chevronIcon: Image.asset(
-                            RibnAssets.chevronDownDark,
-                            width: 24,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            WidgetbookComponent(
               name: 'Rounded Copy Text Field',
               useCases: [
                 WidgetbookUseCase(
@@ -435,82 +358,6 @@ class _WidgetBookState extends State<WidgetBook> {
                       ),
                       width: 200,
                     ),
-                  ),
-                ),
-              ],
-            ),
-            WidgetbookComponent(
-              name: 'Recipient Field',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Minting to Recipient',
-                  builder: (context) => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 70),
-                        child: RecipientField(
-                          controller: _controller,
-                          validRecipientAddress: '',
-                          onBackspacePressed: () {
-                            setState(() {
-                              _controller.clear();
-                              _validRecipientAddress = '';
-                            });
-                          },
-                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
-                          alternativeDisplayChild: RoundedCopyTextField(
-                            text: 'This is some text',
-                            icon: SvgPicture.asset(
-                              RibnAssets.myFingerprint,
-                            ),
-                            copyText: 'This is some text',
-                            copyIcon: Image.asset(
-                              RibnAssets.copyIcon,
-                              width: 26,
-                            ),
-                            width: 200,
-                          ),
-                          errorBubbleIcon: Image.asset('assets/icons/invalid_recipient.png'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                WidgetbookUseCase(
-                  name: 'Minting to My Wallet',
-                  builder: (context) => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 70),
-                        child: RecipientField(
-                          mintingToMyWallet: true,
-                          controller: _controller,
-                          validRecipientAddress: '',
-                          onBackspacePressed: () {
-                            setState(() {
-                              _controller.clear();
-                              _validRecipientAddress = '';
-                            });
-                          },
-                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
-                          alternativeDisplayChild: RoundedCopyTextField(
-                            text: 'This is some text',
-                            icon: SvgPicture.asset(
-                              RibnAssets.myFingerprint,
-                            ),
-                            copyText: 'This is some text',
-                            copyIcon: Image.asset(
-                              RibnAssets.copyIcon,
-                              width: 26,
-                            ),
-                            width: 200,
-                          ),
-                          errorBubbleIcon: Image.asset('assets/icons/invalid_recipient.png'),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ],
@@ -698,6 +545,160 @@ class _WidgetBookState extends State<WidgetBook> {
                             width: 24,
                           ),
                           assetsIconList: UIConstants.assetIconsList,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Short Name Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetShortNameField(
+                          controller: _assetShortNameController,
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Recipient Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Minting to Recipient',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: RecipientField(
+                          controller: _controller,
+                          validRecipientAddress: '',
+                          onBackspacePressed: () {
+                            setState(() {
+                              _controller.clear();
+                              _validRecipientAddress = '';
+                            });
+                          },
+                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
+                          alternativeDisplayChild: RoundedCopyTextField(
+                            text: 'This is some text',
+                            icon: SvgPicture.asset(
+                              RibnAssets.myFingerprint,
+                            ),
+                            copyText: 'This is some text',
+                            copyIcon: Image.asset(
+                              RibnAssets.copyIcon,
+                              width: 26,
+                            ),
+                            width: 200,
+                          ),
+                          errorBubbleIcon: Image.asset('assets/icons/invalid_recipient.png'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Minting to My Wallet',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: RecipientField(
+                          mintingToMyWallet: true,
+                          controller: _controller,
+                          validRecipientAddress: '',
+                          onBackspacePressed: () {
+                            setState(() {
+                              _controller.clear();
+                              _validRecipientAddress = '';
+                            });
+                          },
+                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
+                          alternativeDisplayChild: RoundedCopyTextField(
+                            text: 'This is some text',
+                            icon: SvgPicture.asset(
+                              RibnAssets.myFingerprint,
+                            ),
+                            copyText: 'This is some text',
+                            copyIcon: Image.asset(
+                              RibnAssets.copyIcon,
+                              width: 26,
+                            ),
+                            width: 200,
+                          ),
+                          errorBubbleIcon: Image.asset('assets/icons/invalid_recipient.png'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Amount Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Minting',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetAmountField(
+                          selectedUnit: _selectedUnit,
+                          controller: _controller,
+                          allowEditingUnit: true,
+                          onUnitSelected: (String unit) {
+                            setState(() {
+                              _selectedUnit = unit;
+                            });
+                          },
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Reminting',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetAmountField(
+                          selectedUnit: _selectedUnit == _selectedUnit ? 'G' : _selectedUnit,
+                          controller: _controller,
+                          allowEditingUnit: false,
+                          onUnitSelected: (String unit) {
+                            setState(() {
+                              _selectedUnit = unit;
+                            });
+                          },
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
                         ),
                       ),
                     ],
