@@ -18,6 +18,7 @@ import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
@@ -45,6 +46,7 @@ class _WidgetBookState extends State<WidgetBook> {
   final TextEditingController _assetShortNameController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _recipientController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   late List<TextEditingController> _controllers;
 
   final String tooltipUrl = 'https://topl.services';
@@ -104,6 +106,8 @@ class _WidgetBookState extends State<WidgetBook> {
 
   String? _selectedItem;
 
+  bool _obscurePassword = true;
+
   Widget _buildDropdownChild() {
     return Padding(
       padding: const EdgeInsets.only(left: 5.0),
@@ -154,7 +158,8 @@ class _WidgetBookState extends State<WidgetBook> {
       _assetLongNameController,
       _assetShortNameController,
       _amountController,
-      _recipientController
+      _recipientController,
+      _passwordController
     ];
     // initialize listeners for each of the TextEditingControllers
     _controllers.forEach(initListener);
@@ -558,6 +563,31 @@ class _WidgetBookState extends State<WidgetBook> {
                         networks: networks,
                         onChange: onPress,
                         chevronIconLink: RibnAssets.chevronDown),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Password Text Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: PasswordTextField(
+                          hintText: 'Type Something',
+                          controller: _passwordController,
+                          icon: SvgPicture.asset(
+                            _obscurePassword ? RibnAssets.passwordVisibleIon : RibnAssets.passwordHiddenIcon,
+                            width: 12,
+                          ),
+                          obscurePassword: _obscurePassword,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
