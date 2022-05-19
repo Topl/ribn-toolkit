@@ -5,10 +5,12 @@ import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
+import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/atoms/asset_amount_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/asset_short_name_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
@@ -84,6 +86,58 @@ class _WidgetBookState extends State<WidgetBook> {
   }
 
   var _validRecipientAddress = '';
+
+  bool _showDropdown = false;
+
+  void onItemSelected(item) {
+    setState(() {
+      _selectedItem = item;
+    });
+  }
+
+  String? _selectedItem;
+
+  Widget _buildDropdownChild() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 5.0),
+      child: Container(
+        width: 115,
+        height: 148,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(4)),
+          border: Border.all(color: RibnColors.lightGrey, width: 1),
+          color: const Color(0xffffffff),
+          boxShadow: const [
+            BoxShadow(
+              color: RibnColors.blackShadow,
+              spreadRadius: 0,
+              blurRadius: 22.4,
+              offset: Offset(0, 6),
+            ),
+          ],
+        ),
+        child: ListView(
+          children: UIConstants.assetUnitsList
+              .map(
+                (item) => MaterialButton(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(item,
+                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
+                  ),
+                  onPressed: () {
+                    onItemSelected(item);
+                    setState(() {
+                      _showDropdown = false;
+                    });
+                  },
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -580,10 +634,37 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Dropdown',
+              name: 'Custom Dropdown',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'App bar version',
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: CustomDropDown(
+                      visible: _showDropdown,
+                      onDismissed: () {
+                        setState(() {
+                          _showDropdown = false;
+                        });
+                      },
+                      childAlignment: Alignment.bottomLeft,
+                      dropDownAlignment: Alignment.topCenter,
+                      chevronIcon: Image.asset(
+                        RibnAssets.chevronDownDark,
+                        width: 24,
+                      ),
+                      dropdownChild: _buildDropdownChild(),
+                      selectedItem: _selectedItem != null
+                          ? Text(
+                              formatAssetUnit(_selectedItem),
+                              style: RibnToolkitTextStyles.dropdownButtonStyle,
+                            )
+                          : null,
+                      hintText: 'Unit',
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'App Bar',
                   builder: (context) => Center(
                     child: InputDropdown(
                         selectedNetwork: selectedNetwork,
