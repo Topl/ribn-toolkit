@@ -20,6 +20,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/loading_spinner.dart';
 import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
@@ -991,6 +992,17 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => const Center(
                     child: ShimmerLoader(width: 150, height: 15, borderRadius: 100),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Loading Spinner',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => const Center(
+                    child: LoadingSpinner(),
                   ),
                 ),
               ],
