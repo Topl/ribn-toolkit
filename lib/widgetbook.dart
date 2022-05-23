@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
@@ -7,6 +9,7 @@ import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_selection_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
@@ -51,6 +54,7 @@ class _WidgetBookState extends State<WidgetBook> {
 
   final String tooltipUrl = 'https://topl.services';
   bool checked = false;
+
   dynamic onPress(string) {
     setState(() {
       selectedNetwork = string;
@@ -789,6 +793,74 @@ class _WidgetBookState extends State<WidgetBook> {
                         child: NoteField(
                           controller: _noteController,
                           noteLength: _noteController.text.length,
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Selection Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'No Asset Selected',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetSelectionField(
+                          formattedSelectedAsset: const {
+                            'longName': 'Green Coffee',
+                            'shortName': 'GrnCffe',
+                            'assetIcon': RibnAssets.coffGreenIcon,
+                          },
+                          formattedAsset: (asset) {
+                            return {
+                              'longName': 'Green Coffee',
+                              'shortName': 'GrnCffe',
+                              'assetIcon': RibnAssets.coffGreenIcon,
+                            };
+                          },
+                          assets: const [],
+                          onSelected: () {},
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Asset Selected',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetSelectionField(
+                          formattedSelectedAsset: const {
+                            'assetCode': '5YJkvbDcWX5GgPj5xqzxhwqY6EvKrqWj2hhBRXxSGMns2qPxCMz5kSR3vw',
+                            'longName': 'Green Coffee',
+                            'shortName': 'GrnCffe',
+                            'assetIcon': RibnAssets.coffGreenIcon,
+                          },
+                          formattedAsset: (asset) {
+                            return {
+                              'longName': 'Green Coffee',
+                              'shortName': 'GrnCffe',
+                              'assetIcon': RibnAssets.coffGreenIcon,
+                            };
+                          },
+                          assets: const [],
+                          onSelected: () {},
                           tooltipIcon: Image.asset(
                             RibnAssets.greyHelpBubble,
                             width: 18,

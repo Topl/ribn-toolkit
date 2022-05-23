@@ -34,6 +34,8 @@ class CustomDropDown extends StatefulWidget {
   /// Displays this hint text when no item is selected
   final String hintText;
 
+  final Widget? customDropdownButton;
+
   CustomDropDown({
     Key? key,
     required this.dropdownChild,
@@ -44,6 +46,7 @@ class CustomDropDown extends StatefulWidget {
     required this.chevronIcon,
     required this.selectedItem,
     required this.hintText,
+    this.customDropdownButton,
   }) : super(key: key);
 
   @override
@@ -118,7 +121,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
       ),
       child: PortalEntry(
         visible: widget.visible,
-        child: _buildIconDropdownButton(),
+        child: widget.customDropdownButton ?? _buildIconDropdownButton(),
         portal: widget.dropdownChild,
         childAnchor: widget.childAlignment,
         portalAnchor: widget.dropDownAlignment,

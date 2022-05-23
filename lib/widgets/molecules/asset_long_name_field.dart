@@ -80,7 +80,6 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
                   showIconDropdown = false;
                 });
               },
-              // dropdownButton: _buildIconDropdownButton(),
               dropdownChild: _buildIconDropdownChild(),
               chevronIcon: widget.chevronIcon,
               selectedItem: widget.selectedIcon != null ? Image.asset(widget.selectedIcon!) : null,
@@ -112,21 +111,6 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
           mainAxisSpacing: 4,
           crossAxisSpacing: 4,
         ),
-        // children: UIConstants.assetIconsList
-        //     .map(
-        //       (icon) => MaterialButton(
-        //         padding: EdgeInsets.zero,
-        //         minWidth: 0,
-        //         onPressed: () {
-        //           widget.onIconSelected(icon);
-        //           setState(() {
-        //             showIconDropdown = false;
-        //           });
-        //         },
-        //         child: Image.asset(icon),
-        //       ),
-        //     )
-        //     .toList(),
         children: widget.assetsIconList
             .map(
               (icon) => MaterialButton(

@@ -34,7 +34,7 @@ class PasswordTextField extends StatefulWidget {
     required this.hintText,
     this.hasError = false,
     this.width = 310,
-    this.height = 35,
+    this.height = 36,
     required this.icon,
     required this.obscurePassword,
     Key? key,
