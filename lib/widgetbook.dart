@@ -26,6 +26,7 @@ import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_long_name_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/shimmer_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
@@ -979,6 +980,17 @@ class _WidgetBookState extends State<WidgetBook> {
                         ),
                       ),
                     ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Shimmer Loader',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => const Center(
+                    child: ShimmerLoader(width: 150, height: 15, borderRadius: 100),
                   ),
                 ),
               ],
