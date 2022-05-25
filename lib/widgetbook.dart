@@ -1028,56 +1028,38 @@ class _WidgetBookState extends State<WidgetBook> {
                         await showDialog(
                           context: context,
                           builder: (context) => CustomModal.renderCustomModal(
+                            maxModalHeight: 100,
                             context: context,
                             title: const Text(
-                              Strings.gettingStarted,
+                              'Modal Title',
                               style: RibnToolkitTextStyles.extH2,
                             ),
                             body: Column(
-                              children: [
-                                SizedBox(
-                                  width: 245,
-                                  height: 43,
-                                  child: Text(
-                                    Strings.mintAssetDesc,
-                                    style: RibnToolkitTextStyles.hintStyle.copyWith(
-                                      fontSize: 15,
-                                      color: RibnColors.greyedOut,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 30),
-                                const SizedBox(
-                                  width: double.infinity,
-                                  child: Text('Mint to', style: RibnToolkitTextStyles.extH3),
-                                ),
-                                const SizedBox(height: 15),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: MaterialButton(
-                                        onPressed: () {},
-                                        padding: EdgeInsets.zero,
-                                        child: SvgPicture.asset(RibnAssets.myWalletButton),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: MaterialButton(
-                                        onPressed: () {},
-                                        padding: EdgeInsets.zero,
-                                        child: SvgPicture.asset(RibnAssets.anotherWalletButton),
-                                      ),
-                                    ),
-                                  ],
+                              children: const [
+                                Text(
+                                  'This is a cool modal with a sexy action button.',
+                                  style: RibnToolkitTextStyles.body1,
+                                  textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
                                 ),
                               ],
                             ),
+                            actionsAlignment: MainAxisAlignment.center,
+                            elevation: 2,
+                            actions: [
+                              LargeButton(
+                                buttonWidth: 240,
+                                buttonChild: Text(
+                                  'Action Button',
+                                  style: RibnToolkitTextStyles.btnLarge.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                backgroundColor: RibnColors.primary,
+                                hoverColor: RibnColors.primaryButtonHover,
+                                dropShadowColor: RibnColors.primaryButtonShadow,
+                                onPressed: () {},
+                              ),
+                            ],
                           ),
                         );
                       },
