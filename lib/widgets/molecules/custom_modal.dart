@@ -7,9 +7,11 @@ class CustomModal {
     required BuildContext context,
     required Text title,
     required Widget body,
+    double maxModalHeight = 310,
   }) {
     return AlertDialog(
       titlePadding: const EdgeInsets.all(10),
+      contentPadding: const EdgeInsets.only(left: 40, right: 40, bottom: 40),
       insetPadding: const EdgeInsets.symmetric(horizontal: 4),
       backgroundColor: RibnColors.background,
       title: Row(
@@ -27,7 +29,7 @@ class CustomModal {
       ),
       content: ConstrainedBox(
         constraints: BoxConstraints(
-          maxHeight: 310,
+          maxHeight: maxModalHeight,
           maxWidth: MediaQuery.of(context).size.width,
         ),
         child: Column(
