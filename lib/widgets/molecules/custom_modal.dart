@@ -8,12 +8,17 @@ class CustomModal {
     required Text title,
     required Widget body,
     double maxModalHeight = 310,
+    double elevation = 0,
+    List<Widget>? actions,
+    MainAxisAlignment? actionsAlignment,
   }) {
     return AlertDialog(
       titlePadding: const EdgeInsets.all(10),
+      actionsPadding: actions != null ? const EdgeInsets.only(bottom: 40) : EdgeInsets.zero,
       contentPadding: const EdgeInsets.only(left: 40, right: 40, bottom: 40),
       insetPadding: const EdgeInsets.symmetric(horizontal: 4),
       backgroundColor: RibnColors.background,
+      elevation: elevation,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -40,6 +45,8 @@ class CustomModal {
           ],
         ),
       ),
+      actions: actions ?? [],
+      actionsAlignment: actionsAlignment,
     );
   }
 }
