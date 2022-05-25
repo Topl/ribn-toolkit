@@ -20,6 +20,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/custom_modal.dart';
 import 'package:ribn_toolkit/widgets/molecules/loading_spinner.dart';
 import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
@@ -1007,6 +1008,81 @@ class _WidgetBookState extends State<WidgetBook> {
                 ),
               ],
             ),
+            WidgetbookComponent(
+              name: 'Modal',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: LargeButton(
+                      buttonChild: Text(
+                        'Show Modal',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                      backgroundColor: RibnColors.primary,
+                      hoverColor: RibnColors.primaryButtonHover,
+                      dropShadowColor: RibnColors.primaryButtonShadow,
+                      onPressed: () {
+                        CustomModal().getCustomDialog(
+                          context: context,
+                          title: const Text(
+                            Strings.gettingStarted,
+                            style: RibnToolkitTextStyles.extH2,
+                          ),
+                          body: Column(
+                            children: [
+                              SizedBox(
+                                width: 245,
+                                height: 43,
+                                child: Text(
+                                  Strings.mintAssetDesc,
+                                  style: RibnToolkitTextStyles.hintStyle.copyWith(
+                                    fontSize: 15,
+                                    color: RibnColors.greyedOut,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 30),
+                              const SizedBox(
+                                width: double.infinity,
+                                child: Text('Mint to', style: RibnToolkitTextStyles.extH3),
+                              ),
+                              const SizedBox(height: 15),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: MaterialButton(
+                                      onPressed: () {},
+                                      padding: EdgeInsets.zero,
+                                      child: SvgPicture.asset(RibnAssets.myWalletButton),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: MaterialButton(
+                                      onPressed: () {},
+                                      padding: EdgeInsets.zero,
+                                      child: SvgPicture.asset(RibnAssets.anotherWalletButton),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
         WidgetbookCategory(
@@ -1063,7 +1139,6 @@ class _WidgetBookState extends State<WidgetBook> {
                 WidgetbookUseCase(
                   name: 'Standard',
                   builder: (context) => Scaffold(
-                    // appBar: const RibnAppBarWrapper(),
                     bottomNavigationBar: RibnBottomAppBar(
                       pages: _pages,
                       currPage: _currPage,
@@ -1072,7 +1147,6 @@ class _WidgetBookState extends State<WidgetBook> {
                       setCurrentPage: setCurrentPage,
                     ),
                     backgroundColor: RibnColors.background,
-                    // body: _pages[_currPage],
                   ),
                 ),
               ],
@@ -1093,8 +1167,8 @@ class _WidgetBookState extends State<WidgetBook> {
         Device(
           name: 'Square Canvas',
           resolution: Resolution.dimensions(
-            nativeWidth: 500.00,
-            nativeHeight: 500.00,
+            nativeWidth: 500,
+            nativeHeight: 500,
             scaleFactor: 1,
           ),
           type: DeviceType.desktop,
