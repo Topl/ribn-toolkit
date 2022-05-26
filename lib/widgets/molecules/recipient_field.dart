@@ -89,6 +89,7 @@ class _RecipientFieldState extends State<RecipientField> {
                     child: PortalEntry(
                       visible: displayErrorBubble,
                       child: CustomTextField(
+                        height: 36,
                         controller: widget.controller,
                         hintText: Strings.assetTransferToHint,
                         onChanged: widget.onChanged,
@@ -118,10 +119,10 @@ class _RecipientFieldState extends State<RecipientField> {
       left: 3,
       child: Container(
         width: 300,
-        height: 23,
+        height: 30,
         decoration: BoxDecoration(
           color: const Color(0xffefefef),
-          borderRadius: BorderRadius.circular(11),
+          borderRadius: BorderRadius.circular(50),
         ),
         child: Row(
           children: [

@@ -34,7 +34,7 @@ class AssetInfo extends StatelessWidget {
     );
 
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),

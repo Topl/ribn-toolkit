@@ -31,6 +31,9 @@ class AssetSelectionField extends StatefulWidget {
   /// The icon to trigger the tooltip for CustomInputField
   final Image tooltipIcon;
 
+  /// Chevron icon to display at the end of the input field
+  final Image? chevronIcon;
+
   const AssetSelectionField({
     Key? key,
     required this.formattedSelectedAsset,
@@ -39,6 +42,7 @@ class AssetSelectionField extends StatefulWidget {
     required this.onSelected,
     this.label = 'Remint',
     required this.tooltipIcon,
+    required this.chevronIcon,
   }) : super(key: key);
 
   @override
@@ -77,9 +81,8 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
 
   /// Builds the asset dropdown button.
   Widget _buildAssetDropdownButton() {
-    final double buttonWidth = widget.label == 'Remint' ? 310 : 215;
     return Container(
-      width: buttonWidth,
+      width: 310,
       height: 36,
       padding: const EdgeInsets.all(3),
       decoration: const BoxDecoration(
@@ -88,28 +91,53 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
           Radius.circular(4.7),
         ),
       ),
-      child: MaterialButton(
-        highlightElevation: 0,
-        hoverElevation: 0,
-        focusElevation: 0,
-        elevation: 0,
-        color: const Color(0xffefefef),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
-        child: Row(
-          children: [
-            AssetInfo(
-              assetCode: widget.formattedSelectedAsset['assetCode'],
-              formattedAsset: widget.formattedSelectedAsset,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 270,
+            child: MaterialButton(
+              highlightElevation: 0,
+              hoverElevation: 0,
+              focusElevation: 0,
+              elevation: 0,
+              color: RibnColors.lightGrey,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(5),
+                  topRight: Radius.circular(1),
+                  bottomRight: Radius.circular(1),
+                  bottomLeft: Radius.circular(5),
+                ),
+              ),
+              child: AssetInfo(
+                assetCode: widget.formattedSelectedAsset['assetCode'],
+                formattedAsset: widget.formattedSelectedAsset,
+              ),
+              onPressed: () {
+                setState(() {
+                  showAssetDropdown = true;
+                });
+              },
             ),
-            const Spacer(),
-            const Icon(Icons.keyboard_arrow_down_sharp, color: Colors.grey, size: 10),
-          ],
-        ),
-        onPressed: () {
-          setState(() {
-            showAssetDropdown = true;
-          });
-        },
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 2),
+            child: Container(
+              width: 31,
+              height: 28,
+              child: widget.chevronIcon,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(1),
+                  topRight: Radius.circular(5),
+                  bottomRight: Radius.circular(5),
+                  bottomLeft: Radius.circular(1),
+                ),
+                color: RibnColors.lightGrey,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -124,7 +152,7 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
         borderRadius: const BorderRadius.all(Radius.circular(4)),
         border: Border.all(color: const Color(0xffeeeeee)),
       ),
-      width: widget.label == 'Remint' ? 233 : 215,
+      width: 310,
       constraints: const BoxConstraints(maxHeight: 86, minHeight: 0),
       child: Scrollbar(
         controller: scrollController,

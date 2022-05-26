@@ -836,6 +836,10 @@ class _WidgetBookState extends State<WidgetBook> {
                             RibnAssets.greyHelpBubble,
                             width: 18,
                           ),
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
                         ),
                       ),
                     ],
@@ -867,6 +871,10 @@ class _WidgetBookState extends State<WidgetBook> {
                           tooltipIcon: Image.asset(
                             RibnAssets.greyHelpBubble,
                             width: 18,
+                          ),
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
                           ),
                         ),
                       ),
