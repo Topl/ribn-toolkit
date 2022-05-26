@@ -13,9 +13,9 @@ String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
 
 /// Formats [unit] to only display the first part of the string.
 String formatAssetUnit(String? unit) {
-  if (unit == 'Unit') {
+  if (unit == 'Select Unit') {
     return unit.toString();
   }
 
-  return unit?.split(' ').first ?? 'Unit';
+  return unit ?? 'No Unit';
 }

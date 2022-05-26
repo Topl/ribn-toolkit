@@ -70,7 +70,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
           Container(
             margin: const EdgeInsets.only(top: 4, bottom: 4),
             padding: const EdgeInsets.all(2),
-            width: 28,
+            width: 92,
             height: _fieldHeight - 10,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -92,7 +92,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
           Padding(
             padding: const EdgeInsets.only(left: 2),
             child: Container(
-              width: 20,
+              width: 25,
               height: _fieldHeight - 10,
               child: widget.chevronIcon,
               decoration: const BoxDecoration(

@@ -764,7 +764,7 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetAmountField(
-                          selectedUnit: _selectedUnit == _selectedUnit ? 'G' : _selectedUnit,
+                          selectedUnit: _selectedUnit == _selectedUnit ? 'No Unit' : _selectedUnit,
                           controller: _amountController,
                           allowEditingUnit: false,
                           onUnitSelected: (String unit) {

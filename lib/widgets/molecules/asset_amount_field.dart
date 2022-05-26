@@ -50,15 +50,12 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
 
   @override
   Widget build(BuildContext context) {
-    final double textFieldWidth = widget.allowEditingUnit ? 116 : 82;
-
     return CustomInputField(
       itemLabel: Strings.amount,
       item: Stack(
         children: [
           // textfield for entering the asset amount
           CustomTextField(
-            width: textFieldWidth,
             height: _fieldHeight,
             controller: widget.controller,
             hintText: Strings.amountHint,
@@ -86,18 +83,28 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
                             style: RibnToolkitTextStyles.dropdownButtonStyle,
                           )
                         : null,
-                    hintText: 'Unit',
+                    hintText: 'Select Unit',
                   ),
                 )
               : Positioned(
-                  right: 2,
-                  top: 6,
-                  child: SizedBox(
-                    width: 26,
-                    child: Center(
-                      child: Text(
-                        formatAssetUnit(widget.selectedUnit),
-                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.primary),
+                  right: 0,
+                  top: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 4),
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 4, bottom: 4),
+                      padding: const EdgeInsets.all(2),
+                      width: 120,
+                      height: _fieldHeight - 10,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        color: RibnColors.lightGrey,
+                      ),
+                      child: Center(
+                        child: Text(
+                          formatAssetUnit(widget.selectedUnit),
+                          style: RibnToolkitTextStyles.dropdownButtonStyle,
+                        ),
                       ),
                     ),
                   ),
@@ -116,9 +123,9 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
   /// Allows user to select from a list of custom units, i.e. [UIConstants.assetUnitsList].
   Widget _buildUnitDropdownChild() {
     return Padding(
-      padding: const EdgeInsets.only(left: 5.0),
+      padding: const EdgeInsets.only(left: 138.0),
       child: Container(
-        width: 115,
+        width: 120,
         height: 148,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(4)),

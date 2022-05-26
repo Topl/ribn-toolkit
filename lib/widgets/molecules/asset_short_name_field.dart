@@ -21,16 +21,12 @@ class AssetShortNameField extends StatefulWidget {
 }
 
 class _AssetShortNameFieldState extends State<AssetShortNameField> {
-  /// Max length of the asset short name.
-  final int maxLength = 8;
   @override
   Widget build(BuildContext context) {
     return CustomInputField(
       informationText: Strings.assetCodeShortInfo,
       itemLabel: Strings.assetShortName,
       item: CustomTextField(
-        width: 186,
-        maxLength: 8,
         controller: widget.controller,
         hintText: Strings.assetShortNameHint,
         height: 36,

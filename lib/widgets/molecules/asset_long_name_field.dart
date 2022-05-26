@@ -83,7 +83,7 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
               dropdownChild: _buildIconDropdownChild(),
               chevronIcon: widget.chevronIcon,
               selectedItem: widget.selectedIcon != null ? Image.asset(widget.selectedIcon!) : null,
-              hintText: 'Icon',
+              hintText: 'Select Icon',
             ),
           ),
         ],
@@ -97,7 +97,7 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
   /// Allows user to select from a list of custom icons, i.e. [UIConstants.assetIconsList].
   Widget _buildIconDropdownChild() {
     return Container(
-      width: 98,
+      width: 120,
       height: 68,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(3)),
