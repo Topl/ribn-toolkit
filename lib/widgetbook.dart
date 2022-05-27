@@ -359,23 +359,6 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Custom Page Title',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Standard',
-                  builder: (context) => Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: CustomPageTitle(title: Strings.mint),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            WidgetbookComponent(
               name: 'Custom Text Field',
               useCases: [
                 WidgetbookUseCase(
@@ -1100,6 +1083,15 @@ class _WidgetBookState extends State<WidgetBook> {
                       hamburgerIconLink: RibnAssets.hamburgerMenu,
                     ),
                   ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Custom Page Title',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => const CustomPageTitle(title: 'Page Title'),
                 ),
               ],
             ),
