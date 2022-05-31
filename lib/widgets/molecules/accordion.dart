@@ -8,6 +8,8 @@ class Accordion extends StatefulWidget {
   final double width;
   final Color backgroundColor;
   final Color collapsedBackgroundColor;
+  final Color textColor;
+  final Color iconColor;
 
   const Accordion({
     required this.header,
@@ -15,6 +17,8 @@ class Accordion extends StatefulWidget {
     required this.width,
     required this.backgroundColor,
     required this.collapsedBackgroundColor,
+    required this.textColor,
+    required this.iconColor,
     Key? key,
   }) : super(key: key);
 
@@ -50,7 +54,7 @@ class _AccordionState extends State<Accordion> {
           child: ExpansionTile(
             tilePadding: const EdgeInsets.symmetric(horizontal: 30),
             trailing: isExpanded == true ? const Icon(Icons.remove) : const Icon(Icons.add),
-            iconColor: RibnColors.defaultText,
+            iconColor: widget.iconColor,
             onExpansionChanged: (bool val) {
               setState(() {
                 isExpanded = true;
@@ -60,12 +64,14 @@ class _AccordionState extends State<Accordion> {
             collapsedBackgroundColor: widget.collapsedBackgroundColor,
             title: Text(
               widget.header,
-              style: RibnToolkitTextStyles.body1Bold,
+              style: RibnToolkitTextStyles.body1Bold.copyWith(
+                color: widget.textColor,
+              ),
               textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
             ),
             children: [
               Container(
-                color: RibnColors.background,
+                color: RibnColors.lightGrey,
                 height: 1,
               ),
               Padding(
@@ -74,7 +80,9 @@ class _AccordionState extends State<Accordion> {
                   width: 500,
                   child: Text(
                     widget.description,
-                    style: RibnToolkitTextStyles.body1,
+                    style: RibnToolkitTextStyles.body1.copyWith(
+                      color: widget.textColor,
+                    ),
                     textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
                   ),
                 ),
