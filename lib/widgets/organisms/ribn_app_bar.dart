@@ -121,7 +121,9 @@ class _RibnAppBarState extends State<RibnAppBar> {
                         width: 50,
                         child: Text(
                           currOption,
-                          style: RibnToolkitTextStyles.body1,
+                          style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
+                            color: RibnColors.defaultText,
+                          ),
                         ),
                       ),
                     ],

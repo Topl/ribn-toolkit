@@ -32,13 +32,13 @@ class RibnToolkitTextStyles {
   );
   static const TextStyle body1 = TextStyle(
     fontFamily: 'DM Sans',
-    fontSize: 12,
+    fontSize: 16,
     color: RibnColors.defaultText,
     height: 2.67,
   );
   static const TextStyle body1Bold = TextStyle(
     fontFamily: 'DM Sans',
-    fontSize: 26.59,
+    fontSize: 16,
     color: RibnColors.defaultText,
     fontWeight: FontWeight.w500,
     height: 1.2,
