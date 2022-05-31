@@ -8,6 +8,7 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
+import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_selection_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
@@ -1054,6 +1055,25 @@ class _WidgetBookState extends State<WidgetBook> {
                           ),
                         );
                       },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Accordion',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => const Center(
+                    child: Accordion(
+                      header: 'This is an example accordion header',
+                      description: 'And this is some description text for the accordion.',
+                      width: 400,
+                      backgroundColor: Colors.white,
+                      collapsedBackgroundColor: Colors.white,
+                      textColor: RibnColors.defaultText,
+                      iconColor: RibnColors.defaultText,
                     ),
                   ),
                 ),
