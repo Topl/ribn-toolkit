@@ -9,6 +9,7 @@ import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
+import 'package:ribn_toolkit/widgets/molecules/animated_circle_step_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_selection_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
@@ -1076,6 +1077,20 @@ class _WidgetBookState extends State<WidgetBook> {
                       collapsedBackgroundColor: Colors.white,
                       textColor: RibnColors.defaultText,
                       iconColor: RibnColors.defaultText,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Animated Circle Step Loader',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: AnimatedCircleStepLoader(
+                      stepLabels: stepLabels,
+                      showStepLoader: () {},
                     ),
                   ),
                 ),
