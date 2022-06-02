@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
@@ -21,7 +19,6 @@ import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
-import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_modal.dart';
 import 'package:ribn_toolkit/widgets/molecules/loading_spinner.dart';
 import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
@@ -41,6 +38,7 @@ import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:ribn_toolkit/widgets/helper_class.dart';
 
 class WidgetBook extends StatefulWidget {
   @override
@@ -48,80 +46,41 @@ class WidgetBook extends StatefulWidget {
 }
 
 class _WidgetBookState extends State<WidgetBook> {
-  final TextEditingController _textController = TextEditingController();
-  final TextEditingController _noteController = TextEditingController();
-  final TextEditingController _assetLongNameController = TextEditingController();
-  final TextEditingController _assetShortNameController = TextEditingController();
-  final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _recipientController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  late List<TextEditingController> _controllers;
+  @override
+  void initState() {
+    HelperClass.controllers = [
+      HelperClass.textController,
+      HelperClass.noteController,
+      HelperClass.assetLongNameController,
+      HelperClass.assetShortNameController,
+      HelperClass.amountController,
+      HelperClass.recipientController,
+      HelperClass.passwordController
+    ];
+    // initialize listeners for each of the TextEditingControllers
+    HelperClass.controllers.forEach(initListener);
+    super.initState();
+  }
 
-  final String tooltipUrl = 'https://topl.services';
-  bool checked = false;
+  @override
+  void dispose() {
+    HelperClass.controllers.forEach(disposeController);
+    super.dispose();
+  }
 
-  dynamic onPress(string) {
-    setState(() {
-      selectedNetwork = string;
+  initListener(TextEditingController controller) {
+    controller.addListener(() {
+      setState(() {});
     });
   }
 
-  String selectedNetwork = 'valhalla';
-  dynamic selectSettingsOption(string) {}
-
-  List<String> networks = ['valhalla', 'toplnet', 'private'];
-  final Map<String, Image> settingsOptions = {
-    'Support': Image.asset(RibnAssets.supportIcon),
-    'Settings': Image.asset(RibnAssets.settingsIcon),
-  };
-  final chevronIconLink = RibnAssets.chevronDown;
-  dynamic selectSettings(string) {}
-  String? _selectedUnit;
-
-  final List _pages = [0, 1];
-  final List<Image> _pageIcons = [
-    Image.asset(RibnAssets.walletGrey),
-    Image.asset(RibnAssets.plusGrey),
-  ];
-  final List<Image> _activePageIcons = [
-    Image.asset(RibnAssets.walletBlue),
-    Image.asset(RibnAssets.plusBlue),
-  ];
-  int _currPage = 0;
-
-  void setCurrentPage(key) {
-    setState(() {
-      _currPage = key;
-    });
+  disposeController(TextEditingController controller) {
+    controller.dispose();
   }
 
-  String? _selectedIcon;
-
-  void onIconSelected(icon) {
-    setState(() {
-      _selectedIcon = icon;
-    });
-  }
-
-  var _validRecipientAddress = '';
-
-  bool _showDropdown = false;
-
-  void onItemSelected(item) {
-    setState(() {
-      _selectedItem = item;
-    });
-  }
-
-  String? _selectedItem;
-
-  bool _obscurePassword = true;
-
-  final Map<int, String> stepLabels = {0: 'Step 1', 1: 'Step 2', 2: 'Step 3', 3: 'Step 4', 4: 'Step 5'};
-
-  Widget _buildDropdownChild() {
+  Widget buildDropdownChild() {
     return Padding(
-      padding: const EdgeInsets.only(left: 5.0),
+      padding: const EdgeInsets.only(left: 136),
       child: Container(
         width: 115,
         height: 148,
@@ -148,9 +107,9 @@ class _WidgetBookState extends State<WidgetBook> {
                         style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
                   ),
                   onPressed: () {
-                    onItemSelected(item);
                     setState(() {
-                      _showDropdown = false;
+                      HelperClass.selectedItem = item;
+                      HelperClass.showDropdown = false;
                     });
                   },
                 ),
@@ -159,38 +118,6 @@ class _WidgetBookState extends State<WidgetBook> {
         ),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    _controllers = [
-      _textController,
-      _noteController,
-      _assetLongNameController,
-      _assetShortNameController,
-      _amountController,
-      _recipientController,
-      _passwordController
-    ];
-    // initialize listeners for each of the TextEditingControllers
-    _controllers.forEach(initListener);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controllers.forEach(disposeController);
-    super.dispose();
-  }
-
-  initListener(TextEditingController controller) {
-    controller.addListener(() {
-      setState(() {});
-    });
-  }
-
-  disposeController(TextEditingController controller) {
-    controller.dispose();
   }
 
   @override
@@ -369,7 +296,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: CustomTextField(
-                      controller: _textController,
+                      controller: HelperClass.textController,
                       hintText: 'Type Something',
                     ),
                   ),
@@ -407,17 +334,17 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: CustomCheckbox(
                       fillColor: MaterialStateProperty.all(Colors.transparent),
                       checkColor: RibnColors.active,
-                      borderColor: checked ? RibnColors.active : RibnColors.inactive,
-                      value: checked,
+                      borderColor: HelperClass.checked ? RibnColors.active : RibnColors.inactive,
+                      value: HelperClass.checked,
                       onChanged: (val) {
                         setState(() {
-                          checked = val;
+                          HelperClass.checked = val;
                         });
                       },
                       label: RichText(
                         text: TextSpan(
                           style: RibnToolkitTextStyles.body1
-                              .copyWith(color: checked ? RibnColors.defaultText : RibnColors.inactive),
+                              .copyWith(color: HelperClass.checked ? RibnColors.defaultText : RibnColors.inactive),
                           children: const [
                             TextSpan(
                               text: 'Checkbox text',
@@ -526,10 +453,10 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: CustomDropDown(
-                      visible: _showDropdown,
+                      visible: HelperClass.showDropdown,
                       onDismissed: () {
                         setState(() {
-                          _showDropdown = false;
+                          HelperClass.showDropdown = false;
                         });
                       },
                       childAlignment: Alignment.bottomLeft,
@@ -538,10 +465,10 @@ class _WidgetBookState extends State<WidgetBook> {
                         RibnAssets.chevronDownDark,
                         width: 24,
                       ),
-                      dropdownChild: _buildDropdownChild(),
-                      selectedItem: _selectedItem != null
+                      dropdownChild: buildDropdownChild(),
+                      selectedItem: HelperClass.selectedItem != null
                           ? Text(
-                              formatAssetUnit(_selectedItem),
+                              formatAssetUnit(HelperClass.selectedItem),
                               style: RibnToolkitTextStyles.dropdownButtonStyle,
                             )
                           : null,
@@ -553,9 +480,13 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'App Bar',
                   builder: (context) => Center(
                     child: InputDropdown(
-                        selectedNetwork: selectedNetwork,
-                        networks: networks,
-                        onChange: onPress,
+                        selectedNetwork: HelperClass.selectedNetwork,
+                        networks: HelperClass.networks,
+                        onChange: (string) {
+                          setState(() {
+                            HelperClass.selectedNetwork = string;
+                          });
+                        },
                         chevronIconLink: RibnAssets.chevronDown),
                   ),
                 ),
@@ -573,12 +504,12 @@ class _WidgetBookState extends State<WidgetBook> {
                         padding: const EdgeInsets.only(left: 70),
                         child: PasswordTextField(
                           hintText: 'Type Something',
-                          controller: _passwordController,
+                          controller: HelperClass.passwordController,
                           icon: SvgPicture.asset(
-                            _obscurePassword ? RibnAssets.passwordVisibleIon : RibnAssets.passwordHiddenIcon,
+                            HelperClass.obscurePassword ? RibnAssets.passwordVisibleIon : RibnAssets.passwordHiddenIcon,
                             width: 12,
                           ),
-                          obscurePassword: _obscurePassword,
+                          obscurePassword: HelperClass.obscurePassword,
                         ),
                       ),
                     ],
@@ -597,9 +528,13 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetLongNameField(
-                          selectedIcon: _selectedIcon,
-                          controller: _assetLongNameController,
-                          onIconSelected: onIconSelected,
+                          selectedIcon: HelperClass.selectedIcon,
+                          controller: HelperClass.assetLongNameController,
+                          onIconSelected: (icon) {
+                            setState(() {
+                              HelperClass.selectedIcon = icon;
+                            });
+                          },
                           tooltipIcon: Image.asset(
                             RibnAssets.greyHelpBubble,
                             width: 18,
@@ -627,7 +562,7 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetShortNameField(
-                          controller: _assetShortNameController,
+                          controller: HelperClass.assetShortNameController,
                           tooltipIcon: Image.asset(
                             RibnAssets.greyHelpBubble,
                             width: 18,
@@ -650,12 +585,12 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: RecipientField(
-                          controller: _recipientController,
+                          controller: HelperClass.recipientController,
                           validRecipientAddress: '',
                           onBackspacePressed: () {
                             setState(() {
-                              _recipientController.clear();
-                              _validRecipientAddress = '';
+                              HelperClass.recipientController.clear();
+                              HelperClass.validRecipientAddress = '';
                             });
                           },
                           icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
@@ -686,12 +621,12 @@ class _WidgetBookState extends State<WidgetBook> {
                         padding: const EdgeInsets.only(left: 70),
                         child: RecipientField(
                           mintingToMyWallet: true,
-                          controller: _recipientController,
+                          controller: HelperClass.recipientController,
                           validRecipientAddress: '',
                           onBackspacePressed: () {
                             setState(() {
-                              _recipientController.clear();
-                              _validRecipientAddress = '';
+                              HelperClass.recipientController.clear();
+                              HelperClass.validRecipientAddress = '';
                             });
                           },
                           icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
@@ -726,12 +661,12 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetAmountField(
-                          selectedUnit: _selectedUnit,
-                          controller: _amountController,
+                          selectedUnit: HelperClass.selectedUnit,
+                          controller: HelperClass.amountController,
                           allowEditingUnit: true,
                           onUnitSelected: (String unit) {
                             setState(() {
-                              _selectedUnit = unit;
+                              HelperClass.selectedUnit = unit;
                             });
                           },
                           chevronIcon: Image.asset(
@@ -751,12 +686,14 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetAmountField(
-                          selectedUnit: _selectedUnit == _selectedUnit ? 'No Unit' : _selectedUnit,
-                          controller: _amountController,
+                          selectedUnit: HelperClass.selectedUnit == HelperClass.selectedUnit
+                              ? 'No Unit'
+                              : HelperClass.selectedUnit,
+                          controller: HelperClass.amountController,
                           allowEditingUnit: false,
                           onUnitSelected: (String unit) {
                             setState(() {
-                              _selectedUnit = unit;
+                              HelperClass.selectedUnit = unit;
                             });
                           },
                           chevronIcon: Image.asset(
@@ -781,8 +718,8 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: NoteField(
-                          controller: _noteController,
-                          noteLength: _noteController.text.length,
+                          controller: HelperClass.noteController,
+                          noteLength: HelperClass.noteController.text.length,
                           tooltipIcon: Image.asset(
                             RibnAssets.greyHelpBubble,
                             width: 18,
@@ -930,7 +867,7 @@ class _WidgetBookState extends State<WidgetBook> {
                             ),
                             WidgetSpan(
                               child: GestureDetector(
-                                onTap: () async => await launch(tooltipUrl),
+                                onTap: () async => await launch(HelperClass.tooltipUrl),
                                 child: Row(
                                   children: [
                                     Text(
@@ -1089,7 +1026,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: AnimatedCircleStepLoader(
-                      stepLabels: stepLabels,
+                      stepLabels: HelperClass.stepLabels,
                       showStepLoader: () {},
                     ),
                   ),
@@ -1110,12 +1047,14 @@ class _WidgetBookState extends State<WidgetBook> {
                     width: 500.00,
                     height: 40,
                     child: RibnAppBar(
-                      currentNetworkName: selectedNetwork,
-                      networks: networks,
-                      updateNetwork: onPress,
-                      settingsOptions: settingsOptions,
-                      selectSettingsOption: selectSettings,
-                      chevronIconLink: chevronIconLink,
+                      currentNetworkName: HelperClass.selectedNetwork,
+                      networks: HelperClass.networks,
+                      updateNetwork: (string) {
+                        HelperClass.selectedNetwork = string;
+                      },
+                      settingsOptions: HelperClass.settingsOptions,
+                      selectSettingsOption: HelperClass.selectSettings,
+                      chevronIconLink: HelperClass.chevronIconLink,
                       ribnLogoIconLink: RibnAssets.newRibnLogo,
                       hamburgerIconLink: RibnAssets.hamburgerMenu,
                     ),
@@ -1140,7 +1079,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: CustomProgressBar(
                       currPage: 0,
-                      stepLabels: stepLabels,
+                      stepLabels: HelperClass.stepLabels,
                     ),
                   ),
                 ),
@@ -1149,7 +1088,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: CustomProgressBar(
                       currPage: 2,
-                      stepLabels: stepLabels,
+                      stepLabels: HelperClass.stepLabels,
                     ),
                   ),
                 ),
@@ -1158,7 +1097,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: CustomProgressBar(
                       currPage: 4,
-                      stepLabels: stepLabels,
+                      stepLabels: HelperClass.stepLabels,
                     ),
                   ),
                 ),
@@ -1171,11 +1110,15 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Scaffold(
                     bottomNavigationBar: RibnBottomAppBar(
-                      pages: _pages,
-                      currPage: _currPage,
-                      activePageIcons: _activePageIcons,
-                      pageIcons: _pageIcons,
-                      setCurrentPage: setCurrentPage,
+                      pages: HelperClass.pages,
+                      currPage: HelperClass.currPage,
+                      activePageIcons: HelperClass.activePageIcons,
+                      pageIcons: HelperClass.pageIcons,
+                      setCurrentPage: (key) {
+                        setState(() {
+                          HelperClass.currPage = key;
+                        });
+                      },
                     ),
                     backgroundColor: RibnColors.background,
                   ),
