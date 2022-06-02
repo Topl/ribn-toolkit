@@ -116,6 +116,8 @@ class _WidgetBookState extends State<WidgetBook> {
 
   bool _obscurePassword = true;
 
+  final Map<int, String> stepLabels = {0: 'Step 1', 1: 'Step 2', 2: 'Step 3', 3: 'Step 4', 4: 'Step 5'};
+
   Widget _buildDropdownChild() {
     return Padding(
       padding: const EdgeInsets.only(left: 5.0),
@@ -1120,20 +1122,29 @@ class _WidgetBookState extends State<WidgetBook> {
               useCases: [
                 WidgetbookUseCase(
                   name: 'First Step',
-                  builder: (context) => const Center(
-                    child: CustomProgressBar(0),
+                  builder: (context) => Center(
+                    child: CustomProgressBar(
+                      currPage: 0,
+                      stepLabels: stepLabels,
+                    ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Middle Step',
-                  builder: (context) => const Center(
-                    child: CustomProgressBar(2),
+                  builder: (context) => Center(
+                    child: CustomProgressBar(
+                      currPage: 2,
+                      stepLabels: stepLabels,
+                    ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Final Step',
-                  builder: (context) => const Center(
-                    child: CustomProgressBar(3),
+                  builder: (context) => Center(
+                    child: CustomProgressBar(
+                      currPage: 4,
+                      stepLabels: stepLabels,
+                    ),
                   ),
                 ),
               ],
@@ -1174,6 +1185,15 @@ class _WidgetBookState extends State<WidgetBook> {
           resolution: Resolution.dimensions(
             nativeWidth: 500,
             nativeHeight: 500,
+            scaleFactor: 1,
+          ),
+          type: DeviceType.desktop,
+        ),
+        Device(
+          name: 'Large Desktop',
+          resolution: Resolution.dimensions(
+            nativeWidth: 1440,
+            nativeHeight: 1242,
             scaleFactor: 1,
           ),
           type: DeviceType.desktop,
