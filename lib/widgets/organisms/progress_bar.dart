@@ -23,31 +23,16 @@ class CustomProgressBar extends StatelessWidget {
       width: width,
       child: Column(
         children: [
-          Stack(
-            alignment: AlignmentDirectional.topStart,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 58),
-                child: Center(
-                  child: Container(
-                    color: RibnColors.inactive,
-                    width: double.infinity,
-                    height: 3,
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.transparent,
-                height: 200,
-                child: StepProgressIndicator(
-                  currentStep: currPage,
-                  totalSteps: numPages,
-                  size: 160,
-                  direction: Axis.horizontal,
-                  customStep: (index, color, _) => renderProgressIcon(index),
-                ),
-              ),
-            ],
+          Container(
+            color: Colors.transparent,
+            height: 200,
+            child: StepProgressIndicator(
+              currentStep: currPage,
+              totalSteps: numPages,
+              size: 160,
+              direction: Axis.horizontal,
+              customStep: (index, color, _) => renderProgressIcon(index),
+            ),
           ),
         ],
       ),
