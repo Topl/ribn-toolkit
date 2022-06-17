@@ -382,7 +382,7 @@ class _WidgetBookState extends State<WidgetBook> {
               name: 'Asset Card',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'All Details',
+                  name: 'All Details No Action Bttns',
                   builder: (context) => Center(
                     child: AssetCard(
                       onCardPress: () {},
@@ -417,6 +417,47 @@ class _WidgetBookState extends State<WidgetBook> {
                         width: 12,
                       ),
                       onSecondIconPress: () {},
+                      showActionButtons: false,
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'All Details + Action Bttns',
+                  builder: (context) => Center(
+                    child: AssetCard(
+                      onCardPress: () {},
+                      iconImage: Image.asset(
+                        RibnAssets.coffGreenIcon,
+                        width: 31,
+                      ),
+                      shortName: const Text(
+                        'TstAst',
+                        style: RibnToolkitTextStyles.assetShortNameStyle,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      assetLongName: const Text(
+                        'Test Asset Name',
+                        style: RibnToolkitTextStyles.assetLongNameStyle,
+                      ),
+                      missingAsstDetailsCondition: false,
+                      assetQuantityDetails: Text(
+                        '1500 G',
+                        overflow: TextOverflow.ellipsis,
+                        style: RibnToolkitTextStyles.assetShortNameStyle.copyWith(
+                          color: RibnColors.primary,
+                        ),
+                      ),
+                      firstIcon: Image.asset(
+                        RibnAssets.sendIcon,
+                        width: 12,
+                      ),
+                      onFirstIconPress: () {},
+                      secondIcon: Image.asset(
+                        RibnAssets.receiveIcon,
+                        width: 12,
+                      ),
+                      onSecondIconPress: () {},
+                      showActionButtons: true,
                     ),
                   ),
                 ),
@@ -457,6 +498,7 @@ class _WidgetBookState extends State<WidgetBook> {
                         width: 12,
                       ),
                       onSecondIconPress: () {},
+                      showActionButtons: false,
                     ),
                   ),
                 ),

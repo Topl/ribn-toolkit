@@ -14,6 +14,7 @@ class AssetCard extends StatelessWidget {
     required this.onFirstIconPress,
     required this.secondIcon,
     required this.onSecondIconPress,
+    required this.showActionButtons,
     Key? key,
   }) : super(key: key);
   final VoidCallback onCardPress;
@@ -26,6 +27,7 @@ class AssetCard extends StatelessWidget {
   final VoidCallback onFirstIconPress;
   final Image secondIcon;
   final VoidCallback onSecondIconPress;
+  final bool showActionButtons;
 
   @override
   Widget build(BuildContext context) {
@@ -101,22 +103,24 @@ class AssetCard extends StatelessWidget {
                   // display asset units
                   Container(constraints: const BoxConstraints(maxWidth: 90), child: assetQuantityDetails),
                   const SizedBox(height: 8),
-                  // send and receive buttons
-                  Row(
-                    children: [
-                      CustomIconButton(
-                        icon: firstIcon,
-                        color: RibnColors.primary,
-                        onPressed: onFirstIconPress,
-                      ),
-                      const SizedBox(width: 7),
-                      CustomIconButton(
-                        icon: secondIcon,
-                        color: RibnColors.primary,
-                        onPressed: onSecondIconPress,
-                      ),
-                    ],
-                  ),
+                  // conditional send and receive buttons
+                  showActionButtons
+                      ? Row(
+                          children: [
+                            CustomIconButton(
+                              icon: firstIcon,
+                              color: RibnColors.primary,
+                              onPressed: onFirstIconPress,
+                            ),
+                            const SizedBox(width: 7),
+                            CustomIconButton(
+                              icon: secondIcon,
+                              color: RibnColors.primary,
+                              onPressed: onSecondIconPress,
+                            ),
+                          ],
+                        )
+                      : const SizedBox(),
                 ],
               ),
               const SizedBox(width: 12),
