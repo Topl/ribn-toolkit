@@ -4,11 +4,13 @@ import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 
-/// A widget to display the title and back button on top of the page.
+/// A widget to display the title, back arrow button and cancel button on top of the page.
 class CustomPageTitle extends StatelessWidget {
-  const CustomPageTitle({required this.title, this.hideBackArrow = false, Key? key}) : super(key: key);
+  const CustomPageTitle({required this.title, this.hideBackArrow = false, this.hideCloseCross = false, Key? key})
+      : super(key: key);
   final String title;
   final bool hideBackArrow;
+  final bool hideCloseCross;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,25 @@ class CustomPageTitle extends StatelessWidget {
                     ),
                     onPressed: () {
                       Navigator.of(context).pop();
+                    },
+                    highlightColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                  ),
+                ),
+              ),
+            if (hideCloseCross != true)
+              Positioned.fill(
+                right: 20,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: CustomIconButton(
+                    icon: const Icon(
+                      Icons.close,
+                      color: RibnColors.lightGreyTitle,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/home');
                     },
                     highlightColor: Colors.transparent,
                     hoverColor: Colors.transparent,
