@@ -29,6 +29,7 @@ import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_long_name_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/shimmer_loader.dart';
+import 'package:ribn_toolkit/widgets/molecules/sliding_segment_control.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
@@ -621,7 +622,6 @@ class _WidgetBookState extends State<WidgetBook> {
                             ),
                             width: 200,
                           ),
-                          errorBubbleIcon: Image.asset('assets/icons/invalid_recipient.png'),
                         ),
                       ),
                     ],
@@ -657,7 +657,6 @@ class _WidgetBookState extends State<WidgetBook> {
                             ),
                             width: 200,
                           ),
-                          errorBubbleIcon: Image.asset('assets/icons/invalid_recipient.png'),
                         ),
                       ),
                     ],
@@ -1043,6 +1042,31 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: AnimatedCircleStepLoader(
                       stepLabels: HelperClass.stepLabels,
                       showStepLoader: () {},
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Sliding Segment Control',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: SlidingSegmentControl(
+                      currentTabIndex: 0,
+                      tabItems: <int, Widget>{
+                        0: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          child: Text("Tab Value 1",
+                              style: RibnToolkitTextStyles.btnMedium.copyWith(color: RibnColors.defaultText)),
+                        ),
+                        1: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          child: Text("Tab Value 2",
+                              style: RibnToolkitTextStyles.btnMedium.copyWith(color: RibnColors.defaultText)),
+                        ),
+                      },
                     ),
                   ),
                 ),
