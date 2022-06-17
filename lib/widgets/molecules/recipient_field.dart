@@ -9,6 +9,7 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_input_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
+import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
 
 /// An input field used on the input transfer pages.
 ///
@@ -35,9 +36,6 @@ class RecipientField extends StatefulWidget {
   /// This is rendered instead of the CustomTextField if mintingToMyWallet
   final Widget alternativeDisplayChild;
 
-  /// Displays when the address is invalid
-  final Image errorBubbleIcon;
-
   const RecipientField({
     Key? key,
     required this.controller,
@@ -47,7 +45,6 @@ class RecipientField extends StatefulWidget {
     required this.onBackspacePressed,
     required this.icon,
     required this.alternativeDisplayChild,
-    required this.errorBubbleIcon,
   }) : super(key: key);
 
   bool isValidRecipient() => validRecipientAddress.isNotEmpty;
@@ -96,7 +93,9 @@ class _RecipientFieldState extends State<RecipientField> {
                         showCursor: !widget.isValidRecipient(),
                         hasError: hasError,
                       ),
-                      portal: widget.errorBubbleIcon,
+                      portal: const ErrorBubble(
+                        errorText: Strings.invalidRecipientAddressError,
+                      ),
                       portalAnchor: Alignment.topLeft,
                       childAnchor: Alignment.bottomLeft,
                     ),

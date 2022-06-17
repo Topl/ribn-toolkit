@@ -29,6 +29,12 @@ class PasswordTextField extends StatefulWidget {
   /// True if the password is being obscured
   bool obscurePassword;
 
+  /// Action for when enter key is hit
+  final Function? onSubmitted;
+
+  /// FocusNode that can be attached to the [TextField].
+  final FocusNode? focusNode;
+
   PasswordTextField({
     required this.controller,
     required this.hintText,
@@ -37,6 +43,8 @@ class PasswordTextField extends StatefulWidget {
     this.height = 36,
     required this.icon,
     required this.obscurePassword,
+    this.onSubmitted,
+    this.focusNode,
     Key? key,
   }) : super(key: key);
 
@@ -60,6 +68,8 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       width: widget.width,
       height: widget.height,
       child: TextField(
+        onSubmitted: (_) => widget.onSubmitted!(),
+        focusNode: widget.focusNode,
         obscureText: widget.obscurePassword,
         controller: widget.controller,
         decoration: InputDecoration(

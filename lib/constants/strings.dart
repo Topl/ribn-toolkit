@@ -30,4 +30,15 @@ class Strings {
   static const String noteHint = 'Origin Brazil, max 127 characters';
   static const String gettingStarted = 'Getting Started';
   static const String mintAssetDesc = 'Where would you like your Asset to be minted?';
+  static const String invalidAmountError =
+      'The amount you entered exceeds\nyour wallet balance for this asset.\nPlease enter a valid amount!';
+  static const String errorTitle = 'Oops!\nSomething went wrong';
+  static const String errorDescription =
+      '''Ribn failed to reach the internet. This could be related to wifi connectivity or network issues.\n\nCheck your internet connection and try again, or contact the Ribn support team.''';
+  static const String contactSupport = 'Contact Support';
+  static const String tryAgain = 'Try Again';
+  static const String supportEmail = 'support@topl.me';
+  static const String supportEmailLink = 'mailto:$supportEmail?subject=Ribn Support&body=';
+  static const String invalidRecipientAddressError =
+      "Hmmm... That's not a valid Recipient address.\nTip: Instead of typing it out, try copy\nand pasting your Recipient's address.";
 }

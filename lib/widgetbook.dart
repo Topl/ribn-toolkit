@@ -6,6 +6,7 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
+import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
 import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
 import 'package:ribn_toolkit/widgets/molecules/animated_circle_step_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
@@ -352,6 +353,20 @@ class _WidgetBookState extends State<WidgetBook> {
                           ],
                         ),
                       ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Error Bubble',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => const Center(
+                    child: ErrorBubble(
+                      inverted: true,
+                      errorText: 'This is an error message',
                     ),
                   ),
                 ),
