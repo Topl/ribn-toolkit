@@ -9,7 +9,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_input_field.dart';
 /// Allows the user to select from a dropdown of existing assets in the wallet.
 class AssetSelectionField extends StatefulWidget {
   /// Currently selected asset formatted for UI consumption.
-  final Map formattedSelectedAsset;
+  final Map? formattedSelectedAsset;
 
   /// Locally stored asset details formatted for UI consumption.
   final dynamic formattedAsset;
@@ -31,7 +31,7 @@ class AssetSelectionField extends StatefulWidget {
 
   const AssetSelectionField({
     Key? key,
-    required this.formattedSelectedAsset,
+    this.formattedSelectedAsset,
     this.formattedAsset,
     required this.assets,
     required this.onSelected,
@@ -105,7 +105,7 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
                 ),
               ),
               child: AssetInfo(
-                assetCode: widget.formattedSelectedAsset['assetCode'],
+                assetCode: widget.formattedSelectedAsset!['assetCode'],
                 formattedAsset: widget.formattedSelectedAsset,
               ),
               onPressed: () {

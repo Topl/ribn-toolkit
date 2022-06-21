@@ -10,11 +10,10 @@ class AssetCard extends StatelessWidget {
     this.assetLongName,
     required this.missingAsstDetailsCondition,
     required this.assetQuantityDetails,
-    required this.firstIcon,
-    required this.onFirstIconPress,
-    required this.secondIcon,
-    required this.onSecondIconPress,
-    required this.showActionButtons,
+    this.firstIcon,
+    this.onFirstIconPress,
+    this.secondIcon,
+    this.onSecondIconPress,
     Key? key,
   }) : super(key: key);
   final VoidCallback onCardPress;
@@ -23,11 +22,10 @@ class AssetCard extends StatelessWidget {
   final dynamic assetLongName;
   final bool missingAsstDetailsCondition;
   final Text assetQuantityDetails;
-  final Image firstIcon;
-  final VoidCallback onFirstIconPress;
-  final Image secondIcon;
-  final VoidCallback onSecondIconPress;
-  final bool showActionButtons;
+  final Image? firstIcon;
+  final VoidCallback? onFirstIconPress;
+  final Image? secondIcon;
+  final VoidCallback? onSecondIconPress;
 
   @override
   Widget build(BuildContext context) {
@@ -104,19 +102,19 @@ class AssetCard extends StatelessWidget {
                   Container(constraints: const BoxConstraints(maxWidth: 90), child: assetQuantityDetails),
                   const SizedBox(height: 8),
                   // conditional send and receive buttons
-                  showActionButtons
+                  firstIcon != null && secondIcon != null
                       ? Row(
                           children: [
                             CustomIconButton(
-                              icon: firstIcon,
+                              icon: firstIcon!,
                               color: RibnColors.primary,
-                              onPressed: onFirstIconPress,
+                              onPressed: onFirstIconPress!,
                             ),
                             const SizedBox(width: 7),
                             CustomIconButton(
-                              icon: secondIcon,
+                              icon: secondIcon!,
                               color: RibnColors.primary,
-                              onPressed: onSecondIconPress,
+                              onPressed: onSecondIconPress!,
                             ),
                           ],
                         )

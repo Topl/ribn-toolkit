@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
 class SlidingSegmentControl extends StatefulWidget {
-  SlidingSegmentControl({Key? key, required this.tabItems, required this.currentTabIndex}) : super(key: key);
+  SlidingSegmentControl({Key? key, required this.tabItems, required this.currentTabIndex, this.redirectOnClick})
+      : super(key: key);
 
   final Map<int, Widget> tabItems;
   int currentTabIndex;
+  Function? redirectOnClick;
 
   @override
   State<SlidingSegmentControl> createState() => _SlidingSegmentControlState();
@@ -22,6 +24,10 @@ class _SlidingSegmentControlState extends State<SlidingSegmentControl> {
           setState(() {
             widget.currentTabIndex = i as int;
           });
+
+          if (widget.redirectOnClick != null) {
+            widget.redirectOnClick!();
+          }
         },
       ),
     );
