@@ -14,10 +14,13 @@ class CustomCopyButton extends StatefulWidget {
   /// Text to show in the bubble.
   final String bubbleText;
 
+  final Image icon;
+
   const CustomCopyButton({
     Key? key,
     required this.textToBeCopied,
     this.bubbleText = 'Copied!',
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -53,7 +56,7 @@ class _CustomCopyButtonState extends State<CustomCopyButton> {
             });
           });
         },
-        child: Image.asset(displayCopiedBubble ? RibnAssets.copySelectedIcon : RibnAssets.copyUnselectedIcon),
+        child: widget.icon,
       ),
       portal: Container(
         width: 138,

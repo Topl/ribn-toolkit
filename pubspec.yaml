@@ -48,6 +48,8 @@ dependencies:
   url_launcher: ^6.0.20
   flutter_portal: ^0.4.0
   wave: ^0.2.0
+  shimmer_animation: ^2.1.0+1
+  step_progress_indicator: ^1.0.2
 
 dev_dependencies:
   flutter_test:

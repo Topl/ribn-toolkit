@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/constants/ui_constants.dart';
+import 'package:ribn_toolkit/utils.dart';
+import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
+import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
+import 'package:ribn_toolkit/widgets/molecules/animated_circle_step_loader.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_selection_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
+import 'package:ribn_toolkit/widgets/molecules/custom_modal.dart';
+import 'package:ribn_toolkit/widgets/molecules/loading_spinner.dart';
+import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
+import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_long_name_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/shimmer_loader.dart';
+import 'package:ribn_toolkit/widgets/molecules/sliding_segment_control.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
@@ -18,8 +37,10 @@ import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
 import 'package:ribn_toolkit/widgets/organisms/progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
+import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:ribn_toolkit/widgets/helper_class.dart';
 
 class WidgetBook extends StatefulWidget {
   @override
@@ -27,25 +48,79 @@ class WidgetBook extends StatefulWidget {
 }
 
 class _WidgetBookState extends State<WidgetBook> {
-  final TextEditingController _controller = TextEditingController();
-  final String tooltipUrl = 'https://topl.services';
-  bool checked = false;
-  dynamic onPress(string) {
-    setState(() {
-      selectedNetwork = string;
+  @override
+  void initState() {
+    HelperClass.controllers = [
+      HelperClass.textController,
+      HelperClass.noteController,
+      HelperClass.assetLongNameController,
+      HelperClass.assetShortNameController,
+      HelperClass.amountController,
+      HelperClass.recipientController,
+      HelperClass.passwordController
+    ];
+    // initialize listeners for each of the TextEditingControllers
+    HelperClass.controllers.forEach(initListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    HelperClass.controllers.forEach(disposeController);
+    super.dispose();
+  }
+
+  initListener(TextEditingController controller) {
+    controller.addListener(() {
+      setState(() {});
     });
   }
 
-  String selectedNetwork = 'valhalla';
-  dynamic selectSettingsOption(string) {}
+  disposeController(TextEditingController controller) {
+    controller.dispose();
+  }
 
-  List<String> networks = ['valhalla', 'toplnet', 'private'];
-  final Map<String, SvgPicture> settingsOptions = {
-    'Support': SvgPicture.asset(RibnAssets.supportIcon),
-    'Settings': SvgPicture.asset(RibnAssets.settingsIcon),
-  };
-  final chevronIconLink = RibnAssets.chevronDown;
-  dynamic selectSettings(string) {}
+  Widget buildDropdownChild() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 136),
+      child: Container(
+        width: 115,
+        height: 148,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(4)),
+          border: Border.all(color: RibnColors.lightGrey, width: 1),
+          color: const Color(0xffffffff),
+          boxShadow: const [
+            BoxShadow(
+              color: RibnColors.blackShadow,
+              spreadRadius: 0,
+              blurRadius: 22.4,
+              offset: Offset(0, 6),
+            ),
+          ],
+        ),
+        child: ListView(
+          children: UIConstants.assetUnitsList
+              .map(
+                (item) => MaterialButton(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(item,
+                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      HelperClass.selectedItem = item;
+                      HelperClass.showDropdown = false;
+                    });
+                  },
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +187,43 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
+              name: 'Peekaboo Button',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: PeekabooButton(
+                          buttonText: Text(
+                            'Button Text',
+                            style: RibnToolkitTextStyles.smallBody.copyWith(fontSize: 15),
+                          ),
+                          buttonChild: SizedBox(
+                            width: 137,
+                            height: 22,
+                            child: LargeButton(
+                              buttonChild: Text(
+                                'Do This Action',
+                                style: RibnToolkitTextStyles.dropdownButtonStyle
+                                    .copyWith(fontSize: 11, color: RibnColors.ghostButtonText),
+                              ),
+                              backgroundColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              dropShadowColor: Colors.transparent,
+                              borderColor: RibnColors.ghostButtonText,
+                              onPressed: () {},
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
               name: 'Square Button with Icon',
               useCases: [
                 WidgetbookUseCase(
@@ -119,7 +231,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: SquareButtonWithIcon(
                       backgroundColor: RibnColors.primary,
-                      icon: SvgPicture.asset(RibnAssets.plusIcon, width: 30),
+                      icon: Image.asset(RibnAssets.plusBlue, width: 30),
                       text: Text(
                         'BUTTON TEXT',
                         style: RibnToolkitTextStyles.btnLarge.copyWith(color: Colors.white),
@@ -137,7 +249,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: CustomIconButton(
-                      icon: SvgPicture.asset(RibnAssets.plusIcon, width: 30),
+                      icon: Image.asset(RibnAssets.plusBlue, width: 30),
                       onPressed: () {},
                     ),
                   ),
@@ -170,24 +282,11 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: CustomCopyButton(
                       textToBeCopied: 'Copied text!',
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            WidgetbookComponent(
-              name: 'Custom Page Title',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Standard',
-                  builder: (context) => Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: CustomPageTitle(title: Strings.mint),
+                      icon: Image.asset(
+                        RibnAssets.copyIcon,
+                        width: 26,
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ],
@@ -199,10 +298,30 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: CustomTextField(
-                      controller: _controller,
+                      controller: HelperClass.textController,
                       hintText: 'Type Something',
-                      width: 268,
-                      maxLength: 16,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Rounded Copy Text Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: RoundedCopyTextField(
+                      text: 'This is some text',
+                      icon: SvgPicture.asset(
+                        RibnAssets.myFingerprint,
+                      ),
+                      copyText: 'This is some text',
+                      copyIcon: Image.asset(
+                        RibnAssets.copyIcon,
+                        width: 26,
+                      ),
+                      width: 200,
                     ),
                   ),
                 ),
@@ -217,17 +336,17 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: CustomCheckbox(
                       fillColor: MaterialStateProperty.all(Colors.transparent),
                       checkColor: RibnColors.active,
-                      borderColor: checked ? RibnColors.active : RibnColors.inactive,
-                      value: checked,
+                      borderColor: HelperClass.checked ? RibnColors.active : RibnColors.inactive,
+                      value: HelperClass.checked,
                       onChanged: (val) {
                         setState(() {
-                          checked = val;
+                          HelperClass.checked = val;
                         });
                       },
                       label: RichText(
                         text: TextSpan(
                           style: RibnToolkitTextStyles.body1
-                              .copyWith(color: checked ? RibnColors.defaultText : RibnColors.inactive),
+                              .copyWith(color: HelperClass.checked ? RibnColors.defaultText : RibnColors.inactive),
                           children: const [
                             TextSpan(
                               text: 'Checkbox text',
@@ -241,26 +360,14 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Wave Container',
+              name: 'Error Bubble',
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
-                  builder: (context) => Center(
-                    child: WaveContainer(
-                      containerHeight: double.infinity,
-                      containerWidth: double.infinity,
-                      waveAmplitude: 0,
-                      containerChild: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'You can place elements on top of this background as so...',
-                              style: RibnToolkitTextStyles.h4.copyWith(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
+                  builder: (context) => const Center(
+                    child: ErrorBubble(
+                      inverted: true,
+                      errorText: 'This is an error message',
                     ),
                   ),
                 ),
@@ -275,11 +382,43 @@ class _WidgetBookState extends State<WidgetBook> {
               name: 'Asset Card',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'All Details',
+                  name: 'All Details No Action Bttns',
                   builder: (context) => Center(
                     child: AssetCard(
                       onCardPress: () {},
-                      iconImage: Image.asset(RibnAssets.coffGreenIcon),
+                      iconImage: Image.asset(
+                        RibnAssets.coffGreenIcon,
+                        width: 31,
+                      ),
+                      shortName: const Text(
+                        'TstAst',
+                        style: RibnToolkitTextStyles.assetShortNameStyle,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      assetLongName: const Text(
+                        'Test Asset Name',
+                        style: RibnToolkitTextStyles.assetLongNameStyle,
+                      ),
+                      missingAsstDetailsCondition: false,
+                      assetQuantityDetails: Text(
+                        '1500 G',
+                        overflow: TextOverflow.ellipsis,
+                        style: RibnToolkitTextStyles.assetShortNameStyle.copyWith(
+                          color: RibnColors.primary,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'All Details + Action Bttns',
+                  builder: (context) => Center(
+                    child: AssetCard(
+                      onCardPress: () {},
+                      iconImage: Image.asset(
+                        RibnAssets.coffGreenIcon,
+                        width: 31,
+                      ),
                       shortName: const Text(
                         'TstAst',
                         style: RibnToolkitTextStyles.assetShortNameStyle,
@@ -337,32 +476,366 @@ class _WidgetBookState extends State<WidgetBook> {
                           color: RibnColors.primary,
                         ),
                       ),
-                      firstIcon: Image.asset(
-                        RibnAssets.sendIcon,
-                        width: 12,
-                      ),
-                      onFirstIconPress: () {},
-                      secondIcon: Image.asset(
-                        RibnAssets.receiveIcon,
-                        width: 12,
-                      ),
-                      onSecondIconPress: () {},
                     ),
                   ),
                 ),
               ],
             ),
             WidgetbookComponent(
-              name: 'Dropdown',
+              name: 'Custom Dropdown',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'App bar version',
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: CustomDropDown(
+                      visible: HelperClass.showDropdown,
+                      onDismissed: () {
+                        setState(() {
+                          HelperClass.showDropdown = false;
+                        });
+                      },
+                      childAlignment: Alignment.bottomLeft,
+                      dropDownAlignment: Alignment.topCenter,
+                      chevronIcon: Image.asset(
+                        RibnAssets.chevronDownDark,
+                        width: 24,
+                      ),
+                      dropdownChild: buildDropdownChild(),
+                      selectedItem: HelperClass.selectedItem != null
+                          ? Text(
+                              formatAssetUnit(HelperClass.selectedItem),
+                              style: RibnToolkitTextStyles.dropdownButtonStyle,
+                            )
+                          : null,
+                      hintText: 'Unit',
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'App Bar',
                   builder: (context) => Center(
                     child: InputDropdown(
-                        selectedNetwork: selectedNetwork,
-                        networks: ['valhalla', 'toplnet', 'private'],
-                        onChange: onPress,
+                        selectedNetwork: HelperClass.selectedNetwork,
+                        networks: HelperClass.networks,
+                        onChange: (string) {
+                          setState(() {
+                            HelperClass.selectedNetwork = string;
+                          });
+                        },
                         chevronIconLink: RibnAssets.chevronDown),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Password Text Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: PasswordTextField(
+                          hintText: 'Type Something',
+                          controller: HelperClass.passwordController,
+                          icon: SvgPicture.asset(
+                            HelperClass.obscurePassword ? RibnAssets.passwordVisibleIon : RibnAssets.passwordHiddenIcon,
+                            width: 12,
+                          ),
+                          obscurePassword: HelperClass.obscurePassword,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Long Name Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetLongNameField(
+                          selectedIcon: HelperClass.selectedIcon,
+                          controller: HelperClass.assetLongNameController,
+                          onIconSelected: (icon) {
+                            setState(() {
+                              HelperClass.selectedIcon = icon;
+                            });
+                          },
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
+                          assetsIconList: UIConstants.assetIconsList,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Short Name Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetShortNameField(
+                          controller: HelperClass.assetShortNameController,
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Recipient Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Minting to Recipient',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: RecipientField(
+                          controller: HelperClass.recipientController,
+                          validRecipientAddress: '',
+                          onBackspacePressed: () {
+                            setState(() {
+                              HelperClass.recipientController.clear();
+                              HelperClass.validRecipientAddress = '';
+                            });
+                          },
+                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
+                          alternativeDisplayChild: RoundedCopyTextField(
+                            text: 'This is some text',
+                            icon: SvgPicture.asset(
+                              RibnAssets.myFingerprint,
+                            ),
+                            copyText: 'This is some text',
+                            copyIcon: Image.asset(
+                              RibnAssets.copyIcon,
+                              width: 26,
+                            ),
+                            width: 200,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Minting to My Wallet',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: RecipientField(
+                          mintingToMyWallet: true,
+                          controller: HelperClass.recipientController,
+                          validRecipientAddress: '',
+                          onBackspacePressed: () {
+                            setState(() {
+                              HelperClass.recipientController.clear();
+                              HelperClass.validRecipientAddress = '';
+                            });
+                          },
+                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
+                          alternativeDisplayChild: RoundedCopyTextField(
+                            text: 'This is some text',
+                            icon: SvgPicture.asset(
+                              RibnAssets.myFingerprint,
+                            ),
+                            copyText: 'This is some text',
+                            copyIcon: Image.asset(
+                              RibnAssets.copyIcon,
+                              width: 26,
+                            ),
+                            width: 200,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Amount Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Minting',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetAmountField(
+                          selectedUnit: HelperClass.selectedUnit,
+                          controller: HelperClass.amountController,
+                          allowEditingUnit: true,
+                          onUnitSelected: (String unit) {
+                            setState(() {
+                              HelperClass.selectedUnit = unit;
+                            });
+                          },
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Reminting',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetAmountField(
+                          selectedUnit: HelperClass.selectedUnit == HelperClass.selectedUnit
+                              ? 'No Unit'
+                              : HelperClass.selectedUnit,
+                          controller: HelperClass.amountController,
+                          allowEditingUnit: false,
+                          onUnitSelected: (String unit) {
+                            setState(() {
+                              HelperClass.selectedUnit = unit;
+                            });
+                          },
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Note Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: NoteField(
+                          controller: HelperClass.noteController,
+                          noteLength: HelperClass.noteController.text.length,
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Asset Selection Field',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'No Asset Selected',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetSelectionField(
+                          formattedSelectedAsset: const {
+                            'longName': 'Green Coffee',
+                            'shortName': 'GrnCffe',
+                            'assetIcon': RibnAssets.coffGreenIcon,
+                          },
+                          formattedAsset: (asset) {
+                            return {
+                              'longName': 'Green Coffee',
+                              'shortName': 'GrnCffe',
+                              'assetIcon': RibnAssets.coffGreenIcon,
+                            };
+                          },
+                          assets: const [],
+                          onSelected: () {},
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Asset Selected',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70),
+                        child: AssetSelectionField(
+                          formattedSelectedAsset: const {
+                            'assetCode': '5YJkvbDcWX5GgPj5xqzxhwqY6EvKrqWj2hhBRXxSGMns2qPxCMz5kSR3vw',
+                            'longName': 'Green Coffee',
+                            'shortName': 'GrnCffe',
+                            'assetIcon': RibnAssets.coffGreenIcon,
+                          },
+                          formattedAsset: (asset) {
+                            return {
+                              'longName': 'Green Coffee',
+                              'shortName': 'GrnCffe',
+                              'assetIcon': RibnAssets.coffGreenIcon,
+                            };
+                          },
+                          assets: const [],
+                          onSelected: () {},
+                          tooltipIcon: Image.asset(
+                            RibnAssets.greyHelpBubble,
+                            width: 18,
+                          ),
+                          chevronIcon: Image.asset(
+                            RibnAssets.chevronDownDark,
+                            width: 24,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -427,7 +900,7 @@ class _WidgetBookState extends State<WidgetBook> {
                             ),
                             WidgetSpan(
                               child: GestureDetector(
-                                onTap: () async => await launch(tooltipUrl),
+                                onTap: () async => await launch(HelperClass.tooltipUrl),
                                 child: Row(
                                   children: [
                                     Text(
@@ -452,6 +925,172 @@ class _WidgetBookState extends State<WidgetBook> {
                 ),
               ],
             ),
+            WidgetbookComponent(
+              name: 'Wave Container',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: WaveContainer(
+                      containerHeight: double.infinity,
+                      containerWidth: double.infinity,
+                      waveAmplitude: 0,
+                      containerChild: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'You can place elements on top of this background as so...',
+                              style: RibnToolkitTextStyles.h4.copyWith(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Shimmer Loader',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => const Center(
+                    child: ShimmerLoader(width: 150, height: 15, borderRadius: 100),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Loading Spinner',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => const Center(
+                    child: LoadingSpinner(),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Modal',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: LargeButton(
+                      buttonChild: Text(
+                        'Show Modal',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                      backgroundColor: RibnColors.primary,
+                      hoverColor: RibnColors.primaryButtonHover,
+                      dropShadowColor: RibnColors.primaryButtonShadow,
+                      onPressed: () async {
+                        await showDialog(
+                          context: context,
+                          builder: (context) => CustomModal.renderCustomModal(
+                            maxModalHeight: 100,
+                            context: context,
+                            title: const Text(
+                              'Modal Title',
+                              style: RibnToolkitTextStyles.extH2,
+                            ),
+                            body: Column(
+                              children: const [
+                                Text(
+                                  'This is a cool modal with a sexy action button.',
+                                  style: RibnToolkitTextStyles.body1,
+                                  textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                                ),
+                              ],
+                            ),
+                            actionsAlignment: MainAxisAlignment.center,
+                            elevation: 2,
+                            actions: [
+                              LargeButton(
+                                buttonWidth: 240,
+                                buttonChild: Text(
+                                  'Action Button',
+                                  style: RibnToolkitTextStyles.btnLarge.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                backgroundColor: RibnColors.primary,
+                                hoverColor: RibnColors.primaryButtonHover,
+                                dropShadowColor: RibnColors.primaryButtonShadow,
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Accordion',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => const Center(
+                    child: Accordion(
+                      header: 'This is an example accordion header',
+                      description: 'And this is some description text for the accordion.',
+                      width: 400,
+                      backgroundColor: Colors.white,
+                      collapsedBackgroundColor: Colors.white,
+                      textColor: RibnColors.defaultText,
+                      iconColor: RibnColors.defaultText,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Animated Circle Step Loader',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: AnimatedCircleStepLoader(
+                      stepLabels: HelperClass.stepLabels,
+                      showStepLoader: () {},
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Sliding Segment Control',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: SlidingSegmentControl(
+                      currentTabIndex: 0,
+                      tabItems: <int, Widget>{
+                        0: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          child: Text("Tab Value 1",
+                              style: RibnToolkitTextStyles.btnMedium.copyWith(color: RibnColors.defaultText)),
+                        ),
+                        1: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          child: Text("Tab Value 2",
+                              style: RibnToolkitTextStyles.btnMedium.copyWith(color: RibnColors.defaultText)),
+                        ),
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
         WidgetbookCategory(
@@ -466,12 +1105,14 @@ class _WidgetBookState extends State<WidgetBook> {
                     width: 500.00,
                     height: 40,
                     child: RibnAppBar(
-                      currentNetworkName: selectedNetwork,
-                      networks: networks,
-                      updateNetwork: onPress,
-                      settingsOptions: settingsOptions,
-                      selectSettingsOption: selectSettings,
-                      chevronIconLink: chevronIconLink,
+                      currentNetworkName: HelperClass.selectedNetwork,
+                      networks: HelperClass.networks,
+                      updateNetwork: (string) {
+                        HelperClass.selectedNetwork = string;
+                      },
+                      settingsOptions: HelperClass.settingsOptions,
+                      selectSettingsOption: HelperClass.selectSettings,
+                      chevronIconLink: HelperClass.chevronIconLink,
                       ribnLogoIconLink: RibnAssets.newRibnLogo,
                       hamburgerIconLink: RibnAssets.hamburgerMenu,
                     ),
@@ -480,24 +1121,64 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
+              name: 'Custom Page Title',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => const CustomPageTitle(title: 'Page Title'),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
               name: 'Progress Bar',
               useCases: [
                 WidgetbookUseCase(
                   name: 'First Step',
-                  builder: (context) => const Center(
-                    child: CustomProgressBar(0),
+                  builder: (context) => Center(
+                    child: CustomProgressBar(
+                      currPage: 0,
+                      stepLabels: HelperClass.stepLabels,
+                    ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Middle Step',
-                  builder: (context) => const Center(
-                    child: CustomProgressBar(2),
+                  builder: (context) => Center(
+                    child: CustomProgressBar(
+                      currPage: 2,
+                      stepLabels: HelperClass.stepLabels,
+                    ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Final Step',
-                  builder: (context) => const Center(
-                    child: CustomProgressBar(3),
+                  builder: (context) => Center(
+                    child: CustomProgressBar(
+                      currPage: 4,
+                      stepLabels: HelperClass.stepLabels,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Ribn Bottom App Bar',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Scaffold(
+                    bottomNavigationBar: RibnBottomAppBar(
+                      pages: HelperClass.pages,
+                      currPage: HelperClass.currPage,
+                      activePageIcons: HelperClass.activePageIcons,
+                      pageIcons: HelperClass.pageIcons,
+                      setCurrentPage: (key) {
+                        setState(() {
+                          HelperClass.currPage = key;
+                        });
+                      },
+                    ),
+                    backgroundColor: RibnColors.background,
                   ),
                 ),
               ],
@@ -518,8 +1199,17 @@ class _WidgetBookState extends State<WidgetBook> {
         Device(
           name: 'Square Canvas',
           resolution: Resolution.dimensions(
-            nativeWidth: 500.00,
-            nativeHeight: 500.00,
+            nativeWidth: 500,
+            nativeHeight: 500,
+            scaleFactor: 1,
+          ),
+          type: DeviceType.desktop,
+        ),
+        Device(
+          name: 'Large Desktop',
+          resolution: Resolution.dimensions(
+            nativeWidth: 1440,
+            nativeHeight: 1242,
             scaleFactor: 1,
           ),
           type: DeviceType.desktop,

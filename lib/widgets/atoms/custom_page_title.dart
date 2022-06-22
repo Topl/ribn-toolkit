@@ -1,41 +1,78 @@
 import 'package:flutter/material.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
+import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 
-/// A widget to display the title and back button on top of the page.
-///
-/// Used during the transfer flows.
+/// A widget to display the title, back arrow button and cancel button on top of the page.
 class CustomPageTitle extends StatelessWidget {
-  const CustomPageTitle({required this.title, this.top = 5, this.left = 10, Key? key}) : super(key: key);
+  const CustomPageTitle({required this.title, this.hideBackArrow = false, this.hideCloseCross = false, Key? key})
+      : super(key: key);
   final String title;
-  final double top;
-  final double left;
+  final bool hideBackArrow;
+  final bool hideCloseCross;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-          left: left,
-          top: top,
-          child: CustomIconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            highlightColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            splashColor: Colors.transparent,
-          ),
+    return WaveContainer(
+      containerHeight: 90,
+      containerWidth: double.infinity,
+      waveAmplitude: 0,
+      containerChild: PreferredSize(
+        preferredSize: const Size.fromHeight(90),
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Center(
+              child: Text(
+                title,
+                style: RibnToolkitTextStyles.extH2.copyWith(
+                  color: RibnColors.lightGreyTitle,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            if (hideBackArrow != true)
+              Positioned.fill(
+                left: 20,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: CustomIconButton(
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: RibnColors.lightGreyTitle,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    highlightColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                  ),
+                ),
+              ),
+            if (hideCloseCross != true)
+              Positioned.fill(
+                right: 20,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: CustomIconButton(
+                    icon: const Icon(
+                      Icons.close,
+                      color: RibnColors.lightGreyTitle,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/home');
+                    },
+                    highlightColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                  ),
+                ),
+              ),
+          ],
         ),
-        Center(
-          child: Text(
-            title,
-            style: RibnToolkitTextStyles.extH2,
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

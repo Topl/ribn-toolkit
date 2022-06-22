@@ -6,7 +6,10 @@ void main() {
   runApp(
     Portal(
       child: MaterialApp(
-        home: WidgetBook(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => WidgetBook(),
+        },
       ),
     ),
   );

@@ -25,7 +25,7 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String currentNetworkName;
   final List<String> networks;
   final Function(String) updateNetwork;
-  final Map<String, SvgPicture> settingsOptions;
+  final Map<String, Image> settingsOptions;
   final Function(String) selectSettingsOption;
   final String chevronIconLink;
   final String ribnLogoIconLink;
@@ -49,11 +49,19 @@ class _RibnAppBarState extends State<RibnAppBar> {
             end: Alignment.centerRight,
             colors: <Color>[RibnColors.tertiary, RibnColors.primaryOffColor],
           ),
+          boxShadow: [
+            BoxShadow(
+              color: RibnColors.blackShadow,
+              spreadRadius: 0,
+              blurRadius: 4,
+              offset: Offset(0, 4),
+            ),
+          ],
         ),
       ),
       automaticallyImplyLeading: false,
       titleSpacing: 0,
-      elevation: 3,
+      elevation: 0,
       title: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
@@ -84,7 +92,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
   }
 
   /// Builds the settings drop down menu.
-  Widget _buildSettingsMenu(Map<String, SvgPicture> settingsOptions, Function(String)? onSelected) {
+  Widget _buildSettingsMenu(Map<String, Image> settingsOptions, Function(String)? onSelected) {
     return Container(
       color: Colors.transparent,
       child: PopupMenuButton<String>(
@@ -113,7 +121,9 @@ class _RibnAppBarState extends State<RibnAppBar> {
                         width: 50,
                         child: Text(
                           currOption,
-                          style: RibnToolkitTextStyles.body1,
+                          style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
+                            color: RibnColors.defaultText,
+                          ),
                         ),
                       ),
                     ],

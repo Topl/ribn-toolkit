@@ -1,108 +1,99 @@
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
-import 'package:ribn_toolkit/constants/strings.dart';
-import 'package:ribn_toolkit/constants/styles.dart';
-import 'package:steps_indicator/steps_indicator.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 /// Custom progress bar displayed during onboarding
 class CustomProgressBar extends StatelessWidget {
-  const CustomProgressBar(this.currPage, {Key? key}) : super(key: key);
+  const CustomProgressBar({
+    required this.currPage,
+    this.width = 851,
+    required this.stepLabels,
+    Key? key,
+  }) : super(key: key);
   final int currPage;
-  final int numPages = 4;
+  final double width;
+  final Map<int, String> stepLabels;
 
   @override
   Widget build(BuildContext context) {
+    final numPages = stepLabels.length;
+
     return SizedBox(
       height: 200,
+      width: width,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          SizedBox(
-            child: StepsIndicator(
-              selectedStep: currPage,
-              nbSteps: numPages,
-              selectedStepColorOut: Colors.white,
-              selectedStepColorIn: Colors.white,
-              doneStepColor: Colors.white,
-              doneLineColor: RibnColors.primary,
-              undoneLineColor: RibnColors.inactive,
-              isHorizontal: true,
-              doneLineThickness: 3,
-              lineLength: 80,
-              undoneLineThickness: 3,
-              selectedStepSize: 10,
-              doneStepWidget: const CircleAvatar(
-                backgroundColor: RibnColors.primary,
-                foregroundColor: Colors.white,
-                radius: 15,
-                child: Icon(Icons.check),
-              ),
-              unselectedStepWidget: const CircleAvatar(
-                backgroundColor: RibnColors.inactive,
-                radius: 7,
-              ),
-              selectedStepWidget: CircleAvatar(
-                radius: 22,
-                backgroundColor: RibnColors.accent,
-                child: CircleAvatar(
-                  backgroundColor: RibnColors.primary,
-                  foregroundColor: Colors.white,
-                  radius: 15,
-                  child: Text('${currPage + 1}'),
-                ),
-              ),
+          Container(
+            color: Colors.transparent,
+            height: 200,
+            child: StepProgressIndicator(
+              currentStep: currPage,
+              totalSteps: numPages,
+              size: 160,
+              direction: Axis.horizontal,
+              customStep: (index, color, _) => renderProgressIcon(index),
             ),
           ),
-          SizedBox(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(width: 20),
-                buildPageLabel(0, 80),
-                const SizedBox(width: 20),
-                buildPageLabel(1, 80),
-                const SizedBox(width: 20),
-                buildPageLabel(2, 80),
-                const SizedBox(width: 20),
-                buildPageLabel(3, 80),
-              ],
-            ),
-          )
         ],
       ),
     );
   }
 
-  /// Builds the appropriate label under the currently active position in the progress bar.
-  Widget buildPageLabel(int pageNum, double width) {
-    return SizedBox(
-      width: width,
-      child: Center(
-        child: Text(
-          getLabel(pageNum),
-          textAlign: TextAlign.center,
-          style: RibnToolkitTextStyles.smallBoldLabel.copyWith(
-            color: pageNum != currPage ? Colors.transparent : RibnColors.defaultText,
+  renderProgressIcon(index) {
+    if (index < currPage) {
+      return Column(
+        children: const [
+          SizedBox(
+            height: 25,
           ),
-        ),
-      ),
-    );
-  }
-
-  String getLabel(int pageNum) {
-    switch (pageNum) {
-      case 0:
-        return Strings.generateSeedPhrase.toUpperCase();
-      case 1:
-        return Strings.writeDownSeedPhrase.toUpperCase();
-      case 2:
-        return Strings.confirmSeedPhrase.toUpperCase();
-      case 3:
-        return Strings.createWalletPassword.toUpperCase();
-      case 4:
-        return Strings.finalReview.toUpperCase();
-      default:
-        return '';
+          CircleAvatar(
+            backgroundColor: RibnColors.primary,
+            foregroundColor: Colors.white,
+            radius: 15,
+            child: Icon(
+              Icons.check,
+              size: 20,
+            ),
+          ),
+        ],
+      );
+    } else if (index == currPage) {
+      return Column(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          CircleAvatar(
+            radius: 20,
+            backgroundColor: RibnColors.inactive,
+            child: CircleAvatar(
+              backgroundColor: RibnColors.primary,
+              foregroundColor: Colors.white,
+              radius: 14,
+              child: Text('${index + 1}'),
+            ),
+          ),
+          const SizedBox(
+            height: 14,
+          ),
+          Text(
+            '${stepLabels[index]}',
+            textAlign: TextAlign.center,
+          ),
+        ],
+      );
+    } else if (index > currPage) {
+      return Column(
+        children: const [
+          SizedBox(
+            height: 30,
+          ),
+          CircleAvatar(
+            backgroundColor: RibnColors.inactive,
+            radius: 10,
+          ),
+        ],
+      );
     }
   }
 }

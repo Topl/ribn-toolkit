@@ -67,7 +67,9 @@ class _InputDropdownState extends State<InputDropdown> {
                       ),
                       Text(
                         capitalize(networkName),
-                        style: RibnToolkitTextStyles.body1,
+                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
+                          color: RibnColors.defaultText,
+                        ),
                       ),
                     ],
                   ),

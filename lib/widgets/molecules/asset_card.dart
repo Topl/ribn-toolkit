@@ -10,10 +10,10 @@ class AssetCard extends StatelessWidget {
     this.assetLongName,
     required this.missingAsstDetailsCondition,
     required this.assetQuantityDetails,
-    required this.firstIcon,
-    required this.onFirstIconPress,
-    required this.secondIcon,
-    required this.onSecondIconPress,
+    this.firstIcon,
+    this.onFirstIconPress,
+    this.secondIcon,
+    this.onSecondIconPress,
     Key? key,
   }) : super(key: key);
   final VoidCallback onCardPress;
@@ -22,10 +22,10 @@ class AssetCard extends StatelessWidget {
   final dynamic assetLongName;
   final bool missingAsstDetailsCondition;
   final Text assetQuantityDetails;
-  final Image firstIcon;
-  final VoidCallback onFirstIconPress;
-  final Image secondIcon;
-  final VoidCallback onSecondIconPress;
+  final Image? firstIcon;
+  final VoidCallback? onFirstIconPress;
+  final Image? secondIcon;
+  final VoidCallback? onSecondIconPress;
 
   @override
   Widget build(BuildContext context) {
@@ -55,69 +55,75 @@ class AssetCard extends StatelessWidget {
         ),
         hoverColor: RibnColors.assetCardHoverColor,
         onPressed: onCardPress,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // display asset icon
-            Padding(
-              padding: const EdgeInsets.only(top: 13, left: 11, right: 16),
-              child: iconImage,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
-                // display asset short name
-                SizedBox(
-                  width: 120,
-                  child: shortName,
-                ),
-                // display asset long name or placeholder if no long name exists
-                Padding(padding: const EdgeInsets.symmetric(vertical: 5.0), child: assetLongName),
-                // display helpful text if some asset details are missing
-                missingAsstDetailsCondition
-                    ? const Text(
-                        'Add Asset Details',
-                        style: TextStyle(
-                          color: RibnColors.primary,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'DM Sans',
-                          fontStyle: FontStyle.normal,
-                          fontSize: 10.4,
-                          decoration: TextDecoration.underline,
-                        ),
-                      )
-                    : const SizedBox(),
-              ],
-            ),
-            const Spacer(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                const SizedBox(height: 10),
-                // display asset units
-                Container(constraints: const BoxConstraints(maxWidth: 90), child: assetQuantityDetails),
-                const SizedBox(height: 8),
-                // send and receive buttons
-                Row(
-                  children: [
-                    CustomIconButton(
-                      icon: firstIcon,
-                      color: RibnColors.primary,
-                      onPressed: onFirstIconPress,
-                    ),
-                    const SizedBox(width: 7),
-                    CustomIconButton(
-                      icon: secondIcon,
-                      color: RibnColors.primary,
-                      onPressed: onSecondIconPress,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(width: 12),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(top: 5.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // display asset icon
+              Padding(
+                padding: const EdgeInsets.only(top: 13, left: 11, right: 16),
+                child: iconImage,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  // display asset short name
+                  SizedBox(
+                    width: 120,
+                    child: shortName,
+                  ),
+                  // display asset long name or placeholder if no long name exists
+                  Padding(padding: const EdgeInsets.symmetric(vertical: 5.0), child: assetLongName),
+                  // display helpful text if some asset details are missing
+                  missingAsstDetailsCondition
+                      ? const Text(
+                          'Add Asset Details',
+                          style: TextStyle(
+                            color: RibnColors.primary,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'DM Sans',
+                            fontStyle: FontStyle.normal,
+                            fontSize: 10.4,
+                            decoration: TextDecoration.underline,
+                            letterSpacing: 1,
+                          ),
+                        )
+                      : const SizedBox(),
+                ],
+              ),
+              const Spacer(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  const SizedBox(height: 10),
+                  // display asset units
+                  Container(constraints: const BoxConstraints(maxWidth: 90), child: assetQuantityDetails),
+                  const SizedBox(height: 8),
+                  // conditional send and receive buttons
+                  firstIcon != null && secondIcon != null
+                      ? Row(
+                          children: [
+                            CustomIconButton(
+                              icon: firstIcon!,
+                              color: RibnColors.primary,
+                              onPressed: onFirstIconPress!,
+                            ),
+                            const SizedBox(width: 7),
+                            CustomIconButton(
+                              icon: secondIcon!,
+                              color: RibnColors.primary,
+                              onPressed: onSecondIconPress!,
+                            ),
+                          ],
+                        )
+                      : const SizedBox(),
+                ],
+              ),
+              const SizedBox(width: 12),
+            ],
+          ),
         ),
       ),
     );
