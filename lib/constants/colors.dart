@@ -9,7 +9,7 @@ class RibnColors {
   static const Color tertiary = Color(0xFF259E95);
   static const Color defaultText = Color(0xFF323232);
   static const Color greyText = Color(0xFF979797);
-  static const Color inactive = Color(0xFFDADADA);
+  static const Color inactive = Color(0xFF7795A0);
   static const Color active = Color(0xFF8AE3CF);
   static const Color lightGrey = Color(0xFFEEEEEE);
   static const Color background = Color(0xFFF8F8F8);
