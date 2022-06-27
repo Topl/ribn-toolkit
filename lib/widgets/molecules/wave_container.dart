@@ -49,7 +49,7 @@ class WaveContainer extends StatelessWidget {
                 ],
                 durations: [35000, 19440, 10800, 6000],
                 heightPercentages: [0.20, 0.23, 0.25, 0.30],
-                blur: const MaskFilter.blur(BlurStyle.normal, 60),
+                blur: const MaskFilter.blur(BlurStyle.solid, 60),
                 gradientBegin: Alignment.bottomLeft,
                 gradientEnd: Alignment.topRight,
               ),
