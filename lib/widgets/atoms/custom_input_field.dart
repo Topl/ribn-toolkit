@@ -54,7 +54,7 @@ class CustomInputField extends StatelessWidget {
                           informationText!,
                           style: RibnToolkitTextStyles.toolTipTextStyle,
                         ),
-                        offsetPositionLeftValue: 100,
+                        offsetPositionLeftValue: 80,
                         toolTipIcon: tooltipIcon,
                       ),
                     )
