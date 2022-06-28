@@ -15,7 +15,7 @@ class CustomPageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WaveContainer(
-      containerHeight: 90,
+      containerHeight: 128,
       containerWidth: double.infinity,
       waveAmplitude: 0,
       containerChild: PreferredSize(
