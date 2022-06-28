@@ -4,13 +4,13 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class WaveContainer extends StatelessWidget {
-  const WaveContainer(
-      {required this.containerHeight,
-      required this.containerWidth,
-      required this.waveAmplitude,
-      required this.containerChild,
-      Key? key})
-      : super(key: key);
+  const WaveContainer({
+    this.containerHeight = double.infinity,
+    this.containerWidth = double.infinity,
+    this.waveAmplitude = 30,
+    required this.containerChild,
+    Key? key,
+  }) : super(key: key);
 
   // This sets the height of the container
   final double containerHeight;
