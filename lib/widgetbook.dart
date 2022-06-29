@@ -231,11 +231,9 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: SquareButtonWithIcon(
                       backgroundColor: RibnColors.primary,
-                      icon: Image.asset(RibnAssets.plusBlue, width: 30),
-                      text: Text(
-                        'BUTTON TEXT',
-                        style: RibnToolkitTextStyles.btnLarge.copyWith(color: Colors.white),
-                      ),
+                      icon: Image.asset(RibnAssets.importWalletPng),
+                      description: 'Button Description',
+                      title: 'Button Title',
                       onPressed: () {},
                     ),
                   ),
