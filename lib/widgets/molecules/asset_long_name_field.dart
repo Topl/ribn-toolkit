@@ -69,21 +69,23 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
           ),
           // dropdown for selecting an asset icon
           Positioned(
-            right: -2,
-            top: 1,
-            child: CustomDropDown(
-              childAlignment: Alignment.bottomCenter,
-              dropDownAlignment: Alignment.topCenter,
-              visible: showIconDropdown,
-              onDismissed: () {
-                setState(() {
-                  showIconDropdown = false;
-                });
-              },
-              dropdownChild: _buildIconDropdownChild(),
-              chevronIcon: widget.chevronIcon,
-              selectedItem: widget.selectedIcon != null ? Image.asset(widget.selectedIcon!) : null,
-              hintText: 'Select Icon',
+            right: 0,
+            child: SizedBox(
+              height: 36,
+              child: CustomDropDown(
+                childAlignment: Alignment.bottomCenter,
+                dropDownAlignment: Alignment.topCenter,
+                visible: showIconDropdown,
+                onDismissed: () {
+                  setState(() {
+                    showIconDropdown = false;
+                  });
+                },
+                dropdownChild: _buildIconDropdownChild(),
+                chevronIcon: widget.chevronIcon,
+                selectedItem: widget.selectedIcon != null ? Image.asset(widget.selectedIcon!) : null,
+                hintText: 'Select Icon',
+              ),
             ),
           ),
         ],

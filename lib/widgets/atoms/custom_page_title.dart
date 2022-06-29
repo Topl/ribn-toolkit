@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
@@ -15,62 +16,65 @@ class CustomPageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WaveContainer(
-      containerHeight: 128,
+      containerHeight: kIsWeb ? 90 : 128,
       containerWidth: double.infinity,
       waveAmplitude: 0,
       containerChild: PreferredSize(
-        preferredSize: const Size.fromHeight(90),
-        child: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Center(
-              child: Text(
-                title,
-                style: RibnToolkitTextStyles.extH2.copyWith(
-                  color: RibnColors.lightGreyTitle,
+        preferredSize: const Size.fromHeight(kIsWeb ? 90 : 128),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 0),
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Center(
+                child: Text(
+                  title,
+                  style: RibnToolkitTextStyles.extH2.copyWith(
+                    color: RibnColors.lightGreyTitle,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
-            ),
-            if (hideBackArrow != true)
-              Positioned.fill(
-                left: 20,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: CustomIconButton(
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: RibnColors.lightGreyTitle,
+              if (hideBackArrow != true)
+                Positioned.fill(
+                  left: 20,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: CustomIconButton(
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: RibnColors.lightGreyTitle,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      highlightColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      splashColor: Colors.transparent,
                     ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    highlightColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    splashColor: Colors.transparent,
                   ),
                 ),
-              ),
-            if (hideCloseCross != true)
-              Positioned.fill(
-                right: 20,
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: CustomIconButton(
-                    icon: const Icon(
-                      Icons.close,
-                      color: RibnColors.lightGreyTitle,
+              if (hideCloseCross != true)
+                Positioned.fill(
+                  right: 20,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: CustomIconButton(
+                      icon: const Icon(
+                        Icons.close,
+                        color: RibnColors.lightGreyTitle,
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/home');
+                      },
+                      highlightColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      splashColor: Colors.transparent,
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                    },
-                    highlightColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    splashColor: Colors.transparent,
                   ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );

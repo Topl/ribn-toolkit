@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
@@ -26,7 +27,7 @@ class RibnBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55,
+      height: kIsWeb ? 55 : 70,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -42,6 +43,7 @@ class RibnBottomAppBar extends StatelessWidget {
         elevation: 0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: pages.asMap().keys.map(
             (key) {
               final bool isActive = key == currPage;

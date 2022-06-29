@@ -149,34 +149,39 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
       ),
       width: 310,
       constraints: const BoxConstraints(maxHeight: 86, minHeight: 0),
-      child: Scrollbar(
-        controller: scrollController,
-        isAlwaysShown: true,
-        child: ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
+      child: MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: Scrollbar(
+          isAlwaysShown: true,
           controller: scrollController,
-          children: widget.assets
-              .map(
-                (asset) => MaterialButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    widget.onSelected(asset);
+          child: ListView(
+            padding: const EdgeInsets.all(0),
+            shrinkWrap: false,
+            scrollDirection: Axis.vertical,
+            controller: scrollController,
+            children: widget.assets
+                .map(
+                  (asset) => MaterialButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      widget.onSelected(asset);
 
-                    setState(() {
-                      showAssetDropdown = false;
-                    });
-                  },
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: AssetInfo(
-                      assetCode: asset.assetCode,
-                      formattedAsset: widget.formattedAsset(asset),
+                      setState(() {
+                        showAssetDropdown = false;
+                      });
+                    },
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: AssetInfo(
+                        assetCode: asset.assetCode,
+                        formattedAsset: widget.formattedAsset(asset),
+                      ),
                     ),
                   ),
-                ),
-              )
-              .toList(),
+                )
+                .toList(),
+          ),
         ),
       ),
     );

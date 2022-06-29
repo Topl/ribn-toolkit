@@ -1073,7 +1073,12 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: SlidingSegmentControl(
-                      currentTabIndex: 0,
+                      currentTabIndex: HelperClass.currentTabIndex,
+                      updateTabIndex: (i) => {
+                        setState(() {
+                          HelperClass.currentTabIndex = i as int;
+                        })
+                      },
                       tabItems: <int, Widget>{
                         0: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 40),
