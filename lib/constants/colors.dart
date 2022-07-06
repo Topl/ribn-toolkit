@@ -27,4 +27,5 @@ class RibnColors {
   static const Color assetCardHoverColor = Color(0xFFFBFCFC);
   static const Color blackShadow = Color(0x0D000000);
   static const Color lightGreyTitle = Color(0xFFE5E5E5);
+  static const Color greyTransparent = Color(0x33979797);
 }
