@@ -66,7 +66,7 @@ class RibnToolkitTextStyles {
   static const TextStyle hintStyle = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 12,
-    color: RibnColors.hintTextColor,
+    color: RibnColors.defaultText,
     fontWeight: FontWeight.w300,
   );
 
