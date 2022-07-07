@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 
-class SquareButtonWithIcon extends StatelessWidget {
-  const SquareButtonWithIcon({
+class OnboardingActionButton extends StatelessWidget {
+  const OnboardingActionButton({
     required this.backgroundColor,
     required this.icon,
     required this.title,
     required this.description,
     required this.onPressed,
     this.lineHeight = 2.5,
+    this.containerHeight = 218,
+    this.containerWidth = 350,
     Key? key,
   }) : super(key: key);
 
@@ -31,11 +33,17 @@ class SquareButtonWithIcon extends StatelessWidget {
   /// Lineheight of the title
   final double lineHeight;
 
+  /// Optional container height
+  final double containerHeight;
+
+  /// Optional container width
+  final double containerWidth;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 218,
-      width: 349,
+      height: containerHeight,
+      width: containerWidth,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(

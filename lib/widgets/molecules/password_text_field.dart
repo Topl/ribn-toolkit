@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ribn_toolkit/constants/colors.dart';
+import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 
@@ -27,7 +27,7 @@ class PasswordTextField extends StatefulWidget {
   final SvgPicture icon;
 
   /// True if the password is being obscured
-  bool obscurePassword;
+  final bool obscurePassword;
 
   /// Action for when enter key is hit
   final Function? onSubmitted;
@@ -35,16 +35,19 @@ class PasswordTextField extends StatefulWidget {
   /// FocusNode that can be attached to the [TextField].
   final FocusNode? focusNode;
 
-  PasswordTextField({
+  final Color fillColor;
+
+  const PasswordTextField({
     required this.controller,
     required this.hintText,
     this.hasError = false,
     this.width = 310,
     this.height = 36,
     required this.icon,
-    required this.obscurePassword,
+    this.obscurePassword = true,
     this.onSubmitted,
     this.focusNode,
+    this.fillColor = Colors.white,
     Key? key,
   }) : super(key: key);
 
@@ -53,14 +56,21 @@ class PasswordTextField extends StatefulWidget {
 }
 
 class _PasswordTextFieldState extends State<PasswordTextField> {
+  late bool obscurePassword;
+  @override
+  void initState() {
+    obscurePassword = widget.obscurePassword;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final OutlineInputBorder textFieldBorder = OutlineInputBorder(
-      borderSide: const BorderSide(color: RibnColors.lightGrey),
+      borderSide: BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
       borderRadius: BorderRadius.circular(5),
     );
     final OutlineInputBorder textFieldFocusBorder = OutlineInputBorder(
-      borderSide: const BorderSide(color: RibnColors.active),
+      borderSide: BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
       borderRadius: BorderRadius.circular(5),
     );
 
@@ -70,21 +80,24 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       child: TextField(
         onSubmitted: (_) => widget.onSubmitted!(),
         focusNode: widget.focusNode,
-        obscureText: widget.obscurePassword,
+        obscureText: obscurePassword,
         controller: widget.controller,
         decoration: InputDecoration(
           suffixIcon: CustomIconButton(
-            icon: widget.icon,
+            icon: Image.asset(
+              obscurePassword ? RibnAssets.passwordHiddenPng : RibnAssets.passwordVisiblePng,
+              width: 17,
+            ),
             onPressed: () {
               setState(() {
-                widget.obscurePassword = !widget.obscurePassword;
+                obscurePassword = !obscurePassword;
               });
             },
           ),
           labelText: widget.hintText,
           labelStyle: RibnToolkitTextStyles.hintStyle,
           isDense: true,
-          fillColor: Colors.white,
+          fillColor: widget.fillColor,
           floatingLabelBehavior: FloatingLabelBehavior.never,
           filled: true,
           contentPadding: const EdgeInsets.all(10),

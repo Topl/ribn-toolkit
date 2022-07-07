@@ -231,11 +231,9 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => Center(
                     child: SquareButtonWithIcon(
                       backgroundColor: RibnColors.primary,
-                      icon: Image.asset(RibnAssets.plusBlue, width: 30),
-                      text: Text(
-                        'BUTTON TEXT',
-                        style: RibnToolkitTextStyles.btnLarge.copyWith(color: Colors.white),
-                      ),
+                      icon: Image.asset(RibnAssets.importWalletPng),
+                      description: 'Button Description',
+                      title: 'Button Title',
                       onPressed: () {},
                     ),
                   ),
@@ -1040,12 +1038,11 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => const Center(
                     child: Accordion(
-                      header: 'This is an example accordion header',
-                      description: 'And this is some description text for the accordion.',
+                      header: Text('This is an example accordion header'),
+                      description: Text('And this is some description text for the accordion.'),
                       width: 400,
                       backgroundColor: Colors.white,
                       collapsedBackgroundColor: Colors.white,
-                      textColor: RibnColors.defaultText,
                       iconColor: RibnColors.defaultText,
                     ),
                   ),

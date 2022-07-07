@@ -66,7 +66,7 @@ class RibnToolkitTextStyles {
   static const TextStyle hintStyle = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 12,
-    color: RibnColors.hintTextColor,
+    color: RibnColors.defaultText,
     fontWeight: FontWeight.w300,
   );
 
@@ -127,5 +127,22 @@ class RibnToolkitTextStyles {
     fontSize: 12,
     color: Color(0xff585858),
     letterSpacing: 1,
+  );
+
+  static const TextStyle onboardingH1 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 28,
+    fontWeight: FontWeight.bold,
+    color: RibnColors.lightGreyTitle,
+    height: 1.67,
+    letterSpacing: 1.42,
+  );
+
+  static const TextStyle onboardingH3 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: RibnColors.lightGreyTitle,
+    height: 1.6,
   );
 }
