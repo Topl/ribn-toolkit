@@ -36,15 +36,6 @@ class _AccordionState extends State<Accordion> {
         clipBehavior: Clip.antiAlias,
         width: widget.width,
         decoration: BoxDecoration(
-          boxShadow: const [
-            // BoxShadow(
-            //   color: RibnColors.assetCardShadow,
-            //   spreadRadius: 0,
-            //   blurRadius: 37,
-            //   offset: Offset(0, 6),
-            // ),
-          ],
-          // border: Border.all(color: Colors.transparent, width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Theme(
