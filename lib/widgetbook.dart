@@ -1038,12 +1038,11 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => const Center(
                     child: Accordion(
-                      header: 'This is an example accordion header',
-                      description: 'And this is some description text for the accordion.',
+                      header: Text('This is an example accordion header'),
+                      description: Text('And this is some description text for the accordion.'),
                       width: 400,
                       backgroundColor: Colors.white,
                       collapsedBackgroundColor: Colors.white,
-                      textColor: RibnColors.defaultText,
                       iconColor: RibnColors.defaultText,
                     ),
                   ),
