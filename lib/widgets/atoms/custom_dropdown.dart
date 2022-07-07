@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
@@ -58,6 +59,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
 
   Widget _buildIconDropdownButton() {
     return MaterialButton(
+      padding: const EdgeInsets.symmetric(horizontal: kIsWeb ? 14 : 8),
       minWidth: 0,
       onPressed: () {
         setState(() {

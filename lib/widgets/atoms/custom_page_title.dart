@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
@@ -6,20 +7,54 @@ import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 
 /// A widget to display the title, back arrow button and cancel button on top of the page.
 class CustomPageTitle extends StatelessWidget {
-  const CustomPageTitle({required this.title, this.hideBackArrow = false, this.hideCloseCross = false, Key? key})
+  const CustomPageTitle(
+      {required this.title,
+      this.hideBackArrow = false,
+      this.hideCloseCross = false,
+      this.hideWaveAnimation = false,
+      Key? key})
       : super(key: key);
+  final String title;
+  final bool hideBackArrow;
+  final bool hideCloseCross;
+  final bool hideWaveAnimation;
+
+  @override
+  Widget build(BuildContext context) {
+    if (hideWaveAnimation == true) {
+      return SizedBox(
+          height: kIsWeb ? 90 : 128,
+          width: double.infinity,
+          child: TitleBody(title: title, hideBackArrow: hideBackArrow, hideCloseCross: hideCloseCross));
+    }
+
+    return WaveContainer(
+      containerHeight: kIsWeb ? 90 : 128,
+      containerWidth: double.infinity,
+      waveAmplitude: 0,
+      containerChild: TitleBody(title: title, hideBackArrow: hideBackArrow, hideCloseCross: hideCloseCross),
+    );
+  }
+}
+
+class TitleBody extends StatelessWidget {
+  const TitleBody({
+    Key? key,
+    required this.title,
+    required this.hideBackArrow,
+    required this.hideCloseCross,
+  }) : super(key: key);
+
   final String title;
   final bool hideBackArrow;
   final bool hideCloseCross;
 
   @override
   Widget build(BuildContext context) {
-    return WaveContainer(
-      containerHeight: 90,
-      containerWidth: double.infinity,
-      waveAmplitude: 0,
-      containerChild: PreferredSize(
-        preferredSize: const Size.fromHeight(90),
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(kIsWeb ? 90 : 128),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 0),
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
