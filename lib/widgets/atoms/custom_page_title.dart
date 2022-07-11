@@ -97,7 +97,7 @@ class TitleBody extends StatelessWidget {
                       color: RibnColors.lightGreyTitle,
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                     },
                     highlightColor: Colors.transparent,
                     hoverColor: Colors.transparent,
