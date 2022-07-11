@@ -23,9 +23,6 @@ class PasswordTextField extends StatefulWidget {
   /// The height of the [TextField].
   final double height;
 
-  /// The text icon for clickable obscure text ability
-  final SvgPicture icon;
-
   /// True if the password is being obscured
   final bool obscurePassword;
 
@@ -43,7 +40,6 @@ class PasswordTextField extends StatefulWidget {
     this.hasError = false,
     this.width = 310,
     this.height = 36,
-    required this.icon,
     this.obscurePassword = true,
     this.onSubmitted,
     this.focusNode,
