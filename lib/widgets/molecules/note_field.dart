@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_input_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
@@ -43,6 +44,7 @@ class NoteField extends StatelessWidget {
             height: 80,
             maxLength: maxNoteLength,
             textAlignVertical: TextAlignVertical.top,
+            hintColor: RibnColors.hintTextColor,
           ),
           // character count indicator
           Positioned(

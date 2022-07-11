@@ -92,6 +92,7 @@ class _RecipientFieldState extends State<RecipientField> {
                         onChanged: widget.onChanged,
                         showCursor: !widget.isValidRecipient(),
                         hasError: hasError,
+                        hintColor: RibnColors.hintTextColor,
                       ),
                       portal: const ErrorBubble(
                         errorText: Strings.invalidRecipientAddressError,
