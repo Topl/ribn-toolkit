@@ -43,8 +43,10 @@ class CustomTextField extends StatelessWidget {
   final Color? enabledBorderColor;
 
   final Color? focusedBorderColor;
-
+  
   final Color? hintColor;
+  
+  final int hintMaxLines;
 
   const CustomTextField({
     required this.controller,
@@ -62,6 +64,7 @@ class CustomTextField extends StatelessWidget {
     this.enabledBorderColor,
     this.focusedBorderColor,
     this.hintColor = const Color(0xff4C838D),
+    this.hintMaxLines = 2,
     Key? key,
   }) : super(key: key);
 
@@ -86,6 +89,7 @@ class CustomTextField extends StatelessWidget {
           counterText: '',
           hintText: hintText,
           hintStyle: RibnToolkitTextStyles.hintStyle.copyWith(color: hintColor),
+          hintMaxLines: hintMaxLines,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
           ),

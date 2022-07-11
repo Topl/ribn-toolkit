@@ -538,10 +538,6 @@ class _WidgetBookState extends State<WidgetBook> {
                         child: PasswordTextField(
                           hintText: 'Type Something',
                           controller: HelperClass.passwordController,
-                          icon: SvgPicture.asset(
-                            HelperClass.obscurePassword ? RibnAssets.passwordVisibleIon : RibnAssets.passwordHiddenIcon,
-                            width: 12,
-                          ),
                           obscurePassword: HelperClass.obscurePassword,
                         ),
                       ),
