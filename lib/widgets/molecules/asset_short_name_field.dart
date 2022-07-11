@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_input_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
@@ -30,6 +31,7 @@ class _AssetShortNameFieldState extends State<AssetShortNameField> {
         controller: widget.controller,
         hintText: Strings.assetShortNameHint,
         height: 36,
+        hintColor: RibnColors.hintTextColor,
       ),
       tooltipIcon: widget.tooltipIcon,
     );

@@ -72,7 +72,7 @@ class CustomTextField extends StatelessWidget {
       height: height,
       child: TextField(
         controller: controller,
-        style: RibnToolkitTextStyles.h3,
+        style: RibnToolkitTextStyles.hintStyle,
         textAlignVertical: textAlignVertical,
         onChanged: onChanged,
         expands: true,
@@ -85,7 +85,7 @@ class CustomTextField extends StatelessWidget {
           isDense: true,
           counterText: '',
           hintText: hintText,
-          hintStyle: RibnToolkitTextStyles.btnMedium.copyWith(color: hintColor),
+          hintStyle: RibnToolkitTextStyles.hintStyle.copyWith(color: hintColor),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
           ),

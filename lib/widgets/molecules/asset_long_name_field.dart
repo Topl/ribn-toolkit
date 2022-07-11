@@ -66,6 +66,7 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
             hintText: Strings.assetLongNameHint,
             maxLength: maxLength,
             height: 36,
+            hintColor: RibnColors.hintTextColor,
           ),
           // dropdown for selecting an asset icon
           Positioned(
