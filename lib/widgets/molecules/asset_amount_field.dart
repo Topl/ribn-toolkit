@@ -146,25 +146,27 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
         ? widget.allowEditingUnit
             ? Positioned(
                 right: -3,
-                top: 1,
-                child: CustomDropDown(
-                  visible: showUnitDropdown,
-                  onDismissed: () {
-                    setState(() {
-                      showUnitDropdown = false;
-                    });
-                  },
-                  childAlignment: Alignment.bottomLeft,
-                  dropDownAlignment: Alignment.topCenter,
-                  chevronIcon: widget.chevronIcon,
-                  dropdownChild: _buildUnitDropdownChild(),
-                  selectedItem: widget.selectedUnit != null
-                      ? Text(
-                          formatAssetUnit(widget.selectedUnit),
-                          style: RibnToolkitTextStyles.dropdownButtonStyle,
-                        )
-                      : null,
-                  hintText: 'Select Unit',
+                child: SizedBox(
+                  height: 36,
+                  child: CustomDropDown(
+                    visible: showUnitDropdown,
+                    onDismissed: () {
+                      setState(() {
+                        showUnitDropdown = false;
+                      });
+                    },
+                    childAlignment: Alignment.bottomLeft,
+                    dropDownAlignment: Alignment.topCenter,
+                    chevronIcon: widget.chevronIcon,
+                    dropdownChild: _buildUnitDropdownChild(),
+                    selectedItem: widget.selectedUnit != null
+                        ? Text(
+                            formatAssetUnit(widget.selectedUnit),
+                            style: RibnToolkitTextStyles.dropdownButtonStyle,
+                          )
+                        : null,
+                    hintText: 'Select Unit',
+                  ),
                 ),
               )
             : Positioned(
@@ -215,24 +217,32 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
             ),
           ],
         ),
-        child: ListView(
-          children: UIConstants.assetUnitsList
-              .map(
-                (unit) => MaterialButton(
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(unit,
-                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
-                  ),
-                  onPressed: () {
-                    widget.onUnitSelected!(unit);
-                    setState(() {
-                      showUnitDropdown = false;
-                    });
-                  },
-                ),
-              )
-              .toList(),
+        child: MediaQuery.removePadding(
+          context: context,
+          removeTop: true,
+          child: Scrollbar(
+            isAlwaysShown: true,
+            child: ListView(
+              padding: const EdgeInsets.all(0),
+              children: UIConstants.assetUnitsList
+                  .map(
+                    (unit) => MaterialButton(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(unit,
+                            style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
+                      ),
+                      onPressed: () {
+                        widget.onUnitSelected!(unit);
+                        setState(() {
+                          showUnitDropdown = false;
+                        });
+                      },
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
         ),
       ),
     );
