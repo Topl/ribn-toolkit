@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
@@ -23,9 +24,6 @@ class PasswordTextField extends StatefulWidget {
   /// The height of the [TextField].
   final double height;
 
-  /// The text icon for clickable obscure text ability
-  final SvgPicture icon;
-
   /// True if the password is being obscured
   final bool obscurePassword;
 
@@ -43,7 +41,6 @@ class PasswordTextField extends StatefulWidget {
     this.hasError = false,
     this.width = 310,
     this.height = 36,
-    required this.icon,
     this.obscurePassword = true,
     this.onSubmitted,
     this.focusNode,
@@ -78,8 +75,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       width: widget.width,
       height: widget.height,
       child: TextField(
-        onSubmitted: (_) => widget.onSubmitted!(),
+        onSubmitted: widget.onSubmitted != null ? (_) => widget.onSubmitted!() : null,
         focusNode: widget.focusNode,
+        textInputAction: TextInputAction.next,
         obscureText: obscurePassword,
         controller: widget.controller,
         decoration: InputDecoration(
