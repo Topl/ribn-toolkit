@@ -117,6 +117,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 hasError: hasError,
                 onChanged: widget.onChanged,
+                hintColor: RibnColors.hintTextColor,
               ),
               portal: const ErrorBubble(
                 inverted: true,
@@ -221,7 +222,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
           context: context,
           removeTop: true,
           child: Scrollbar(
-            isAlwaysShown: true,
+            thumbVisibility: true,
             child: ListView(
               padding: const EdgeInsets.all(0),
               children: UIConstants.assetUnitsList
