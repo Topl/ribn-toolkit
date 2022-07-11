@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
@@ -74,8 +75,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       width: widget.width,
       height: widget.height,
       child: TextField(
-        onSubmitted: (_) => widget.onSubmitted!(),
+        onSubmitted: widget.onSubmitted != null ? widget.onSubmitted!() : null,
         focusNode: widget.focusNode,
+        textInputAction: TextInputAction.next,
         obscureText: obscurePassword,
         controller: widget.controller,
         decoration: InputDecoration(
