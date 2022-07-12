@@ -49,7 +49,7 @@ class LargeButton extends StatelessWidget {
         hoverElevation: 0,
         color: disabled ? RibnColors.inactive : backgroundColor,
         child: buttonChild,
-        onPressed: disabled ? null : onPressed,
+        onPressed: disabled ? () {} : onPressed,
         hoverColor: disabled ? null : hoverColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
