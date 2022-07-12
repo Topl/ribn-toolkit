@@ -43,7 +43,9 @@ class CustomTextField extends StatelessWidget {
   final Color? enabledBorderColor;
 
   final Color? focusedBorderColor;
-
+  
+  final Color? hintColor;
+  
   final int hintMaxLines;
 
   const CustomTextField({
@@ -61,6 +63,7 @@ class CustomTextField extends StatelessWidget {
     this.fillColor,
     this.enabledBorderColor,
     this.focusedBorderColor,
+    this.hintColor = const Color(0xff4C838D),
     this.hintMaxLines = 2,
     Key? key,
   }) : super(key: key);
@@ -72,7 +75,7 @@ class CustomTextField extends StatelessWidget {
       height: height,
       child: TextField(
         controller: controller,
-        style: RibnToolkitTextStyles.h3,
+        style: RibnToolkitTextStyles.hintStyle,
         textAlignVertical: textAlignVertical,
         onChanged: onChanged,
         expands: true,
@@ -85,8 +88,8 @@ class CustomTextField extends StatelessWidget {
           isDense: true,
           counterText: '',
           hintText: hintText,
+          hintStyle: RibnToolkitTextStyles.hintStyle.copyWith(color: hintColor),
           hintMaxLines: hintMaxLines,
-          hintStyle: RibnToolkitTextStyles.h3.copyWith(color: const Color(0xff4C838D)),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
           ),
