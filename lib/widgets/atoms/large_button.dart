@@ -14,6 +14,7 @@ class LargeButton extends StatelessWidget {
     this.buttonWidth = 310,
     this.buttonHeight = 43,
     this.disabled = false,
+    this.customDisabledColor = RibnColors.inactive,
     Key? key,
   }) : super(key: key);
   final dynamic buttonChild;
@@ -26,6 +27,7 @@ class LargeButton extends StatelessWidget {
   final double buttonHeight;
   final double borderRadius = 50;
   final bool disabled;
+  final Color customDisabledColor;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,7 @@ class LargeButton extends StatelessWidget {
         color: disabled ? RibnColors.inactive : backgroundColor,
         child: buttonChild,
         onPressed: disabled ? null : onPressed,
+        disabledColor: customDisabledColor,
         hoverColor: disabled ? null : hoverColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
