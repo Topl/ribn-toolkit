@@ -1,5 +1,3 @@
-// import 'package:brambldart/utils.dart';
-
 // /// Formats an address string to only dispaly its first and last 10 characters.
 String formatAddrString(String addr, {int charsToDisplay = 10}) {
   const numDots = 3;
