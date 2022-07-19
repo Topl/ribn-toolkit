@@ -87,7 +87,7 @@ class CheckboxWrappableText extends StatelessWidget {
                 TextSpan(
                   text: wrappableText,
                   style: RibnToolkitTextStyles.onboardingH3.copyWith(
-                    color: activeText ? RibnColors.lightGreyTitle : RibnColors.inactive,
+                    color: activeText ? RibnColors.lightGreyTitle : RibnColors.transparentAlternateGreyText,
                   ),
                 ),
               ],
