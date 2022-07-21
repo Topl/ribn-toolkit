@@ -6,6 +6,7 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
 import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
 import 'package:ribn_toolkit/widgets/molecules/animated_circle_step_loader.dart';
@@ -366,6 +367,24 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: ErrorBubble(
                       inverted: true,
                       errorText: 'This is an error message',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Toggle Switch',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: CustomToggle(
+                      onChanged: (bool val) {
+                        setState(() {
+                          HelperClass.customToggleValue = val;
+                        });
+                      },
+                      value: HelperClass.customToggleValue,
                     ),
                   ),
                 ),

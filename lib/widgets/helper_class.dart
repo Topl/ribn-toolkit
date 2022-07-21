@@ -59,4 +59,6 @@ class HelperClass {
   static Map<int, String> stepLabels = {0: 'Step 1', 1: 'Step 2', 2: 'Step 3', 3: 'Step 4', 4: 'Step 5'};
 
   static int currentTabIndex = 0;
+
+  static bool customToggleValue = false;
 }

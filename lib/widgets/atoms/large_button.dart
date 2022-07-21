@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
-import 'package:ribn_toolkit/constants/styles.dart';
 
 /// A custom styled large button used on several screens, e.g. login, asset transfer, and mint screens.
 class LargeButton extends StatelessWidget {
@@ -59,7 +58,7 @@ class LargeButton extends StatelessWidget {
             borderRadius,
           ),
           side: BorderSide(
-            color: disabled ? RibnColors.inactive : borderColor,
+            color: disabled ? Colors.transparent : borderColor,
           ),
         ),
       ),
