@@ -83,7 +83,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         decoration: InputDecoration(
           suffixIcon: CustomIconButton(
             icon: Image.asset(
-              obscurePassword ? RibnAssets.passwordHiddenPng : RibnAssets.passwordVisiblePng,
+              obscurePassword ? RibnAssets.passwordVisiblePng : RibnAssets.passwordHiddenPng,
               width: 17,
             ),
             onPressed: () {
