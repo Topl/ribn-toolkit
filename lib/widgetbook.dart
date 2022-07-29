@@ -24,6 +24,7 @@ import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_modal.dart';
 import 'package:ribn_toolkit/widgets/molecules/loading_spinner.dart';
 import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/onboarding_action_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
@@ -225,15 +226,15 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Square Button with Icon',
+              name: 'Onboarding Action Button',
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
                   builder: (context) => Center(
-                    child: SquareButtonWithIcon(
+                    child: OnboardingActionButton(
                       backgroundColor: RibnColors.primary,
                       icon: Image.asset(RibnAssets.importWalletPng),
-                      description: 'Button Description',
+                      description: 'This is an example description text...',
                       title: 'Button Title',
                       onPressed: () {},
                     ),
@@ -1238,7 +1239,7 @@ class _WidgetBookState extends State<WidgetBook> {
             nativeHeight: 844,
             scaleFactor: 1,
           ),
-          type: DeviceType.desktop,
+          type: DeviceType.mobile,
         ),
       ],
       appInfo: AppInfo(name: 'Ribn Toolkit'),

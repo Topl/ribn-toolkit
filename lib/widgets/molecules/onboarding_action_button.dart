@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
@@ -10,8 +11,6 @@ class OnboardingActionButton extends StatelessWidget {
     required this.description,
     required this.onPressed,
     this.lineHeight = 2.5,
-    this.containerHeight = 218,
-    this.containerWidth = 350,
     Key? key,
   }) : super(key: key);
 
@@ -33,17 +32,9 @@ class OnboardingActionButton extends StatelessWidget {
   /// Lineheight of the title
   final double lineHeight;
 
-  /// Optional container height
-  final double containerHeight;
-
-  /// Optional container width
-  final double containerWidth;
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: containerHeight,
-      width: containerWidth,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -54,49 +45,55 @@ class OnboardingActionButton extends StatelessWidget {
           ),
         ],
       ),
-      child: MaterialButton(
-        elevation: 0,
-        hoverElevation: 0,
-        color: backgroundColor,
-        child: Column(
-          children: [
-            const SizedBox(height: 5),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(width: 80, child: icon),
-                SizedBox(
-                  child: Text(
-                    title,
-                    textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
-                    style: RibnToolkitTextStyles.h1.copyWith(
-                      color: RibnColors.lightGreyTitle,
-                      fontSize: 19.5,
-                      height: lineHeight,
+      child: IntrinsicHeight(
+        child: MaterialButton(
+          elevation: 0,
+          hoverElevation: 0,
+          color: backgroundColor,
+          child: IntrinsicWidth(
+            child: Padding(
+              padding: kIsWeb ? const EdgeInsets.fromLTRB(60, 50, 60, 80) : const EdgeInsets.fromLTRB(10, 10, 10, 30),
+              child: Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(width: 80, child: icon),
+                      SizedBox(
+                        child: Text(
+                          title,
+                          style: RibnToolkitTextStyles.h1.copyWith(
+                            color: RibnColors.lightGreyTitle,
+                            fontSize: 18,
+                            height: 0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 22.0),
+                    child: Text(
+                      description,
+                      style: RibnToolkitTextStyles.h3.copyWith(
+                        fontSize: 18,
+                        color: RibnColors.lightGreyTitle,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 22.0),
-              child: Text(
-                description,
-                style: RibnToolkitTextStyles.h3.copyWith(
-                  fontSize: 18,
-                  color: RibnColors.lightGreyTitle,
-                ),
+                ],
               ),
             ),
-          ],
-        ),
-        onPressed: onPressed,
-        hoverColor: RibnColors.primaryButtonHover,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-          side: const BorderSide(
-            color: Colors.transparent,
+          ),
+          onPressed: onPressed,
+          hoverColor: RibnColors.primaryButtonHover,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+            side: const BorderSide(
+              color: Colors.transparent,
+            ),
           ),
         ),
       ),
