@@ -43,9 +43,9 @@ class CustomTextField extends StatelessWidget {
   final Color? enabledBorderColor;
 
   final Color? focusedBorderColor;
-  
+
   final Color? hintColor;
-  
+
   final int hintMaxLines;
 
   const CustomTextField({
@@ -83,6 +83,7 @@ class CustomTextField extends StatelessWidget {
         maxLength: maxLength,
         showCursor: showCursor,
         keyboardType: keyboardType,
+        inputFormatters: inputFormatters,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           isDense: true,
