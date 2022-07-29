@@ -6,6 +6,9 @@ import 'package:ribn_toolkit/widgets/atoms/custom_close_button.dart';
 /// A custom widget for displaying tooltips.
 ///
 /// Displays [toolTipIcon] which, when pressed, opens a draggable tooltip, i.e. [toolTipChild].
+///
+/// @TODO: We should look into passing a global [OverlayEntry] widget from Ribn here so that there is only ever 1
+/// OverlayEntry on screen.
 class CustomToolTip extends StatefulWidget {
   /// The icon associated with the tooltip.
   final Widget? toolTipIcon;
@@ -33,6 +36,13 @@ class CustomToolTip extends StatefulWidget {
 
 class _CustomToolTipState extends State<CustomToolTip> {
   OverlayEntry overlayEntry = OverlayEntry(builder: (context) => const SizedBox());
+
+  @override
+  void didUpdateWidget(covariant CustomToolTip oldWidget) {
+    // tooltip should be dismissed when the parent widget rebuilds
+    if (overlayEntry.mounted) overlayEntry.remove();
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   void dispose() {
