@@ -37,7 +37,7 @@ import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
 import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
-import 'package:ribn_toolkit/widgets/organisms/progress_bar.dart';
+import 'package:ribn_toolkit/widgets/organisms/onboarding_progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -1153,27 +1153,27 @@ class _WidgetBookState extends State<WidgetBook> {
                 WidgetbookUseCase(
                   name: 'First Step',
                   builder: (context) => Center(
-                    child: CustomProgressBar(
-                      currPage: 0,
-                      stepLabels: HelperClass.stepLabels,
+                    child: OnboardingProgressBar(
+                      currStep: 0,
+                      numSteps: 4,
                     ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Middle Step',
                   builder: (context) => Center(
-                    child: CustomProgressBar(
-                      currPage: 2,
-                      stepLabels: HelperClass.stepLabels,
+                    child: OnboardingProgressBar(
+                      currStep: 2,
+                      numSteps: 4,
                     ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Final Step',
                   builder: (context) => Center(
-                    child: CustomProgressBar(
-                      currPage: 4,
-                      stepLabels: HelperClass.stepLabels,
+                    child: OnboardingProgressBar(
+                      currStep: 4,
+                      numSteps: 4,
                     ),
                   ),
                 ),
