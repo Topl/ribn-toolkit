@@ -113,7 +113,7 @@ class CheckboxWrappableText extends StatelessWidget {
                   ),
                 ),
               ),
-              label!,
+              Flexible(child: label!),
             ],
           );
   }
