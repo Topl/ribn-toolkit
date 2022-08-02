@@ -86,53 +86,56 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
           Radius.circular(4.7),
         ),
       ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 270,
-            child: MaterialButton(
-              highlightElevation: 0,
-              hoverElevation: 0,
-              focusElevation: 0,
-              elevation: 0,
-              color: RibnColors.lightGrey,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(5),
-                  topRight: Radius.circular(1),
-                  bottomRight: Radius.circular(1),
-                  bottomLeft: Radius.circular(5),
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            showAssetDropdown = true;
+          });
+        },
+        child: Stack(
+          children: [
+            Row(
+              children: [
+                Container(
+                  width: 270,
+                  decoration: BoxDecoration(
+                    color: RibnColors.lightGrey,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(5),
+                      topRight: Radius.circular(1),
+                      bottomRight: Radius.circular(1),
+                      bottomLeft: Radius.circular(5),
+                    ),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 2),
+                  child: Container(
+                    width: 31,
+                    height: 30,
+                    child: widget.chevronIcon,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(1),
+                        topRight: Radius.circular(5),
+                        bottomRight: Radius.circular(5),
+                        bottomLeft: Radius.circular(1),
+                      ),
+                      color: RibnColors.lightGrey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
               child: AssetInfo(
                 assetCode: widget.formattedSelectedAsset!['assetCode'],
                 formattedAsset: widget.formattedSelectedAsset,
               ),
-              onPressed: () {
-                setState(() {
-                  showAssetDropdown = true;
-                });
-              },
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 2),
-            child: Container(
-              width: 31,
-              height: 28,
-              child: widget.chevronIcon,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(1),
-                  topRight: Radius.circular(5),
-                  bottomRight: Radius.circular(5),
-                  bottomLeft: Radius.circular(1),
-                ),
-                color: RibnColors.lightGrey,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
