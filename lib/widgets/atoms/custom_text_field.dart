@@ -48,6 +48,8 @@ class CustomTextField extends StatelessWidget {
 
   final int hintMaxLines;
 
+  final TextInputAction textInputAction;
+
   const CustomTextField({
     required this.controller,
     required this.hintText,
@@ -65,6 +67,7 @@ class CustomTextField extends StatelessWidget {
     this.focusedBorderColor,
     this.hintColor = const Color(0xff4C838D),
     this.hintMaxLines = 2,
+    this.textInputAction = TextInputAction.next,
     Key? key,
   }) : super(key: key);
 
@@ -84,7 +87,7 @@ class CustomTextField extends StatelessWidget {
         showCursor: showCursor,
         keyboardType: keyboardType,
         inputFormatters: inputFormatters,
-        textInputAction: TextInputAction.next,
+        textInputAction: textInputAction,
         decoration: InputDecoration(
           isDense: true,
           counterText: '',

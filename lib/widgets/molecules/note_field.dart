@@ -39,6 +39,7 @@ class NoteField extends StatelessWidget {
         children: [
           // text field for the note
           CustomTextField(
+            textInputAction: TextInputAction.done,
             controller: controller,
             hintText: Strings.noteHint,
             height: 80,
