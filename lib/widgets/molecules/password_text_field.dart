@@ -77,7 +77,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       child: TextField(
         onSubmitted: widget.onSubmitted != null ? (_) => widget.onSubmitted!() : null,
         focusNode: widget.focusNode,
-        textInputAction: TextInputAction.next,
+        textInputAction: TextInputAction.done,
         obscureText: obscurePassword,
         controller: widget.controller,
         decoration: InputDecoration(

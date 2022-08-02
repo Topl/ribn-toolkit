@@ -1006,7 +1006,6 @@ class _WidgetBookState extends State<WidgetBook> {
                         await showDialog(
                           context: context,
                           builder: (context) => CustomModal.renderCustomModal(
-                            maxModalHeight: 100,
                             context: context,
                             title: const Text(
                               'Modal Title',
