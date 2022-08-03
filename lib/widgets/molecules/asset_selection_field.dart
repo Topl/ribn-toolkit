@@ -48,9 +48,6 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
   /// True if asset dropdown needs to be displayed.
   bool showAssetDropdown = false;
 
-  /// Scroll controller initialized for [Scrollbar] usage.
-  final ScrollController scrollController = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     return CustomInputField(
@@ -98,7 +95,7 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
               children: [
                 Container(
                   width: 270,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: RibnColors.lightGrey,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(5),
@@ -128,7 +125,7 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: 5),
               child: AssetInfo(
                 assetCode: widget.formattedSelectedAsset!['assetCode'],
                 formattedAsset: widget.formattedSelectedAsset,
@@ -156,13 +153,11 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
         context: context,
         removeTop: true,
         child: Scrollbar(
-          isAlwaysShown: true,
-          controller: scrollController,
+          thumbVisibility: true,
           child: ListView(
             padding: const EdgeInsets.all(0),
             shrinkWrap: false,
             scrollDirection: Axis.vertical,
-            controller: scrollController,
             children: widget.assets
                 .map(
                   (asset) => MaterialButton(
