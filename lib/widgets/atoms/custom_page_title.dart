@@ -32,7 +32,11 @@ class CustomPageTitle extends StatelessWidget {
       containerHeight: kIsWeb ? 90 : 128,
       containerWidth: double.infinity,
       waveAmplitude: 0,
-      containerChild: TitleBody(title: title, hideBackArrow: hideBackArrow, hideCloseCross: hideCloseCross),
+      containerChild: Padding(
+        // padding to account for device notches etc
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: TitleBody(title: title, hideBackArrow: hideBackArrow, hideCloseCross: hideCloseCross),
+      ),
     );
   }
 }
@@ -51,63 +55,57 @@ class TitleBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PreferredSize(
-      preferredSize: const Size.fromHeight(kIsWeb ? 90 : 128),
-      child: Padding(
-        padding: const EdgeInsets.only(top: 0),
-        child: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Center(
-              child: Text(
-                title,
-                style: RibnToolkitTextStyles.extH2.copyWith(
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        Center(
+          child: Text(
+            title,
+            style: RibnToolkitTextStyles.extH2.copyWith(
+              color: RibnColors.lightGreyTitle,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        if (hideBackArrow != true)
+          Positioned.fill(
+            left: 20,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: CustomIconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
                   color: RibnColors.lightGreyTitle,
                 ),
-                textAlign: TextAlign.center,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                splashColor: Colors.transparent,
               ),
             ),
-            if (hideBackArrow != true)
-              Positioned.fill(
-                left: 20,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: CustomIconButton(
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: RibnColors.lightGreyTitle,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    highlightColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                  ),
+          ),
+        if (hideCloseCross != true)
+          Positioned.fill(
+            right: 20,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: CustomIconButton(
+                icon: const Icon(
+                  Icons.close,
+                  color: RibnColors.lightGreyTitle,
                 ),
+                onPressed: () {
+                  Navigator.popUntil(context, (Route route) => route.settings.name == '/home');
+                },
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                splashColor: Colors.transparent,
               ),
-            if (hideCloseCross != true)
-              Positioned.fill(
-                right: 20,
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: CustomIconButton(
-                    icon: const Icon(
-                      Icons.close,
-                      color: RibnColors.lightGreyTitle,
-                    ),
-                    onPressed: () {
-                      Navigator.popUntil(context, (Route route) => route.settings.name == '/home');
-                    },
-                    highlightColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ),
+            ),
+          ),
+      ],
     );
   }
 }

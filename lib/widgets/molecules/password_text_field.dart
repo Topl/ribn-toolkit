@@ -35,6 +35,8 @@ class PasswordTextField extends StatefulWidget {
 
   final Color fillColor;
 
+  final TextInputAction textInputAction;
+
   const PasswordTextField({
     required this.controller,
     required this.hintText,
@@ -45,6 +47,7 @@ class PasswordTextField extends StatefulWidget {
     this.onSubmitted,
     this.focusNode,
     this.fillColor = Colors.white,
+    this.textInputAction = TextInputAction.done,
     Key? key,
   }) : super(key: key);
 
@@ -77,20 +80,22 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       child: TextField(
         onSubmitted: widget.onSubmitted != null ? (_) => widget.onSubmitted!() : null,
         focusNode: widget.focusNode,
-        textInputAction: TextInputAction.next,
+        textInputAction: widget.textInputAction,
         obscureText: obscurePassword,
         controller: widget.controller,
         decoration: InputDecoration(
-          suffixIcon: CustomIconButton(
-            icon: Image.asset(
-              obscurePassword ? RibnAssets.passwordHiddenPng : RibnAssets.passwordVisiblePng,
-              width: 17,
+          suffixIcon: ExcludeFocus(
+            child: CustomIconButton(
+              icon: Image.asset(
+                obscurePassword ? RibnAssets.passwordVisiblePng : RibnAssets.passwordHiddenPng,
+                width: 17,
+              ),
+              onPressed: () {
+                setState(() {
+                  obscurePassword = !obscurePassword;
+                });
+              },
             ),
-            onPressed: () {
-              setState(() {
-                obscurePassword = !obscurePassword;
-              });
-            },
           ),
           labelText: widget.hintText,
           labelStyle: RibnToolkitTextStyles.hintStyle,
