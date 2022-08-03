@@ -6,7 +6,7 @@ class OnboardingProgressBar extends StatelessWidget {
   const OnboardingProgressBar({
     required this.numSteps,
     required this.currStep,
-    this.stepWidth = 77,
+    this.stepWidth = 68,
     this.stepHeight = 6,
     this.progressBarWidth = 350,
     Key? key,
