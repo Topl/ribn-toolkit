@@ -7,7 +7,6 @@ class CustomModal {
     required BuildContext context,
     required Text title,
     required Widget body,
-    double maxModalHeight = 310,
     double elevation = 0,
     List<Widget>? actions,
     MainAxisAlignment? actionsAlignment,
@@ -32,11 +31,7 @@ class CustomModal {
           ),
         ],
       ),
-      content: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: maxModalHeight,
-          maxWidth: MediaQuery.of(context).size.width,
-        ),
+      content: SingleChildScrollView(
         child: Column(
           children: [
             title,
