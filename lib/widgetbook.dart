@@ -24,6 +24,7 @@ import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_modal.dart';
 import 'package:ribn_toolkit/widgets/molecules/loading_spinner.dart';
 import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/onboarding_action_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
@@ -36,7 +37,7 @@ import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
 import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
-import 'package:ribn_toolkit/widgets/organisms/progress_bar.dart';
+import 'package:ribn_toolkit/widgets/organisms/onboarding_progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -225,15 +226,15 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Square Button with Icon',
+              name: 'Onboarding Action Button',
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
                   builder: (context) => Center(
-                    child: SquareButtonWithIcon(
+                    child: OnboardingActionButton(
                       backgroundColor: RibnColors.primary,
                       icon: Image.asset(RibnAssets.importWalletPng),
-                      description: 'Button Description',
+                      description: 'This is an example description text...',
                       title: 'Button Title',
                       onPressed: () {},
                     ),
@@ -1151,27 +1152,27 @@ class _WidgetBookState extends State<WidgetBook> {
                 WidgetbookUseCase(
                   name: 'First Step',
                   builder: (context) => Center(
-                    child: CustomProgressBar(
-                      currPage: 0,
-                      stepLabels: HelperClass.stepLabels,
+                    child: OnboardingProgressBar(
+                      currStep: 0,
+                      numSteps: 4,
                     ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Middle Step',
                   builder: (context) => Center(
-                    child: CustomProgressBar(
-                      currPage: 2,
-                      stepLabels: HelperClass.stepLabels,
+                    child: OnboardingProgressBar(
+                      currStep: 2,
+                      numSteps: 4,
                     ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Final Step',
                   builder: (context) => Center(
-                    child: CustomProgressBar(
-                      currPage: 4,
-                      stepLabels: HelperClass.stepLabels,
+                    child: OnboardingProgressBar(
+                      currStep: 4,
+                      numSteps: 4,
                     ),
                   ),
                 ),
@@ -1237,7 +1238,7 @@ class _WidgetBookState extends State<WidgetBook> {
             nativeHeight: 844,
             scaleFactor: 1,
           ),
-          type: DeviceType.desktop,
+          type: DeviceType.mobile,
         ),
       ],
       appInfo: AppInfo(name: 'Ribn Toolkit'),
