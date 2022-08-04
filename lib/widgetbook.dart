@@ -8,6 +8,7 @@ import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
+import 'package:ribn_toolkit/widgets/atoms/status_chip.dart';
 import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
 import 'package:ribn_toolkit/widgets/molecules/animated_circle_step_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
@@ -386,6 +387,35 @@ class _WidgetBookState extends State<WidgetBook> {
                         });
                       },
                       value: HelperClass.customToggleValue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Status Chip',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Unconfirmed',
+                  builder: (context) => const Center(
+                    child: StatusChip(
+                      status: 'unconfirmed',
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Pending',
+                  builder: (context) => const Center(
+                    child: StatusChip(
+                      status: 'pending',
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Confirmed',
+                  builder: (context) => const Center(
+                    child: StatusChip(
+                      status: 'confirmed',
                     ),
                   ),
                 ),

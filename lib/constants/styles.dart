@@ -145,4 +145,12 @@ class RibnToolkitTextStyles {
     color: RibnColors.lightGreyTitle,
     height: 1.6,
   );
+
+  static const TextStyle statusChip = TextStyle(
+    color: RibnColors.defaultText,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'DM Sans',
+    fontSize: 8.52,
+    decoration: TextDecoration.none,
+  );
 }
