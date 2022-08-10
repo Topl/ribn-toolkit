@@ -32,16 +32,18 @@ class HelperClass {
 
   static String? selectedUnit;
 
-  static List pages = [0, 1];
+  static List pages = [0, 1, 2];
 
   static List<Image> pageIcons = [
     Image.asset(RibnAssets.walletGrey),
-    Image.asset(RibnAssets.plusGrey),
+    Image.asset(RibnAssets.circlePlus),
+    Image.asset(RibnAssets.clockGrey)
   ];
 
   static List<Image> activePageIcons = [
     Image.asset(RibnAssets.walletBlue),
-    Image.asset(RibnAssets.plusBlue),
+    Image.asset(RibnAssets.circlePlus),
+    Image.asset(RibnAssets.clockBlue)
   ];
 
   static int currPage = 0;
