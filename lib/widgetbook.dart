@@ -6,7 +6,7 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_page_dropdown_title.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
 import 'package:ribn_toolkit/widgets/atoms/status_chip.dart';
@@ -19,7 +19,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_page_text_title.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
@@ -564,8 +564,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'App Bar',
                   builder: (context) => Center(
                     child: InputDropdown(
-                        selectedNetwork: HelperClass.selectedNetwork,
-                        networks: HelperClass.networks,
+                        selectedItem: HelperClass.selectedNetwork,
+                        items: HelperClass.networks,
                         onChange: (string) {
                           setState(() {
                             HelperClass.selectedNetwork = string;
@@ -1182,7 +1182,12 @@ class _WidgetBookState extends State<WidgetBook> {
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
-                  builder: (context) => const CustomPageDropdownTitle(title: 'Page Title'),
+                  builder: (context) => CustomPageDropdownTitle(
+                    title: 'Page Title',
+                    chevronIconLink: '',
+                    currentSelectedItem: HelperClass.currentSelectedItem,
+                    itemsToSelectFrom: HelperClass.itemsToSelectFrom,
+                  ),
                 ),
               ],
             ),

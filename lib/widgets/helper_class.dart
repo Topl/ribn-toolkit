@@ -63,4 +63,8 @@ class HelperClass {
   static int currentTabIndex = 0;
 
   static bool customToggleValue = false;
+
+  static List<String> itemsToSelectFrom = ['Sent', 'Received', 'Minted'];
+
+  static String currentSelectedItem = 'Transaction types';
 }

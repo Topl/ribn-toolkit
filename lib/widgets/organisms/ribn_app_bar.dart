@@ -79,8 +79,8 @@ class _RibnAppBarState extends State<RibnAppBar> {
             ),
             const Spacer(flex: 1),
             InputDropdown(
-              selectedNetwork: widget.currentNetworkName,
-              networks: widget.networks,
+              selectedItem: widget.currentNetworkName,
+              items: widget.networks,
               onChange: widget.updateNetwork,
               chevronIconLink: widget.chevronIconLink,
             ),

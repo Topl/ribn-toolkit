@@ -2,30 +2,38 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
+import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 
 /// A widget to display the title and a dropdown filter on top of the page.
 class CustomPageDropdownTitle extends StatelessWidget {
-  const CustomPageDropdownTitle(
+  CustomPageDropdownTitle(
       {required this.title,
-      this.hideBackArrow = false,
-      this.hideCloseCross = false,
+      required this.chevronIconLink,
       this.hideWaveAnimation = false,
+      required this.currentSelectedItem,
+      required this.itemsToSelectFrom,
       Key? key})
       : super(key: key);
   final String title;
-  final bool hideBackArrow;
-  final bool hideCloseCross;
+  final String chevronIconLink;
   final bool hideWaveAnimation;
+  String currentSelectedItem;
+  final List<String> itemsToSelectFrom;
 
   @override
   Widget build(BuildContext context) {
     if (hideWaveAnimation == true) {
       return SizedBox(
-          height: 73,
-          width: double.infinity,
-          child: TitleBody(title: title, hideBackArrow: hideBackArrow, hideCloseCross: hideCloseCross));
+        height: 73,
+        width: double.infinity,
+        child: TitleBody(
+          title: title,
+          chevronIconLink: chevronIconLink,
+          currentSelectedItem: currentSelectedItem,
+          itemsToSelectFrom: itemsToSelectFrom,
+        ),
+      );
     }
 
     return WaveContainer(
@@ -35,76 +43,71 @@ class CustomPageDropdownTitle extends StatelessWidget {
       containerChild: Padding(
         // padding to account for device notches etc
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: TitleBody(title: title, hideBackArrow: hideBackArrow, hideCloseCross: hideCloseCross),
+        child: TitleBody(
+          title: title,
+          chevronIconLink: chevronIconLink,
+          currentSelectedItem: currentSelectedItem,
+          itemsToSelectFrom: itemsToSelectFrom,
+        ),
       ),
     );
   }
 }
 
-class TitleBody extends StatelessWidget {
-  const TitleBody({
+class TitleBody extends StatefulWidget {
+  TitleBody({
     Key? key,
     required this.title,
-    required this.hideBackArrow,
-    required this.hideCloseCross,
+    required this.chevronIconLink,
+    required this.currentSelectedItem,
+    required this.itemsToSelectFrom,
   }) : super(key: key);
 
   final String title;
-  final bool hideBackArrow;
-  final bool hideCloseCross;
+  final String chevronIconLink;
+  String currentSelectedItem;
+  final List<String> itemsToSelectFrom;
 
+  @override
+  State<TitleBody> createState() => _TitleBodyState();
+}
+
+class _TitleBodyState extends State<TitleBody> {
   @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        Center(
-          child: Text(
-            title,
-            style: RibnToolkitTextStyles.extH2.copyWith(
-              color: RibnColors.lightGreyTitle,
+        Positioned.fill(
+          left: 10,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              widget.title,
+              style: RibnToolkitTextStyles.largeh3.copyWith(
+                color: RibnColors.lightGreyTitle,
+              ),
+              textAlign: TextAlign.left,
             ),
-            textAlign: TextAlign.center,
           ),
         ),
-        if (hideBackArrow != true)
-          Positioned.fill(
-            left: 20,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: CustomIconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: RibnColors.lightGreyTitle,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                highlightColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                splashColor: Colors.transparent,
-              ),
+        Positioned.fill(
+          right: 10,
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: InputDropdown(
+              selectedItem: widget.currentSelectedItem,
+              items: widget.itemsToSelectFrom,
+              onChange: (String item) {
+                setState(() {
+                  widget.currentSelectedItem = item;
+                });
+              },
+              chevronIconLink: widget.chevronIconLink,
+              hideCircleAvatar: true,
             ),
           ),
-        if (hideCloseCross != true)
-          Positioned.fill(
-            right: 20,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: CustomIconButton(
-                icon: const Icon(
-                  Icons.close,
-                  color: RibnColors.lightGreyTitle,
-                ),
-                onPressed: () {
-                  Navigator.popUntil(context, (Route route) => route.settings.name == '/home');
-                },
-                highlightColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                splashColor: Colors.transparent,
-              ),
-            ),
-          ),
+        ),
       ],
     );
   }

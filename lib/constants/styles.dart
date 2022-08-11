@@ -19,6 +19,12 @@ class RibnToolkitTextStyles {
     color: RibnColors.defaultText,
     height: 1.34,
   );
+  static const TextStyle largeh3 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: RibnColors.defaultText,
+  );
   static const TextStyle h3 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 16,
