@@ -26,19 +26,30 @@ class StatusChip extends StatelessWidget {
       }
     }
 
-    return Chip(
-      labelPadding: const EdgeInsets.only(right: 7),
-      visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-      avatar: CircleAvatar(
-        backgroundColor: colorByStatus(),
-        radius: 4,
+    return Container(
+      height: 18,
+      decoration: BoxDecoration(
+        color: RibnColors.statusChipGrey,
+        borderRadius: BorderRadius.circular(15),
       ),
-      label: Text(
-        capitalize(status),
-        style: RibnToolkitTextStyles.statusChip,
+      padding: const EdgeInsets.all(5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            backgroundColor: colorByStatus(),
+            radius: 4,
+          ),
+          const SizedBox(
+            width: 6,
+          ),
+          Text(
+            capitalize(status),
+            overflow: TextOverflow.visible,
+            style: RibnToolkitTextStyles.statusChip,
+          )
+        ],
       ),
-      backgroundColor: RibnColors.statusChipGrey,
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     );
   }
 }
