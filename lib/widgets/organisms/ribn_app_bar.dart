@@ -63,7 +63,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
       titleSpacing: 0,
       elevation: 0,
       title: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

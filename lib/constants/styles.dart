@@ -156,7 +156,7 @@ class RibnToolkitTextStyles {
     color: RibnColors.defaultText,
     fontWeight: FontWeight.w500,
     fontFamily: 'DM Sans',
-    fontSize: 8.52,
+    fontSize: 9.5,
     decoration: TextDecoration.none,
   );
 }

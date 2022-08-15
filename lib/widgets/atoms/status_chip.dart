@@ -28,7 +28,7 @@ class StatusChip extends StatelessWidget {
 
     return Chip(
       labelPadding: const EdgeInsets.only(right: 7),
-      visualDensity: const VisualDensity(horizontal: 0.0, vertical: -4),
+      visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
       avatar: CircleAvatar(
         backgroundColor: colorByStatus(),
         radius: 4,
@@ -38,6 +38,7 @@ class StatusChip extends StatelessWidget {
         style: RibnToolkitTextStyles.statusChip,
       ),
       backgroundColor: RibnColors.statusChipGrey,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     );
   }
 }
