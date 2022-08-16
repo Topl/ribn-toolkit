@@ -13,6 +13,7 @@ class CustomPageDropdownTitle extends StatelessWidget {
       this.hideWaveAnimation = false,
       required this.currentSelectedItem,
       required this.itemsToSelectFrom,
+      required this.updateSelectedItem,
       Key? key})
       : super(key: key);
   final String title;
@@ -20,6 +21,7 @@ class CustomPageDropdownTitle extends StatelessWidget {
   final bool hideWaveAnimation;
   String currentSelectedItem;
   final List<String> itemsToSelectFrom;
+  final Function(String) updateSelectedItem;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class CustomPageDropdownTitle extends StatelessWidget {
           chevronIconLink: chevronIconLink,
           currentSelectedItem: currentSelectedItem,
           itemsToSelectFrom: itemsToSelectFrom,
+          updateSelectedItem: updateSelectedItem,
         ),
       );
     }
@@ -48,6 +51,7 @@ class CustomPageDropdownTitle extends StatelessWidget {
           chevronIconLink: chevronIconLink,
           currentSelectedItem: currentSelectedItem,
           itemsToSelectFrom: itemsToSelectFrom,
+          updateSelectedItem: updateSelectedItem,
         ),
       ),
     );
@@ -61,12 +65,14 @@ class TitleBody extends StatefulWidget {
     required this.chevronIconLink,
     required this.currentSelectedItem,
     required this.itemsToSelectFrom,
+    required this.updateSelectedItem,
   }) : super(key: key);
 
   final String title;
   final String chevronIconLink;
   String currentSelectedItem;
   final List<String> itemsToSelectFrom;
+  final Function(String) updateSelectedItem;
 
   @override
   State<TitleBody> createState() => _TitleBodyState();
@@ -99,9 +105,7 @@ class _TitleBodyState extends State<TitleBody> {
               selectedItem: widget.currentSelectedItem,
               items: widget.itemsToSelectFrom,
               onChange: (String item) {
-                setState(() {
-                  widget.currentSelectedItem = item;
-                });
+                widget.updateSelectedItem(item);
               },
               chevronIconLink: widget.chevronIconLink,
               hideCircleAvatar: true,

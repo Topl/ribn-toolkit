@@ -405,14 +405,6 @@ class _WidgetBookState extends State<WidgetBook> {
                   ),
                 ),
                 WidgetbookUseCase(
-                  name: 'Pending',
-                  builder: (context) => const Center(
-                    child: StatusChip(
-                      status: 'pending',
-                    ),
-                  ),
-                ),
-                WidgetbookUseCase(
                   name: 'Confirmed',
                   builder: (context) => const Center(
                     child: StatusChip(
@@ -1187,6 +1179,11 @@ class _WidgetBookState extends State<WidgetBook> {
                     chevronIconLink: '',
                     currentSelectedItem: HelperClass.currentSelectedItem,
                     itemsToSelectFrom: HelperClass.itemsToSelectFrom,
+                    updateSelectedItem: (string) {
+                      setState(() {
+                        HelperClass.currentSelectedItem = string;
+                      });
+                    },
                   ),
                 ),
               ],

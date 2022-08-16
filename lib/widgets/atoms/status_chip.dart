@@ -14,16 +14,11 @@ class StatusChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     colorByStatus() {
-      switch (status) {
-        case 'unconfirmed':
-          return RibnColors.statusChipRed;
-        case 'pending':
-          return RibnColors.statusChipYellow;
-        case 'confirmed':
-          return RibnColors.statusChipGreen;
-        default:
-          return RibnColors.statusChipGreen;
+      if (status == 'confirmed') {
+        return RibnColors.statusChipGreen;
       }
+
+      return RibnColors.statusChipRed;
     }
 
     return Container(
