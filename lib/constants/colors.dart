@@ -32,9 +32,8 @@ class RibnColors {
   static const Color transparentGreyText = Color(0x73FFFFFF);
   static const Color transparentAlternateGreyText = Color(0x40FFFFFF);
   static const Color transparentPrimary = Color(0x73144C5F);
-  static const Color statusChipGrey = Color(0x4DDADADA);
-  static const Color statusChipYellow = Color(0xffFEE909);
+  static const Color statusChipBodyGrey = Color(0x4DDADADA);
+  static const Color statusChipGrey = Color(0xffC8C4C4);
   static const Color statusChipGreen = Color(0xff70FF00);
-  static const Color statusChipRed = Color(0xffFF6464);
   static const Color lightGreyDivider = Color(0xffCCD0D7);
 }

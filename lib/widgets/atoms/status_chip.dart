@@ -18,13 +18,13 @@ class StatusChip extends StatelessWidget {
         return RibnColors.statusChipGreen;
       }
 
-      return RibnColors.statusChipRed;
+      return RibnColors.statusChipGrey;
     }
 
     return Container(
       height: 18,
       decoration: BoxDecoration(
-        color: RibnColors.statusChipGrey,
+        color: RibnColors.statusChipBodyGrey,
         borderRadius: BorderRadius.circular(15),
       ),
       padding: const EdgeInsets.all(5),
