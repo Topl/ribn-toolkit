@@ -7,10 +7,10 @@ class RibnToolkitTextStyles {
   static const TextStyle h1 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 32,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
     color: RibnColors.defaultText,
     height: 1.57,
-    letterSpacing: 1.42,
+    letterSpacing: 1.68,
   );
 
   static const TextStyle h2 = TextStyle(
@@ -140,7 +140,7 @@ class RibnToolkitTextStyles {
   static const TextStyle onboardingH1 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 28,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
     color: RibnColors.lightGreyTitle,
     height: 1.67,
     letterSpacing: 1.42,
