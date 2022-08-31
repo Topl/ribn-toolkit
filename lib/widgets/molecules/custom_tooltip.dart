@@ -22,10 +22,14 @@ class CustomToolTip extends StatefulWidget {
   /// A color value to change the background.
   final Color toolTipBackgroundColor;
 
+  /// A color value to change the border.
+  final Border? borderColor;
+
   const CustomToolTip({
     Key? key,
     this.offsetPositionLeftValue = 150,
     this.toolTipBackgroundColor = RibnColors.background,
+    this.borderColor,
     required this.toolTipIcon,
     required this.toolTipChild,
   }) : super(key: key);
@@ -93,7 +97,7 @@ class _CustomToolTipState extends State<CustomToolTip> {
                   decoration: BoxDecoration(
                     color: widget.toolTipBackgroundColor,
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: RibnColors.lightGrey),
+                    border: widget.borderColor,
                     boxShadow: const [
                       BoxShadow(
                         color: RibnColors.blackShadow,
