@@ -41,7 +41,7 @@ class _AccordionState extends State<Accordion> {
         child: Theme(
           data: ThemeData().copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
-            tilePadding: const EdgeInsets.symmetric(horizontal: 10),
+            tilePadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
             trailing: Icon(
               isExpanded ? Icons.remove : Icons.add,
               size: 20,
@@ -62,7 +62,7 @@ class _AccordionState extends State<Accordion> {
                 height: 1,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                padding: const EdgeInsets.only(left: 30, top: 5, bottom: 15),
                 child: SizedBox(
                   width: 500,
                   child: widget.description,
