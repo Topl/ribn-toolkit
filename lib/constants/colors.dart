@@ -31,4 +31,5 @@ class RibnColors {
   static const Color transparentGreyText = Color(0x73FFFFFF);
   static const Color transparentAlternateGreyText = Color(0x40FFFFFF);
   static const Color transparentPrimary = Color(0x73144C5F);
+  static const Color paleGreen = Color(0x99D0DFE1);
 }
