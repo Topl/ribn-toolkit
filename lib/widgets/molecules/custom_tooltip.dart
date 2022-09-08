@@ -78,7 +78,7 @@ class _CustomToolTipState extends State<CustomToolTip> {
       builder: (context) {
         return Positioned(
           left: offset.dx - widget.offsetPositionLeftValue,
-          top: offset.dy + 10,
+          top: offset.dy + 20,
           child: GestureDetector(
             onPanUpdate: (details) {
               // allow dragging the tooltip container

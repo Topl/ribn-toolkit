@@ -118,7 +118,7 @@ class _RecipientFieldState extends State<RecipientField> {
       top: 3,
       left: 3,
       child: Container(
-        width: 300,
+        width: 250,
         height: 30,
         decoration: BoxDecoration(
           color: const Color(0xffefefef),
