@@ -173,6 +173,10 @@ class CustomText extends StatelessWidget {
         return RibnToolkitTextStyles.bodyExtraSmall.copyWith(
           color: color,
         );
+      case TextTagOptions.bodyExtraSmallMedium:
+        return RibnToolkitTextStyles.bodyExtraSmallMedium.copyWith(
+          color: color,
+        );
       case TextTagOptions.bodyExtraSmallBold:
         return RibnToolkitTextStyles.bodyExtraSmallBold.copyWith(
           color: color,
@@ -183,6 +187,10 @@ class CustomText extends StatelessWidget {
         );
       case TextTagOptions.bodySmall:
         return RibnToolkitTextStyles.bodySmall.copyWith(
+          color: color,
+        );
+      case TextTagOptions.bodySmallMedium:
+        return RibnToolkitTextStyles.bodySmallMedium.copyWith(
           color: color,
         );
       case TextTagOptions.bodySmallBold:
@@ -197,6 +205,10 @@ class CustomText extends StatelessWidget {
         return RibnToolkitTextStyles.bodyRegular.copyWith(
           color: color,
         );
+      case TextTagOptions.bodyRegularMedium:
+        return RibnToolkitTextStyles.bodyRegularMedium.copyWith(
+          color: color,
+        );
       case TextTagOptions.bodyRegularBold:
         return RibnToolkitTextStyles.bodyRegularBold.copyWith(
           color: color,
@@ -209,6 +221,10 @@ class CustomText extends StatelessWidget {
         return RibnToolkitTextStyles.bodyLarge.copyWith(
           color: color,
         );
+      case TextTagOptions.bodyLargeMedium:
+        return RibnToolkitTextStyles.bodyLargeMedium.copyWith(
+          color: color,
+        );
       case TextTagOptions.bodyLargeBold:
         return RibnToolkitTextStyles.bodyLargeBold.copyWith(
           color: color,
@@ -218,6 +234,10 @@ class CustomText extends StatelessWidget {
           color: color,
         );
       case TextTagOptions.bodyExtraLarge:
+        return RibnToolkitTextStyles.bodyExtraLarge.copyWith(
+          color: color,
+        );
+      case TextTagOptions.bodyExtraLargeMedium:
         return RibnToolkitTextStyles.bodyExtraLarge.copyWith(
           color: color,
         );

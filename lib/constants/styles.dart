@@ -198,6 +198,12 @@ class RibnToolkitTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static const TextStyle bodyExtraSmallMedium = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+  );
+
   static const TextStyle bodyExtraSmallBold = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 10,
@@ -215,6 +221,12 @@ class RibnToolkitTextStyles {
     fontFamily: 'DM Sans',
     fontSize: 12,
     fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle bodySmallMedium = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
   );
 
   static const TextStyle bodySmallBold = TextStyle(
@@ -236,6 +248,12 @@ class RibnToolkitTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static const TextStyle bodyRegularMedium = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
+
   static const TextStyle bodyRegularBold = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 14,
@@ -255,6 +273,12 @@ class RibnToolkitTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static const TextStyle bodyLargeMedium = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
   static const TextStyle bodyLargeBold = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 16,
@@ -272,6 +296,12 @@ class RibnToolkitTextStyles {
     fontFamily: 'DM Sans',
     fontSize: 18,
     fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle bodyExtraLargeMedium = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
   );
 
   static const TextStyle bodyExtraLargeBold = TextStyle(
