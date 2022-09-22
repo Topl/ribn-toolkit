@@ -4,35 +4,35 @@ import 'package:ribn_toolkit/constants/colors.dart';
 /// The custom [TextStyle]s being used in the app.
 class RibnToolkitTextStyles {
   RibnToolkitTextStyles._();
-  static const TextStyle h1 = TextStyle(
-    fontFamily: 'DM Sans',
-    fontSize: 32,
-    fontWeight: FontWeight.w700,
-    color: RibnColors.defaultText,
-    height: 1.57,
-    letterSpacing: 1.68,
-  );
+  // static const TextStyle h1 = TextStyle(
+  //   fontFamily: 'DM Sans',
+  //   fontSize: 32,
+  //   fontWeight: FontWeight.w700,
+  //   color: RibnColors.defaultText,
+  //   height: 1.57,
+  //   letterSpacing: 1.68,
+  // );
 
-  static const TextStyle h2 = TextStyle(
-    fontFamily: 'DM Sans',
-    fontSize: 24,
-    fontWeight: FontWeight.w400,
-    color: RibnColors.defaultText,
-    height: 1.34,
-  );
+  // static const TextStyle h2 = TextStyle(
+  //   fontFamily: 'DM Sans',
+  //   fontSize: 24,
+  //   fontWeight: FontWeight.w700,
+  //   color: RibnColors.defaultText,
+  //   height: 1.34,
+  // );
 
-  static const TextStyle h3 = TextStyle(
-    fontFamily: 'DM Sans',
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    color: RibnColors.defaultText,
-  );
+  // static const TextStyle h3 = TextStyle(
+  //   fontFamily: 'DM Sans',
+  //   fontSize: 16,
+  //   fontWeight: FontWeight.w400,
+  //   color: RibnColors.defaultText,
+  // );
 
-  static const TextStyle h4 = TextStyle(
-    fontFamily: 'DM Sans',
-    fontSize: 13,
-    fontWeight: FontWeight.w400,
-  );
+  // static const TextStyle h4 = TextStyle(
+  //   fontFamily: 'DM Sans',
+  //   fontSize: 13,
+  //   fontWeight: FontWeight.w400,
+  // );
 
   static const TextStyle body1 = TextStyle(
     fontFamily: 'DM Sans',
@@ -152,5 +152,138 @@ class RibnToolkitTextStyles {
     fontWeight: FontWeight.w400,
     color: RibnColors.lightGreyTitle,
     height: 1.6,
+  );
+
+  /// These are the new styles to be agreed upon
+  ///
+  ///
+  ///
+
+  static const TextStyle h1 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 36,
+    fontWeight: FontWeight.w700,
+    height: 1.57,
+    letterSpacing: 1.68,
+  );
+
+  static const TextStyle h2 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 30,
+    fontWeight: FontWeight.w700,
+    height: 1.34,
+  );
+
+  static const TextStyle h3 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle h4 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 21,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle h5 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle bodyExtraSmall = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle bodyExtraSmallBold = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 10,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle bodyExtraSmallSpacedOut = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    wordSpacing: 1,
+  );
+
+  static const TextStyle bodySmall = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle bodySmallBold = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle bodySmallSpacedOut = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    wordSpacing: 1,
+  );
+
+  static const TextStyle bodyRegular = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle bodyRegularBold = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle bodyRegularSpacedOut = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    wordSpacing: 1,
+  );
+
+  static const TextStyle bodyLarge = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle bodyLargeBold = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle bodyLargeSpacedOut = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    wordSpacing: 1,
+  );
+
+  static const TextStyle bodyExtraLarge = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle bodyExtraLargeBold = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle bodyExtraLargeSpacedOut = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    wordSpacing: 1,
   );
 }
