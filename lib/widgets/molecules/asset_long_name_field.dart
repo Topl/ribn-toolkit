@@ -58,6 +58,7 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
     return CustomInputField(
       informationText: Strings.assetLongNameInfo,
       itemLabel: Strings.assetLongName,
+      offsetPositionLeftValue: 50,
       item: Stack(
         children: [
           // textfield for entering the asset long name
