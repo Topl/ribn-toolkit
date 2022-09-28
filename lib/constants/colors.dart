@@ -36,4 +36,5 @@ class RibnColors {
   static const Color statusChipGrey = Color(0xffC8C4C4);
   static const Color statusChipGreen = Color(0xff70FF00);
   static const Color lightGreyDivider = Color(0xffCCD0D7);
+  static const Color paleGreen = Color(0x99D0DFE1);
 }
