@@ -64,7 +64,7 @@ class HelperClass {
 
   static bool customToggleValue = false;
 
-  static List<String> itemsToSelectFrom = ['Sent', 'Received', 'Minted'];
+  static List<String> itemsToSelectFrom = ['Sent', 'Received'];
 
   static String currentSelectedItem = 'Transaction types';
 }
