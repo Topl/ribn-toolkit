@@ -6,6 +6,9 @@ import 'package:ribn_toolkit/widgets/atoms/custom_close_button.dart';
 /// A custom widget for displaying tooltips.
 ///
 /// Displays [toolTipIcon] which, when pressed, opens a draggable tooltip, i.e. [toolTipChild].
+///
+/// @TODO: We should look into passing a global [OverlayEntry] widget from Ribn here so that there is only ever 1
+/// OverlayEntry on screen.
 class CustomToolTip extends StatefulWidget {
   /// The icon associated with the tooltip.
   final Widget? toolTipIcon;
@@ -19,10 +22,14 @@ class CustomToolTip extends StatefulWidget {
   /// A color value to change the background.
   final Color toolTipBackgroundColor;
 
+  /// A color value to change the border.
+  final Border? borderColor;
+
   const CustomToolTip({
     Key? key,
     this.offsetPositionLeftValue = 150,
     this.toolTipBackgroundColor = RibnColors.background,
+    this.borderColor,
     required this.toolTipIcon,
     required this.toolTipChild,
   }) : super(key: key);
@@ -33,6 +40,13 @@ class CustomToolTip extends StatefulWidget {
 
 class _CustomToolTipState extends State<CustomToolTip> {
   OverlayEntry overlayEntry = OverlayEntry(builder: (context) => const SizedBox());
+
+  @override
+  void didUpdateWidget(covariant CustomToolTip oldWidget) {
+    // tooltip should be dismissed when the parent widget rebuilds
+    if (overlayEntry.mounted) overlayEntry.remove();
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   void dispose() {
@@ -68,7 +82,7 @@ class _CustomToolTipState extends State<CustomToolTip> {
       builder: (context) {
         return Positioned(
           left: offset.dx - widget.offsetPositionLeftValue,
-          top: offset.dy + 10,
+          top: offset.dy + 20,
           child: GestureDetector(
             onPanUpdate: (details) {
               // allow dragging the tooltip container
@@ -83,7 +97,7 @@ class _CustomToolTipState extends State<CustomToolTip> {
                   decoration: BoxDecoration(
                     color: widget.toolTipBackgroundColor,
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: RibnColors.lightGrey),
+                    border: widget.borderColor,
                     boxShadow: const [
                       BoxShadow(
                         color: RibnColors.blackShadow,

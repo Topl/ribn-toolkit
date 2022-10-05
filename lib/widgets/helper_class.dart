@@ -32,16 +32,18 @@ class HelperClass {
 
   static String? selectedUnit;
 
-  static List pages = [0, 1];
+  static List pages = [0, 1, 2];
 
   static List<Image> pageIcons = [
     Image.asset(RibnAssets.walletGrey),
-    Image.asset(RibnAssets.plusGrey),
+    Image.asset(RibnAssets.circlePlus),
+    Image.asset(RibnAssets.clockGrey)
   ];
 
   static List<Image> activePageIcons = [
     Image.asset(RibnAssets.walletBlue),
-    Image.asset(RibnAssets.plusBlue),
+    Image.asset(RibnAssets.circlePlus),
+    Image.asset(RibnAssets.clockBlue)
   ];
 
   static int currPage = 0;
@@ -57,4 +59,12 @@ class HelperClass {
   static bool obscurePassword = true;
 
   static Map<int, String> stepLabels = {0: 'Step 1', 1: 'Step 2', 2: 'Step 3', 3: 'Step 4', 4: 'Step 5'};
+
+  static int currentTabIndex = 0;
+
+  static bool customToggleValue = false;
+
+  static List<String> itemsToSelectFrom = ['Sent', 'Received'];
+
+  static String currentSelectedItem = 'Transaction types';
 }

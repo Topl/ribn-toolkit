@@ -58,6 +58,7 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
     return CustomInputField(
       informationText: Strings.assetLongNameInfo,
       itemLabel: Strings.assetLongName,
+      offsetPositionLeftValue: 50,
       item: Stack(
         children: [
           // textfield for entering the asset long name
@@ -66,24 +67,27 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
             hintText: Strings.assetLongNameHint,
             maxLength: maxLength,
             height: 36,
+            hintColor: RibnColors.hintTextColor,
           ),
           // dropdown for selecting an asset icon
           Positioned(
-            right: -2,
-            top: 1,
-            child: CustomDropDown(
-              childAlignment: Alignment.bottomCenter,
-              dropDownAlignment: Alignment.topCenter,
-              visible: showIconDropdown,
-              onDismissed: () {
-                setState(() {
-                  showIconDropdown = false;
-                });
-              },
-              dropdownChild: _buildIconDropdownChild(),
-              chevronIcon: widget.chevronIcon,
-              selectedItem: widget.selectedIcon != null ? Image.asset(widget.selectedIcon!) : null,
-              hintText: 'Select Icon',
+            right: 0,
+            child: SizedBox(
+              height: 36,
+              child: CustomDropDown(
+                childAlignment: Alignment.bottomCenter,
+                dropDownAlignment: Alignment.topCenter,
+                visible: showIconDropdown,
+                onDismissed: () {
+                  setState(() {
+                    showIconDropdown = false;
+                  });
+                },
+                dropdownChild: _buildIconDropdownChild(),
+                chevronIcon: widget.chevronIcon,
+                selectedItem: widget.selectedIcon != null ? Image.asset(widget.selectedIcon!) : null,
+                hintText: 'Select Icon',
+              ),
             ),
           ),
         ],

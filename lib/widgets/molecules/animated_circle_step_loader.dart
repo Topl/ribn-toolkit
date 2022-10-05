@@ -1,17 +1,20 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 
 class AnimatedCircleStepLoader extends StatefulWidget {
-  AnimatedCircleStepLoader({
+  const AnimatedCircleStepLoader({
     required this.stepLabels,
     required this.showStepLoader,
+    this.durationInSeconds = 1,
     Key? key,
   }) : super(key: key);
 
   final Map<int, String> stepLabels;
-  Function showStepLoader;
+  final Function showStepLoader;
+  final int durationInSeconds;
 
   @override
   State<AnimatedCircleStepLoader> createState() => _AnimatedCircleStepLoaderState();
@@ -20,15 +23,15 @@ class AnimatedCircleStepLoader extends StatefulWidget {
 class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
   late final Timer timer;
   late int numCircles = widget.stepLabels.length;
-  final double smallRadius = 8;
-  final double bigRadius = 16;
+  final double smallRadius = 4.5;
+  final double bigRadius = 8;
   int currCircle = 0;
-  final Duration duration = const Duration(seconds: 2);
   late List<int> circlePositions = List.generate(numCircles, (idx) => idx).toList();
   bool seedPhraseGenerating = true;
 
   @override
   void initState() {
+    final Duration duration = Duration(seconds: widget.durationInSeconds);
     timer = Timer.periodic(duration, (timer) {
       if (timer.tick == numCircles) {
         widget.showStepLoader();
@@ -49,21 +52,20 @@ class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
-      width: 312,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(
-            height: 101,
-            width: 312,
+            width: kIsWeb ? double.infinity : 312,
             child: _buildTitle(currCircle),
           ),
-          SizedBox(
-            height: 30,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: circlePositions.map(_buildAnimatedContainer).toList(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50),
+            child: SizedBox(
+              height: 30,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: circlePositions.map(_buildAnimatedContainer).toList(),
+              ),
             ),
           ),
         ],
@@ -74,13 +76,14 @@ class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
   Widget _buildTitle(int position) {
     return Text(
       widget.stepLabels[position]!,
-      style: RibnToolkitTextStyles.h1,
+      style: RibnToolkitTextStyles.onboardingH1,
       textAlign: TextAlign.center,
     );
   }
 
   /// Animate color and radius of the active circles.
   Widget _buildAnimatedContainer(int position) {
+    final Duration duration = Duration(seconds: widget.durationInSeconds);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: AnimatedContainer(

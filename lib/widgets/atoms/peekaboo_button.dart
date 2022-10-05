@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
 
 /// The peekaboobutton shows/hides a button child element onpress
 class PeekabooButton extends StatefulWidget {
@@ -29,7 +30,8 @@ class _PeekabooButtonState extends State<PeekabooButton> {
             children: [
               widget.buttonText,
               Icon(
-                showingChild ? Icons.keyboard_arrow_down_outlined : Icons.keyboard_arrow_up_outlined,
+                showingChild ? Icons.keyboard_arrow_up_outlined : Icons.keyboard_arrow_down_outlined,
+                color: RibnColors.whiteBackground,
               ),
             ],
           ),

@@ -6,7 +6,10 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
+import 'package:ribn_toolkit/widgets/atoms/status_chip.dart';
 import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
 import 'package:ribn_toolkit/widgets/molecules/animated_circle_step_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
@@ -16,13 +19,14 @@ import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_modal.dart';
 import 'package:ribn_toolkit/widgets/molecules/loading_spinner.dart';
 import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/onboarding_action_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
@@ -35,7 +39,7 @@ import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
 import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
-import 'package:ribn_toolkit/widgets/organisms/progress_bar.dart';
+import 'package:ribn_toolkit/widgets/organisms/onboarding_progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -224,18 +228,16 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Square Button with Icon',
+              name: 'Onboarding Action Button',
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
                   builder: (context) => Center(
-                    child: SquareButtonWithIcon(
+                    child: OnboardingActionButton(
                       backgroundColor: RibnColors.primary,
-                      icon: Image.asset(RibnAssets.plusBlue, width: 30),
-                      text: Text(
-                        'BUTTON TEXT',
-                        style: RibnToolkitTextStyles.btnLarge.copyWith(color: Colors.white),
-                      ),
+                      icon: Image.asset(RibnAssets.importWalletPng),
+                      description: 'This is an example description text...',
+                      title: 'Button Title',
                       onPressed: () {},
                     ),
                   ),
@@ -368,6 +370,45 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: ErrorBubble(
                       inverted: true,
                       errorText: 'This is an error message',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Toggle Switch',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Center(
+                    child: CustomToggle(
+                      onChanged: (bool val) {
+                        setState(() {
+                          HelperClass.customToggleValue = val;
+                        });
+                      },
+                      value: HelperClass.customToggleValue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Status Chip',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Unconfirmed',
+                  builder: (context) => const Center(
+                    child: StatusChip(
+                      status: 'unconfirmed',
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Confirmed',
+                  builder: (context) => const Center(
+                    child: StatusChip(
+                      status: 'confirmed',
                     ),
                   ),
                 ),
@@ -515,8 +556,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'App Bar',
                   builder: (context) => Center(
                     child: InputDropdown(
-                        selectedNetwork: HelperClass.selectedNetwork,
-                        networks: HelperClass.networks,
+                        selectedItem: HelperClass.selectedNetwork,
+                        items: HelperClass.networks,
                         onChange: (string) {
                           setState(() {
                             HelperClass.selectedNetwork = string;
@@ -540,10 +581,6 @@ class _WidgetBookState extends State<WidgetBook> {
                         child: PasswordTextField(
                           hintText: 'Type Something',
                           controller: HelperClass.passwordController,
-                          icon: SvgPicture.asset(
-                            HelperClass.obscurePassword ? RibnAssets.passwordVisibleIon : RibnAssets.passwordHiddenIcon,
-                            width: 12,
-                          ),
                           obscurePassword: HelperClass.obscurePassword,
                         ),
                       ),
@@ -993,7 +1030,6 @@ class _WidgetBookState extends State<WidgetBook> {
                         await showDialog(
                           context: context,
                           builder: (context) => CustomModal.renderCustomModal(
-                            maxModalHeight: 100,
                             context: context,
                             title: const Text(
                               'Modal Title',
@@ -1040,12 +1076,11 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => const Center(
                     child: Accordion(
-                      header: 'This is an example accordion header',
-                      description: 'And this is some description text for the accordion.',
+                      header: Text('This is an example accordion header'),
+                      description: Text('And this is some description text for the accordion.'),
                       width: 400,
                       backgroundColor: Colors.white,
                       collapsedBackgroundColor: Colors.white,
-                      textColor: RibnColors.defaultText,
                       iconColor: RibnColors.defaultText,
                     ),
                   ),
@@ -1073,7 +1108,12 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: SlidingSegmentControl(
-                      currentTabIndex: 0,
+                      currentTabIndex: HelperClass.currentTabIndex,
+                      updateTabIndex: (i) => {
+                        setState(() {
+                          HelperClass.currentTabIndex = i as int;
+                        })
+                      },
                       tabItems: <int, Widget>{
                         0: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -1121,11 +1161,30 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Custom Page Title',
+              name: 'Custom Page Text Title',
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
-                  builder: (context) => const CustomPageTitle(title: 'Page Title'),
+                  builder: (context) => const CustomPageTextTitle(title: 'Page Title'),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Custom Page Dropdown Title',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => CustomPageDropdownTitle(
+                    title: 'Page Title',
+                    chevronIconLink: '',
+                    currentSelectedItem: HelperClass.currentSelectedItem,
+                    itemsToSelectFrom: HelperClass.itemsToSelectFrom,
+                    updateSelectedItem: (string) {
+                      setState(() {
+                        HelperClass.currentSelectedItem = string;
+                      });
+                    },
+                  ),
                 ),
               ],
             ),
@@ -1135,27 +1194,27 @@ class _WidgetBookState extends State<WidgetBook> {
                 WidgetbookUseCase(
                   name: 'First Step',
                   builder: (context) => Center(
-                    child: CustomProgressBar(
-                      currPage: 0,
-                      stepLabels: HelperClass.stepLabels,
+                    child: OnboardingProgressBar(
+                      currStep: 0,
+                      numSteps: 4,
                     ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Middle Step',
                   builder: (context) => Center(
-                    child: CustomProgressBar(
-                      currPage: 2,
-                      stepLabels: HelperClass.stepLabels,
+                    child: OnboardingProgressBar(
+                      currStep: 2,
+                      numSteps: 4,
                     ),
                   ),
                 ),
                 WidgetbookUseCase(
                   name: 'Final Step',
                   builder: (context) => Center(
-                    child: CustomProgressBar(
-                      currPage: 4,
-                      stepLabels: HelperClass.stepLabels,
+                    child: OnboardingProgressBar(
+                      currStep: 4,
+                      numSteps: 4,
                     ),
                   ),
                 ),
@@ -1221,7 +1280,7 @@ class _WidgetBookState extends State<WidgetBook> {
             nativeHeight: 844,
             scaleFactor: 1,
           ),
-          type: DeviceType.desktop,
+          type: DeviceType.mobile,
         ),
       ],
       appInfo: AppInfo(name: 'Ribn Toolkit'),

@@ -38,11 +38,23 @@ class CustomTextField extends StatelessWidget {
   /// Allows formatting text input in a custom manner.
   final List<TextInputFormatter> inputFormatters;
 
+  final Color? fillColor;
+
+  final Color? enabledBorderColor;
+
+  final Color? focusedBorderColor;
+
+  final Color? hintColor;
+
+  final int hintMaxLines;
+
+  final TextInputAction textInputAction;
+
   const CustomTextField({
     required this.controller,
     required this.hintText,
-    this.width = 310,
-    this.height = 30,
+    this.width = 350,
+    this.height = 40,
     this.maxLength,
     this.textAlignVertical,
     this.onChanged,
@@ -50,6 +62,12 @@ class CustomTextField extends StatelessWidget {
     this.hasError = false,
     this.keyboardType = TextInputType.text,
     this.inputFormatters = const [],
+    this.fillColor,
+    this.enabledBorderColor = const Color(0xffE9E9E9),
+    this.focusedBorderColor = const Color(0xffE9E9E9),
+    this.hintColor = const Color(0xff4C838D),
+    this.hintMaxLines = 2,
+    this.textInputAction = TextInputAction.next,
     Key? key,
   }) : super(key: key);
 
@@ -60,34 +78,35 @@ class CustomTextField extends StatelessWidget {
       height: height,
       child: TextField(
         controller: controller,
-        style: const TextStyle(
-          fontFamily: 'DM Sans',
-          fontSize: 12,
-          color: RibnColors.defaultText,
-        ),
+        style: RibnToolkitTextStyles.hintStyle,
         textAlignVertical: textAlignVertical,
         onChanged: onChanged,
         expands: true,
         maxLines: null,
         maxLength: maxLength,
         showCursor: showCursor,
+        keyboardType: keyboardType,
+        inputFormatters: inputFormatters,
+        textInputAction: textInputAction,
         decoration: InputDecoration(
           isDense: true,
           counterText: '',
           hintText: hintText,
-          hintStyle: RibnToolkitTextStyles.hintStyle,
+          hintStyle: RibnToolkitTextStyles.hintStyle.copyWith(color: hintColor),
+          hintMaxLines: hintMaxLines,
           border: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color(0xffE9E9E9)),
             borderRadius: BorderRadius.circular(5),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: hasError ? Colors.red : RibnColors.lightGrey),
+            borderSide: BorderSide(color: hasError ? Colors.red : enabledBorderColor ?? Colors.transparent),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: hasError ? Colors.red : RibnColors.active),
+            borderSide: BorderSide(color: hasError ? Colors.red : focusedBorderColor ?? Colors.transparent),
           ),
           filled: true,
           contentPadding: const EdgeInsets.all(5),
-          fillColor: Colors.white,
+          fillColor: fillColor ?? RibnColors.whiteBackground,
           floatingLabelBehavior: FloatingLabelBehavior.never,
         ),
       ),

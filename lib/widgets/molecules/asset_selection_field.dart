@@ -48,9 +48,6 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
   /// True if asset dropdown needs to be displayed.
   bool showAssetDropdown = false;
 
-  /// Scroll controller initialized for [Scrollbar] usage.
-  final ScrollController scrollController = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     return CustomInputField(
@@ -86,53 +83,56 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
           Radius.circular(4.7),
         ),
       ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 270,
-            child: MaterialButton(
-              highlightElevation: 0,
-              hoverElevation: 0,
-              focusElevation: 0,
-              elevation: 0,
-              color: RibnColors.lightGrey,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(5),
-                  topRight: Radius.circular(1),
-                  bottomRight: Radius.circular(1),
-                  bottomLeft: Radius.circular(5),
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            showAssetDropdown = true;
+          });
+        },
+        child: Stack(
+          children: [
+            Row(
+              children: [
+                Container(
+                  width: 270,
+                  decoration: const BoxDecoration(
+                    color: RibnColors.lightGrey,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(5),
+                      topRight: Radius.circular(1),
+                      bottomRight: Radius.circular(1),
+                      bottomLeft: Radius.circular(5),
+                    ),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 2),
+                  child: Container(
+                    width: 31,
+                    height: 30,
+                    child: widget.chevronIcon,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(1),
+                        topRight: Radius.circular(5),
+                        bottomRight: Radius.circular(5),
+                        bottomLeft: Radius.circular(1),
+                      ),
+                      color: RibnColors.lightGrey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
               child: AssetInfo(
                 assetCode: widget.formattedSelectedAsset!['assetCode'],
                 formattedAsset: widget.formattedSelectedAsset,
               ),
-              onPressed: () {
-                setState(() {
-                  showAssetDropdown = true;
-                });
-              },
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 2),
-            child: Container(
-              width: 31,
-              height: 28,
-              child: widget.chevronIcon,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(1),
-                  topRight: Radius.circular(5),
-                  bottomRight: Radius.circular(5),
-                  bottomLeft: Radius.circular(1),
-                ),
-                color: RibnColors.lightGrey,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -149,34 +149,37 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
       ),
       width: 310,
       constraints: const BoxConstraints(maxHeight: 86, minHeight: 0),
-      child: Scrollbar(
-        controller: scrollController,
-        isAlwaysShown: true,
-        child: ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          controller: scrollController,
-          children: widget.assets
-              .map(
-                (asset) => MaterialButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    widget.onSelected(asset);
+      child: MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: Scrollbar(
+          thumbVisibility: true,
+          child: ListView(
+            padding: const EdgeInsets.all(0),
+            shrinkWrap: false,
+            scrollDirection: Axis.vertical,
+            children: widget.assets
+                .map(
+                  (asset) => MaterialButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      widget.onSelected(asset);
 
-                    setState(() {
-                      showAssetDropdown = false;
-                    });
-                  },
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: AssetInfo(
-                      assetCode: asset.assetCode,
-                      formattedAsset: widget.formattedAsset(asset),
+                      setState(() {
+                        showAssetDropdown = false;
+                      });
+                    },
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: AssetInfo(
+                        assetCode: asset.assetCode,
+                        formattedAsset: widget.formattedAsset(asset),
+                      ),
                     ),
                   ),
-                ),
-              )
-              .toList(),
+                )
+                .toList(),
+          ),
         ),
       ),
     );

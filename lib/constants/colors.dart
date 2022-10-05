@@ -26,5 +26,15 @@ class RibnColors {
   static const Color assetCardShadow = Color(0x80E2ECF9);
   static const Color assetCardHoverColor = Color(0xFFFBFCFC);
   static const Color blackShadow = Color(0x0D000000);
+  static const Color greyShadow = Color(0x80E2ECF9);
   static const Color lightGreyTitle = Color(0xFFE5E5E5);
+  static const Color greyTransparent = Color(0x33979797);
+  static const Color transparentGreyText = Color(0x73FFFFFF);
+  static const Color transparentAlternateGreyText = Color(0x40FFFFFF);
+  static const Color transparentPrimary = Color(0x73144C5F);
+  static const Color statusChipBodyGrey = Color(0x4DDADADA);
+  static const Color statusChipGrey = Color(0xffC8C4C4);
+  static const Color statusChipGreen = Color(0xff70FF00);
+  static const Color lightGreyDivider = Color(0xffCCD0D7);
+  static const Color paleGreen = Color(0x99D0DFE1);
 }

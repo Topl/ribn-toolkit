@@ -1,67 +1,95 @@
 import 'package:flutter/material.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
+import 'package:ribn_toolkit/constants/styles.dart';
 
 class SquareButtonWithIcon extends StatelessWidget {
-  const SquareButtonWithIcon(
-      {required this.backgroundColor, required this.icon, required this.text, required this.onPressed, Key? key})
-      : super(key: key);
+  const SquareButtonWithIcon({
+    required this.backgroundColor,
+    required this.icon,
+    required this.title,
+    required this.description,
+    required this.onPressed,
+    this.lineHeight = 2.5,
+    Key? key,
+  }) : super(key: key);
 
+  /// Background color of the container
   final Color backgroundColor;
+
+  /// Leading icon
   final Image icon;
-  final Widget text;
-  final void Function()? onPressed;
+
+  /// Title shown next to the icon
+  final String title;
+
+  /// Description shown in the container
+  final String description;
+
+  /// Callback for when button is pressed
+  final VoidCallback onPressed;
+
+  /// Lineheight of the title
+  final double lineHeight;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 220,
-      width: 320,
-      child: OutlinedButton(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(11),
-            ),
+    return Container(
+      height: 218,
+      width: 349,
+      decoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: RibnColors.whiteButtonShadow,
+            spreadRadius: 0,
+            blurRadius: 22,
+            offset: Offset(0, 6),
           ),
-          minimumSize: MaterialStateProperty.all(
-            const Size(285, 165),
-          ),
-          padding: MaterialStateProperty.all<EdgeInsets>(
-            const EdgeInsets.all(0),
-          ),
-          backgroundColor: MaterialStateProperty.all(backgroundColor),
-        ),
-        onPressed: onPressed,
+        ],
+      ),
+      child: MaterialButton(
+        elevation: 0,
+        hoverElevation: 0,
+        color: backgroundColor,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 30, right: 30),
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(50),
+            const SizedBox(height: 5),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(width: 80, child: icon),
+                SizedBox(
+                  child: Text(
+                    title,
+                    textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
+                    style: RibnToolkitTextStyles.h1.copyWith(
+                      color: RibnColors.lightGreyTitle,
+                      fontSize: 19.5,
+                      height: lineHeight,
                     ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(18),
-                    child: icon,
-                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 22.0),
+              child: Text(
+                description,
+                style: RibnToolkitTextStyles.h3.copyWith(
+                  fontSize: 18,
+                  color: RibnColors.lightGreyTitle,
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 30, bottom: 30),
-                child: text,
-              ),
-            ),
           ],
+        ),
+        onPressed: onPressed,
+        hoverColor: RibnColors.primaryButtonHover,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+          side: const BorderSide(
+            color: Colors.transparent,
+          ),
         ),
       ),
     );
