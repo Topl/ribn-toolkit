@@ -6,8 +6,8 @@ import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 
 /// A widget to display the title, back arrow button and cancel button on top of the page.
-class CustomPageTitle extends StatelessWidget {
-  const CustomPageTitle(
+class CustomPageTextTitle extends StatelessWidget {
+  const CustomPageTextTitle(
       {required this.title,
       this.hideBackArrow = false,
       this.hideCloseCross = false,

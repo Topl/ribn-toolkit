@@ -21,6 +21,13 @@ class RibnToolkitTextStyles {
     height: 1.34,
   );
 
+  static const TextStyle largeh3 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: RibnColors.defaultText,
+  );
+
   static const TextStyle h3 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 16,
@@ -152,5 +159,14 @@ class RibnToolkitTextStyles {
     fontWeight: FontWeight.w400,
     color: RibnColors.lightGreyTitle,
     height: 1.6,
+  );
+
+  static const TextStyle statusChip = TextStyle(
+    color: RibnColors.defaultText,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'DM Sans',
+    fontSize: 9,
+    decoration: TextDecoration.none,
+    height: 1,
   );
 }

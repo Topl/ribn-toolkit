@@ -6,8 +6,10 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
+import 'package:ribn_toolkit/widgets/atoms/status_chip.dart';
 import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
 import 'package:ribn_toolkit/widgets/molecules/animated_circle_step_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
@@ -17,7 +19,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
@@ -391,6 +393,27 @@ class _WidgetBookState extends State<WidgetBook> {
                 ),
               ],
             ),
+            WidgetbookComponent(
+              name: 'Status Chip',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Unconfirmed',
+                  builder: (context) => const Center(
+                    child: StatusChip(
+                      status: 'unconfirmed',
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Confirmed',
+                  builder: (context) => const Center(
+                    child: StatusChip(
+                      status: 'confirmed',
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
         WidgetbookCategory(
@@ -533,8 +556,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'App Bar',
                   builder: (context) => Center(
                     child: InputDropdown(
-                        selectedNetwork: HelperClass.selectedNetwork,
-                        networks: HelperClass.networks,
+                        selectedItem: HelperClass.selectedNetwork,
+                        items: HelperClass.networks,
                         onChange: (string) {
                           setState(() {
                             HelperClass.selectedNetwork = string;
@@ -1138,11 +1161,30 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Custom Page Title',
+              name: 'Custom Page Text Title',
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
-                  builder: (context) => const CustomPageTitle(title: 'Page Title'),
+                  builder: (context) => const CustomPageTextTitle(title: 'Page Title'),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Custom Page Dropdown Title',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => CustomPageDropdownTitle(
+                    title: 'Page Title',
+                    chevronIconLink: '',
+                    currentSelectedItem: HelperClass.currentSelectedItem,
+                    itemsToSelectFrom: HelperClass.itemsToSelectFrom,
+                    updateSelectedItem: (string) {
+                      setState(() {
+                        HelperClass.currentSelectedItem = string;
+                      });
+                    },
+                  ),
                 ),
               ],
             ),

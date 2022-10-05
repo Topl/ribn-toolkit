@@ -76,6 +76,9 @@ class RibnAssets {
   static const plusGrey = 'assets/icons/plus_grey.png';
   static const walletBlue = 'assets/icons/wallet_blue.png';
   static const walletGrey = 'assets/icons/wallet_grey.png';
+  static const clockBlue = 'assets/icons/clock_blue.png';
+  static const clockGrey = 'assets/icons/clock_grey.png';
+  static const circlePlus = 'assets/icons/circle_plus.png';
   static const copyIcon = 'assets/icons/copy_icon.png';
   static const importWalletPng = 'assets/icons/import_wallet.png';
   static const passwordVisiblePng = 'assets/icons/password_visible.png';

@@ -5,17 +5,19 @@ import 'package:ribn_toolkit/utils.dart';
 
 class InputDropdown extends StatefulWidget {
   const InputDropdown({
-    required this.selectedNetwork,
-    required this.networks,
+    required this.selectedItem,
+    required this.items,
     required this.onChange,
     required this.chevronIconLink,
+    this.hideCircleAvatar = false,
     Key? key,
   }) : super(key: key);
 
-  final String selectedNetwork;
-  final List<String> networks;
+  final String selectedItem;
+  final List<String> items;
   final Function(String) onChange;
   final String chevronIconLink;
+  final bool hideCircleAvatar;
 
   @override
   State<InputDropdown> createState() => _InputDropdownState();
@@ -27,7 +29,6 @@ class _InputDropdownState extends State<InputDropdown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 95,
       height: 21,
       decoration: BoxDecoration(
         color: isHovered ? RibnColors.primaryButtonHover : RibnColors.primary,
@@ -49,24 +50,33 @@ class _InputDropdownState extends State<InputDropdown> {
           padding: const EdgeInsets.all(0.0),
           elevation: 0,
           itemBuilder: (context) {
-            return widget.networks.map(
-              (String networkName) {
+            return widget.items.map(
+              (String item) {
                 return PopupMenuItem(
-                  value: networkName,
+                  value: item,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 15, right: 5),
-                        child: CircleAvatar(
-                          backgroundColor:
-                              networkName == widget.selectedNetwork ? const Color(0xFF80FF00) : const Color(0xffbdbdbd),
-                          radius: 3,
-                        ),
+                        padding: widget.hideCircleAvatar
+                            ? const EdgeInsets.only(left: 5, right: 5)
+                            : const EdgeInsets.only(left: 15, right: 5),
+                        child: widget.hideCircleAvatar
+                            ? item == widget.selectedItem
+                                ? const Icon(
+                                    Icons.check,
+                                    size: 16,
+                                  )
+                                : const SizedBox()
+                            : CircleAvatar(
+                                backgroundColor:
+                                    item == widget.selectedItem ? const Color(0xFF80FF00) : const Color(0xffbdbdbd),
+                                radius: 3,
+                              ),
                       ),
                       Text(
-                        capitalize(networkName),
+                        capitalize(item),
                         style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
                           color: RibnColors.defaultText,
                         ),
@@ -81,20 +91,24 @@ class _InputDropdownState extends State<InputDropdown> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5),
-                child: CircleAvatar(backgroundColor: Color(0xFF80FF00), radius: 3),
-              ),
+              widget.hideCircleAvatar
+                  ? const SizedBox()
+                  : const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      child: CircleAvatar(backgroundColor: Color(0xFF80FF00), radius: 3),
+                    ),
               SizedBox(
                 height: 20,
-                width: 50,
                 child: Center(
-                  child: Text(
-                    capitalize(widget.selectedNetwork),
-                    style: RibnToolkitTextStyles.h3.copyWith(
-                      color: Colors.white,
-                      fontSize: 10,
-                      height: 1.2,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      capitalize(widget.selectedItem),
+                      style: RibnToolkitTextStyles.h3.copyWith(
+                        color: Colors.white,
+                        fontSize: 10,
+                        height: 1.2,
+                      ),
                     ),
                   ),
                 ),
@@ -105,8 +119,8 @@ class _InputDropdownState extends State<InputDropdown> {
               ),
             ],
           ),
-          onSelected: (String network) {
-            widget.onChange(network);
+          onSelected: (String item) {
+            widget.onChange(item);
           },
         ),
       ),
