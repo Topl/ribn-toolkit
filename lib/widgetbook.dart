@@ -884,6 +884,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      borderColor: Border.all(color: const Color(0xffE9E9E9)),
                       toolTipIcon: Image.asset(
                         RibnAssets.greyHelpBubble,
                         width: 18,
@@ -899,6 +900,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Subtitled',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      borderColor: Border.all(color: const Color(0xffE9E9E9)),
                       toolTipIcon: Image.asset(
                         RibnAssets.greyHelpBubble,
                         width: 18,
@@ -924,6 +926,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'With link',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      borderColor: Border.all(color: const Color(0xffE9E9E9)),
                       toolTipIcon: Image.asset(
                         RibnAssets.greyHelpBubble,
                         width: 18,
