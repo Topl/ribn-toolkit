@@ -62,11 +62,8 @@ class _AccordionState extends State<Accordion> {
                 height: 1,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30, top: 5, bottom: 15),
-                child: SizedBox(
-                  width: 500,
-                  child: widget.description,
-                ),
+                padding: const EdgeInsets.only(left: 30, top: 5, bottom: 15, right: 50),
+                child: widget.description,
               ),
             ],
             expandedCrossAxisAlignment: CrossAxisAlignment.start,

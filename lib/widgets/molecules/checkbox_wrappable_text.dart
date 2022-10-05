@@ -103,6 +103,7 @@ class CheckboxWrappableText extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 6),
                       child: CustomToolTip(
+                        borderColor: Border.all(color: const Color(0xffE9E9E9)),
                         toolTipIcon: Image.asset(
                           RibnAssets.roundInfoCircle,
                           width: 24,
