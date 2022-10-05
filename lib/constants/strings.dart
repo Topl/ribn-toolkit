@@ -12,6 +12,8 @@ class Strings {
   static const String howIsMySeedPhraseUnrecoverable = 'How is my Seed Phrase or Wallet Password unrecoverable?';
   static const String howIsMySeedPhraseUnrecoverableNewLine =
       '''You are the only one with a record of your Seed Phrase or Wallet Password.\nTopl does not maintain or have any way to generate either of these for you.''';
+  static const String howIsMySeedPhraseUnrecoverableMultipleLines =
+      '''You are the only one with a record of your Seed Phrase\nor Wallet Password. Topl does not maintain or have any\nway to generate either of these for you.''';
   static const String generateSeedPhrase = 'GENERATE SEED PHRASE';
   static const String confirmSeedPhrase = 'CONFIRM SEED PHRASE';
   static const String assetCodeShortInfo =

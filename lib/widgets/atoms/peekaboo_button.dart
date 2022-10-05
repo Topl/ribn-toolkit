@@ -30,7 +30,7 @@ class _PeekabooButtonState extends State<PeekabooButton> {
             children: [
               widget.buttonText,
               Icon(
-                showingChild ? Icons.keyboard_arrow_down_outlined : Icons.keyboard_arrow_up_outlined,
+                showingChild ? Icons.keyboard_arrow_up_outlined : Icons.keyboard_arrow_down_outlined,
                 color: RibnColors.whiteBackground,
               ),
             ],

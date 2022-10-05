@@ -7,11 +7,12 @@ class RibnToolkitTextStyles {
   static const TextStyle h1 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 32,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
     color: RibnColors.defaultText,
     height: 1.57,
-    letterSpacing: 1.42,
+    letterSpacing: 1.68,
   );
+
   static const TextStyle h2 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 24,
@@ -19,29 +20,34 @@ class RibnToolkitTextStyles {
     color: RibnColors.defaultText,
     height: 1.34,
   );
+
   static const TextStyle largeh3 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 18,
     fontWeight: FontWeight.w500,
     color: RibnColors.defaultText,
   );
+
   static const TextStyle h3 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 16,
     fontWeight: FontWeight.w400,
     color: RibnColors.defaultText,
   );
+
   static const TextStyle h4 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 13,
     fontWeight: FontWeight.w400,
   );
+
   static const TextStyle body1 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 16,
     color: RibnColors.defaultText,
     height: 2.67,
   );
+
   static const TextStyle body1Bold = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 16,
@@ -49,6 +55,7 @@ class RibnToolkitTextStyles {
     fontWeight: FontWeight.w500,
     height: 1.2,
   );
+
   static const TextStyle smallBoldLabel = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 13,
@@ -63,12 +70,14 @@ class RibnToolkitTextStyles {
     fontWeight: FontWeight.bold,
     letterSpacing: 1,
   );
+
   static const TextStyle extH3 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 16,
     fontWeight: FontWeight.w500,
     letterSpacing: 1,
   );
+
   static const TextStyle hintStyle = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 12,
@@ -138,7 +147,7 @@ class RibnToolkitTextStyles {
   static const TextStyle onboardingH1 = TextStyle(
     fontFamily: 'DM Sans',
     fontSize: 28,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
     color: RibnColors.lightGreyTitle,
     height: 1.67,
     letterSpacing: 1.42,

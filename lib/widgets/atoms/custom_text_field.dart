@@ -63,8 +63,8 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.inputFormatters = const [],
     this.fillColor,
-    this.enabledBorderColor,
-    this.focusedBorderColor,
+    this.enabledBorderColor = const Color(0xffE9E9E9),
+    this.focusedBorderColor = const Color(0xffE9E9E9),
     this.hintColor = const Color(0xff4C838D),
     this.hintMaxLines = 2,
     this.textInputAction = TextInputAction.next,
@@ -95,6 +95,7 @@ class CustomTextField extends StatelessWidget {
           hintStyle: RibnToolkitTextStyles.hintStyle.copyWith(color: hintColor),
           hintMaxLines: hintMaxLines,
           border: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color(0xffE9E9E9)),
             borderRadius: BorderRadius.circular(5),
           ),
           enabledBorder: OutlineInputBorder(
@@ -105,7 +106,7 @@ class CustomTextField extends StatelessWidget {
           ),
           filled: true,
           contentPadding: const EdgeInsets.all(5),
-          fillColor: fillColor ?? RibnColors.whiteBackground.withOpacity(0.36),
+          fillColor: fillColor ?? RibnColors.whiteBackground,
           floatingLabelBehavior: FloatingLabelBehavior.never,
         ),
       ),

@@ -1,7 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
+import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
 
 /// A custom checkbox widget that shows a checkbox and an associated [label] or [wrappableText] next to it.
 ///
@@ -19,6 +22,7 @@ class CheckboxWrappableText extends StatelessWidget {
     this.label,
     required this.onChanged,
     this.checkboxTopPadding = kIsWeb ? 5 : 0,
+    this.renderTooltipIcon = false,
     Key? key,
   })  : assert(wrapText ? wrappableText != null : label != null),
         super(key: key);
@@ -52,6 +56,9 @@ class CheckboxWrappableText extends StatelessWidget {
 
   /// Top padding on the checkbox
   final double checkboxTopPadding;
+
+  /// Should render the tooltip icon
+  final bool renderTooltipIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +97,42 @@ class CheckboxWrappableText extends StatelessWidget {
                     color: activeText ? RibnColors.lightGreyTitle : RibnColors.transparentAlternateGreyText,
                   ),
                 ),
+                if (renderTooltipIcon == true)
+                  WidgetSpan(
+                    alignment: kIsWeb ? PlaceholderAlignment.top : PlaceholderAlignment.bottom,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 6),
+                      child: CustomToolTip(
+                        toolTipIcon: Image.asset(
+                          RibnAssets.roundInfoCircle,
+                          width: 24,
+                          color: activeText ? RibnColors.lightGreyTitle : RibnColors.transparentAlternateGreyText,
+                        ),
+                        toolTipChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              Strings.howIsMySeedPhraseUnrecoverable,
+                              style: RibnToolkitTextStyles.toolTipTextStyle.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              kIsWeb
+                                  ? Strings.howIsMySeedPhraseUnrecoverableNewLine
+                                  : Strings.howIsMySeedPhraseUnrecoverableMultipleLines,
+                              style: RibnToolkitTextStyles.toolTipTextStyle.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                        toolTipBackgroundColor: RibnColors.primary,
+                      ),
+                    ),
+                  )
               ],
             ),
           )
