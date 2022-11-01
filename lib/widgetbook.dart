@@ -39,6 +39,7 @@ import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
 import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title_with_leading_child.dart';
 import 'package:ribn_toolkit/widgets/organisms/onboarding_progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
@@ -1187,6 +1188,24 @@ class _WidgetBookState extends State<WidgetBook> {
                         HelperClass.currentSelectedItem = string;
                       });
                     },
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Custom Page Text Title With Leading Child',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => CustomPageTextTitleWithLeadingChild(
+                    title: 'Page Title',
+                    child: InputDropdown(
+                      selectedItem: HelperClass.selectedNetwork,
+                      items: HelperClass.networks,
+                      onChange: (string) {},
+                      chevronIconLink: RibnAssets.chevronDown,
+                      enabled: false,
+                    ),
                   ),
                 ),
               ],
