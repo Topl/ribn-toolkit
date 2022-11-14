@@ -31,3 +31,5 @@ You can run the app locally by changing into the project directory and entering 
   
  **N.B. The reason we run the project with this specific command is because the Ribn project uses the html web renderer. Starting Ribn Toolkit without this command will produce UI inconsistencies when widgets from this library are imported into Ribn.**
   
+## Deployment
+Ribn Toolkit is hosted through heroku - see @OlliePorter for details. To visit the live site you can go http://ribn-toolkit.topl.co/.
