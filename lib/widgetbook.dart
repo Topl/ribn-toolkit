@@ -6,6 +6,7 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
+import 'package:ribn_toolkit/widgets/atoms/animated_expand_button.dart';
 import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
@@ -187,6 +188,28 @@ class _WidgetBookState extends State<WidgetBook> {
                       borderColor: RibnColors.ghostButtonText,
                       onPressed: () {},
                     ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Animated Expand Button',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: AnimatedExpandButton(
+                          backgroundColor: Colors.transparent,
+                          onPressed: () {},
+                          title: 'Test',
+                          height: 45,
+                          width: 80,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

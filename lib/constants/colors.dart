@@ -38,5 +38,5 @@ class RibnColors {
   static const Color lightGreyDivider = Color(0xffCCD0D7);
   static const Color paleGreen = Color(0x99D0DFE1);
   static const Color darkGreen = Color(0xff0D986A);
-  static const Color mediumGrey = Color(0x26C4C4C4);
+  static const Color mediumGrey = Color(0xffF0F0F0);
 }
