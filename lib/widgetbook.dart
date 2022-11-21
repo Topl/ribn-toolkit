@@ -1123,6 +1123,11 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: AnimatedCircleStepLoader(
                       stepLabels: HelperClass.stepLabels,
                       showStepLoader: () {},
+                      activeCircleColor: RibnColors.primary,
+                      inactiveCircleColor: RibnColors.inactive,
+                      activeCircleRadius: 8,
+                      inactiveCircleRadius: 4.5,
+                      dotPadding: 8,
                     ),
                   ),
                 ),
