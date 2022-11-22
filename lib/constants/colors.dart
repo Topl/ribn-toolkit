@@ -13,6 +13,7 @@ class RibnColors {
   static const Color inactive = Color(0xFF7795A0);
   static const Color active = Color(0xFF8AE3CF);
   static const Color lightGrey = Color(0xFFEEEEEE);
+  static const Color paleGrey = Color(0xffF1F1F1);
   static const Color background = Color(0xFFF8F8F8);
   static const Color whiteBackground = Color(0xfffefefe);
   static const Color hintTextColor = Color(0xffbcbcbc);
