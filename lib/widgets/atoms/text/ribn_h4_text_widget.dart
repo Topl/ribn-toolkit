@@ -2,20 +2,21 @@ import 'package:flutter/cupertino.dart';
 import '../../../constants/styles.dart';
 
 /// @dev This widget is to be used by any other widget thats wants to use H2
-class RibnH2TextWidget extends StatelessWidget {
+class RibnH4TextWidget extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
   final Color textColor;
   final FontWeight fontWeight;
   final double letterSpacing;
-  const RibnH2TextWidget(
-      {Key? key,
-      required this.text,
-      required this.textAlign,
-      required this.textColor,
-      required this.fontWeight,
-      required this.letterSpacing})
+
+  const RibnH4TextWidget({Key? key,
+    required this.text,
+    required this.textAlign,
+    required this.textColor,
+    required this.fontWeight,
+    required this.letterSpacing})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -23,7 +24,7 @@ class RibnH2TextWidget extends StatelessWidget {
       text,
       style: TextStyle(
           fontFamily: 'DM Sans',
-          fontSize: 24,
+          fontSize: 21,
           fontWeight: fontWeight,
           letterSpacing: letterSpacing,
           color: textColor),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_close_button.dart';
 
