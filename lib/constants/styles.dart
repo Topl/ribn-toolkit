@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 
-/// The custom [TextStyle]s being used in the app.
+///@dev The custom [TextStyle]s being used in the app.
+///@notice These are the new styles to be agreed upon
 class RibnToolkitTextStyles {
   RibnToolkitTextStyles._();
   // static const TextStyle h1 = TextStyle(
@@ -153,11 +154,6 @@ class RibnToolkitTextStyles {
     color: RibnColors.lightGreyTitle,
     height: 1.6,
   );
-
-  /// These are the new styles to be agreed upon
-  ///
-  ///
-  ///
 
   static const TextStyle h1 = TextStyle(
     fontFamily: 'DM Sans',
