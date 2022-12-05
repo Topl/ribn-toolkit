@@ -149,7 +149,7 @@ class _WidgetBookState extends State<WidgetBook> {
         WidgetbookCategory(
           name: 'Atoms',
           widgets: [
-             WidgetbookComponent(
+            WidgetbookComponent(
               name: 'Text Widgets',
               useCases: [
                 WidgetbookUseCase(
