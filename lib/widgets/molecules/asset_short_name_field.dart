@@ -14,7 +14,9 @@ class AssetShortNameField extends StatefulWidget {
   /// Renders tooltip icon
   final Image tooltipIcon;
 
-  const AssetShortNameField({Key? key, required this.controller, required this.tooltipIcon}) : super(key: key);
+  const AssetShortNameField(
+      {Key? key, required this.controller, required this.tooltipIcon})
+      : super(key: key);
 
   @override
   _AssetShortNameFieldState createState() => _AssetShortNameFieldState();

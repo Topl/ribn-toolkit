@@ -78,7 +78,8 @@ class _RecipientFieldState extends State<RecipientField> {
                     onFocusChange: handleFocusChange,
                     onKey: (focusNode, rawKeyEvent) {
                       // listen for backspace and call handler
-                      if (rawKeyEvent.isKeyPressed(LogicalKeyboardKey.backspace)) {
+                      if (rawKeyEvent
+                          .isKeyPressed(LogicalKeyboardKey.backspace)) {
                         widget.onBackspacePressed();
                       }
                       return KeyEventResult.ignored;
@@ -101,7 +102,9 @@ class _RecipientFieldState extends State<RecipientField> {
                       childAnchor: Alignment.bottomLeft,
                     ),
                   ),
-                  widget.isValidRecipient() ? _buildValidAddressDisplay() : const SizedBox(),
+                  widget.isValidRecipient()
+                      ? _buildValidAddressDisplay()
+                      : const SizedBox(),
                 ],
               ),
         tooltipIcon: Image.asset(
@@ -149,7 +152,8 @@ class _RecipientFieldState extends State<RecipientField> {
   /// If the textfield has an invalid address at the time of losing focus,
   /// the error message is displayed.
   void handleFocusChange(bool gotFocus) {
-    final bool invalidAddressEntered = !widget.isTextFieldEmpty() && !widget.isValidRecipient();
+    final bool invalidAddressEntered =
+        !widget.isTextFieldEmpty() && !widget.isValidRecipient();
     // if focus is lost and a invalid address entered
     if (!gotFocus && invalidAddressEntered) {
       setState(() {

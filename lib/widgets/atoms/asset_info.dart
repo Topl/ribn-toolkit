@@ -43,7 +43,8 @@ class AssetInfo extends StatelessWidget {
             height: 19,
             child: assetNotSelected
                 ? Image.asset(RibnAssets.unselectedAsset)
-                : Image.asset(formattedAsset!['assetIcon'] ?? RibnAssets.undefinedIcon),
+                : Image.asset(
+                    formattedAsset!['assetIcon'] ?? RibnAssets.undefinedIcon),
           ),
         ),
         assetNotSelected

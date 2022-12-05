@@ -38,7 +38,8 @@ class CustomToolTip extends StatefulWidget {
 }
 
 class _CustomToolTipState extends State<CustomToolTip> {
-  OverlayEntry overlayEntry = OverlayEntry(builder: (context) => const SizedBox());
+  OverlayEntry overlayEntry =
+      OverlayEntry(builder: (context) => const SizedBox());
 
   @override
   void didUpdateWidget(covariant CustomToolTip oldWidget) {
@@ -91,7 +92,8 @@ class _CustomToolTipState extends State<CustomToolTip> {
             child: Stack(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                   constraints: const BoxConstraints(),
                   decoration: BoxDecoration(
                     color: widget.toolTipBackgroundColor,

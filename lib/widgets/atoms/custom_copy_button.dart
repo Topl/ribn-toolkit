@@ -59,7 +59,7 @@ class _CustomCopyButtonState extends State<CustomCopyButton> {
         child: widget.icon,
       ),
       portal: Container(
-        width: 138,
+        width: 100,
         height: 36,
         decoration: const BoxDecoration(
           color: Color(0xfffefffe),

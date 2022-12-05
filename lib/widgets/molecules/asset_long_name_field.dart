@@ -57,6 +57,7 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
     return CustomInputField(
       informationText: Strings.assetLongNameInfo,
       itemLabel: Strings.assetLongName,
+      offsetPositionLeftValue: 50,
       item: Stack(
         children: [
           // textfield for entering the asset long name
@@ -83,7 +84,9 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
                 },
                 dropdownChild: _buildIconDropdownChild(),
                 chevronIcon: widget.chevronIcon,
-                selectedItem: widget.selectedIcon != null ? Image.asset(widget.selectedIcon!) : null,
+                selectedItem: widget.selectedIcon != null
+                    ? Image.asset(widget.selectedIcon!)
+                    : null,
                 hintText: 'Select Icon',
               ),
             ),

@@ -61,7 +61,8 @@ class SquareButtonWithIcon extends StatelessWidget {
                 SizedBox(
                   child: Text(
                     title,
-                    textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
+                    textHeightBehavior: const TextHeightBehavior(
+                        applyHeightToFirstAscent: false),
                     style: RibnToolkitTextStyles.h1.copyWith(
                       color: RibnColors.lightGreyTitle,
                       fontSize: 19.5,

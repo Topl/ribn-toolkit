@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 
 class RibnBottomAppBar extends StatelessWidget {
-  static double iconHeight = 27;
-  static double iconWidth = 27;
+  static double iconHeight = 32;
+  static double iconWidth = 32;
+  static double largeIconHeight = 53;
+  static double largeIconWidth = 53;
   static double radius = 8;
   final List<dynamic> pages;
   final int currPage;
@@ -25,7 +27,7 @@ class RibnBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: kIsWeb ? 55 : 70,
+      height: kIsWeb ? 60 : 110,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -45,17 +47,33 @@ class RibnBottomAppBar extends StatelessWidget {
           children: pages.asMap().keys.map(
             (key) {
               final bool isActive = key == currPage;
-              return CustomIconButton(
-                radius: radius,
-                height: iconHeight,
-                width: iconWidth,
-                icon: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    isActive ? activePageIcons[key] : pageIcons[key],
-                  ],
+              final bool isMintAssetIcon = key == 1 ? true : false;
+
+              return Container(
+                decoration: isMintAssetIcon
+                    ? const BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0X5950D5B7),
+                            spreadRadius: 0,
+                            blurRadius: 22,
+                            offset: Offset(0, 6),
+                          ),
+                        ],
+                      )
+                    : null,
+                child: CustomIconButton(
+                  radius: radius,
+                  height: isMintAssetIcon ? largeIconHeight : iconHeight,
+                  width: isMintAssetIcon ? largeIconWidth : iconWidth,
+                  icon: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      isActive ? activePageIcons[key] : pageIcons[key],
+                    ],
+                  ),
+                  onPressed: () => setCurrentPage(key),
                 ),
-                onPressed: () => setCurrentPage(key),
               );
             },
           ).toList(),

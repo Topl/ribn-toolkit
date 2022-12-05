@@ -60,12 +60,13 @@ class _RibnAppBarState extends State<RibnAppBar> {
       titleSpacing: 0,
       elevation: 0,
       title: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildSettingsMenu(widget.settingsOptions, widget.selectSettingsOption),
+            _buildSettingsMenu(
+                widget.settingsOptions, widget.selectSettingsOption),
             const Spacer(flex: 1),
             Padding(
               padding: const EdgeInsets.only(left: 70),
@@ -76,8 +77,8 @@ class _RibnAppBarState extends State<RibnAppBar> {
             ),
             const Spacer(flex: 1),
             InputDropdown(
-              selectedNetwork: widget.currentNetworkName,
-              networks: widget.networks,
+              selectedItem: widget.currentNetworkName,
+              items: widget.networks,
               onChange: widget.updateNetwork,
               chevronIconLink: widget.chevronIconLink,
             ),
@@ -89,12 +90,14 @@ class _RibnAppBarState extends State<RibnAppBar> {
   }
 
   /// Builds the settings drop down menu.
-  Widget _buildSettingsMenu(Map<String, Image> settingsOptions, Function(String)? onSelected) {
+  Widget _buildSettingsMenu(
+      Map<String, Image> settingsOptions, Function(String)? onSelected) {
     return Container(
       color: Colors.transparent,
       child: PopupMenuButton<String>(
         elevation: 0,
-        child: SizedBox(width: 24, child: Image.asset(widget.hamburgerIconLink)),
+        child:
+            SizedBox(width: 24, child: Image.asset(widget.hamburgerIconLink)),
         offset: const Offset(0, 30),
         onSelected: onSelected,
         padding: const EdgeInsets.all(0.0),
@@ -118,7 +121,8 @@ class _RibnAppBarState extends State<RibnAppBar> {
                         width: 50,
                         child: Text(
                           currOption,
-                          style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
+                          style: RibnToolkitTextStyles.dropdownButtonStyle
+                              .copyWith(
                             color: RibnColors.defaultText,
                           ),
                         ),

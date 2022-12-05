@@ -13,7 +13,8 @@ class CustomModal {
   }) {
     return AlertDialog(
       titlePadding: const EdgeInsets.all(10),
-      actionsPadding: actions != null ? const EdgeInsets.only(bottom: 40) : EdgeInsets.zero,
+      actionsPadding:
+          actions != null ? const EdgeInsets.only(bottom: 40) : EdgeInsets.zero,
       contentPadding: const EdgeInsets.only(left: 40, right: 40, bottom: 40),
       insetPadding: const EdgeInsets.symmetric(horizontal: 4),
       backgroundColor: RibnColors.background,

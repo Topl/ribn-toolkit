@@ -63,9 +63,11 @@ commit: format lint run_unit
 	git commit
 
 analyze:
-	flutter run dart_code_metrics:metrics analyze lib
+	@flutter run dart_code_metrics:metrics analyze lib
 
 ditto:
 	echo "hello world"
 run_web:
-	flutter run -d chrome --web-renderer html
+	@flutter run -d chrome --web-renderer html
+format_files:
+	 @flutter format .

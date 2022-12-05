@@ -6,8 +6,7 @@ import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
-import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
+import 'package:ribn_toolkit/widgets/atoms/animated_expand_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font10_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font12_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font13_text_widget.dart';
@@ -20,6 +19,10 @@ import 'package:ribn_toolkit/widgets/atoms/text/ribn_h2_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h3_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h4_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h5_text_widget.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
+import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
+import 'package:ribn_toolkit/widgets/atoms/status_chip.dart';
 import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
 import 'package:ribn_toolkit/widgets/molecules/animated_circle_step_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
@@ -29,7 +32,7 @@ import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_page_title.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
@@ -48,15 +51,17 @@ import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
 import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title_with_leading_child.dart';
 import 'package:ribn_toolkit/widgets/organisms/onboarding_progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:ribn_toolkit/widgets/helper_class.dart';
-import 'constants/colors.dart';
 
 class WidgetBook extends StatefulWidget {
+  const WidgetBook({Key? key}) : super(key: key);
+
   @override
   State<WidgetBook> createState() => _WidgetBookState();
 }
@@ -144,64 +149,7 @@ class _WidgetBookState extends State<WidgetBook> {
         WidgetbookCategory(
           name: 'Atoms',
           widgets: [
-            WidgetbookComponent(
-              name: 'Large Button',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Primary',
-                  builder: (context) => Center(
-                    child: LargeButton(
-                      buttonChild: Text(
-                        'Button Text',
-                        style: RibnToolkitTextStyles.btnLarge.copyWith(
-                          color: Colors.white,
-                        ),
-                      ),
-                      backgroundColor: RibnColors.primary,
-                      hoverColor: RibnColors.primaryButtonHover,
-                      dropShadowColor: RibnColors.primaryButtonShadow,
-                      onPressed: () {},
-                    ),
-                  ),
-                ),
-                WidgetbookUseCase(
-                  name: 'Secondary',
-                  builder: (context) => Center(
-                    child: LargeButton(
-                      buttonChild: Text(
-                        'Button Text',
-                        style: RibnToolkitTextStyles.btnLarge.copyWith(
-                          color: RibnColors.primary,
-                        ),
-                      ),
-                      backgroundColor: RibnColors.secondary,
-                      hoverColor: RibnColors.secondaryButtonHover,
-                      dropShadowColor: RibnColors.secondaryButtonShadow,
-                      onPressed: () {},
-                    ),
-                  ),
-                ),
-                WidgetbookUseCase(
-                  name: 'Ghost',
-                  builder: (context) => Center(
-                    child: LargeButton(
-                      buttonChild: Text(
-                        'Button Text',
-                        style: RibnToolkitTextStyles.btnLarge.copyWith(
-                          color: RibnColors.ghostButtonText,
-                        ),
-                      ),
-                      backgroundColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      dropShadowColor: Colors.transparent,
-                      borderColor: RibnColors.ghostButtonText,
-                      onPressed: () {},
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            WidgetbookComponent(
+             WidgetbookComponent(
               name: 'Text Widgets',
               useCases: [
                 WidgetbookUseCase(
@@ -355,7 +303,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font16B',
                   builder: (context) => const RibnFont16TextWidget(
                     text:
-                    "I am a Font with text size 16 with a bold fontweight Font Text Widget",
+                        "I am a Font with text size 16 with a bold fontweight Font Text Widget",
                     textAlign: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
@@ -366,7 +314,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font16',
                   builder: (context) => const RibnFont16TextWidget(
                     text:
-                    "I am a Font with text size 16 with a normal fontweight Font Text Widget",
+                        "I am a Font with text size 16 with a normal fontweight Font Text Widget",
                     textAlign: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
@@ -377,7 +325,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font18B',
                   builder: (context) => const RibnFont18TextWidget(
                     text:
-                    "I am a Font with text size 18 with a bold fontweight Font Text Widget",
+                        "I am a Font with text size 18 with a bold fontweight Font Text Widget",
                     textAlign: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
@@ -388,7 +336,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font18',
                   builder: (context) => const RibnFont18TextWidget(
                     text:
-                    "I am a Font with text size 18 with a normal fontweight Font Text Widget",
+                        "I am a Font with text size 18 with a normal fontweight Font Text Widget",
                     textAlign: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
@@ -399,7 +347,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font19B',
                   builder: (context) => const RibnFont19TextWidget(
                     text:
-                    "I am a Font with text size 19 with a bold fontweight Font Text Widget",
+                        "I am a Font with text size 19 with a bold fontweight Font Text Widget",
                     textAlign: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
@@ -410,14 +358,92 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font19',
                   builder: (context) => const RibnFont19TextWidget(
                     text:
-                    "I am a Font with text size 19 with a normal fontweight Font Text Widget",
+                        "I am a Font with text size 19 with a normal fontweight Font Text Widget",
                     textAlign: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 0.5,
                   ),
                 ),
-
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Large Button',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Primary',
+                  builder: (context) => Center(
+                    child: LargeButton(
+                      buttonChild: Text(
+                        'Button Text',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                      backgroundColor: RibnColors.primary,
+                      hoverColor: RibnColors.primaryButtonHover,
+                      dropShadowColor: RibnColors.primaryButtonShadow,
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Secondary',
+                  builder: (context) => Center(
+                    child: LargeButton(
+                      buttonChild: Text(
+                        'Button Text',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
+                          color: RibnColors.primary,
+                        ),
+                      ),
+                      backgroundColor: RibnColors.secondary,
+                      hoverColor: RibnColors.secondaryButtonHover,
+                      dropShadowColor: RibnColors.secondaryButtonShadow,
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Ghost',
+                  builder: (context) => Center(
+                    child: LargeButton(
+                      buttonChild: Text(
+                        'Button Text',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
+                          color: RibnColors.ghostButtonText,
+                        ),
+                      ),
+                      backgroundColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      dropShadowColor: Colors.transparent,
+                      borderColor: RibnColors.ghostButtonText,
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Animated Expand Button',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: AnimatedExpandButton(
+                          backgroundColor: Colors.transparent,
+                          onPressed: () {},
+                          title: 'Test',
+                          height: 45,
+                          width: 80,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
             WidgetbookComponent(
@@ -631,6 +657,27 @@ class _WidgetBookState extends State<WidgetBook> {
                 ),
               ],
             ),
+            WidgetbookComponent(
+              name: 'Status Chip',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Unconfirmed',
+                  builder: (context) => const Center(
+                    child: StatusChip(
+                      status: 'unconfirmed',
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Confirmed',
+                  builder: (context) => const Center(
+                    child: StatusChip(
+                      status: 'confirmed',
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
         WidgetbookCategory(
@@ -776,8 +823,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'App Bar',
                   builder: (context) => Center(
                     child: InputDropdown(
-                        selectedNetwork: HelperClass.selectedNetwork,
-                        networks: HelperClass.networks,
+                        selectedItem: HelperClass.selectedNetwork,
+                        items: HelperClass.networks,
                         onChange: (string) {
                           setState(() {
                             HelperClass.selectedNetwork = string;
@@ -1108,6 +1155,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Standard',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      borderColor: Border.all(color: const Color(0xffE9E9E9)),
                       toolTipIcon: Image.asset(
                         RibnAssets.greyHelpBubble,
                         width: 18,
@@ -1123,6 +1171,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Subtitled',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      borderColor: Border.all(color: const Color(0xffE9E9E9)),
                       toolTipIcon: Image.asset(
                         RibnAssets.greyHelpBubble,
                         width: 18,
@@ -1149,6 +1198,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'With link',
                   builder: (context) => Center(
                     child: CustomToolTip(
+                      borderColor: Border.all(color: const Color(0xffE9E9E9)),
                       toolTipIcon: Image.asset(
                         RibnAssets.greyHelpBubble,
                         width: 18,
@@ -1162,8 +1212,8 @@ class _WidgetBookState extends State<WidgetBook> {
                             ),
                             WidgetSpan(
                               child: GestureDetector(
-                                onTap: () async =>
-                                    await launch(HelperClass.tooltipUrl),
+                                onTap: () async => await launchUrl(
+                                    Uri.parse(HelperClass.tooltipUrl)),
                                 child: Row(
                                   children: [
                                     Text(
@@ -1329,6 +1379,12 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: AnimatedCircleStepLoader(
                       stepLabels: HelperClass.stepLabels,
                       showStepLoader: () {},
+                      activeCircleColor: RibnColors.primary,
+                      inactiveCircleColor: RibnColors.inactive,
+                      activeCircleRadius: 8,
+                      inactiveCircleRadius: 4.5,
+                      dotPadding: 8,
+                      renderCenterIcon: true,
                     ),
                   ),
                 ),
@@ -1396,12 +1452,49 @@ class _WidgetBookState extends State<WidgetBook> {
               ],
             ),
             WidgetbookComponent(
-              name: 'Custom Page Title',
+              name: 'Custom Page Text Title',
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
                   builder: (context) =>
-                      const CustomPageTitle(title: 'Page Title'),
+                      const CustomPageTextTitle(title: 'Page Title'),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Custom Page Dropdown Title',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => CustomPageDropdownTitle(
+                    title: 'Page Title',
+                    chevronIconLink: '',
+                    currentSelectedItem: HelperClass.currentSelectedItem,
+                    itemsToSelectFrom: HelperClass.itemsToSelectFrom,
+                    updateSelectedItem: (string) {
+                      setState(() {
+                        HelperClass.currentSelectedItem = string;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Custom Page Text Title With Leading Child',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard',
+                  builder: (context) => CustomPageTextTitleWithLeadingChild(
+                    title: 'Page Title',
+                    child: InputDropdown(
+                      selectedItem: HelperClass.selectedNetwork,
+                      items: HelperClass.networks,
+                      onChange: (string) {},
+                      chevronIconLink: RibnAssets.chevronDown,
+                      enabled: false,
+                    ),
+                  ),
                 ),
               ],
             ),

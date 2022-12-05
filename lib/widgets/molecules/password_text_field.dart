@@ -64,11 +64,13 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   @override
   Widget build(BuildContext context) {
     final OutlineInputBorder textFieldBorder = OutlineInputBorder(
-      borderSide: BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
+      borderSide:
+          BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
       borderRadius: BorderRadius.circular(5),
     );
     final OutlineInputBorder textFieldFocusBorder = OutlineInputBorder(
-      borderSide: BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
+      borderSide:
+          BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
       borderRadius: BorderRadius.circular(5),
     );
 
@@ -76,7 +78,8 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       width: widget.width,
       height: widget.height,
       child: TextField(
-        onSubmitted: widget.onSubmitted != null ? (_) => widget.onSubmitted!() : null,
+        onSubmitted:
+            widget.onSubmitted != null ? (_) => widget.onSubmitted!() : null,
         focusNode: widget.focusNode,
         textInputAction: widget.textInputAction,
         obscureText: obscurePassword,
@@ -85,7 +88,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
           suffixIcon: ExcludeFocus(
             child: CustomIconButton(
               icon: Image.asset(
-                obscurePassword ? RibnAssets.passwordVisiblePng : RibnAssets.passwordHiddenPng,
+                obscurePassword
+                    ? RibnAssets.passwordVisiblePng
+                    : RibnAssets.passwordHiddenPng,
                 width: 17,
               ),
               onPressed: () {

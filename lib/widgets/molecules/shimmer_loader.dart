@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ShimmerLoader extends StatelessWidget {
-  const ShimmerLoader({required this.borderRadius, required this.height, required this.width, Key? key})
+  const ShimmerLoader(
+      {required this.borderRadius,
+      required this.height,
+      required this.width,
+      Key? key})
       : super(key: key);
 
   final double borderRadius;

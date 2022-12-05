@@ -22,6 +22,9 @@ class CustomInputField extends StatelessWidget {
   // tooltipIcon
   final Image tooltipIcon;
 
+  /// Integer to offset the tooltip on the x axis to fit on screen.
+  final int? offsetPositionLeftValue;
+
   const CustomInputField({
     Key? key,
     required this.itemLabel,
@@ -29,6 +32,7 @@ class CustomInputField extends StatelessWidget {
     this.inbetweenPadding = 8,
     this.bottomPadding = 8,
     this.informationText,
+    this.offsetPositionLeftValue,
     required this.tooltipIcon,
   }) : super(key: key);
 
@@ -49,11 +53,12 @@ class CustomInputField extends StatelessWidget {
                   ? Padding(
                       padding: const EdgeInsets.only(left: 4.0),
                       child: CustomToolTip(
+                        borderColor: Border.all(color: const Color(0xffE9E9E9)),
                         toolTipChild: Text(
                           informationText!,
                           style: RibnToolkitTextStyles.toolTipTextStyle,
                         ),
-                        offsetPositionLeftValue: 80,
+                        offsetPositionLeftValue: offsetPositionLeftValue ?? 80,
                         toolTipIcon: tooltipIcon,
                       ),
                     )

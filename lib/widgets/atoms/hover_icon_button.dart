@@ -50,7 +50,11 @@ class _HoverIconButtonState extends State<HoverIconButton> {
           width: 35,
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: [showHoverIcon ? widget.buttonIcon : const SizedBox(), const Spacer(), widget.buttonText],
+            children: [
+              showHoverIcon ? widget.buttonIcon : const SizedBox(),
+              const Spacer(),
+              widget.buttonText
+            ],
           ),
         ),
       ),

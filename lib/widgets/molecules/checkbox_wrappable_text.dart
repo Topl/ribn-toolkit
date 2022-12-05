@@ -64,7 +64,8 @@ class CheckboxWrappableText extends StatelessWidget {
   Widget build(BuildContext context) {
     return wrapText
         ? RichText(
-            textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
+            textHeightBehavior:
+                const TextHeightBehavior(applyHeightToFirstAscent: false),
             text: TextSpan(
               children: [
                 WidgetSpan(
@@ -94,19 +95,26 @@ class CheckboxWrappableText extends StatelessWidget {
                 TextSpan(
                   text: wrappableText,
                   style: RibnToolkitTextStyles.onboardingH3.copyWith(
-                    color: activeText ? RibnColors.lightGreyTitle : RibnColors.transparentAlternateGreyText,
+                    color: activeText
+                        ? RibnColors.lightGreyTitle
+                        : RibnColors.transparentAlternateGreyText,
                   ),
                 ),
                 if (renderTooltipIcon == true)
                   WidgetSpan(
-                    alignment: kIsWeb ? PlaceholderAlignment.top : PlaceholderAlignment.bottom,
+                    alignment: kIsWeb
+                        ? PlaceholderAlignment.top
+                        : PlaceholderAlignment.bottom,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 6),
                       child: CustomToolTip(
+                        borderColor: Border.all(color: const Color(0xffE9E9E9)),
                         toolTipIcon: Image.asset(
                           RibnAssets.roundInfoCircle,
                           width: 24,
-                          color: activeText ? RibnColors.lightGreyTitle : RibnColors.transparentAlternateGreyText,
+                          color: activeText
+                              ? RibnColors.lightGreyTitle
+                              : RibnColors.transparentAlternateGreyText,
                         ),
                         toolTipChild: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -114,16 +122,20 @@ class CheckboxWrappableText extends StatelessWidget {
                           children: [
                             Text(
                               Strings.howIsMySeedPhraseUnrecoverable,
-                              style: RibnToolkitTextStyles.toolTipTextStyle.copyWith(
+                              style: RibnToolkitTextStyles.toolTipTextStyle
+                                  .copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
                             ),
                             Text(
                               kIsWeb
-                                  ? Strings.howIsMySeedPhraseUnrecoverableNewLine
-                                  : Strings.howIsMySeedPhraseUnrecoverableMultipleLines,
-                              style: RibnToolkitTextStyles.toolTipTextStyle.copyWith(
+                                  ? Strings
+                                      .howIsMySeedPhraseUnrecoverableNewLine
+                                  : Strings
+                                      .howIsMySeedPhraseUnrecoverableMultipleLines,
+                              style: RibnToolkitTextStyles.toolTipTextStyle
+                                  .copyWith(
                                 color: Colors.white,
                               ),
                             ),
@@ -147,7 +159,8 @@ class CheckboxWrappableText extends StatelessWidget {
                     borderRadius: BorderRadius.circular(2),
                     border: Border.all(color: borderColor),
                   ),
-                  constraints: const BoxConstraints(maxHeight: 20, maxWidth: 20),
+                  constraints:
+                      const BoxConstraints(maxHeight: 20, maxWidth: 20),
                   child: Checkbox(
                     fillColor: MaterialStateProperty.all(fillColor),
                     checkColor: checkColor,
