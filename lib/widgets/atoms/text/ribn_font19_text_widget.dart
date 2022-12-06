@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 /// @dev This widget is to be used by any other widget thats wants to use H2
 class RibnFont19TextWidget extends Text {
   final String text;
+  @override
   final TextAlign textAlign;
   final Color textColor;
   final FontWeight fontWeight;
@@ -21,7 +22,7 @@ class RibnFont19TextWidget extends Text {
       text,
       style: TextStyle(
           fontFamily: 'DM Sans',
-          fontSize: 18,
+          fontSize: 19,
           color: textColor,
           fontWeight: fontWeight,
           wordSpacing: wordSpacing),

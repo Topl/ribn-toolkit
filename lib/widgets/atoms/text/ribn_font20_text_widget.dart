@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 
 /// @dev This widget is to be used by any other widget thats wants to use H2
-class RibnFont15TextWidget extends Text {
+class RibnFont20TextWidget extends Text {
   final String text;
   @override
   final TextAlign textAlign;
   final Color textColor;
   final FontWeight fontWeight;
   final double wordSpacing;
-  const RibnFont15TextWidget(
+  const RibnFont20TextWidget(
       {Key? key,
       required this.text,
       required this.textAlign,
@@ -23,7 +23,7 @@ class RibnFont15TextWidget extends Text {
       text,
       style: TextStyle(
           fontFamily: 'DM Sans',
-          fontSize: 15,
+          fontSize: 20,
           color: textColor,
           fontWeight: fontWeight,
           wordSpacing: wordSpacing),

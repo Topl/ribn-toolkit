@@ -4,6 +4,7 @@ import '../../../constants/styles.dart';
 /// @dev This widget is to be used by any other widget thats wants to use H1
 class RibnOnboardingH1TextWidget extends Text {
   final String text;
+  @override
   final TextAlign textAlign;
   final Color textColor;
   const RibnOnboardingH1TextWidget(
