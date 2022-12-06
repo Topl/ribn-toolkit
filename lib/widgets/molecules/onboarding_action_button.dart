@@ -52,7 +52,9 @@ class OnboardingActionButton extends StatelessWidget {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 413, maxHeight: 263),
           child: Padding(
-            padding: kIsWeb ? const EdgeInsets.fromLTRB(60, 30, 30, 80) : const EdgeInsets.fromLTRB(20, 0, 20, 10),
+            padding: kIsWeb
+                ? const EdgeInsets.fromLTRB(60, 30, 30, 80)
+                : const EdgeInsets.fromLTRB(20, 0, 20, 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,

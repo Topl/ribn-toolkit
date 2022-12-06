@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
-import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_input_field.dart';
@@ -85,7 +84,9 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
                 },
                 dropdownChild: _buildIconDropdownChild(),
                 chevronIcon: widget.chevronIcon,
-                selectedItem: widget.selectedIcon != null ? Image.asset(widget.selectedIcon!) : null,
+                selectedItem: widget.selectedIcon != null
+                    ? Image.asset(widget.selectedIcon!)
+                    : null,
                 hintText: 'Select Icon',
               ),
             ),

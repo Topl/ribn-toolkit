@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
-import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
 
 /// Builds the top AppBar in the extension view.
@@ -68,7 +65,8 @@ class _RibnAppBarState extends State<RibnAppBar> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildSettingsMenu(widget.settingsOptions, widget.selectSettingsOption),
+            _buildSettingsMenu(
+                widget.settingsOptions, widget.selectSettingsOption),
             const Spacer(flex: 1),
             Padding(
               padding: const EdgeInsets.only(left: 70),
@@ -92,12 +90,14 @@ class _RibnAppBarState extends State<RibnAppBar> {
   }
 
   /// Builds the settings drop down menu.
-  Widget _buildSettingsMenu(Map<String, Image> settingsOptions, Function(String)? onSelected) {
+  Widget _buildSettingsMenu(
+      Map<String, Image> settingsOptions, Function(String)? onSelected) {
     return Container(
       color: Colors.transparent,
       child: PopupMenuButton<String>(
         elevation: 0,
-        child: SizedBox(width: 24, child: Image.asset(widget.hamburgerIconLink)),
+        child:
+            SizedBox(width: 24, child: Image.asset(widget.hamburgerIconLink)),
         offset: const Offset(0, 30),
         onSelected: onSelected,
         padding: const EdgeInsets.all(0.0),
@@ -121,7 +121,8 @@ class _RibnAppBarState extends State<RibnAppBar> {
                         width: 50,
                         child: Text(
                           currOption,
-                          style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
+                          style: RibnToolkitTextStyles.dropdownButtonStyle
+                              .copyWith(
                             color: RibnColors.defaultText,
                           ),
                         ),

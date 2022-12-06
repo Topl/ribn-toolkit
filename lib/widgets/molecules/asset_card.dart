@@ -75,7 +75,9 @@ class AssetCard extends StatelessWidget {
                     child: shortName,
                   ),
                   // display asset long name or placeholder if no long name exists
-                  Padding(padding: const EdgeInsets.symmetric(vertical: 5.0), child: assetLongName),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: assetLongName),
                   // display helpful text if some asset details are missing
                   missingAsstDetailsCondition
                       ? const Text(
@@ -99,7 +101,9 @@ class AssetCard extends StatelessWidget {
                 children: [
                   const SizedBox(height: 10),
                   // display asset units
-                  Container(constraints: const BoxConstraints(maxWidth: 90), child: assetQuantityDetails),
+                  Container(
+                      constraints: const BoxConstraints(maxWidth: 90),
+                      child: assetQuantityDetails),
                   const SizedBox(height: 8),
                   // conditional send and receive buttons
                   firstIcon != null && secondIcon != null

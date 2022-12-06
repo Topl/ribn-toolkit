@@ -4,8 +4,10 @@ import 'package:ribn_toolkit/constants/assets.dart';
 class HelperClass {
   static TextEditingController textController = TextEditingController();
   static TextEditingController noteController = TextEditingController();
-  static TextEditingController assetLongNameController = TextEditingController();
-  static TextEditingController assetShortNameController = TextEditingController();
+  static TextEditingController assetLongNameController =
+      TextEditingController();
+  static TextEditingController assetShortNameController =
+      TextEditingController();
   static TextEditingController amountController = TextEditingController();
   static TextEditingController recipientController = TextEditingController();
   static TextEditingController passwordController = TextEditingController();
@@ -58,7 +60,14 @@ class HelperClass {
 
   static bool obscurePassword = true;
 
-  static Map<int, String> stepLabels = {0: 'Step 1', 1: 'Step 2', 2: 'Step 3', 3: 'Step 4', 4: 'Step 5'};
+  static Map<int, String> stepLabels = {
+    0: 'Step 1',
+    1: 'Step 2',
+    2: 'Step 3',
+    3: 'Step 4',
+    4: 'Step 5',
+    5: 'Step 6'
+  };
 
   static int currentTabIndex = 0;
 

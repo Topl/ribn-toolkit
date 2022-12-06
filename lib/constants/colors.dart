@@ -13,6 +13,7 @@ class RibnColors {
   static const Color inactive = Color(0xFF7795A0);
   static const Color active = Color(0xFF8AE3CF);
   static const Color lightGrey = Color(0xFFEEEEEE);
+  static const Color paleGrey = Color(0xffF1F1F1);
   static const Color background = Color(0xFFF8F8F8);
   static const Color whiteBackground = Color(0xfffefefe);
   static const Color hintTextColor = Color(0xffbcbcbc);
@@ -37,4 +38,8 @@ class RibnColors {
   static const Color statusChipGreen = Color(0xff70FF00);
   static const Color lightGreyDivider = Color(0xffCCD0D7);
   static const Color paleGreen = Color(0x99D0DFE1);
+  static const Color darkGreen = Color(0xff0D986A);
+  static const Color mediumGrey = Color(0xffF0F0F0);
+  static const Color vibrantGreen = Color(0xff0AEABA);
+  static const Color transparentGrey = Color(0x99E0E9EA);
 }

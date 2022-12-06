@@ -5,7 +5,8 @@ import 'package:ribn_toolkit/constants/styles.dart';
 class ErrorBubble extends StatelessWidget {
   final String errorText;
   final bool inverted;
-  const ErrorBubble({required this.errorText, this.inverted = false, Key? key}) : super(key: key);
+  const ErrorBubble({required this.errorText, this.inverted = false, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

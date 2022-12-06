@@ -9,7 +9,8 @@ class Strings {
   static const String writeDownSeedPhrase = 'Write Down Seed Phrase';
   static const String finalReview = 'FINAL REVIEW';
   static const String createWalletPassword = 'Create Wallet Password';
-  static const String howIsMySeedPhraseUnrecoverable = 'How is my Seed Phrase or Wallet Password unrecoverable?';
+  static const String howIsMySeedPhraseUnrecoverable =
+      'How is my Seed Phrase or Wallet Password unrecoverable?';
   static const String howIsMySeedPhraseUnrecoverableNewLine =
       '''You are the only one with a record of your Seed Phrase or Wallet Password.\nTopl does not maintain or have any way to generate either of these for you.''';
   static const String howIsMySeedPhraseUnrecoverableMultipleLines =
@@ -18,7 +19,8 @@ class Strings {
   static const String confirmSeedPhrase = 'CONFIRM SEED PHRASE';
   static const String assetCodeShortInfo =
       'This is used to view the short name for your \nasset as this will be the information used to\nidentify a particular asset on the blockchain.';
-  static const String refillCurrentPolyBalance = 'You can refill your Poly balance anytime by\n signing into';
+  static const String refillCurrentPolyBalance =
+      'You can refill your Poly balance anytime by\n signing into';
   static const String to = 'To';
   static const String yourRibnWalletAddress = 'Your Ribn Wallet address';
   static const String assetTransferToHint = 'Paste Recipient’s address.';
@@ -31,7 +33,8 @@ class Strings {
   static const String note = 'Note';
   static const String noteHint = 'Origin Brazil, max 127 characters';
   static const String gettingStarted = 'Getting Started';
-  static const String mintAssetDesc = 'Where would you like your Asset to be minted?';
+  static const String mintAssetDesc =
+      'Where would you like your Asset to be minted?';
   static const String invalidAmountError =
       'The amount you entered exceeds\nyour wallet balance for this asset.\nPlease enter a valid amount!';
   static const String errorTitle = 'Oops!\nSomething went wrong';
@@ -40,7 +43,8 @@ class Strings {
   static const String contactSupport = 'Contact Support';
   static const String tryAgain = 'Try Again';
   static const String supportEmail = 'support@topl.me';
-  static const String supportEmailLink = 'mailto:$supportEmail?subject=Ribn Support&body=';
+  static const String supportEmailLink =
+      'mailto:$supportEmail?subject=Ribn Support&body=';
   static const String invalidRecipientAddressError =
       "Hmmm... That's not a valid Recipient address.\nTip: Instead of typing it out, try copy\nand pasting your Recipient's address.";
 }
