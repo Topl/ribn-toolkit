@@ -14,7 +14,7 @@ class RibnFont12TextWidget extends Text {
     required this.textAlignment,
     required this.textColor,
     required this.fontWeight,
-    required this.wordSpacing,
+    this.wordSpacing = 0,
     this.textDecoration = TextDecoration.none,
   }) : super('', key: key);
   @override
