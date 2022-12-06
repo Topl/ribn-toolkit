@@ -12,6 +12,7 @@ import 'package:ribn_toolkit/widgets/atoms/text/ribn_font10_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font12_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font13_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font14_text_widget.dart';
+import 'package:ribn_toolkit/widgets/atoms/text/ribn_font15_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font16_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font18_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font19_text_widget.dart';
@@ -334,6 +335,28 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont14TextWidget(
                     text:
                         "I am a Font with text size 14 with a normal fontweight Font Text Widget",
+                    textAlign: TextAlign.start,
+                    textColor: RibnColors.defaultText,
+                    fontWeight: FontWeight.normal,
+                    wordSpacing: 0.5,
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Font15B',
+                  builder: (context) => const RibnFont15TextWidget(
+                    text:
+                        "I am a Font with text size 15 with a bold fontweight Font Text Widget",
+                    textAlign: TextAlign.start,
+                    textColor: RibnColors.defaultText,
+                    fontWeight: FontWeight.bold,
+                    wordSpacing: 0,
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Font15',
+                  builder: (context) => const RibnFont15TextWidget(
+                    text:
+                        "I am a Font with text size 15 with a normal fontweight Font Text Widget",
                     textAlign: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
