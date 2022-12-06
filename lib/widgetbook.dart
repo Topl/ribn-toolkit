@@ -162,7 +162,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'RibnOnboardingH1TextWidget',
                   builder: (context) => const RibnOnboardingH1TextWidget(
                     text: "I am an H1 Text Widget",
-                    textAlign: TextAlign.center,
+                    textAlignment: TextAlign.center,
                     textColor: RibnColors.defaultText,
                   ),
                 ),
@@ -170,7 +170,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'RibnOnboardingH3TextWidget',
                   builder: (context) => const RibnOnboardingH3TextWidget(
                     text: "I am an H2 Text Widget",
-                    textAlign: TextAlign.center,
+                    textAlignment: TextAlign.center,
                     textColor: RibnColors.defaultText,
                   ),
                 ),
@@ -178,7 +178,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'H1',
                   builder: (context) => const RibnH1TextWidget(
                     text: "I am an H1 Text Widget",
-                    textAlign: TextAlign.center,
+                    textAlignment: TextAlign.center,
                     fontWeight: FontWeight.w500,
                     textColor: RibnColors.defaultText,
                     height: 1.57,
@@ -189,7 +189,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'H2',
                   builder: (context) => const RibnH2TextWidget(
                     text: "I am an H2 Text Widget",
-                    textAlign: TextAlign.center,
+                    textAlignment: TextAlign.center,
                     fontWeight: FontWeight.w500,
                     textColor: RibnColors.defaultText,
                     letterSpacing: 1.34,
@@ -199,7 +199,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'H3',
                   builder: (context) => const RibnH3TextWidget(
                     text: "I am an H3 Text Widget",
-                    textAlign: TextAlign.center,
+                    textAlignment: TextAlign.center,
                     fontWeight: FontWeight.w500,
                     textColor: RibnColors.defaultText,
                     letterSpacing: 0,
@@ -209,7 +209,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'H4',
                   builder: (context) => const RibnH4TextWidget(
                     text: "I am an H4 Text Widget",
-                    textAlign: TextAlign.center,
+                    textAlignment: TextAlign.center,
                     fontWeight: FontWeight.w500,
                     textColor: RibnColors.defaultText,
                     letterSpacing: 0,
@@ -219,7 +219,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'H5',
                   builder: (context) => const RibnH5TextWidget(
                     text: "I am an H5 Text Widget",
-                    textAlign: TextAlign.center,
+                    textAlignment: TextAlign.center,
                     fontWeight: FontWeight.w500,
                     textColor: RibnColors.defaultText,
                     letterSpacing: 0,
@@ -229,7 +229,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'BodyFont12',
                   builder: (context) => const RibnH5TextWidget(
                     text: "I am a Body Font with text size 12 Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     letterSpacing: 1,
@@ -240,7 +240,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont10TextWidget(
                     text:
                         "I am a Font with text size 10 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                   ),
@@ -250,7 +250,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont10TextWidget(
                     text:
                         "I am a Font with text size 10 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                   ),
@@ -260,7 +260,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont12TextWidget(
                     text:
                         "I am a Font with text size 12 with bold fontweight and word spacing of 0 Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 0,
@@ -271,7 +271,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont12TextWidget(
                     text:
                         "I am a Font with text size 12 with a normal fontweight and word spacing of 1 Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 1,
@@ -282,7 +282,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnBodyFont12TextWidget(
                     text:
                         "I am a Font with text size 12 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 0,
@@ -293,7 +293,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnBodyFont12TextWidget(
                     text:
                         "I am a Font with text size 19 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 0.5,
@@ -304,7 +304,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont13TextWidget(
                     text:
                         "I am a Font with text size 13 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 0,
@@ -315,7 +315,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont13TextWidget(
                     text:
                         "I am a Font with text size 13 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     letterSpacing: 0.5,
                     fontWeight: FontWeight.normal,
@@ -326,7 +326,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont14TextWidget(
                     text:
                         "I am a Font with text size 14 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 0,
@@ -337,7 +337,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont14TextWidget(
                     text:
                         "I am a Font with text size 14 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 0.5,
@@ -348,7 +348,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont15TextWidget(
                     text:
                         "I am a Font with text size 15 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 0,
@@ -359,7 +359,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont15TextWidget(
                     text:
                         "I am a Font with text size 15 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 0.5,
@@ -370,7 +370,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont16TextWidget(
                     text:
                         "I am a Font with text size 16 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 0,
@@ -381,7 +381,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont16TextWidget(
                     text:
                         "I am a Font with text size 16 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 0.5,
@@ -392,7 +392,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont18TextWidget(
                     text:
                         "I am a Font with text size 18 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 0,
@@ -403,7 +403,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont18TextWidget(
                     text:
                         "I am a Font with text size 18 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 0.5,
@@ -414,7 +414,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont19TextWidget(
                     text:
                         "I am a Font with text size 19 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 0,
@@ -425,7 +425,7 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const RibnFont19TextWidget(
                     text:
                         "I am a Font with text size 19 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 0.5,
@@ -435,8 +435,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font20B',
                   builder: (context) => const RibnFont20TextWidget(
                     text:
-                    "I am a Font with text size 20 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                        "I am a Font with text size 20 with a bold fontweight Font Text Widget",
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 0,
@@ -446,8 +446,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font20',
                   builder: (context) => const RibnFont19TextWidget(
                     text:
-                    "I am a Font with text size 20 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                        "I am a Font with text size 20 with a normal fontweight Font Text Widget",
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 0.5,
@@ -457,8 +457,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font22B',
                   builder: (context) => const RibnFont22TextWidget(
                     text:
-                    "I am a Font with text size 22 with a bold fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                        "I am a Font with text size 22 with a bold fontweight Font Text Widget",
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 0,
@@ -468,8 +468,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   name: 'Font22',
                   builder: (context) => const RibnFont22TextWidget(
                     text:
-                    "I am a Font with text size 22 with a normal fontweight Font Text Widget",
-                    textAlign: TextAlign.start,
+                        "I am a Font with text size 22 with a normal fontweight Font Text Widget",
+                    textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 0.5,

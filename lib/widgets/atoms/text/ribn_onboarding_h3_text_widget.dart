@@ -4,14 +4,14 @@ import '../../../constants/styles.dart';
 /// @dev This widget is to be used by any other widget thats wants to use H1
 class RibnOnboardingH3TextWidget extends Text {
   final String text;
-  @override
-  final TextAlign textAlign;
+  final TextAlign textAlignment;
   final Color textColor;
   const RibnOnboardingH3TextWidget(
       {Key? key,
       required this.text,
-      required this.textAlign,
-      required this.textColor}) : super('');
+      required this.textAlignment,
+      required this.textColor})
+      : super('', key: key);
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -20,7 +20,7 @@ class RibnOnboardingH3TextWidget extends Text {
       style: RibnToolkitTextStyles.onboardingH3.copyWith(
         color: textColor,
       ),
-      textAlign: textAlign,
+      textAlign: textAlignment,
     );
   }
 }

@@ -3,19 +3,18 @@ import 'package:flutter/cupertino.dart';
 /// @dev This widget is to be used by any other widget thats wants to use H2
 class RibnH5TextWidget extends Text {
   final String text;
-  @override
-  final TextAlign textAlign;
+  final TextAlign textAlignment;
   final Color textColor;
   final FontWeight fontWeight;
   final double letterSpacing;
-
   const RibnH5TextWidget(
       {Key? key,
       required this.text,
-      required this.textAlign,
+      required this.textAlignment,
       required this.textColor,
       required this.fontWeight,
-      required this.letterSpacing}) : super('');
+      this.letterSpacing = 0})
+      : super('', key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class RibnH5TextWidget extends Text {
           fontWeight: fontWeight,
           letterSpacing: letterSpacing,
           color: textColor),
-      textAlign: textAlign,
+      textAlign: textAlignment,
     );
   }
 }
