@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../constants/styles.dart';
 
 /// @dev This widget is to be used by any other widget thats wants to use H1
-class RibnOnboardingH3TextWidget extends StatelessWidget {
+class RibnOnboardingH3TextWidget extends Text {
   final String text;
   final TextAlign textAlign;
   final Color textColor;
@@ -10,8 +10,7 @@ class RibnOnboardingH3TextWidget extends StatelessWidget {
       {Key? key,
       required this.text,
       required this.textAlign,
-      required this.textColor})
-      : super(key: key);
+      required this.textColor}) : super('');
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

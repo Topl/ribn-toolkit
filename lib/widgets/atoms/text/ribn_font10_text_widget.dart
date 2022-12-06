@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 /// @dev This widget is to be used by any other widget thats wants to use H2
-class RibnFont10TextWidget extends StatelessWidget {
+class RibnFont10TextWidget extends Text {
   final String text;
   final TextAlign textAlign;
   final Color textColor;
@@ -11,8 +11,7 @@ class RibnFont10TextWidget extends StatelessWidget {
       required this.text,
       required this.textAlign,
       required this.textColor,
-      required this.fontWeight})
-      : super(key: key);
+      required this.fontWeight}) : super('');
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 /// @dev This widget is to be used by any other widget thats wants to use H1
-class RibnH1TextWidget extends StatelessWidget {
+class RibnH1TextWidget extends Text {
   final String text;
   final TextAlign textAlign;
   final Color textColor;
@@ -15,8 +15,7 @@ class RibnH1TextWidget extends StatelessWidget {
       required this.textColor,
       required this.fontWeight,
       required this.letterSpacing,
-      required this.height})
-      : super(key: key);
+      required this.height}) : super('');
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

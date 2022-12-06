@@ -7,6 +7,7 @@ import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/atoms/animated_expand_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/text/ribn_bodyfont12_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font10_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font12_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font13_text_widget.dart';
@@ -19,6 +20,8 @@ import 'package:ribn_toolkit/widgets/atoms/text/ribn_h2_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h3_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h4_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h5_text_widget.dart';
+import 'package:ribn_toolkit/widgets/atoms/text/ribn_onboarding_h1_text_widget.dart';
+import 'package:ribn_toolkit/widgets/atoms/text/ribn_onboarding_h3_text_widget.dart';
 import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
@@ -153,6 +156,22 @@ class _WidgetBookState extends State<WidgetBook> {
               name: 'Text Widgets',
               useCases: [
                 WidgetbookUseCase(
+                  name: 'RibnOnboardingH1TextWidget',
+                  builder: (context) => const RibnOnboardingH1TextWidget(
+                    text: "I am an H1 Text Widget",
+                    textAlign: TextAlign.center,
+                    textColor: RibnColors.defaultText,
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'RibnOnboardingH3TextWidget',
+                  builder: (context) => const RibnOnboardingH3TextWidget(
+                    text: "I am an H2 Text Widget",
+                    textAlign: TextAlign.center,
+                    textColor: RibnColors.defaultText,
+                  ),
+                ),
+                WidgetbookUseCase(
                   name: 'H1',
                   builder: (context) => const RibnH1TextWidget(
                     text: "I am an H1 Text Widget",
@@ -253,6 +272,28 @@ class _WidgetBookState extends State<WidgetBook> {
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
                     wordSpacing: 1,
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'RibnBodyFont12TextWidget',
+                  builder: (context) => const RibnBodyFont12TextWidget(
+                    text:
+                        "I am a Font with text size 12 with a bold fontweight Font Text Widget",
+                    textAlign: TextAlign.start,
+                    textColor: RibnColors.defaultText,
+                    fontWeight: FontWeight.bold,
+                    wordSpacing: 0,
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'RibnBodyFont12TextWidgetB',
+                  builder: (context) => const RibnBodyFont12TextWidget(
+                    text:
+                        "I am a Font with text size 19 with a normal fontweight Font Text Widget",
+                    textAlign: TextAlign.start,
+                    textColor: RibnColors.defaultText,
+                    fontWeight: FontWeight.normal,
+                    wordSpacing: 0.5,
                   ),
                 ),
                 WidgetbookUseCase(
