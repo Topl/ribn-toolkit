@@ -23,7 +23,7 @@ class RibnH3TextWidget extends Text {
       text,
       style: TextStyle(
           fontFamily: 'DM Sans',
-          fontSize: 24,
+          fontSize: 23,
           fontWeight: fontWeight,
           letterSpacing: letterSpacing,
           color: textColor),

@@ -6,16 +6,17 @@ class RibnFont14TextWidget extends Text {
   final TextAlign textAlignment;
   final Color textColor;
   final FontWeight fontWeight;
-  final double wordSpacing;
+  final double letterSpacing;
+  final double textHeight;
   const RibnFont14TextWidget(
       {Key? key,
       required this.text,
       required this.textAlignment,
       required this.textColor,
       required this.fontWeight,
-      this.wordSpacing = 0.0})
+      this.letterSpacing = 0,
+      this.textHeight = 0})
       : super('', key: key);
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -24,9 +25,10 @@ class RibnFont14TextWidget extends Text {
       style: TextStyle(
           fontFamily: 'DM Sans',
           fontSize: 14,
+          height: textHeight,
           color: textColor,
-          wordSpacing: wordSpacing,
-          fontWeight: fontWeight),
+          fontWeight: fontWeight,
+          letterSpacing: letterSpacing),
       textAlign: textAlignment,
     );
   }

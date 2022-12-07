@@ -9,6 +9,7 @@ import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/atoms/animated_expand_button.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_bodyfont12_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font10_text_widget.dart';
+import 'package:ribn_toolkit/widgets/atoms/text/ribn_font11_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font12_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font13_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font14_text_widget.dart';
@@ -226,6 +227,27 @@ class _WidgetBookState extends State<WidgetBook> {
                   ),
                 ),
                 WidgetbookUseCase(
+                  name: 'Font11B',
+                  builder: (context) => const RibnFont11TextWidget(
+                    text:
+                        "I am a Font with text size 11 with a bold fontweight Font Text Widget",
+                    textAlignment: TextAlign.justify,
+                    textColor: RibnColors.defaultText,
+                    fontWeight: FontWeight.bold,
+                    wordSpacing: 0,
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Font11',
+                  builder: (context) => const RibnFont11TextWidget(
+                    text:
+                        "I am a Font with text size 22 with a normal fontweight Font Text Widget",
+                    textColor: RibnColors.defaultText,
+                    fontWeight: FontWeight.normal,
+                    textAlignment: TextAlign.justify,
+                  ),
+                ),
+                WidgetbookUseCase(
                   name: 'BodyFont12',
                   builder: (context) => const RibnH5TextWidget(
                     text: "I am a Body Font with text size 12 Font Text Widget",
@@ -329,7 +351,6 @@ class _WidgetBookState extends State<WidgetBook> {
                     textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.bold,
-                    wordSpacing: 0,
                   ),
                 ),
                 WidgetbookUseCase(
@@ -340,7 +361,6 @@ class _WidgetBookState extends State<WidgetBook> {
                     textAlignment: TextAlign.start,
                     textColor: RibnColors.defaultText,
                     fontWeight: FontWeight.normal,
-                    wordSpacing: 0.5,
                   ),
                 ),
                 WidgetbookUseCase(

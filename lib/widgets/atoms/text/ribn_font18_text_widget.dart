@@ -7,13 +7,17 @@ class RibnFont18TextWidget extends Text {
   final Color textColor;
   final FontWeight fontWeight;
   final double wordSpacing;
+  final double textHeight;
+  final TextHeightBehavior heightBehavior;
   const RibnFont18TextWidget(
       {Key? key,
       required this.text,
       required this.textAlignment,
       required this.textColor,
       required this.fontWeight,
-      this.wordSpacing = 0})
+      this.wordSpacing = 0,
+      this.heightBehavior = const TextHeightBehavior(),
+      this.textHeight = 0})
       : super('', key: key);
 
   @override
@@ -21,11 +25,13 @@ class RibnFont18TextWidget extends Text {
     // TODO: implement build
     return Text(
       text,
+      textHeightBehavior: heightBehavior,
       style: TextStyle(
           fontFamily: 'DM Sans',
           fontSize: 18,
           color: textColor,
           fontWeight: fontWeight,
+          height: textHeight,
           wordSpacing: wordSpacing),
       textAlign: textAlign,
     );

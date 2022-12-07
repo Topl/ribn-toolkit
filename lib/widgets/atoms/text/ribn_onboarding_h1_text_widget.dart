@@ -6,11 +6,13 @@ class RibnOnboardingH1TextWidget extends Text {
   final String text;
   final TextAlign textAlignment;
   final Color textColor;
+  final double letterSpacing;
   const RibnOnboardingH1TextWidget(
       {Key? key,
       required this.text,
       required this.textAlignment,
-      required this.textColor})
+      required this.textColor,
+      this.letterSpacing = 0})
       : super('', key: key);
 
   @override
@@ -18,9 +20,8 @@ class RibnOnboardingH1TextWidget extends Text {
     // TODO: implement build
     return Text(
       text,
-      style: RibnToolkitTextStyles.onboardingH1.copyWith(
-        color: textColor,
-      ),
+      style: RibnToolkitTextStyles.onboardingH1
+          .copyWith(color: textColor, letterSpacing: letterSpacing),
       textAlign: textAlignment,
     );
   }

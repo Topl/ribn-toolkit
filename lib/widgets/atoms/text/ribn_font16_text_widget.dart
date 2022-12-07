@@ -7,13 +7,16 @@ class RibnFont16TextWidget extends Text {
   final Color textColor;
   final FontWeight fontWeight;
   final double wordSpacing;
+  final double letterSpacing;
+
   const RibnFont16TextWidget(
       {Key? key,
       required this.text,
       required this.textAlignment,
       required this.textColor,
       required this.fontWeight,
-      this.wordSpacing = 0})
+      this.wordSpacing = 0,
+      this.letterSpacing = 0})
       : super('', key: key);
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,8 @@ class RibnFont16TextWidget extends Text {
           fontSize: 16,
           color: textColor,
           fontWeight: fontWeight,
-          wordSpacing: wordSpacing),
+          wordSpacing: wordSpacing,
+          letterSpacing: letterSpacing),
       textAlign: textAlignment,
     );
   }

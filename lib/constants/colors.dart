@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class RibnColors {
   RibnColors._();
-  static const white = Colors.white;
+  static const blueishGray = Color(0xff727372);
+  static const turquoiseBlue = Color(0xff00FFC5);
+  static const Color redColor = Colors.red;
+  static const Color white = Colors.white;
   static const Color primary = Color(0xFF144C5F);
   static const Color primaryOffColor = Color(0xFF155464);
   static const Color accent = Color(0xFF175F6B);
