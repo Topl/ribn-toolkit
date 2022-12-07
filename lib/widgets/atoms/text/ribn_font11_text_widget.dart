@@ -8,21 +8,24 @@ class RibnFont11TextWidget extends Text {
   final FontWeight fontWeight;
   final double wordSpacing;
   final TextDecoration textDecoration;
-  const RibnFont11TextWidget({
-    Key? key,
-    required this.text,
-    required this.textAlignment,
-    required this.textColor,
-    required this.fontWeight,
-    this.wordSpacing = 0,
-    this.textDecoration = TextDecoration.none,
-  }) : super('', key: key);
+  final double letterSpacing;
+  const RibnFont11TextWidget(
+      {Key? key,
+      required this.text,
+      required this.textAlignment,
+      required this.textColor,
+      required this.fontWeight,
+      this.wordSpacing = 0,
+      this.textDecoration = TextDecoration.none,
+      this.letterSpacing = 0})
+      : super('', key: key);
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Text(
       text,
       style: TextStyle(
+        letterSpacing: letterSpacing,
         color: textColor,
         wordSpacing: wordSpacing,
         fontWeight: fontWeight,
