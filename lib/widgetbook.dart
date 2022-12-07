@@ -182,7 +182,7 @@ class _WidgetBookState extends State<WidgetBook> {
                     textAlignment: TextAlign.center,
                     fontWeight: FontWeight.w500,
                     textColor: RibnColors.defaultText,
-                    height: 1.57,
+                    textHeight: 1.57,
                     letterSpacing: 1.68,
                   ),
                 ),

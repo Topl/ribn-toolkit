@@ -8,15 +8,19 @@ class RibnFont15TextWidget extends Text {
   final FontWeight fontWeight;
   final double wordSpacing;
   final double textHeight;
-  const RibnFont15TextWidget(
-      {Key? key,
-      required this.text,
-      required this.textAlignment,
-      required this.textColor,
-      required this.fontWeight,
-      this.wordSpacing = 0,
-      this.textHeight = 0})
-      : super('', key: key);
+  final double letterSpacing;
+  final TextOverflow textOverflow;
+  const RibnFont15TextWidget({
+    Key? key,
+    required this.text,
+    required this.textAlignment,
+    required this.textColor,
+    required this.fontWeight,
+    this.wordSpacing = 0,
+    this.textHeight = 0,
+    this.letterSpacing = 0,
+    this.textOverflow = TextOverflow.clip,
+  }) : super('', key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,9 @@ class RibnFont15TextWidget extends Text {
           fontSize: 15,
           color: textColor,
           fontWeight: fontWeight,
-          wordSpacing: wordSpacing),
+          letterSpacing: letterSpacing,
+          wordSpacing: wordSpacing,
+          overflow: textOverflow),
       textAlign: textAlignment,
     );
   }

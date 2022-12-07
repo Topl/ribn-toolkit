@@ -7,7 +7,7 @@ class RibnH1TextWidget extends Text {
   final Color textColor;
   final FontWeight fontWeight;
   final double letterSpacing;
-  final double height;
+  final double textHeight;
   const RibnH1TextWidget(
       {Key? key,
       required this.text,
@@ -15,7 +15,7 @@ class RibnH1TextWidget extends Text {
       required this.textColor,
       required this.fontWeight,
       this.letterSpacing = 0,
-      this.height = 0})
+      this.textHeight = 0})
       : super('', key: key);
 
   @override
@@ -27,7 +27,7 @@ class RibnH1TextWidget extends Text {
           fontFamily: 'DM Sans',
           fontSize: 36,
           fontWeight: fontWeight,
-          height: height,
+          height: textHeight,
           letterSpacing: letterSpacing,
           color: textColor),
       textAlign: textAlignment,

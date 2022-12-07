@@ -7,13 +7,15 @@ class RibnFont20TextWidget extends Text {
   final Color textColor;
   final FontWeight fontWeight;
   final double wordSpacing;
+  final double textHeight;
   const RibnFont20TextWidget(
       {Key? key,
       required this.text,
       required this.textAlignment,
       required this.textColor,
       required this.fontWeight,
-      this.wordSpacing = 0})
+      this.wordSpacing = 0,
+      this.textHeight = 0})
       : super('', key: key);
 
   @override
@@ -25,6 +27,7 @@ class RibnFont20TextWidget extends Text {
           fontFamily: 'DM Sans',
           fontSize: 20,
           color: textColor,
+          height: textHeight,
           fontWeight: fontWeight,
           wordSpacing: wordSpacing),
       textAlign: textAlignment,
