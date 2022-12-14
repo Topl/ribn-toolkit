@@ -98,8 +98,7 @@ class TitleBody extends StatelessWidget {
                   color: RibnColors.lightGreyTitle,
                 ),
                 onPressed: () {
-                  Navigator.popUntil(
-                      context, (Route route) => route.settings.name == '/home');
+                  Navigator.popUntil(context, (Route route) => route.settings.name == '/home');
                 },
                 highlightColor: Colors.transparent,
                 hoverColor: Colors.transparent,

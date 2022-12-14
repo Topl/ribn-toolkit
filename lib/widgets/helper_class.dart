@@ -31,7 +31,7 @@ class HelperClass {
   static var chevronIconLink = RibnAssets.chevronDown;
 
   static dynamic selectSettings(string) {}
-
+  static int currPage = 0;
   static String? selectedUnit;
 
   static List pages = [0, 1, 2];
@@ -48,7 +48,15 @@ class HelperClass {
     Image.asset(RibnAssets.clockBlue)
   ];
 
-  static int currPage = 0;
+  static List pagesV2 = [0, 1];
+  static List<Image> pageIconsV2 = [
+    Image.asset(RibnAssets.walletGrey),
+    Image.asset(RibnAssets.clockGrey)
+  ];
+  static List<Image> activePageIconsV2 = [
+    Image.asset(RibnAssets.walletBlue),
+    Image.asset(RibnAssets.clockBlue)
+  ];
 
   static String? selectedIcon;
 

@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 
-class RibnBottomAppBar extends StatelessWidget {
+class RibnBottomAppBarV2 extends StatelessWidget {
   static double iconHeight = 32;
   static double iconWidth = 32;
   static double largeIconHeight = 53;
@@ -14,7 +16,7 @@ class RibnBottomAppBar extends StatelessWidget {
   final List<Image> pageIcons;
   final Function setCurrentPage;
 
-  const RibnBottomAppBar(
+  const RibnBottomAppBarV2(
       {Key? key,
       required this.pages,
       required this.currPage,
@@ -47,32 +49,17 @@ class RibnBottomAppBar extends StatelessWidget {
           children: pages.asMap().keys.map(
             (key) {
               final bool isActive = key == currPage;
-              final bool isMintAssetIcon = key == 1 ? true : false;
-              return Container(
-                decoration: isMintAssetIcon
-                    ? const BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0X5950D5B7),
-                            spreadRadius: 0,
-                            blurRadius: 22,
-                            offset: Offset(0, 6),
-                          ),
-                        ],
-                      )
-                    : null,
-                child: CustomIconButton(
-                  radius: radius,
-                  height: isMintAssetIcon ? largeIconHeight : iconHeight,
-                  width: isMintAssetIcon ? largeIconWidth : iconWidth,
-                  icon: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      isActive ? activePageIcons[key] : pageIcons[key],
-                    ],
-                  ),
-                  onPressed: () => setCurrentPage(key),
+              return CustomIconButton(
+                radius: radius,
+                height: iconHeight,
+                width: iconWidth,
+                icon: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    isActive ? activePageIcons[key] : pageIcons[key],
+                  ],
                 ),
+                onPressed: () => setCurrentPage(key),
               );
             },
           ).toList(),

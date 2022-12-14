@@ -55,6 +55,7 @@ import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title_with_leadi
 import 'package:ribn_toolkit/widgets/organisms/onboarding_progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
+import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_barV2.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:ribn_toolkit/widgets/helper_class.dart';
@@ -1550,6 +1551,24 @@ class _WidgetBookState extends State<WidgetBook> {
                     backgroundColor: RibnColors.background,
                   ),
                 ),
+               WidgetbookUseCase(
+                  name: 'StandardV2',
+                  builder: (context) => Scaffold(
+                    bottomNavigationBar: RibnBottomAppBarV2(
+                      pages: HelperClass.pagesV2,
+                      currPage: HelperClass.currPage,
+                      activePageIcons: HelperClass.activePageIconsV2,
+                      pageIcons: HelperClass.pageIconsV2,
+                      setCurrentPage: (key) {
+                        setState(() {
+                          HelperClass.currPage = key;
+                        });
+                      },
+                    ),
+                    backgroundColor: RibnColors.background,
+                  ),
+                ),
+              
               ],
             ),
           ],
