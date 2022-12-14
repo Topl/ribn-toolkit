@@ -22,7 +22,8 @@ class CustomCloseButton extends StatelessWidget {
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
-      onPressed: () => onPressed != null ? onPressed!() : Navigator.of(context).pop(),
+      onPressed: () =>
+          onPressed != null ? onPressed!() : Navigator.of(context).pop(),
       icon: Icon(
         Icons.close,
         size: iconSize,

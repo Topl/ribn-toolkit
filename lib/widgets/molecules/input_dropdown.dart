@@ -74,14 +74,16 @@ class _InputDropdownState extends State<InputDropdown> {
                                   )
                                 : const SizedBox()
                             : CircleAvatar(
-                                backgroundColor:
-                                    item == widget.selectedItem ? const Color(0xFF80FF00) : const Color(0xffbdbdbd),
+                                backgroundColor: item == widget.selectedItem
+                                    ? const Color(0xFF80FF00)
+                                    : const Color(0xffbdbdbd),
                                 radius: 3,
                               ),
                       ),
                       Text(
                         capitalize(item),
-                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
+                        style:
+                            RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
                           color: RibnColors.defaultText,
                         ),
                       ),
@@ -99,7 +101,8 @@ class _InputDropdownState extends State<InputDropdown> {
                   ? const SizedBox()
                   : const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: CircleAvatar(backgroundColor: Color(0xFF80FF00), radius: 3),
+                      child: CircleAvatar(
+                          backgroundColor: Color(0xFF80FF00), radius: 3),
                     ),
               SizedBox(
                 height: 20,

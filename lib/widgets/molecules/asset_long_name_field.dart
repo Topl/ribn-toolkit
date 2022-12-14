@@ -84,7 +84,9 @@ class _AssetLongNameFieldState extends State<AssetLongNameField> {
                 },
                 dropdownChild: _buildIconDropdownChild(),
                 chevronIcon: widget.chevronIcon,
-                selectedItem: widget.selectedIcon != null ? Image.asset(widget.selectedIcon!) : null,
+                selectedItem: widget.selectedIcon != null
+                    ? Image.asset(widget.selectedIcon!)
+                    : null,
                 hintText: 'Select Icon',
               ),
             ),

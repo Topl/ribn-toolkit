@@ -53,7 +53,7 @@ class ErrorSection extends StatelessWidget {
           hoverColor: RibnColors.primaryButtonHover,
           dropShadowColor: RibnColors.primaryButtonShadow,
           onPressed: () async {
-            await launch(Strings.supportEmailLink);
+            await launchUrl(Uri.parse(Strings.supportEmailLink));
           },
         ),
         const SizedBox(height: 10),

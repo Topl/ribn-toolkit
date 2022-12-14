@@ -14,8 +14,6 @@ class AnimatedCircleStepLoader extends StatefulWidget {
     required this.inactiveCircleRadius,
     required this.dotPadding,
     this.durationInSeconds = 1,
-    this.hideTitle = false,
-    this.renderCenterIcon = false,
     Key? key,
   }) : super(key: key);
 
@@ -32,14 +30,18 @@ class AnimatedCircleStepLoader extends StatefulWidget {
   final bool renderCenterIcon;
 
   @override
-  State<AnimatedCircleStepLoader> createState() => _AnimatedCircleStepLoaderState();
+  State<AnimatedCircleStepLoader> createState() =>
+      _AnimatedCircleStepLoaderState();
 }
 
 class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
   late final Timer timer;
   late int numCircles = widget.stepLabels.length;
+  final double smallRadius = 4.5;
+  final double bigRadius = 8;
   int currCircle = 0;
-  late List<int> circlePositions = List.generate(numCircles, (idx) => idx).toList();
+  late List<int> circlePositions =
+      List.generate(numCircles, (idx) => idx).toList();
   bool seedPhraseGenerating = true;
 
   @override
@@ -50,15 +52,14 @@ class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
     }
 
     final Duration duration = Duration(seconds: widget.durationInSeconds);
-
     timer = Timer.periodic(duration, (timer) {
       if (timer.tick == numCircles) {
         widget.showStepLoader();
+        timer.cancel();
       }
       currCircle = (currCircle + 1) % numCircles;
       setState(() {});
     });
-
     super.initState();
   }
 

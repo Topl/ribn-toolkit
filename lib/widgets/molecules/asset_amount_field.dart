@@ -231,7 +231,8 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(unit,
-                            style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
+                            style: RibnToolkitTextStyles.dropdownButtonStyle
+                                .copyWith(color: RibnColors.defaultText)),
                       ),
                       onPressed: () {
                         widget.onUnitSelected!(unit);

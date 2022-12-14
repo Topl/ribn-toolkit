@@ -8,7 +8,7 @@ void main() {
       child: MaterialApp(
         initialRoute: '/',
         routes: {
-          '/': (context) => WidgetBook(),
+          '/': (context) => const WidgetBook(),
         },
       ),
     ),

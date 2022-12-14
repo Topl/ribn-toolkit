@@ -5,7 +5,9 @@ import 'package:ribn_toolkit/constants/colors.dart';
 class PeekabooButton extends StatefulWidget {
   final Text buttonText;
   final Widget buttonChild;
-  const PeekabooButton({required this.buttonText, required this.buttonChild, Key? key}) : super(key: key);
+  const PeekabooButton(
+      {required this.buttonText, required this.buttonChild, Key? key})
+      : super(key: key);
 
   @override
   State<PeekabooButton> createState() => _PeekabooButtonState();
@@ -30,7 +32,9 @@ class _PeekabooButtonState extends State<PeekabooButton> {
             children: [
               widget.buttonText,
               Icon(
-                showingChild ? Icons.keyboard_arrow_up_outlined : Icons.keyboard_arrow_down_outlined,
+                showingChild
+                    ? Icons.keyboard_arrow_up_outlined
+                    : Icons.keyboard_arrow_down_outlined,
                 color: RibnColors.whiteBackground,
               ),
             ],
