@@ -29,8 +29,10 @@ class NoteField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool maxLimitReached = noteLength >= maxNoteLength;
-    final Color counterBoxColor = maxLimitReached ? const Color(0xFFFFE5E5) : const Color(0xffefefef);
-    final Color counterBorderColor = maxLimitReached ? const Color(0xffE80E00) : Colors.transparent;
+    final Color counterBoxColor =
+        maxLimitReached ? const Color(0xFFFFE5E5) : const Color(0xffefefef);
+    final Color counterBorderColor =
+        maxLimitReached ? const Color(0xffE80E00) : Colors.transparent;
 
     return CustomInputField(
       itemLabel: Strings.note,

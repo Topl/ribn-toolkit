@@ -5,19 +5,35 @@ import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 
 class AnimatedCircleStepLoader extends StatefulWidget {
-  const AnimatedCircleStepLoader({
+   AnimatedCircleStepLoader({
     required this.stepLabels,
     required this.showStepLoader,
+    required this.activeCircleColor,
+    required this.inactiveCircleColor,
+    required this.activeCircleRadius,
+    required this.inactiveCircleRadius,
+    required this.dotPadding,
     this.durationInSeconds = 1,
     Key? key,
+    this.hideTitle=false,
+    required this.renderCenterIcon,
   }) : super(key: key);
 
   final Map<int, String> stepLabels;
   final Function showStepLoader;
   final int durationInSeconds;
 
+  final Color activeCircleColor;
+  final Color inactiveCircleColor;
+  final double activeCircleRadius;
+  final double inactiveCircleRadius;
+  final double dotPadding;
+  bool hideTitle;
+  final bool renderCenterIcon;
+
   @override
-  State<AnimatedCircleStepLoader> createState() => _AnimatedCircleStepLoaderState();
+  State<AnimatedCircleStepLoader> createState() =>
+      _AnimatedCircleStepLoaderState();
 }
 
 class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
@@ -26,7 +42,8 @@ class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
   final double smallRadius = 4.5;
   final double bigRadius = 8;
   int currCircle = 0;
-  late List<int> circlePositions = List.generate(numCircles, (idx) => idx).toList();
+  late List<int> circlePositions =
+      List.generate(numCircles, (idx) => idx).toList();
   bool seedPhraseGenerating = true;
 
   @override
@@ -89,7 +106,8 @@ class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
       child: AnimatedContainer(
         duration: duration,
         child: CircleAvatar(
-          backgroundColor: position <= currCircle ? RibnColors.primary : RibnColors.inactive,
+          backgroundColor:
+              position <= currCircle ? RibnColors.primary : RibnColors.inactive,
           radius: currCircle == position ? bigRadius : smallRadius,
         ),
       ),

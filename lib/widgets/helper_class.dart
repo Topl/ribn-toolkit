@@ -4,8 +4,10 @@ import 'package:ribn_toolkit/constants/assets.dart';
 class HelperClass {
   static TextEditingController textController = TextEditingController();
   static TextEditingController noteController = TextEditingController();
-  static TextEditingController assetLongNameController = TextEditingController();
-  static TextEditingController assetShortNameController = TextEditingController();
+  static TextEditingController assetLongNameController =
+      TextEditingController();
+  static TextEditingController assetShortNameController =
+      TextEditingController();
   static TextEditingController amountController = TextEditingController();
   static TextEditingController recipientController = TextEditingController();
   static TextEditingController passwordController = TextEditingController();
@@ -29,7 +31,7 @@ class HelperClass {
   static var chevronIconLink = RibnAssets.chevronDown;
 
   static dynamic selectSettings(string) {}
-
+  static int currPage = 0;
   static String? selectedUnit;
 
   static List pages = [0, 1, 2];
@@ -46,7 +48,15 @@ class HelperClass {
     Image.asset(RibnAssets.clockBlue)
   ];
 
-  static int currPage = 0;
+  static List pagesV2 = [0, 1];
+  static List<Image> pageIconsV2 = [
+    Image.asset(RibnAssets.walletGrey),
+    Image.asset(RibnAssets.clockGrey)
+  ];
+  static List<Image> activePageIconsV2 = [
+    Image.asset(RibnAssets.walletBlue),
+    Image.asset(RibnAssets.clockBlue)
+  ];
 
   static String? selectedIcon;
 
@@ -58,7 +68,14 @@ class HelperClass {
 
   static bool obscurePassword = true;
 
-  static Map<int, String> stepLabels = {0: 'Step 1', 1: 'Step 2', 2: 'Step 3', 3: 'Step 4', 4: 'Step 5'};
+  static Map<int, String> stepLabels = {
+    0: 'Step 1',
+    1: 'Step 2',
+    2: 'Step 3',
+    3: 'Step 4',
+    4: 'Step 5',
+    5: 'Step 6'
+  };
 
   static int currentTabIndex = 0;
 

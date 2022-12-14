@@ -39,7 +39,9 @@ class OnboardingProgressBar extends StatelessWidget {
             (index) => AnimatedContainer(
               duration: const Duration(seconds: 1),
               decoration: BoxDecoration(
-                color: index <= currStep ? RibnColors.primary : const Color(0xff6A969F),
+                color: index <= currStep
+                    ? RibnColors.primary
+                    : const Color(0xff6A969F),
                 borderRadius: BorderRadius.circular(4),
               ),
               height: 6,

@@ -10,7 +10,8 @@ class RibnAssets {
   static const seedPhraseCreatedIcon = 'assets/icons/seedphrase_created.png';
   static const passwordManagerIcon = 'assets/icons/password_manager.svg';
   static const encryptFileIcon = 'assets/icons/encrypt_file.svg';
-  static const seedPhraseConfirmedIcon = 'assets/icons/seed_phrase_confirmed.svg';
+  static const seedPhraseConfirmedIcon =
+      'assets/icons/seed_phrase_confirmed.svg';
   static const walletPasswordIcon = 'assets/icons/wallet_password.svg';
   static const addIcon = 'assets/icons/add.svg';
   static const removeIcon = 'assets/icons/remove.svg';
@@ -23,7 +24,8 @@ class RibnAssets {
   static const sentIcon = 'assets/icons/sent.svg';
   static const receiveIcon = 'assets/icons/receive.png';
   static const menuIcon = 'assets/icons/menu.svg';
-  static const txHistoryPageActiveIcon = 'assets/icons/tx_history_page_active.svg';
+  static const txHistoryPageActiveIcon =
+      'assets/icons/tx_history_page_active.svg';
   static const txHistoryPageIcon = 'assets/icons/tx_history_page.svg';
   static const settingsIcon = 'assets/icons/settings.png';
   static const supportIcon = 'assets/icons/support.png';

@@ -9,6 +9,7 @@ class InputDropdown extends StatefulWidget {
     required this.items,
     required this.onChange,
     required this.chevronIconLink,
+    this.enabled = true,
     this.hideCircleAvatar = false,
     Key? key,
   }) : super(key: key);
@@ -18,6 +19,7 @@ class InputDropdown extends StatefulWidget {
   final Function(String) onChange;
   final String chevronIconLink;
   final bool hideCircleAvatar;
+  final bool enabled;
 
   @override
   State<InputDropdown> createState() => _InputDropdownState();
@@ -43,6 +45,8 @@ class _InputDropdownState extends State<InputDropdown> {
           });
         },
         child: PopupMenuButton<String>(
+          enableFeedback: false,
+          enabled: widget.enabled == true,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.32),
           ),
@@ -70,14 +74,16 @@ class _InputDropdownState extends State<InputDropdown> {
                                   )
                                 : const SizedBox()
                             : CircleAvatar(
-                                backgroundColor:
-                                    item == widget.selectedItem ? const Color(0xFF80FF00) : const Color(0xffbdbdbd),
+                                backgroundColor: item == widget.selectedItem
+                                    ? const Color(0xFF80FF00)
+                                    : const Color(0xffbdbdbd),
                                 radius: 3,
                               ),
                       ),
                       Text(
                         capitalize(item),
-                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
+                        style:
+                            RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
                           color: RibnColors.defaultText,
                         ),
                       ),
@@ -95,7 +101,8 @@ class _InputDropdownState extends State<InputDropdown> {
                   ? const SizedBox()
                   : const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: CircleAvatar(backgroundColor: Color(0xFF80FF00), radius: 3),
+                      child: CircleAvatar(
+                          backgroundColor: Color(0xFF80FF00), radius: 3),
                     ),
               SizedBox(
                 height: 20,
@@ -113,10 +120,11 @@ class _InputDropdownState extends State<InputDropdown> {
                   ),
                 ),
               ),
-              Image.asset(
-                widget.chevronIconLink,
-                width: 10.0,
-              ),
+              if (widget.enabled == true)
+                Image.asset(
+                  widget.chevronIconLink,
+                  width: 10.0,
+                ),
             ],
           ),
           onSelected: (String item) {

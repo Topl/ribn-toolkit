@@ -33,7 +33,8 @@ class CustomIconButton extends StatelessWidget {
       width: width,
       child: MaterialButton(
         padding: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
         elevation: 0,
         hoverElevation: 0,
         highlightElevation: 0,
