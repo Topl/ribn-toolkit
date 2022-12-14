@@ -31,7 +31,6 @@ import 'package:ribn_toolkit/widgets/molecules/onboarding_action_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
-import 'package:ribn_toolkit/widgets/atoms/square_button_with_icon.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_long_name_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/shimmer_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/sliding_segment_control.dart';
@@ -44,6 +43,7 @@ import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title_with_leadi
 import 'package:ribn_toolkit/widgets/organisms/onboarding_progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
+import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_barV2.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:ribn_toolkit/widgets/helper_class.dart';
@@ -112,7 +112,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(item,
-                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.defaultText)),
+                        style: RibnToolkitTextStyles.dropdownButtonStyle
+                            .copyWith(color: RibnColors.defaultText)),
                   ),
                   onPressed: () {
                     setState(() {
@@ -226,7 +227,8 @@ class _WidgetBookState extends State<WidgetBook> {
                         child: PeekabooButton(
                           buttonText: Text(
                             'Button Text',
-                            style: RibnToolkitTextStyles.smallBody.copyWith(fontSize: 15),
+                            style: RibnToolkitTextStyles.smallBody
+                                .copyWith(fontSize: 15),
                           ),
                           buttonChild: SizedBox(
                             width: 137,
@@ -235,7 +237,9 @@ class _WidgetBookState extends State<WidgetBook> {
                               buttonChild: Text(
                                 'Do This Action',
                                 style: RibnToolkitTextStyles.dropdownButtonStyle
-                                    .copyWith(fontSize: 11, color: RibnColors.ghostButtonText),
+                                    .copyWith(
+                                        fontSize: 11,
+                                        color: RibnColors.ghostButtonText),
                               ),
                               backgroundColor: Colors.transparent,
                               hoverColor: Colors.transparent,
@@ -291,7 +295,8 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: HoverIconButton(
                       buttonText: Text(
                         'Edit',
-                        style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(color: RibnColors.primary),
+                        style: RibnToolkitTextStyles.dropdownButtonStyle
+                            .copyWith(color: RibnColors.primary),
                       ),
                       buttonIcon: Image.asset(RibnAssets.editIcon),
                       onPressed: () {},
@@ -362,7 +367,9 @@ class _WidgetBookState extends State<WidgetBook> {
                     child: CustomCheckbox(
                       fillColor: MaterialStateProperty.all(Colors.transparent),
                       checkColor: RibnColors.active,
-                      borderColor: HelperClass.checked ? RibnColors.active : RibnColors.inactive,
+                      borderColor: HelperClass.checked
+                          ? RibnColors.active
+                          : RibnColors.inactive,
                       value: HelperClass.checked,
                       onChanged: (val) {
                         setState(() {
@@ -371,8 +378,10 @@ class _WidgetBookState extends State<WidgetBook> {
                       },
                       label: RichText(
                         text: TextSpan(
-                          style: RibnToolkitTextStyles.body1
-                              .copyWith(color: HelperClass.checked ? RibnColors.defaultText : RibnColors.inactive),
+                          style: RibnToolkitTextStyles.body1.copyWith(
+                              color: HelperClass.checked
+                                  ? RibnColors.defaultText
+                                  : RibnColors.inactive),
                           children: const [
                             TextSpan(
                               text: 'Checkbox text',
@@ -468,7 +477,8 @@ class _WidgetBookState extends State<WidgetBook> {
                       assetQuantityDetails: Text(
                         '1500 G',
                         overflow: TextOverflow.ellipsis,
-                        style: RibnToolkitTextStyles.assetShortNameStyle.copyWith(
+                        style:
+                            RibnToolkitTextStyles.assetShortNameStyle.copyWith(
                           color: RibnColors.primary,
                         ),
                       ),
@@ -497,7 +507,8 @@ class _WidgetBookState extends State<WidgetBook> {
                       assetQuantityDetails: Text(
                         '1500 G',
                         overflow: TextOverflow.ellipsis,
-                        style: RibnToolkitTextStyles.assetShortNameStyle.copyWith(
+                        style:
+                            RibnToolkitTextStyles.assetShortNameStyle.copyWith(
                           color: RibnColors.primary,
                         ),
                       ),
@@ -537,7 +548,8 @@ class _WidgetBookState extends State<WidgetBook> {
                       assetQuantityDetails: Text(
                         '1500 G',
                         overflow: TextOverflow.ellipsis,
-                        style: RibnToolkitTextStyles.assetShortNameStyle.copyWith(
+                        style:
+                            RibnToolkitTextStyles.assetShortNameStyle.copyWith(
                           color: RibnColors.primary,
                         ),
                       ),
@@ -689,7 +701,8 @@ class _WidgetBookState extends State<WidgetBook> {
                               HelperClass.validRecipientAddress = '';
                             });
                           },
-                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
+                          icon:
+                              SvgPicture.asset(RibnAssets.recipientFingerprint),
                           alternativeDisplayChild: RoundedCopyTextField(
                             text: 'This is some text',
                             icon: SvgPicture.asset(
@@ -724,7 +737,8 @@ class _WidgetBookState extends State<WidgetBook> {
                               HelperClass.validRecipientAddress = '';
                             });
                           },
-                          icon: SvgPicture.asset(RibnAssets.recipientFingerprint),
+                          icon:
+                              SvgPicture.asset(RibnAssets.recipientFingerprint),
                           alternativeDisplayChild: RoundedCopyTextField(
                             text: 'This is some text',
                             icon: SvgPicture.asset(
@@ -780,7 +794,8 @@ class _WidgetBookState extends State<WidgetBook> {
                       Padding(
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetAmountField(
-                          selectedUnit: HelperClass.selectedUnit == HelperClass.selectedUnit
+                          selectedUnit: HelperClass.selectedUnit ==
+                                  HelperClass.selectedUnit
                               ? 'No Unit'
                               : HelperClass.selectedUnit,
                           controller: HelperClass.amountController,
@@ -872,7 +887,8 @@ class _WidgetBookState extends State<WidgetBook> {
                         padding: const EdgeInsets.only(left: 70),
                         child: AssetSelectionField(
                           formattedSelectedAsset: const {
-                            'assetCode': '5YJkvbDcWX5GgPj5xqzxhwqY6EvKrqWj2hhBRXxSGMns2qPxCMz5kSR3vw',
+                            'assetCode':
+                                '5YJkvbDcWX5GgPj5xqzxhwqY6EvKrqWj2hhBRXxSGMns2qPxCMz5kSR3vw',
                             'longName': 'Green Coffee',
                             'shortName': 'GrnCffe',
                             'assetIcon': RibnAssets.coffGreenIcon,
@@ -933,7 +949,8 @@ class _WidgetBookState extends State<WidgetBook> {
                         children: [
                           Text(
                             Strings.howIsMySeedPhraseUnrecoverable,
-                            style: RibnToolkitTextStyles.toolTipTextStyle.copyWith(
+                            style:
+                                RibnToolkitTextStyles.toolTipTextStyle.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -964,12 +981,15 @@ class _WidgetBookState extends State<WidgetBook> {
                             ),
                             WidgetSpan(
                               child: GestureDetector(
-                                onTap: () async => await launch(HelperClass.tooltipUrl),
+                                onTap: () async =>
+                                    await launch(HelperClass.tooltipUrl),
                                 child: Row(
                                   children: [
                                     Text(
                                       ' Baas. ',
-                                      style: RibnToolkitTextStyles.toolTipTextStyle.copyWith(
+                                      style: RibnToolkitTextStyles
+                                          .toolTipTextStyle
+                                          .copyWith(
                                         color: const Color(0xff00B5AB),
                                       ),
                                     ),
@@ -1005,7 +1025,8 @@ class _WidgetBookState extends State<WidgetBook> {
                           children: [
                             Text(
                               'You can place elements on top of this background as so...',
-                              style: RibnToolkitTextStyles.h4.copyWith(color: Colors.white),
+                              style: RibnToolkitTextStyles.h4
+                                  .copyWith(color: Colors.white),
                             ),
                           ],
                         ),
@@ -1021,7 +1042,8 @@ class _WidgetBookState extends State<WidgetBook> {
                 WidgetbookUseCase(
                   name: 'Standard',
                   builder: (context) => const Center(
-                    child: ShimmerLoader(width: 150, height: 15, borderRadius: 100),
+                    child: ShimmerLoader(
+                        width: 150, height: 15, borderRadius: 100),
                   ),
                 ),
               ],
@@ -1067,7 +1089,8 @@ class _WidgetBookState extends State<WidgetBook> {
                                 Text(
                                   'This is a cool modal with a sexy action button.',
                                   style: RibnToolkitTextStyles.body1,
-                                  textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                                  textHeightBehavior: TextHeightBehavior(
+                                      applyHeightToFirstAscent: false),
                                 ),
                               ],
                             ),
@@ -1078,7 +1101,8 @@ class _WidgetBookState extends State<WidgetBook> {
                                 buttonWidth: 240,
                                 buttonChild: Text(
                                   'Action Button',
-                                  style: RibnToolkitTextStyles.btnLarge.copyWith(
+                                  style:
+                                      RibnToolkitTextStyles.btnLarge.copyWith(
                                     color: Colors.white,
                                   ),
                                 ),
@@ -1104,7 +1128,8 @@ class _WidgetBookState extends State<WidgetBook> {
                   builder: (context) => const Center(
                     child: Accordion(
                       header: Text('This is an example accordion header'),
-                      description: Text('And this is some description text for the accordion.'),
+                      description: Text(
+                          'And this is some description text for the accordion.'),
                       width: 400,
                       backgroundColor: Colors.white,
                       collapsedBackgroundColor: Colors.white,
@@ -1151,12 +1176,14 @@ class _WidgetBookState extends State<WidgetBook> {
                         0: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 40),
                           child: Text("Tab Value 1",
-                              style: RibnToolkitTextStyles.btnMedium.copyWith(color: RibnColors.defaultText)),
+                              style: RibnToolkitTextStyles.btnMedium
+                                  .copyWith(color: RibnColors.defaultText)),
                         ),
                         1: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 40),
                           child: Text("Tab Value 2",
-                              style: RibnToolkitTextStyles.btnMedium.copyWith(color: RibnColors.defaultText)),
+                              style: RibnToolkitTextStyles.btnMedium
+                                  .copyWith(color: RibnColors.defaultText)),
                         ),
                       },
                     ),
@@ -1198,7 +1225,8 @@ class _WidgetBookState extends State<WidgetBook> {
               useCases: [
                 WidgetbookUseCase(
                   name: 'Standard',
-                  builder: (context) => const CustomPageTextTitle(title: 'Page Title'),
+                  builder: (context) =>
+                      const CustomPageTextTitle(title: 'Page Title'),
                 ),
               ],
             ),
@@ -1244,7 +1272,7 @@ class _WidgetBookState extends State<WidgetBook> {
               useCases: [
                 WidgetbookUseCase(
                   name: 'First Step',
-                  builder: (context) => Center(
+                  builder: (context) => const Center(
                     child: OnboardingProgressBar(
                       currStep: 0,
                       numSteps: 4,
@@ -1253,7 +1281,7 @@ class _WidgetBookState extends State<WidgetBook> {
                 ),
                 WidgetbookUseCase(
                   name: 'Middle Step',
-                  builder: (context) => Center(
+                  builder: (context) => const Center(
                     child: OnboardingProgressBar(
                       currStep: 2,
                       numSteps: 4,
@@ -1262,7 +1290,7 @@ class _WidgetBookState extends State<WidgetBook> {
                 ),
                 WidgetbookUseCase(
                   name: 'Final Step',
-                  builder: (context) => Center(
+                  builder: (context) => const Center(
                     child: OnboardingProgressBar(
                       currStep: 4,
                       numSteps: 4,
@@ -1282,6 +1310,23 @@ class _WidgetBookState extends State<WidgetBook> {
                       currPage: HelperClass.currPage,
                       activePageIcons: HelperClass.activePageIcons,
                       pageIcons: HelperClass.pageIcons,
+                      setCurrentPage: (key) {
+                        setState(() {
+                          HelperClass.currPage = key;
+                        });
+                      },
+                    ),
+                    backgroundColor: RibnColors.background,
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'StandardV2',
+                  builder: (context) => Scaffold(
+                    bottomNavigationBar: RibnBottomAppBarV2(
+                      pages: HelperClass.pagesV2,
+                      currPage: HelperClass.currPage,
+                      activePageIcons: HelperClass.activePageIconsV2,
+                      pageIcons: HelperClass.pageIconsV2,
                       setCurrentPage: (key) {
                         setState(() {
                           HelperClass.currPage = key;
