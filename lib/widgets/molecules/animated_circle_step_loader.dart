@@ -5,7 +5,7 @@ import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 
 class AnimatedCircleStepLoader extends StatefulWidget {
-  const AnimatedCircleStepLoader({
+   AnimatedCircleStepLoader({
     required this.stepLabels,
     required this.showStepLoader,
     required this.activeCircleColor,
@@ -15,6 +15,8 @@ class AnimatedCircleStepLoader extends StatefulWidget {
     required this.dotPadding,
     this.durationInSeconds = 1,
     Key? key,
+    this.hideTitle=false,
+    required this.renderCenterIcon,
   }) : super(key: key);
 
   final Map<int, String> stepLabels;
@@ -26,7 +28,7 @@ class AnimatedCircleStepLoader extends StatefulWidget {
   final double activeCircleRadius;
   final double inactiveCircleRadius;
   final double dotPadding;
-  final bool hideTitle;
+  bool hideTitle;
   final bool renderCenterIcon;
 
   @override
@@ -46,11 +48,6 @@ class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
 
   @override
   void initState() {
-    if (widget.renderCenterIcon == true) {
-      var centerPosition = circlePositions.length / 2;
-      circlePositions.insert(centerPosition.floor(), 999);
-    }
-
     final Duration duration = Duration(seconds: widget.durationInSeconds);
     timer = Timer.periodic(duration, (timer) {
       if (timer.tick == numCircles) {
@@ -74,16 +71,18 @@ class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
     return SizedBox(
       child: Column(
         children: [
-          if (widget.hideTitle != true)
-            SizedBox(
-              width: kIsWeb ? double.infinity : 312,
-              child: _buildTitle(currCircle),
-            ),
+          SizedBox(
+            width: kIsWeb ? double.infinity : 312,
+            child: _buildTitle(currCircle),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 50),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: circlePositions.map(_buildAnimatedContainer).toList(),
+            child: SizedBox(
+              height: 30,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: circlePositions.map(_buildAnimatedContainer).toList(),
+              ),
             ),
           ),
         ],
@@ -101,38 +100,15 @@ class _AnimatedCircleStepLoaderState extends State<AnimatedCircleStepLoader> {
 
   /// Animate color and radius of the active circles.
   Widget _buildAnimatedContainer(int position) {
-    // Adds a center icon if property renderCenterIcon is set to true
-    if (position == 999) {
-      return Padding(
-        padding: const EdgeInsets.fromLTRB(
-          8,
-          8,
-          8,
-          8,
-        ),
-        child: Container(
-          height: 34,
-          width: 34,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-            color: RibnColors.vibrantGreen,
-          ),
-          child: const Icon(
-            Icons.check,
-            color: RibnColors.primary,
-          ),
-        ),
-      );
-    }
-
     final Duration duration = Duration(seconds: widget.durationInSeconds);
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: widget.dotPadding),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: AnimatedContainer(
         duration: duration,
         child: CircleAvatar(
-          backgroundColor: position <= currCircle ? widget.activeCircleColor : widget.inactiveCircleColor,
-          radius: currCircle == position ? widget.activeCircleRadius : widget.inactiveCircleRadius,
+          backgroundColor:
+              position <= currCircle ? RibnColors.primary : RibnColors.inactive,
+          radius: currCircle == position ? bigRadius : smallRadius,
         ),
       ),
     );
