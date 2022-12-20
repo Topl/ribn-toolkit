@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
+import 'package:ribn_toolkit/constants/ribn_sample_data_models.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/atoms/animated_expand_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/seperators/ribn_dashed_line.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font10_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font12_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font13_text_widget.dart';
@@ -19,6 +21,8 @@ import 'package:ribn_toolkit/widgets/atoms/text/ribn_h2_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h3_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h4_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h5_text_widget.dart';
+import 'package:ribn_toolkit/widgets/molecules/ribn_activity_details.dart';
+import 'package:ribn_toolkit/widgets/molecules/ribn_activity_tile.dart';
 import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
@@ -55,7 +59,7 @@ import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title_with_leadi
 import 'package:ribn_toolkit/widgets/organisms/onboarding_progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
-import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_barV2.dart';
+import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar_v2.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:ribn_toolkit/widgets/helper_class.dart';
@@ -150,6 +154,16 @@ class _WidgetBookState extends State<WidgetBook> {
         WidgetbookCategory(
           name: 'Atoms',
           widgets: [
+            WidgetbookComponent(
+              name: 'Separators',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Dash line',
+                  builder: (context) =>
+                      const RibnDashedLine(color: RibnColors.lightGreyDivider),
+                ),
+              ],
+            ),
             WidgetbookComponent(
               name: 'Text Widgets',
               useCases: [
@@ -1423,6 +1437,76 @@ class _WidgetBookState extends State<WidgetBook> {
                 ),
               ],
             ),
+            WidgetbookComponent(
+              name: 'Activity Tiles',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Standard Old',
+                  builder: (context) => RibnActivityTile(
+                    tileColor: RibnColors.whiteColor,
+                    assetIcon: RibnAssets.polyIconCircle,
+                    assetBalance: '-500',
+                    assetShortName: 'POLY',
+                    transactionStatus: 'confirmed',
+                    transactionDate: 'Sent on Oct 14',
+                    onTap: () {},
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Standard NFTs Recieve',
+                  builder: (context) => RibnActivityTile(
+                    tileColor: RibnColors.whiteColor,
+                    assetIcon: RibnAssets.undefinedIcon,
+                    assetBalance: '+1',
+                    assetShortName: 'APE',
+                    transactionStatus: 'confirmed',
+                    transactionDate: 'Sent on Oct 14',
+                    onTap: () {},
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Standard NFTs Send',
+                  builder: (context) => RibnActivityTile(
+                    tileColor: RibnColors.whiteColor,
+                    assetIcon: RibnAssets.undefinedIcon,
+                    assetBalance: '-1',
+                    assetShortName: 'APE',
+                    transactionStatus: 'confirmed',
+                    transactionDate: 'Sent on Oct 14',
+                    onTap: () {},
+                  ),
+                ),
+                WidgetbookUseCase(
+                    name: 'Activity Details Old',
+                    builder: (context) => RibnActivityDetails(
+                          activityDetails:
+                              RibnSampleDataModels.activityDetailsModel,
+                          dataTileTextStyle: const TextStyle(
+                            fontFamily: 'DM Sans',
+                            fontSize: 12,
+                            color: RibnColors.defaultText,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ))
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Activity Details',
+              useCases: [
+                WidgetbookUseCase(
+                    name: 'Activity Details Old',
+                    builder: (context) => RibnActivityDetails(
+                          activityDetails:
+                              RibnSampleDataModels.activityDetailsModel,
+                          dataTileTextStyle: const TextStyle(
+                            fontFamily: 'DM Sans',
+                            fontSize: 12,
+                            color: RibnColors.hintTextColor,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ))
+              ],
+            ),
           ],
         ),
         WidgetbookCategory(
@@ -1551,7 +1635,7 @@ class _WidgetBookState extends State<WidgetBook> {
                     backgroundColor: RibnColors.background,
                   ),
                 ),
-               WidgetbookUseCase(
+                WidgetbookUseCase(
                   name: 'StandardV2',
                   builder: (context) => Scaffold(
                     bottomNavigationBar: RibnBottomAppBarV2(
@@ -1568,11 +1652,10 @@ class _WidgetBookState extends State<WidgetBook> {
                     backgroundColor: RibnColors.background,
                   ),
                 ),
-              
               ],
             ),
           ],
-        )
+        ),
       ],
       themes: [
         WidgetbookTheme(
@@ -1611,6 +1694,15 @@ class _WidgetBookState extends State<WidgetBook> {
           ),
           type: DeviceType.mobile,
         ),
+        Device(
+          name: 'Wide Screen',
+          resolution: Resolution.dimensions(
+            nativeWidth: 1248,
+            nativeHeight: 2778,
+            scaleFactor: 2,
+          ),
+          type: DeviceType.mobile,
+        )
       ],
       appInfo: AppInfo(name: 'Ribn Toolkit'),
     );

@@ -1,6 +1,7 @@
 /// All the assets that are being used throughout the app
 class RibnAssets {
   RibnAssets._();
+  static const polyIconCircle = 'assets/icons/poly_icon_circle.png';
   static const logoIcon = 'assets/icons/topl_placeholder.svg';
   static const logoCardIcon = 'assets/icons/topl_placeholder_card.svg';
   static const warningIcon = 'assets/icons/warning.svg';
