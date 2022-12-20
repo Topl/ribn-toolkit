@@ -30,7 +30,8 @@ class RibnActivityDetails extends StatelessWidget {
       children: [
         const CustomPageTextTitle(
           title: Strings.transactionDetails,
-          hideCloseCross: true,
+          hideCloseCross: false,
+            hideBackArrow:true
         ),
         Padding(
           padding: const EdgeInsets.only(top: 20, bottom: 20),
