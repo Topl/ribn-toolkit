@@ -31,7 +31,7 @@ class RibnActivityDetailsModel {
   final String icon;
   final String shortName;
   final String transactionStatus;
-  final int transactionAmount;
+  final String transactionAmount;
   final String fee;
   final String myRibnWalletAddress;
   final String transactionSenderAddress;
@@ -53,7 +53,7 @@ class RibnActivityDetailsModel {
         icon: json["icon"] ?? RibnAssets.undefinedIcon,
         shortName: json["shortName"] ?? "Unknown",
         transactionStatus: json["transactionStatus"] ?? "Unknown",
-        transactionAmount: json["transactionAmount"] ?? 0,
+        transactionAmount: json["transactionAmount"].toString() ?? "",
         fee: json["fee"] ?? "0",
         myRibnWalletAddress: json["myRibnWalletAddress"] ?? "Unknown",
         transactionSenderAddress: json["transactionSenderAddress"] ?? "Unknown",

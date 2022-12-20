@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RibnDashedLine extends StatelessWidget {
-  const RibnDashedLine(
-      {Key? key, this.height = 1, this.color = Colors.black})
+  const RibnDashedLine({Key? key, this.height = 1, this.color = Colors.black})
       : super(key: key);
   final double height;
   final Color color;
