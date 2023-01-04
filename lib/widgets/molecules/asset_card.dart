@@ -14,6 +14,7 @@ class AssetCard extends StatelessWidget {
     this.onFirstIconPress,
     this.secondIcon,
     this.onSecondIconPress,
+    this.isNft = false,
     Key? key,
   }) : super(key: key);
   final VoidCallback onCardPress;
@@ -26,6 +27,7 @@ class AssetCard extends StatelessWidget {
   final VoidCallback? onFirstIconPress;
   final Image? secondIcon;
   final VoidCallback? onSecondIconPress;
+  final bool isNft;
 
   @override
   Widget build(BuildContext context) {
@@ -58,52 +60,64 @@ class AssetCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // display asset icon
-              Padding(
-                padding: const EdgeInsets.only(top: 13, left: 11, right: 16),
+              Expanded(
+                flex: 2,
                 child: iconImage,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 10),
-                  // display asset short name
-                  SizedBox(
-                    width: 120,
-                    child: shortName,
-                  ),
-                  // display asset long name or placeholder if no long name exists
-                  Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5.0),
-                      child: assetLongName),
-                  // display helpful text if some asset details are missing
-                  missingAsstDetailsCondition
-                      ? const Text(
-                          'Add Asset Details',
-                          style: TextStyle(
-                            color: RibnColors.primary,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'DM Sans',
-                            fontStyle: FontStyle.normal,
-                            fontSize: 10.4,
-                            decoration: TextDecoration.underline,
-                            letterSpacing: 1,
+
+              SizedBox(width: 20),
+
+              Expanded(
+                flex: 9,
+                child: isNft
+                    ? _AssetShortName(
+                        shortName: shortName,
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // display asset short name
+                          _AssetShortName(
+                            shortName: shortName,
                           ),
-                        )
-                      : const SizedBox(),
-                ],
+                          // display asset long name or placeholder if no long name exists
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5.0),
+                            child: assetLongName,
+                          ),
+                          // display helpful text if some asset details are missing
+                          missingAsstDetailsCondition
+                              ? const Text(
+                                  'Add Asset Details',
+                                  style: TextStyle(
+                                    color: RibnColors.primary,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'DM Sans',
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 10.4,
+                                    decoration: TextDecoration.underline,
+                                    letterSpacing: 1,
+                                  ),
+                                )
+                              : const SizedBox(),
+                        ],
+                      ),
               ),
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 10),
                   // display asset units
                   Container(
-                      constraints: const BoxConstraints(maxWidth: 90),
-                      child: assetQuantityDetails),
+                    constraints: const BoxConstraints(maxWidth: 90),
+                    child: assetQuantityDetails,
+                  ),
                   const SizedBox(height: 8),
                   // conditional send and receive buttons
                   firstIcon != null && secondIcon != null
@@ -125,11 +139,26 @@ class AssetCard extends StatelessWidget {
                       : const SizedBox(),
                 ],
               ),
-              const SizedBox(width: 12),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _AssetShortName extends StatelessWidget {
+  final Text shortName;
+  const _AssetShortName({
+    required this.shortName,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 120,
+      child: shortName,
     );
   }
 }
