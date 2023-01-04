@@ -41,9 +41,9 @@ class RibnAssetDetails {
 
   factory RibnAssetDetails.fromMap(Map<String, dynamic> map) {
     return RibnAssetDetails(
-      longName: map['longName'] ?? "Unknown",
+      longName: map['longName'] ?? "",
       icon: map['icon'] ?? RibnAssets.undefinedIcon,
-      unit: map['unit'] ?? "Unknown",
+      unit: map['unit'] ?? "",
     );
   }
 
