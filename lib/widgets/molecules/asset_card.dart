@@ -32,7 +32,6 @@ class AssetCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 309,
       height: 88,
       decoration: const BoxDecoration(
         boxShadow: [
@@ -63,15 +62,11 @@ class AssetCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // display asset icon
-              Expanded(
-                flex: 2,
-                child: iconImage,
-              ),
+              iconImage,
 
               SizedBox(width: 20),
 
               Expanded(
-                flex: 9,
                 child: isNft
                     ? _AssetShortName(
                         shortName: shortName,
@@ -107,7 +102,6 @@ class AssetCard extends StatelessWidget {
                         ],
                       ),
               ),
-              const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
