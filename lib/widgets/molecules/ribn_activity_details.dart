@@ -243,7 +243,7 @@ class RibnActivityDetails extends StatelessWidget {
                     height: 16,
                   ),
                   const RibnDashedLine(color: RibnColors.lightGreyDivider),
-                  activityDetails.securityRoot == null
+                  activityDetails.securityRoot == "Unknown"
                       ? const SizedBox()
                       : Column(
                           children: [
