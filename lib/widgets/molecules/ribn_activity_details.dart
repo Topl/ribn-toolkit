@@ -377,7 +377,7 @@ class RibnActivityDetails extends StatelessWidget {
                         ),
                       ),
                       RibnTxHistoryDataTile(
-                        reducedWidth: true,
+                        reducedWidth: false,
                         tileTitle: 'View on Topl Explorer',
                         tileValue: _buildToplExplorerLink(),
                       ),
@@ -416,7 +416,7 @@ class RibnActivityDetails extends StatelessWidget {
                       decoration: TextDecoration.underline,
                     ),
                   ),
-                  const SizedBox(width: 5),
+                  const SizedBox(width: 2),
                   Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
