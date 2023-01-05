@@ -30,7 +30,8 @@ class AnimatedExpandButton extends StatefulWidget {
   State<AnimatedExpandButton> createState() => _AnimatedExpandButtonState();
 }
 
-class _AnimatedExpandButtonState extends State<AnimatedExpandButton> with TickerProviderStateMixin {
+class _AnimatedExpandButtonState extends State<AnimatedExpandButton>
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   bool _expanded = false;
 
@@ -69,7 +70,8 @@ class _AnimatedExpandButtonState extends State<AnimatedExpandButton> with Ticker
             SizedBox(
               child: Text(
                 widget.title,
-                textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
+                textHeightBehavior:
+                    const TextHeightBehavior(applyHeightToFirstAscent: false),
                 style: RibnToolkitTextStyles.smallBody.copyWith(
                   fontSize: 11,
                   fontWeight: FontWeight.w500,
@@ -77,7 +79,8 @@ class _AnimatedExpandButtonState extends State<AnimatedExpandButton> with Ticker
               ),
             ),
             RotationTransition(
-                turns: Tween(begin: 0.0, end: 1.0).animate(_controller), child: const Icon(Icons.expand_more)),
+                turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
+                child: const Icon(Icons.expand_more)),
           ],
         ),
         onPressed: () {

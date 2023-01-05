@@ -5,7 +5,7 @@ import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 
 class AnimatedCircleStepLoader extends StatefulWidget {
-   AnimatedCircleStepLoader({
+  AnimatedCircleStepLoader({
     required this.stepLabels,
     required this.showStepLoader,
     required this.activeCircleColor,
@@ -15,7 +15,7 @@ class AnimatedCircleStepLoader extends StatefulWidget {
     required this.dotPadding,
     this.durationInSeconds = 1,
     Key? key,
-    this.hideTitle=false,
+    this.hideTitle = false,
     required this.renderCenterIcon,
   }) : super(key: key);
 

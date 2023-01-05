@@ -13,14 +13,6 @@ class StatusChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    colorByStatus() {
-      if (status == 'confirmed') {
-        return RibnColors.statusChipGreen;
-      }
-
-      return RibnColors.statusChipGrey;
-    }
-
     return Container(
       height: 18,
       decoration: BoxDecoration(
@@ -46,5 +38,13 @@ class StatusChip extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Color colorByStatus() {
+    if (status == 'confirmed') {
+      return RibnColors.statusChipGreen;
+    }
+
+    return RibnColors.statusChipGrey;
   }
 }
