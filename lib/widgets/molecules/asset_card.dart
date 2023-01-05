@@ -64,7 +64,7 @@ class AssetCard extends StatelessWidget {
               // display asset icon
               iconImage,
 
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
 
               Expanded(
                 child: isNft
