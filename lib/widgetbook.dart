@@ -1671,11 +1671,19 @@ class _WidgetBookState extends State<WidgetBook> {
         name: 'iPhone 12 Pro',
         resolution: Resolution.dimensions(
           nativeWidth: 390,
-          nativeHeight: 844,
+          nativeHeight: 1200,
           scaleFactor: 1,
         ),
         type: DeviceType.mobile,
-      ),
+      ), Device(
+          name: 'Chrome Widget',
+          resolution: Resolution.dimensions(
+            nativeWidth: 320,
+            nativeHeight: 1200,
+            scaleFactor: 1,
+          ),
+          type: DeviceType.mobile,
+        ),
         Device(
           name: 'Square Canvas',
           resolution: Resolution.dimensions(

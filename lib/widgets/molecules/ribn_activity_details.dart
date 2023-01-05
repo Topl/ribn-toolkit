@@ -376,13 +376,26 @@ class RibnActivityDetails extends StatelessWidget {
                           ],
                         ),
                       ),
-                      RibnTxHistoryDataTile(
-                        reducedWidth: false,
-                        tileTitle: 'View on Topl Explorer',
-                        tileValue: _buildToplExplorerLink(),
-                      ),
+
                     ],
                   ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  const RibnDashedLine(color: RibnColors.lightGreyDivider),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      RibnTxHistoryDataTile(
+                        reducedWidth: true,
+                        tileTitle: 'View on Topl Explorer',
+                        tileValue: _buildToplExplorerLink(),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
@@ -404,8 +417,8 @@ class RibnActivityDetails extends StatelessWidget {
             child: GestureDetector(
               onTap: () async => await launchUrl(url),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'www.topl.explorer',
@@ -416,7 +429,7 @@ class RibnActivityDetails extends StatelessWidget {
                       decoration: TextDecoration.underline,
                     ),
                   ),
-                  const SizedBox(width: 2),
+                  const SizedBox(width: 5),
                   Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
