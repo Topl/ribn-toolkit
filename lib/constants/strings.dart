@@ -43,6 +43,7 @@ class Strings {
   static const String contactSupport = 'Contact Support';
   static const String tryAgain = 'Try Again';
   static const String supportEmail = 'support@topl.me';
+  static const String transactionDetails = 'Activity details';
   static const String supportEmailLink =
       'mailto:$supportEmail?subject=Ribn Support&body=';
   static const String invalidRecipientAddressError =

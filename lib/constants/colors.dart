@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class RibnColors {
   RibnColors._();
+  static const Color lighterGrey = Color.fromARGB(0, 114, 115, 114);
+  static const Color whiteColor = Colors.white;
   static const Color primary = Color(0xFF144C5F);
   static const Color primaryOffColor = Color(0xFF155464);
   static const Color accent = Color(0xFF175F6B);

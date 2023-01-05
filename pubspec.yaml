@@ -48,7 +48,6 @@ dependencies:
   wave: ^0.2.2
   shimmer_animation: ^2.1.0+1
   step_progress_indicator: ^1.0.2
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -59,6 +58,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  build_runner: ^2.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -75,6 +75,8 @@ flutter:
   assets:
     - assets/icons/
     - assets/asset_icons/
+    - assets/fonts/
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
