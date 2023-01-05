@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ui';
 import 'package:ribn_toolkit/constants/assets.dart';
 
 import '../assets/ribn_asset_details_model.dart';
@@ -53,7 +52,7 @@ class RibnActivityDetailsModel {
         icon: json["icon"] ?? RibnAssets.undefinedIcon,
         shortName: json["shortName"] ?? "",
         transactionStatus: json["transactionStatus"] ?? "",
-        transactionAmount: json["transactionAmount"].toString() ?? "",
+        transactionAmount: json["transactionAmount"].toString(),
         fee: json["fee"] ?? "0",
         myRibnWalletAddress: json["myRibnWalletAddress"] ?? "",
         transactionSenderAddress: json["transactionSenderAddress"] ?? "",

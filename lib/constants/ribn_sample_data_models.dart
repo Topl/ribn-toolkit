@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'dart:ui';
 
 import 'package:ribn_toolkit/models/transactions/ribn_activity_details_model.dart';
 
-import 'colors.dart';
 
 class RibnSampleDataModels {
   RibnSampleDataModels._();

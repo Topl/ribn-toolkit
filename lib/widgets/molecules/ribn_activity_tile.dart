@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ribn_toolkit/constants/colors.dart';
 
 import '../../constants/assets.dart';
 import '../../constants/styles.dart';
@@ -94,7 +93,6 @@ class RibnActivityTile extends StatelessWidget {
       ),
     );
 
-    ;
   }
 
   Image renderAssetIcon(assetDetailsIcon) {
