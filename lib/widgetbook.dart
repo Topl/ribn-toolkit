@@ -1667,6 +1667,15 @@ class _WidgetBookState extends State<WidgetBook> {
         ),
       ],
       devices: [
+      Device(
+        name: 'iPhone 12 Pro',
+        resolution: Resolution.dimensions(
+          nativeWidth: 390,
+          nativeHeight: 844,
+          scaleFactor: 1,
+        ),
+        type: DeviceType.mobile,
+      ),
         Device(
           name: 'Square Canvas',
           resolution: Resolution.dimensions(
@@ -1684,15 +1693,6 @@ class _WidgetBookState extends State<WidgetBook> {
             scaleFactor: 1,
           ),
           type: DeviceType.desktop,
-        ),
-        Device(
-          name: 'iPhone 12 Pro',
-          resolution: Resolution.dimensions(
-            nativeWidth: 390,
-            nativeHeight: 844,
-            scaleFactor: 1,
-          ),
-          type: DeviceType.mobile,
         ),
         Device(
           name: 'Wide Screen',

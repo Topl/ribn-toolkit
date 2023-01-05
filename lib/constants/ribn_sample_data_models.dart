@@ -9,30 +9,24 @@ class RibnSampleDataModels {
   RibnSampleDataModels._();
   static RibnActivityDetailsModel activityDetailsModel =
       RibnActivityDetailsModel.fromJson(jsonEncode({
-    "securityRoot": null,
+    "securityRoot": "11111111111111111111111111111111",
     "isPolyTransaction": true,
     "transactionType": "Sent",
     "timestamp": "11-03-2022",
-    "assetDetails": {},
+    "assetDetails": {"unit": "-2022"},
     "icon": "assets/icons/poly_icon_circle.png",
     "shortName": "POLY",
     "transactionStatus": "confirmed",
     "transactionAmount": -2022,
     "fee": "0 nanoPOLYs",
-    "myRibnWalletAddress": formatAddressString(
+    "myRibnWalletAddress":
         "AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D",
-        charsToDisplay: 4),
-    "transactionSenderAddress": formatAddressString(
+    "transactionSenderAddress":
         "AUEy8qDHaFvcD7SF52pbzmvApVwJ3ijgxNBgbPwWcorZKHF1Mwy3",
-        charsToDisplay: 4),
     "note": null,
-    "blockId": formatAddressString(
-        "29hEG5XFQEFgnYrqTEfnhcwjrdLwVZ3gDkmEqPmMKwo6y",
-        charsToDisplay: 4),
+    "blockId": "29hEG5XFQEFgnYrqTEfnhcwjrdLwVZ3gDkmEqPmMKwo6y",
     "blockHeight": 623879,
-    "transactionId": formatAddressString(
-        "iQqkwJHks5642E8gm5XsDiovcFpmgWt5XveM1RdiEubz",
-        charsToDisplay: 4),
+    "transactionId": "iQqkwJHks5642E8gm5XsDiovcFpmgWt5XveM1RdiEubz",
     "networkId": 64
   }));
 }

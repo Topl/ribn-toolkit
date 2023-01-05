@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants/assets.dart';
 import '../../constants/colors.dart';
+import '../../constants/ribn_sample_data_models.dart';
 import '../../constants/rules.dart';
 import '../../constants/strings.dart';
 import '../../constants/styles.dart';
@@ -29,10 +30,9 @@ class RibnActivityDetails extends StatelessWidget {
     return Column(
       children: [
         const CustomPageTextTitle(
-          title: Strings.transactionDetails,
-          hideCloseCross: false,
-            hideBackArrow:true
-        ),
+            title: Strings.transactionDetails,
+            hideCloseCross: false,
+            hideBackArrow: true),
         Padding(
           padding: const EdgeInsets.only(top: 20, bottom: 20),
           child: Container(
@@ -142,47 +142,13 @@ class RibnActivityDetails extends StatelessWidget {
                       ),
                       RibnTxHistoryDataTile(
                         reducedWidth: true,
-                        tileTitle: 'txFee',
+                        tileTitle: 'Fee',
                         tileValue: Text(
                           activityDetails.fee,
                           style: dataTileTextStyle,
                         ),
                       ),
                     ],
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  const RibnDashedLine(color: RibnColors.lightGreyDivider),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  RibnTxHistoryDataTile(
-                    tileTitle: 'To',
-                    tileValue: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 26,
-                          height: 26,
-                          child: SvgPicture.asset(RibnAssets.myFingerprint),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            activityDetails.myRibnWalletAddress,
-                            style: dataTileTextStyle,
-                          ),
-                        ),
-                        CustomCopyButton(
-                          textToBeCopied: activityDetails.myRibnWalletAddress,
-                          icon: Image.asset(
-                            RibnAssets.copyIcon,
-                            width: 20,
-                          ),
-                        ),
-                      ],
-                    ),
                   ),
                   const SizedBox(
                     height: 16,
@@ -205,13 +171,51 @@ class RibnActivityDetails extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Text(
-                            activityDetails.transactionSenderAddress,
+                            formatAddressString(
+                                activityDetails.transactionSenderAddress,
+                                charsToDisplay: 4),
                             style: dataTileTextStyle,
                           ),
                         ),
                         CustomCopyButton(
                           textToBeCopied:
                               activityDetails.transactionSenderAddress,
+                          icon: Image.asset(
+                            RibnAssets.copyIcon,
+                            width: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  const RibnDashedLine(color: RibnColors.lightGreyDivider),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  RibnTxHistoryDataTile(
+                    tileTitle: 'To',
+                    tileValue: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 26,
+                          height: 26,
+                          child: SvgPicture.asset(RibnAssets.myFingerprint),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            formatAddressString(
+                                activityDetails.myRibnWalletAddress,
+                                charsToDisplay: 4),
+                            style: dataTileTextStyle,
+                          ),
+                        ),
+                        CustomCopyButton(
+                          textToBeCopied: activityDetails.myRibnWalletAddress,
                           icon: Image.asset(
                             RibnAssets.copyIcon,
                             width: 20,
@@ -243,49 +247,46 @@ class RibnActivityDetails extends StatelessWidget {
                     height: 16,
                   ),
                   const RibnDashedLine(color: RibnColors.lightGreyDivider),
-                  activityDetails.securityRoot == "Unknown"
-                      ? const SizedBox()
-                      : Column(
-                          children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          RibnTxHistoryDataTile(
+                            tileTitle: 'Security root',
+                            tileValue: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                RibnTxHistoryDataTile(
-                                  tileTitle: 'Security Root',
-                                  tileValue: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 10),
-                                        child: Text(
-                                          activityDetails.securityRoot,
-                                          style: dataTileTextStyle,
-                                        ),
-                                      ),
-                                      CustomCopyButton(
-                                        textToBeCopied:
-                                            activityDetails.securityRoot,
-                                        icon: Image.asset(
-                                          RibnAssets.copyIcon,
-                                          width: 20,
-                                        ),
-                                      ),
-                                    ],
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: Text(
+                                    formatAddressString(
+                                        activityDetails.securityRoot,
+                                        charsToDisplay: 4),
+                                    style: dataTileTextStyle,
+                                  ),
+                                ),
+                                CustomCopyButton(
+                                  textToBeCopied: activityDetails.securityRoot,
+                                  icon: Image.asset(
+                                    RibnAssets.copyIcon,
+                                    width: 20,
                                   ),
                                 ),
                               ],
                             ),
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            const RibnDashedLine(
-                                color: RibnColors.lightGreyDivider),
-                          ],
-                        ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      const RibnDashedLine(color: RibnColors.lightGreyDivider),
+                    ],
+                  ),
                   const SizedBox(
                     height: 16,
                   ),
@@ -300,7 +301,8 @@ class RibnActivityDetails extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(right: 10),
                               child: Text(
-                                activityDetails.blockId,
+                                formatAddressString(activityDetails.blockId,
+                                    charsToDisplay: 4),
                                 style: dataTileTextStyle,
                               ),
                             ),
@@ -358,7 +360,9 @@ class RibnActivityDetails extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(right: 10),
                               child: Text(
-                                activityDetails.transactionId,
+                                formatAddressString(
+                                    activityDetails.transactionId,
+                                    charsToDisplay: 4),
                                 style: dataTileTextStyle,
                               ),
                             ),
