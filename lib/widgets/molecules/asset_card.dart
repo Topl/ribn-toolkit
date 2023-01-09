@@ -61,11 +61,8 @@ class AssetCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // display asset icon
               iconImage,
-
               const SizedBox(width: 20),
-
               Expanded(
                 child: isNft
                     ? _AssetShortName(

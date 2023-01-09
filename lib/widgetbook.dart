@@ -23,6 +23,7 @@ import 'package:ribn_toolkit/widgets/atoms/text/ribn_h4_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h5_text_widget.dart';
 import 'package:ribn_toolkit/widgets/molecules/ribn_activity_details.dart';
 import 'package:ribn_toolkit/widgets/molecules/ribn_activity_tile.dart';
+import 'package:ribn_toolkit/widgets/molecules/ribn_custom_modal.dart';
 import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
@@ -1364,6 +1365,66 @@ class _WidgetBookState extends State<WidgetBook> {
                     ),
                   ),
                 ),
+                WidgetbookUseCase(
+                  name: 'Custom with sizing',
+                  builder: (context) => Align(
+                    alignment: FractionalOffset.center,
+                    child: LargeButton(
+                      buttonChild: Text(
+                        'Show Modal',
+                        style: RibnToolkitTextStyles.btnLarge.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                      backgroundColor: RibnColors.primary,
+                      hoverColor: RibnColors.primaryButtonHover,
+                      dropShadowColor: RibnColors.primaryButtonShadow,
+                      onPressed: () async {
+                        await showDialog(
+                          context: context,
+                          builder: (context) =>
+                              RibnCustomModal.renderRibnCustomModal(
+                                  context: context,
+                                  title: const Text(
+                                    'Modal Title',
+                                    style: RibnToolkitTextStyles.extH2,
+                                  ),
+                                  body: Column(
+                                    children: const [
+                                      Text(
+                                        'This is a cool modal with a sexy action button.',
+                                        style: RibnToolkitTextStyles.body1,
+                                        textHeightBehavior: TextHeightBehavior(
+                                            applyHeightToFirstAscent: false),
+                                      ),
+                                    ],
+                                  ),
+                                  actionsAlignment: MainAxisAlignment.center,
+                                  elevation: 2,
+                                  actions: [
+                                    LargeButton(
+                                      buttonWidth: 240,
+                                      buttonChild: Text(
+                                        'Action Button',
+                                        style: RibnToolkitTextStyles.btnLarge
+                                            .copyWith(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      backgroundColor: RibnColors.primary,
+                                      hoverColor: RibnColors.primaryButtonHover,
+                                      dropShadowColor:
+                                          RibnColors.primaryButtonShadow,
+                                      onPressed: () {},
+                                    ),
+                                  ],
+                                  width: 301,
+                                  height: 434),
+                        );
+                      },
+                    ),
+                  ),
+                )
               ],
             ),
             WidgetbookComponent(
@@ -1667,15 +1728,16 @@ class _WidgetBookState extends State<WidgetBook> {
         ),
       ],
       devices: [
-      Device(
-        name: 'iPhone 12 Pro',
-        resolution: Resolution.dimensions(
-          nativeWidth: 390,
-          nativeHeight: 1200,
-          scaleFactor: 1,
+        Device(
+          name: 'iPhone 12 Pro',
+          resolution: Resolution.dimensions(
+            nativeWidth: 390,
+            nativeHeight: 1200,
+            scaleFactor: 1,
+          ),
+          type: DeviceType.mobile,
         ),
-        type: DeviceType.mobile,
-      ), Device(
+        Device(
           name: 'Chrome Widget',
           resolution: Resolution.dimensions(
             nativeWidth: 320,
