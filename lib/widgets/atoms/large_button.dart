@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 
 /// A custom styled large button used on several screens, e.g. login, asset transfer, and mint screens.

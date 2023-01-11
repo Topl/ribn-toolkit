@@ -29,6 +29,7 @@ clean: ## Cleans the environment
 	@flutter clean
 	@flutter pub get
 fix_warnings: ## fix any warnings
+	@flutter pub run import_sorter:main
 	@echo "╠ Attempting to fix warnings..."
 	@dart fix --dry-run
 	@dart fix --apply
@@ -60,8 +61,10 @@ upgrade: clean ## Upgrades dependencies
 commit: format lint run_unit
 	@echo "╠ Committing..."
 	git add .
-	git commit
-
+	git commit -m "update(setting-page): added new widgets"
+push:
+	@echo "╠ Pusing..."
+	git push
 analyze:
 	@flutter run dart_code_metrics:metrics analyze lib
 

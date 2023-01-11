@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 
-class CustomModal {
-  static AlertDialog renderCustomModal({
+class RibnCustomModal {
+  static AlertDialog renderRibnCustomModal({
+    required double width,
+    required double height,
     required BuildContext context,
     required Text title,
     required Widget body,
@@ -35,15 +37,21 @@ class CustomModal {
           ),
         ],
       ),
-      content: SingleChildScrollView(
-        child: Column(
-          children: [
-            title,
-            const SizedBox(height: 30),
-            body,
-          ],
-        ),
-      ),
+      content: Builder(builder: (context) {
+        return SizedBox(
+          width: width,
+          height: height,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                title,
+                const SizedBox(height: 30),
+                body,
+              ],
+            ),
+          ),
+        );
+      }),
       actions: actions ?? [],
       actionsAlignment: actionsAlignment,
     );
