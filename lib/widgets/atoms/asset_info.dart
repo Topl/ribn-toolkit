@@ -23,7 +23,7 @@ class AssetInfo extends StatelessWidget {
 
     /// Default text to be displayed if no asset been selected.
     const Text defaultText = Text(
-      'Choose Asset',
+      'Select Asset',
       style: TextStyle(
         color: Color(0xff6d6d6d),
         fontWeight: FontWeight.w600,
@@ -57,34 +57,11 @@ class AssetInfo extends StatelessWidget {
                     Container(
                       constraints: const BoxConstraints(maxWidth: 75),
                       child: Text(
-                        formattedAsset!['longName'] ?? '',
+                        formattedAsset!['shortName'] ?? '',
                         style: const TextStyle(
                           fontFamily: 'DM Sans',
                           fontSize: 12,
                           color: RibnColors.defaultText,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: Container(
-                        width: 3,
-                        height: 3,
-                        decoration: BoxDecoration(
-                          color: RibnColors.primary,
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 60,
-                      child: Text(
-                        formattedAsset!['shortName']!,
-                        style: const TextStyle(
-                          fontFamily: 'DM Sans',
-                          fontSize: 12,
-                          color: RibnColors.primary,
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
