@@ -31,7 +31,7 @@ class Strings {
   static const String assetLongName = 'Asset';
   static const String assetLongNameHint = 'Jackfruit, max 16 characters.';
   static const String note = 'Note';
-  static const String noteHint = 'Origin Brazil, max 127 characters';
+  static const String noteHint = 'Max 127 alpha numeric characters. No special characters';
   static const String gettingStarted = 'Getting Started';
   static const String mintAssetDesc =
       'Where would you like your Asset to be minted?';
