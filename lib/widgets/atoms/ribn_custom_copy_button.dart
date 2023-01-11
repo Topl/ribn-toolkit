@@ -13,16 +13,16 @@ import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 
 /// A button to copy [textToBeCopied] to [Clipboard] and display a confirmation bubble.
-class CustomCopyButton extends StatefulWidget {
+class RibnCustomCopyButton extends StatefulWidget {
   /// The text to be copied.
   final String textToBeCopied;
 
   /// Text to show in the bubble.
   final String bubbleText;
 
-  final Image icon;
+  final Widget icon;
 
-  const CustomCopyButton({
+  const RibnCustomCopyButton({
     Key? key,
     required this.textToBeCopied,
     this.bubbleText = 'Copied!',
@@ -33,7 +33,7 @@ class CustomCopyButton extends StatefulWidget {
   _CustomCopyButtonState createState() => _CustomCopyButtonState();
 }
 
-class _CustomCopyButtonState extends State<CustomCopyButton> {
+class _CustomCopyButtonState extends State<RibnCustomCopyButton> {
   /// Timer for showing the copied indicator.
   Timer? copiedTimer;
 

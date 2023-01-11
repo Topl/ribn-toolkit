@@ -1,8 +1,12 @@
+// Flutter imports:
 import 'package:flutter/widgets.dart';
+
+// Package imports:
 import 'package:flutter_svg/svg.dart';
-import 'package:ribn_toolkit/widgets/molecules/ribn_tx_history_data_tile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// Project imports:
+import 'package:ribn_toolkit/widgets/molecules/ribn_tx_history_data_tile.dart';
 import '../../constants/assets.dart';
 import '../../constants/colors.dart';
 import '../../constants/ribn_sample_data_models.dart';
@@ -376,7 +380,6 @@ class RibnActivityDetails extends StatelessWidget {
                           ],
                         ),
                       ),
-
                     ],
                   ),
                   const SizedBox(

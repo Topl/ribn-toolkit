@@ -1,5 +1,15 @@
+// Dart imports:
+import 'dart:convert';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:widgetbook/widgetbook.dart';
+
+// Project imports:
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/ribn_sample_data_models.dart';
@@ -8,7 +18,19 @@ import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/utils.dart';
 import 'package:ribn_toolkit/widgets/atoms/animated_expand_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
+import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
+import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
+import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/seperators/ribn_dashed_line.dart';
+import 'package:ribn_toolkit/widgets/atoms/status_chip.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font10_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font12_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_font13_text_widget.dart';
@@ -21,49 +43,37 @@ import 'package:ribn_toolkit/widgets/atoms/text/ribn_h2_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h3_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h4_text_widget.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_h5_text_widget.dart';
-import 'package:ribn_toolkit/widgets/molecules/ribn_activity_details.dart';
-import 'package:ribn_toolkit/widgets/molecules/ribn_activity_tile.dart';
-import 'package:ribn_toolkit/widgets/molecules/ribn_custom_modal.dart';
-import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_toggle.dart';
-import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
-import 'package:ribn_toolkit/widgets/atoms/status_chip.dart';
+import 'package:ribn_toolkit/widgets/helper_class.dart';
 import 'package:ribn_toolkit/widgets/molecules/accordion.dart';
 import 'package:ribn_toolkit/widgets/molecules/animated_circle_step_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_amount_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
+import 'package:ribn_toolkit/widgets/molecules/asset_long_name_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_selection_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/asset_short_name_field.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_checkbox.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
-import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
-import 'package:ribn_toolkit/widgets/atoms/hover_icon_button.dart';
-import 'package:ribn_toolkit/widgets/atoms/peekaboo_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/custom_modal.dart';
+import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
+import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
 import 'package:ribn_toolkit/widgets/molecules/loading_spinner.dart';
 import 'package:ribn_toolkit/widgets/molecules/note_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/onboarding_action_button.dart';
 import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
-import 'package:ribn_toolkit/widgets/atoms/rounded_copy_text_field.dart';
-import 'package:ribn_toolkit/widgets/molecules/asset_long_name_field.dart';
+import 'package:ribn_toolkit/widgets/molecules/ribn_activity_details.dart';
+import 'package:ribn_toolkit/widgets/molecules/ribn_activity_tile.dart';
+import 'package:ribn_toolkit/widgets/molecules/ribn_custom_modal.dart';
 import 'package:ribn_toolkit/widgets/molecules/shimmer_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/sliding_segment_control.dart';
 import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
-import 'package:ribn_toolkit/widgets/molecules/asset_card.dart';
-import 'package:ribn_toolkit/widgets/molecules/custom_tooltip.dart';
-import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
-import 'package:ribn_toolkit/widgets/molecules/input_dropdown.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_dropdown_title.dart';
+import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title.dart';
 import 'package:ribn_toolkit/widgets/organisms/custom_page_text_title_with_leading_child.dart';
 import 'package:ribn_toolkit/widgets/organisms/onboarding_progress_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar.dart';
 import 'package:ribn_toolkit/widgets/organisms/ribn_bottom_app_bar_v2.dart';
-import 'package:widgetbook/widgetbook.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:ribn_toolkit/widgets/helper_class.dart';
+import 'package:ribn_toolkit/widgets/organisms/ribn_disconnect_app_container.dart';
+import 'package:ribn_toolkit/widgets/organisms/ribn_tx_container.dart';
 
 class WidgetBook extends StatefulWidget {
   const WidgetBook({Key? key}) : super(key: key);
@@ -73,6 +83,7 @@ class WidgetBook extends StatefulWidget {
 }
 
 class _WidgetBookState extends State<WidgetBook> {
+  int currentIndex = 0;
   @override
   void initState() {
     HelperClass.controllers = [
@@ -1384,42 +1395,42 @@ class _WidgetBookState extends State<WidgetBook> {
                           context: context,
                           builder: (context) =>
                               RibnCustomModal.renderRibnCustomModal(
-                                  context: context,
-                                  title: const Text(
-                                    'Modal Title',
-                                    style: RibnToolkitTextStyles.extH2,
+                            context: context,
+                            title: const Text(
+                              'Modal Title',
+                              style: RibnToolkitTextStyles.extH2,
+                            ),
+                            body: Column(
+                              children: const [
+                                Text(
+                                  'This is a cool modal with a sexy action button.',
+                                  style: RibnToolkitTextStyles.body1,
+                                  textHeightBehavior: TextHeightBehavior(
+                                      applyHeightToFirstAscent: false),
+                                ),
+                              ],
+                            ),
+                            actionsAlignment: MainAxisAlignment.center,
+                            elevation: 2,
+                            actions: [
+                              LargeButton(
+                                buttonWidth: 240,
+                                buttonChild: Text(
+                                  'Action Button',
+                                  style:
+                                      RibnToolkitTextStyles.btnLarge.copyWith(
+                                    color: Colors.white,
                                   ),
-                                  body: Column(
-                                    children: const [
-                                      Text(
-                                        'This is a cool modal with a sexy action button.',
-                                        style: RibnToolkitTextStyles.body1,
-                                        textHeightBehavior: TextHeightBehavior(
-                                            applyHeightToFirstAscent: false),
-                                      ),
-                                    ],
-                                  ),
-                                  actionsAlignment: MainAxisAlignment.center,
-                                  elevation: 2,
-                                  actions: [
-                                    LargeButton(
-                                      buttonWidth: 240,
-                                      buttonChild: Text(
-                                        'Action Button',
-                                        style: RibnToolkitTextStyles.btnLarge
-                                            .copyWith(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      backgroundColor: RibnColors.primary,
-                                      hoverColor: RibnColors.primaryButtonHover,
-                                      dropShadowColor:
-                                          RibnColors.primaryButtonShadow,
-                                      onPressed: () {},
-                                    ),
-                                  ],
-                                  width: 301,
-                                  height: 434),
+                                ),
+                                backgroundColor: RibnColors.primary,
+                                hoverColor: RibnColors.primaryButtonHover,
+                                dropShadowColor: RibnColors.primaryButtonShadow,
+                                onPressed: () {},
+                              ),
+                            ],
+                            width: 220,
+                            height: 220,
+                          ),
                         );
                       },
                     ),
@@ -1568,6 +1579,29 @@ class _WidgetBookState extends State<WidgetBook> {
                         ))
               ],
             ),
+            WidgetbookComponent(
+              name: 'Raw Bidrectional Scrolling Container',
+              useCases: [
+                WidgetbookUseCase(
+                    name: 'Raw Tx Container with Copy Paste',
+                    builder: (context) => Align(
+                          child: RibnTxContainer(
+                            data: JsonEncoder.withIndent(' ' * 4)
+                                .convert(RibnSampleDataModels.rawTx),
+                          ),
+                          alignment: FractionalOffset.center,
+                        )),
+                WidgetbookUseCase(
+                    name: 'Raw DAppList Container',
+                    builder: (context) => Align(
+                          child: RibnDisconnectDAppContainer(
+                            dapps: RibnSampleDataModels.dappList,
+                            width: 227,
+                          ),
+                          alignment: FractionalOffset.center,
+                        ))
+              ],
+            )
           ],
         ),
         WidgetbookCategory(

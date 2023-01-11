@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+
+// Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 
 class CustomToggle extends StatelessWidget {

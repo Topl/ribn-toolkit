@@ -1,7 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:ribn_toolkit/constants/colors.dart';
+
+// Package imports:
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+
+// Project imports:
+import 'package:ribn_toolkit/constants/colors.dart';
 
 class WaveContainer extends StatelessWidget {
   const WaveContainer({

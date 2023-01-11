@@ -1,5 +1,7 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 
+// Project imports:
 import '../../constants/assets.dart';
 import '../../constants/styles.dart';
 import '../atoms/status_chip.dart';
@@ -92,7 +94,6 @@ class RibnActivityTile extends StatelessWidget {
         ),
       ),
     );
-
   }
 
   Image renderAssetIcon(assetDetailsIcon) {
