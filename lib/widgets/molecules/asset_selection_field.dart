@@ -47,6 +47,7 @@ class AssetSelectionField extends StatefulWidget {
 class _AssetSelectionFieldState extends State<AssetSelectionField> {
   /// True if asset dropdown needs to be displayed.
   bool showAssetDropdown = false;
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
           });
         },
         customDropdownButton: _buildAssetDropdownButton(),
-        dropdownChild: _buildAssetDropdownChild(),
+        dropdownChild: _buildAssetDropdownChild(_scrollController),
         chevronIcon: null,
         hintText: 'Select an asset',
         selectedItem: null,
@@ -140,7 +141,7 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
   /// Builds the asset dropdown widget.
   ///
   /// Allows user to select from the list of existing assets in the wallet, i.e. [widget.assets].
-  Widget _buildAssetDropdownChild() {
+  Widget _buildAssetDropdownChild(ScrollController _scrollController) {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xffffffff),
@@ -154,9 +155,11 @@ class _AssetSelectionFieldState extends State<AssetSelectionField> {
         removeTop: true,
         child: Scrollbar(
           thumbVisibility: true,
+          controller: _scrollController,
           child: ListView(
             padding: const EdgeInsets.all(0),
             shrinkWrap: false,
+            controller: _scrollController,
             scrollDirection: Axis.vertical,
             children: widget.assets
                 .map(
