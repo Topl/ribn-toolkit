@@ -142,6 +142,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
   /// Allows selecting from the unit dropdown if [widget.allowEditingUnit] is true.
   Widget _buildUnitDisplay() {
     const double _fieldHeight = 36;
+    ScrollController _scrollController = ScrollController();
 
     return widget.showUnit
         ? widget.allowEditingUnit
@@ -159,7 +160,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
                     childAlignment: Alignment.bottomLeft,
                     dropDownAlignment: Alignment.topCenter,
                     chevronIcon: widget.chevronIcon,
-                    dropdownChild: _buildUnitDropdownChild(),
+                    dropdownChild: _buildUnitDropdownChild(_scrollController),
                     selectedItem: widget.selectedUnit != null
                         ? Text(
                             formatAssetUnit(widget.selectedUnit),
@@ -199,7 +200,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
   /// Builds the Unit dropdown widget.
   ///
   /// Allows user to select from a list of custom units, i.e. [UIConstants.assetUnitsList].
-  Widget _buildUnitDropdownChild() {
+  Widget _buildUnitDropdownChild(ScrollController _scrollController) {
     return Padding(
       padding: const EdgeInsets.only(left: 138.0),
       child: Container(
@@ -223,8 +224,10 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
           removeTop: true,
           child: Scrollbar(
             thumbVisibility: true,
+            controller: _scrollController,
             child: ListView(
               padding: const EdgeInsets.all(0),
+              controller: _scrollController,
               children: UIConstants.assetUnitsList
                   .map(
                     (unit) => MaterialButton(
