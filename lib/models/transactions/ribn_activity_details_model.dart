@@ -1,6 +1,8 @@
+// Dart imports:
 import 'dart:convert';
-import 'package:ribn_toolkit/constants/assets.dart';
 
+// Project imports:
+import 'package:ribn_toolkit/constants/assets.dart';
 import '../assets/ribn_asset_details_model.dart';
 
 class RibnActivityDetailsModel {

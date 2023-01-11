@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
 
@@ -61,11 +64,8 @@ class AssetCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // display asset icon
               iconImage,
-
               const SizedBox(width: 20),
-
               Expanded(
                 child: isNft
                     ? _AssetShortName(

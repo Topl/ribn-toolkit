@@ -1,10 +1,15 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:url_launcher/url_launcher.dart';
+
+// Project imports:
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 import 'package:ribn_toolkit/widgets/atoms/large_button.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 /// A generic error section that is displayed in case of unexpected errors.
 class ErrorSection extends StatelessWidget {

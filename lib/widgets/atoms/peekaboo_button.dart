@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 
 /// The peekaboobutton shows/hides a button child element onpress

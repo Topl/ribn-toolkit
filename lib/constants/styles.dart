@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 
 ///@dev The custom [TextStyle]s being used in the app.

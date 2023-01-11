@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ShimmerLoader extends StatelessWidget {

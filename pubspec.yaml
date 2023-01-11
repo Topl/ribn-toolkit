@@ -48,6 +48,7 @@ dependencies:
   wave: ^0.2.2
   shimmer_animation: ^2.1.0+1
   step_progress_indicator: ^1.0.2
+  import_sorter: ^4.6.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -77,6 +78,7 @@ flutter:
     - assets/asset_icons/
     - assets/fonts/
     - assets/
+    - assets/icons/content_copy.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -48,4 +48,7 @@ class Strings {
       'mailto:$supportEmail?subject=Ribn Support&body=';
   static const String invalidRecipientAddressError =
       "Hmmm... That's not a valid Recipient address.\nTip: Instead of typing it out, try copy\nand pasting your Recipient's address.";
+  static const String connectDApp =
+      'allowing this site to see my Ribn address, and ';
+  static const String connectDAppLastPart = "suggest transactions to approve.";
 }
