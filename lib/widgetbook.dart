@@ -61,6 +61,7 @@ import 'package:ribn_toolkit/widgets/molecules/password_text_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/recipient_field.dart';
 import 'package:ribn_toolkit/widgets/molecules/ribn_activity_details.dart';
 import 'package:ribn_toolkit/widgets/molecules/ribn_activity_tile.dart';
+import 'package:ribn_toolkit/widgets/molecules/ribn_checkbox_wrappable_text.dart';
 import 'package:ribn_toolkit/widgets/molecules/ribn_custom_modal.dart';
 import 'package:ribn_toolkit/widgets/molecules/shimmer_loader.dart';
 import 'package:ribn_toolkit/widgets/molecules/sliding_segment_control.dart';
@@ -710,6 +711,27 @@ class _WidgetBookState extends State<WidgetBook> {
         WidgetbookCategory(
           name: 'Molecules',
           widgets: [
+            WidgetbookComponent(name: "Authorise", useCases: [
+              WidgetbookUseCase(
+                name: 'Authorize',
+                builder: (context) => Center(
+                  child: RibnCheckboxWrappableText(
+                    fillColor: Colors.transparent,
+                    checkColor: RibnColors.active,
+                    borderColor: HelperClass.checked
+                        ? RibnColors.active
+                        : RibnColors.inactive,
+                    value: HelperClass.checked,
+                    onChanged: (val) {
+                      setState(() {
+                        HelperClass.checked = val!;
+                      });
+                    },
+                    origin: 'https://google.com',
+                  ),
+                ),
+              )
+            ]),
             WidgetbookComponent(
               name: 'Asset Card',
               useCases: [

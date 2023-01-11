@@ -83,7 +83,8 @@ class _RibnTxContainerState extends State<RibnTxContainer> {
                                 controller: controllerHorizontal,
                                 scrollDirection: Axis.horizontal,
                                 child: Padding(
-                                  padding: const EdgeInsets.only(bottom: 30),
+                                  padding: const EdgeInsets.only(
+                                      bottom: 30, top: 30),
                                   child: SelectableText(
                                     // mockDAppTransactionJson,
                                     widget.data,
