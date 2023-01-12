@@ -8,35 +8,35 @@ import 'package:ribn_toolkit/constants/colors.dart';
 ///@notice These are the new styles to be agreed upon
 class RibnToolkitTextStyles {
   RibnToolkitTextStyles._();
-  // static const TextStyle h1 = TextStyle(
-  //   fontFamily: 'DM Sans',
-  //   fontSize: 32,
-  //   fontWeight: FontWeight.w700,
-  //   color: RibnColors.defaultText,
-  //   height: 1.57,
-  //   letterSpacing: 1.68,
-  // );
+  static const TextStyle h1 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    color: RibnColors.defaultText,
+    height: 1.57,
+    letterSpacing: 1.68,
+  );
 
-  // static const TextStyle h2 = TextStyle(
-  //   fontFamily: 'DM Sans',
-  //   fontSize: 24,
-  //   fontWeight: FontWeight.w700,
-  //   color: RibnColors.defaultText,
-  //   height: 1.34,
-  // );
+  static const TextStyle h2 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    color: RibnColors.defaultText,
+    height: 1.34,
+  );
 
-  // static const TextStyle h3 = TextStyle(
-  //   fontFamily: 'DM Sans',
-  //   fontSize: 16,
-  //   fontWeight: FontWeight.w400,
-  //   color: RibnColors.defaultText,
-  // );
+  static const TextStyle h3 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: RibnColors.defaultText,
+  );
 
-  // static const TextStyle h4 = TextStyle(
-  //   fontFamily: 'DM Sans',
-  //   fontSize: 13,
-  //   fontWeight: FontWeight.w400,
-  // );
+  static const TextStyle h4 = TextStyle(
+    fontFamily: 'DM Sans',
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+  );
 
   static const TextStyle body1 = TextStyle(
     fontFamily: 'DM Sans',
@@ -158,32 +158,32 @@ class RibnToolkitTextStyles {
     height: 1.6,
   );
 
-  static const TextStyle h1 = TextStyle(
-    fontFamily: 'DM Sans',
-    fontSize: 36,
-    fontWeight: FontWeight.w700,
-    height: 1.57,
-    letterSpacing: 1.68,
-  );
-
-  static const TextStyle h2 = TextStyle(
-    fontFamily: 'DM Sans',
-    fontSize: 30,
-    fontWeight: FontWeight.w700,
-    height: 1.34,
-  );
-
-  static const TextStyle h3 = TextStyle(
-    fontFamily: 'DM Sans',
-    fontSize: 24,
-    fontWeight: FontWeight.w500,
-  );
-
-  static const TextStyle h4 = TextStyle(
-    fontFamily: 'DM Sans',
-    fontSize: 21,
-    fontWeight: FontWeight.w500,
-  );
+  // static const TextStyle h1 = TextStyle(
+  //   fontFamily: 'DM Sans',
+  //   fontSize: 36,
+  //   fontWeight: FontWeight.w700,
+  //   height: 1.57,
+  //   letterSpacing: 1.68,
+  // );
+  //
+  // static const TextStyle h2 = TextStyle(
+  //   fontFamily: 'DM Sans',
+  //   fontSize: 30,
+  //   fontWeight: FontWeight.w700,
+  //   height: 1.34,
+  // );
+  //
+  // static const TextStyle h3 = TextStyle(
+  //   fontFamily: 'DM Sans',
+  //   fontSize: 24,
+  //   fontWeight: FontWeight.w500,
+  // );
+  //
+  // static const TextStyle h4 = TextStyle(
+  //   fontFamily: 'DM Sans',
+  //   fontSize: 21,
+  //   fontWeight: FontWeight.w500,
+  // );
 
   static const TextStyle h5 = TextStyle(
     fontFamily: 'DM Sans',
