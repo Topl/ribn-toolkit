@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
@@ -19,7 +18,8 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
     required this.chevronIconLink,
     required this.ribnLogoIconLink,
     required this.hamburgerIconLink,
-  })  : preferredSize = const Size.fromHeight(40),
+  })
+      : preferredSize = const Size.fromHeight(40),
         super(key: key);
 
   final String currentNetworkName;
@@ -31,6 +31,7 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String ribnLogoIconLink;
   final String hamburgerIconLink;
 
+
   @override
   final Size preferredSize;
 
@@ -39,8 +40,14 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _RibnAppBarState extends State<RibnAppBar> {
+
+
   @override
   Widget build(BuildContext context) {
+
+    List<String>  networks = renameNetworks(widget.networks);
+    String currentNetworkName = renameNetwork(widget.currentNetworkName);
+
     return AppBar(
       flexibleSpace: Container(
         decoration: const BoxDecoration(
@@ -80,9 +87,12 @@ class _RibnAppBarState extends State<RibnAppBar> {
             ),
             const Spacer(flex: 1),
             InputDropdown(
-              selectedItem: widget.currentNetworkName,
-              items: widget.networks,
-              onChange: widget.updateNetwork,
+              selectedItem: currentNetworkName,
+              items: networks,
+              onChange: (selected) =>
+                  widget.updateNetwork(
+                      widget.networks[networks.indexWhere((e) =>
+                      e == selected)]),
               chevronIconLink: widget.chevronIconLink,
             ),
           ],
@@ -92,15 +102,34 @@ class _RibnAppBarState extends State<RibnAppBar> {
     );
   }
 
+  List<String> renameNetworks(List<String> networks) {
+    final List<String> renamedNetworks = networks.map((String e) =>
+        renameNetwork(e)).toList();
+    return renamedNetworks;
+  }
+
+  String renameNetwork(String network) {
+    switch (network.toLowerCase()) {
+      case "toplnet":
+        return "Topl mainnet";
+      case "valhalla":
+        return "Valhalla testnet";
+      case "private":
+        return "Private mainnet";
+      default:
+        return "";
+    }
+  }
+
   /// Builds the settings drop down menu.
-  Widget _buildSettingsMenu(
-      Map<String, Image> settingsOptions, Function(String)? onSelected) {
+  Widget _buildSettingsMenu(Map<String, Image> settingsOptions,
+      Function(String)? onSelected) {
     return Container(
       color: Colors.transparent,
       child: PopupMenuButton<String>(
         elevation: 0,
         child:
-            SizedBox(width: 24, child: Image.asset(widget.hamburgerIconLink)),
+        SizedBox(width: 24, child: Image.asset(widget.hamburgerIconLink)),
         offset: const Offset(0, 30),
         onSelected: onSelected,
         padding: const EdgeInsets.all(0.0),
@@ -109,7 +138,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
         ),
         itemBuilder: (BuildContext context) {
           return settingsOptions.keys.map(
-            (String currOption) {
+                (String currOption) {
               return PopupMenuItem<String>(
                 value: currOption,
                 padding: EdgeInsets.zero,
@@ -140,4 +169,6 @@ class _RibnAppBarState extends State<RibnAppBar> {
       ),
     );
   }
+
+
 }
