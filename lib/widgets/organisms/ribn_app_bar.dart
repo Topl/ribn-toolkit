@@ -104,9 +104,9 @@ class _RibnAppBarState extends State<RibnAppBar> {
       case "toplnet":
         return "Topl mainnet";
       case "valhalla":
-        return "Valhalla mainnet";
+        return "Valhalla testnet";
       case "private":
-        return "Private testnet";
+        return "Private network";
       default:
         return "";
     }
