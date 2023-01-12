@@ -71,36 +71,9 @@ class AssetCard extends StatelessWidget {
                     ? _AssetShortName(
                         shortName: shortName,
                       )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // display asset short name
-                          _AssetShortName(
-                            shortName: shortName,
-                          ),
-                          // display asset long name or placeholder if no long name exists
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 5.0),
-                            child: assetLongName,
-                          ),
-                          // display helpful text if some asset details are missing
-                          missingAsstDetailsCondition
-                              ? const Text(
-                                  'Add Asset Details',
-                                  style: TextStyle(
-                                    color: RibnColors.primary,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'DM Sans',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 10.4,
-                                    decoration: TextDecoration.underline,
-                                    letterSpacing: 1,
-                                  ),
-                                )
-                              : const SizedBox(),
-                        ],
-                      ),
+                    :  _AssetShortName(
+                  shortName: shortName,
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
