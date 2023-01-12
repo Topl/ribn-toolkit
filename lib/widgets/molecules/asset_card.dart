@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
@@ -35,7 +34,7 @@ class AssetCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 88,
+      height: 66,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -69,38 +68,11 @@ class AssetCard extends StatelessWidget {
               Expanded(
                 child: isNft
                     ? _AssetShortName(
-                        shortName: shortName,
-                      )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // display asset short name
-                          _AssetShortName(
-                            shortName: shortName,
-                          ),
-                          // display asset long name or placeholder if no long name exists
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 5.0),
-                            child: assetLongName,
-                          ),
-                          // display helpful text if some asset details are missing
-                          missingAsstDetailsCondition
-                              ? const Text(
-                                  'Add Asset Details',
-                                  style: TextStyle(
-                                    color: RibnColors.primary,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'DM Sans',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 10.4,
-                                    decoration: TextDecoration.underline,
-                                    letterSpacing: 1,
-                                  ),
-                                )
-                              : const SizedBox(),
-                        ],
-                      ),
+                  shortName: shortName,
+                )
+                    : _AssetShortName(
+                  shortName: shortName,
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -116,20 +88,20 @@ class AssetCard extends StatelessWidget {
                   // conditional send and receive buttons
                   firstIcon != null && secondIcon != null
                       ? Row(
-                          children: [
-                            CustomIconButton(
-                              icon: firstIcon!,
-                              color: RibnColors.primary,
-                              onPressed: onFirstIconPress!,
-                            ),
-                            const SizedBox(width: 7),
-                            CustomIconButton(
-                              icon: secondIcon!,
-                              color: RibnColors.primary,
-                              onPressed: onSecondIconPress!,
-                            ),
-                          ],
-                        )
+                    children: [
+                      CustomIconButton(
+                        icon: firstIcon!,
+                        color: RibnColors.primary,
+                        onPressed: onFirstIconPress!,
+                      ),
+                      const SizedBox(width: 7),
+                      CustomIconButton(
+                        icon: secondIcon!,
+                        color: RibnColors.primary,
+                        onPressed: onSecondIconPress!,
+                      ),
+                    ],
+                  )
                       : const SizedBox(),
                 ],
               ),
@@ -143,6 +115,7 @@ class AssetCard extends StatelessWidget {
 
 class _AssetShortName extends StatelessWidget {
   final Text shortName;
+
   const _AssetShortName({
     required this.shortName,
     Key? key,
