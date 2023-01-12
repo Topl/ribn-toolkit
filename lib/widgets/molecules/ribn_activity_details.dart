@@ -175,9 +175,7 @@ class RibnActivityDetails extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Text(
-                            formatAddressString(
-                                activityDetails.transactionSenderAddress,
-                                charsToDisplay: 4),
+                            activityDetails.transactionSenderAddress,
                             style: dataTileTextStyle,
                           ),
                         ),
@@ -212,9 +210,7 @@ class RibnActivityDetails extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Text(
-                            formatAddressString(
-                                activityDetails.myRibnWalletAddress,
-                                charsToDisplay: 4),
+                            activityDetails.myRibnWalletAddress,
                             style: dataTileTextStyle,
                           ),
                         ),
@@ -267,9 +263,7 @@ class RibnActivityDetails extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 10),
                                   child: Text(
-                                    formatAddressString(
-                                        activityDetails.securityRoot,
-                                        charsToDisplay: 4),
+                                    activityDetails.securityRoot,
                                     style: dataTileTextStyle,
                                   ),
                                 ),
@@ -305,8 +299,7 @@ class RibnActivityDetails extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(right: 10),
                               child: Text(
-                                formatAddressString(activityDetails.blockId,
-                                    charsToDisplay: 4),
+                                activityDetails.blockId,
                                 style: dataTileTextStyle,
                               ),
                             ),
@@ -364,9 +357,7 @@ class RibnActivityDetails extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(right: 10),
                               child: Text(
-                                formatAddressString(
-                                    activityDetails.transactionId,
-                                    charsToDisplay: 4),
+                                activityDetails.transactionId,
                                 style: dataTileTextStyle,
                               ),
                             ),
