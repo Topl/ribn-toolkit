@@ -8,7 +8,7 @@ class RibnSampleDataModels {
   RibnSampleDataModels._();
   static RibnActivityDetailsModel activityDetailsModel =
       RibnActivityDetailsModel.fromJson(jsonEncode({
-    "securityRoot": formatAddressString("11111111111111111111111111111111",charsToDisplay: 4),
+    "securityRoot": '',
     "isPolyTransaction": true,
     "transactionType": "Sent",
     "timestamp": "11-03-2022",

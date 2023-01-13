@@ -267,13 +267,15 @@ class RibnActivityDetails extends StatelessWidget {
                                     style: dataTileTextStyle,
                                   ),
                                 ),
-                                CustomCopyButton(
-                                  textToBeCopied: activityDetails.securityRoot,
-                                  icon: Image.asset(
-                                    RibnAssets.copyIcon,
-                                    width: 20,
+                                if (activityDetails.securityRoot.isNotEmpty)
+                                  CustomCopyButton(
+                                    textToBeCopied:
+                                        activityDetails.securityRoot,
+                                    icon: Image.asset(
+                                      RibnAssets.copyIcon,
+                                      width: 20,
+                                    ),
                                   ),
-                                ),
                               ],
                             ),
                           ),
