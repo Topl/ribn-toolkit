@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_icon_button.dart';
@@ -35,7 +34,7 @@ class AssetCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 88,
+      height: 66,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -71,9 +70,9 @@ class AssetCard extends StatelessWidget {
                     ? _AssetShortName(
                         shortName: shortName,
                       )
-                    :  _AssetShortName(
-                  shortName: shortName,
-                ),
+                    : _AssetShortName(
+                        shortName: shortName,
+                      ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -116,6 +115,7 @@ class AssetCard extends StatelessWidget {
 
 class _AssetShortName extends StatelessWidget {
   final Text shortName;
+
   const _AssetShortName({
     required this.shortName,
     Key? key,
