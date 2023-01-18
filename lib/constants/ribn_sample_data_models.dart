@@ -19,13 +19,13 @@ class RibnSampleDataModels {
     "transactionAmount": -2022,
     "fee": "0 nanoPOLYs",
     "myRibnWalletAddress":
-    formatAddressString("AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D",charsToDisplay: 4)   ,
+        "AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D",
     "transactionSenderAddress":
-    formatAddressString("AUEy8qDHaFvcD7SF52pbzmvApVwJ3ijgxNBgbPwWcorZKHF1Mwy3",charsToDisplay: 4)  ,
+        "AUEy8qDHaFvcD7SF52pbzmvApVwJ3ijgxNBgbPwWcorZKHF1Mwy3",
     "note": null,
-    "blockId":formatAddressString("29hEG5XFQEFgnYrqTEfnhcwjrdLwVZ3gDkmEqPmMKwo6y",charsToDisplay: 4) ,
+    "blockId": "29hEG5XFQEFgnYrqTEfnhcwjrdLwVZ3gDkmEqPmMKwo6y",
     "blockHeight": 623879,
-    "transactionId": formatAddressString("iQqkwJHks5642E8gm5XsDiovcFpmgWt5XveM1RdiEubz",charsToDisplay: 4),
+    "transactionId": "iQqkwJHks5642E8gm5XsDiovcFpmgWt5XveM1RdiEubz",
     "networkId": 64
   }));
   static Map rawTx = {
