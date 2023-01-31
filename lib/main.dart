@@ -13,7 +13,7 @@ void main() {
       child: MaterialApp(
         initialRoute: '/',
         routes: {
-          '/': (context) => const WidgetBook(),
+          '/': (context) => const Text('Hello there'),
         },
       ),
     ),
