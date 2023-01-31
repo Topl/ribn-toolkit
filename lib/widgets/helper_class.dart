@@ -7,10 +7,8 @@ import 'package:ribn_toolkit/constants/assets.dart';
 class HelperClass {
   static TextEditingController textController = TextEditingController();
   static TextEditingController noteController = TextEditingController();
-  static TextEditingController assetLongNameController =
-      TextEditingController();
-  static TextEditingController assetShortNameController =
-      TextEditingController();
+  static TextEditingController assetLongNameController = TextEditingController();
+  static TextEditingController assetShortNameController = TextEditingController();
   static TextEditingController amountController = TextEditingController();
   static TextEditingController recipientController = TextEditingController();
   static TextEditingController passwordController = TextEditingController();
@@ -24,7 +22,7 @@ class HelperClass {
 
   static dynamic selectSettingsOption(string) {}
 
-  static List<String> networks = ['valhalla', 'toplnet', 'private'];
+  static List<String> networks = ['toplnet', 'valhalla', 'private'];
 
   static Map<String, Image> settingsOptions = {
     'Support': Image.asset(RibnAssets.supportIcon),

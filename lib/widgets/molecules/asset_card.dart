@@ -68,11 +68,11 @@ class AssetCard extends StatelessWidget {
               Expanded(
                 child: isNft
                     ? _AssetShortName(
-                  shortName: shortName,
-                )
+                        shortName: shortName,
+                      )
                     : _AssetShortName(
-                  shortName: shortName,
-                ),
+                        shortName: shortName,
+                      ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -88,20 +88,20 @@ class AssetCard extends StatelessWidget {
                   // conditional send and receive buttons
                   firstIcon != null && secondIcon != null
                       ? Row(
-                    children: [
-                      CustomIconButton(
-                        icon: firstIcon!,
-                        color: RibnColors.primary,
-                        onPressed: onFirstIconPress!,
-                      ),
-                      const SizedBox(width: 7),
-                      CustomIconButton(
-                        icon: secondIcon!,
-                        color: RibnColors.primary,
-                        onPressed: onSecondIconPress!,
-                      ),
-                    ],
-                  )
+                          children: [
+                            CustomIconButton(
+                              icon: firstIcon!,
+                              color: RibnColors.primary,
+                              onPressed: onFirstIconPress!,
+                            ),
+                            const SizedBox(width: 7),
+                            CustomIconButton(
+                              icon: secondIcon!,
+                              color: RibnColors.primary,
+                              onPressed: onSecondIconPress!,
+                            ),
+                          ],
+                        )
                       : const SizedBox(),
                 ],
               ),

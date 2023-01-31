@@ -18,8 +18,7 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
     required this.chevronIconLink,
     required this.ribnLogoIconLink,
     required this.hamburgerIconLink,
-  })
-      : preferredSize = const Size.fromHeight(40),
+  })  : preferredSize = const Size.fromHeight(40),
         super(key: key);
 
   final String currentNetworkName;
@@ -31,7 +30,6 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String ribnLogoIconLink;
   final String hamburgerIconLink;
 
-
   @override
   final Size preferredSize;
 
@@ -40,12 +38,9 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _RibnAppBarState extends State<RibnAppBar> {
-
-
   @override
   Widget build(BuildContext context) {
-
-    List<String>  networks = renameNetworks(widget.networks);
+    List<String> networks = renameNetworks(widget.networks);
     String currentNetworkName = renameNetwork(widget.currentNetworkName);
 
     return AppBar(
@@ -75,8 +70,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildSettingsMenu(
-                widget.settingsOptions, widget.selectSettingsOption),
+            _buildSettingsMenu(widget.settingsOptions, widget.selectSettingsOption),
             const Spacer(flex: 1),
             Padding(
               padding: const EdgeInsets.only(left: 70),
@@ -90,9 +84,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
               selectedItem: currentNetworkName,
               items: networks,
               onChange: (selected) =>
-                  widget.updateNetwork(
-                      widget.networks[networks.indexWhere((e) =>
-                      e == selected)]),
+                  widget.updateNetwork(widget.networks[networks.indexWhere((e) => e == selected)]),
               chevronIconLink: widget.chevronIconLink,
             ),
           ],
@@ -103,8 +95,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
   }
 
   List<String> renameNetworks(List<String> networks) {
-    final List<String> renamedNetworks = networks.map((String e) =>
-        renameNetwork(e)).toList();
+    final List<String> renamedNetworks = networks.map((String e) => renameNetwork(e)).toList();
     return renamedNetworks;
   }
 
@@ -115,21 +106,19 @@ class _RibnAppBarState extends State<RibnAppBar> {
       case "valhalla":
         return "Valhalla testnet";
       case "private":
-        return "Private mainnet";
+        return "Private network";
       default:
         return "";
     }
   }
 
   /// Builds the settings drop down menu.
-  Widget _buildSettingsMenu(Map<String, Image> settingsOptions,
-      Function(String)? onSelected) {
+  Widget _buildSettingsMenu(Map<String, Image> settingsOptions, Function(String)? onSelected) {
     return Container(
       color: Colors.transparent,
       child: PopupMenuButton<String>(
         elevation: 0,
-        child:
-        SizedBox(width: 24, child: Image.asset(widget.hamburgerIconLink)),
+        child: SizedBox(width: 24, child: Image.asset(widget.hamburgerIconLink)),
         offset: const Offset(0, 30),
         onSelected: onSelected,
         padding: const EdgeInsets.all(0.0),
@@ -138,7 +127,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
         ),
         itemBuilder: (BuildContext context) {
           return settingsOptions.keys.map(
-                (String currOption) {
+            (String currOption) {
               return PopupMenuItem<String>(
                 value: currOption,
                 padding: EdgeInsets.zero,
@@ -153,8 +142,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
                         width: 50,
                         child: Text(
                           currOption,
-                          style: RibnToolkitTextStyles.dropdownButtonStyle
-                              .copyWith(
+                          style: RibnToolkitTextStyles.dropdownButtonStyle.copyWith(
                             color: RibnColors.defaultText,
                           ),
                         ),
@@ -169,6 +157,4 @@ class _RibnAppBarState extends State<RibnAppBar> {
       ),
     );
   }
-
-
 }

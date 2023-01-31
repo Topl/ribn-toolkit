@@ -38,17 +38,16 @@ class AssetInfo extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: SizedBox(
-            width: 19,
-            height: 19,
-            child: assetNotSelected
-                ? Image.asset(RibnAssets.unselectedAsset)
-                : Image.asset(
-                    formattedAsset!['assetIcon'] ?? RibnAssets.undefinedIcon),
-          ),
-        ),
+        assetNotSelected
+            ? const SizedBox(width: 15)
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: SizedBox(
+                  width: 19,
+                  height: 19,
+                  child: Image.asset(formattedAsset!['assetIcon'] ?? RibnAssets.undefinedIcon),
+                ),
+              ),
         assetNotSelected
             ? defaultText
             : SizedBox(
