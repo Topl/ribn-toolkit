@@ -18,10 +18,8 @@ class RibnSampleDataModels {
     "transactionStatus": "confirmed",
     "transactionAmount": -2022,
     "fee": "0 nanoPOLYs",
-    "myRibnWalletAddress":
-        "AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D",
-    "transactionSenderAddress":
-        "AUEy8qDHaFvcD7SF52pbzmvApVwJ3ijgxNBgbPwWcorZKHF1Mwy3",
+    "myRibnWalletAddress": "AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D",
+    "transactionSenderAddress": "AUEy8qDHaFvcD7SF52pbzmvApVwJ3ijgxNBgbPwWcorZKHF1Mwy3",
     "note": null,
     "blockId": "29hEG5XFQEFgnYrqTEfnhcwjrdLwVZ3gDkmEqPmMKwo6y",
     "blockHeight": 623879,
@@ -48,8 +46,7 @@ class RibnSampleDataModels {
           "type": "AssetBox",
           "value": {
             "quantity": "1",
-            "assetCode":
-                "6LmeEK9tv2WtRB2jaEU5fKmU3RwFRvRQdSWkWJzgs6y2E1t2n8gBiqjt3q",
+            "assetCode": "6LmeEK9tv2WtRB2jaEU5fKmU3RwFRvRQdSWkWJzgs6y2E1t2n8gBiqjt3q",
             "metadata": null,
             "type": "Asset",
             "securityRoot": "11111111111111111111111111111111"
@@ -58,14 +55,8 @@ class RibnSampleDataModels {
       ],
       "data": null,
       "from": [
-        [
-          "AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D",
-          "-6424342642950537789"
-        ],
-        [
-          "AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D",
-          "3296914010111945238"
-        ]
+        ["AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D", "-6424342642950537789"],
+        ["AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D", "3296914010111945238"]
       ],
       "minting": false,
       "txId": "hQeTrS1tCM9MQm3nyoEg5K1MTRuxpuse49KRom53BWVW",
@@ -83,8 +74,7 @@ class RibnSampleDataModels {
           "AU9wBip3bEkFtCvamM8pTJZBr7mRvhv9JuLgozngnayP2i1HmGAT",
           {
             "quantity": "1",
-            "assetCode":
-                "6LmeEK9tv2WtRB2jaEU5fKmU3RwFRvRQdSWkWJzgs6y2E1t2n8gBiqjt3q",
+            "assetCode": "6LmeEK9tv2WtRB2jaEU5fKmU3RwFRvRQdSWkWJzgs6y2E1t2n8gBiqjt3q",
             "metadata": null,
             "type": "Asset",
             "securityRoot": "11111111111111111111111111111111"
@@ -111,8 +101,7 @@ class RibnSampleDataModels {
         "type": "AssetBox",
         "value": {
           "quantity": "1",
-          "assetCode":
-              "6LmeEK9tv2WtRB2jaEU5fKmU3RwFRvRQdSWkWJzgs6y2E1t2n8gBiqjt3q",
+          "assetCode": "6LmeEK9tv2WtRB2jaEU5fKmU3RwFRvRQdSWkWJzgs6y2E1t2n8gBiqjt3q",
           "metadata": null,
           "type": "Asset",
           "securityRoot": "11111111111111111111111111111111"
@@ -121,14 +110,8 @@ class RibnSampleDataModels {
     ],
     "data": null,
     "from": [
-      [
-        "AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D",
-        "-6424342642950537789"
-      ],
-      [
-        "AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D",
-        "3296914010111945238"
-      ]
+      ["AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D", "-6424342642950537789"],
+      ["AUDxRxPtWPeejAMfEeYMYfwQ7Shk5qLw4swZkW6sek3D4FMDrQ6D", "3296914010111945238"]
     ],
     "minting": false,
     "txId": "hQeTrS1tCM9MQm3nyoEg5K1MTRuxpuse49KRom53BWVW",
@@ -146,8 +129,7 @@ class RibnSampleDataModels {
         "AU9wBip3bEkFtCvamM8pTJZBr7mRvhv9JuLgozngnayP2i1HmGAT",
         {
           "quantity": "1",
-          "assetCode":
-              "6LmeEK9tv2WtRB2jaEU5fKmU3RwFRvRQdSWkWJzgs6y2E1t2n8gBiqjt3q",
+          "assetCode": "6LmeEK9tv2WtRB2jaEU5fKmU3RwFRvRQdSWkWJzgs6y2E1t2n8gBiqjt3q",
           "metadata": null,
           "type": "Asset",
           "securityRoot": "11111111111111111111111111111111"
