@@ -14,7 +14,7 @@ class RibnBodyFont12TextWidget extends StatelessWidget {
       required this.textAlign,
       required this.textColor,
       required this.fontWeight,
-      required this.wordSpacing})
+      this.wordSpacing = 0})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
