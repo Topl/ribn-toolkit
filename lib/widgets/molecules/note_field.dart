@@ -17,7 +17,7 @@ class NoteField extends StatelessWidget {
   final int noteLength;
 
   /// Max length of the note.
-  final maxNoteLength = 127;
+  final int maxNoteLength;
 
   final Image tooltipIcon;
   final String hintText;
@@ -28,7 +28,8 @@ class NoteField extends StatelessWidget {
       required this.tooltipIcon,
       Key? key,
       this.hintText = Strings.noteHint,
-      this.hintTitle = Strings.note})
+      this.hintTitle = Strings.note,
+      this.maxNoteLength = 127})
       : super(key: key);
 
   @override
