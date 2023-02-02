@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
-import 'package:ribn_toolkit/widgets/atoms/text/ribn_font10_text_widget.dart';
+
+import '../atoms/text/ribn_font12_text_widget.dart';
 
 class RibnTextFieldWithTitle extends StatelessWidget {
   /// Controller for the textfield.
@@ -89,7 +90,7 @@ class RibnTextFieldWithTitle extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 5),
-          child: RibnFont10TextWidget(
+          child: RibnFont12TextWidget(
               text: title,
               textAlign: TextAlign.justify,
               textColor: titleColor,
