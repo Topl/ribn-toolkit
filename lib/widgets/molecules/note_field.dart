@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
@@ -21,13 +20,16 @@ class NoteField extends StatelessWidget {
   final maxNoteLength = 127;
 
   final Image tooltipIcon;
-
-  const NoteField({
-    required this.controller,
-    required this.noteLength,
-    required this.tooltipIcon,
-    Key? key,
-  }) : super(key: key);
+  final String hintText;
+  final String hintTitle;
+  const NoteField(
+      {required this.controller,
+      required this.noteLength,
+      required this.tooltipIcon,
+      Key? key,
+      this.hintText = Strings.noteHint,
+      this.hintTitle = Strings.note})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class NoteField extends StatelessWidget {
         maxLimitReached ? const Color(0xffE80E00) : Colors.transparent;
 
     return CustomInputField(
-      itemLabel: Strings.note,
+      itemLabel: hintTitle,
       tooltipIcon: tooltipIcon,
       item: Stack(
         children: [
@@ -46,7 +48,7 @@ class NoteField extends StatelessWidget {
           CustomTextField(
             textInputAction: TextInputAction.done,
             controller: controller,
-            hintText: Strings.noteHint,
+            hintText: hintText,
             height: 80,
             maxLength: maxNoteLength,
             textAlignVertical: TextAlignVertical.top,
