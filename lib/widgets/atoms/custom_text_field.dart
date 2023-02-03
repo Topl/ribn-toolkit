@@ -1,12 +1,13 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends HookWidget {
   /// Controller for the textfield.
   final TextEditingController controller;
 
@@ -53,6 +54,10 @@ class CustomTextField extends StatelessWidget {
 
   final TextInputAction textInputAction;
 
+  final Function(String?)? validator;
+
+  final bool hideErrorText;
+
   const CustomTextField({
     required this.controller,
     required this.hintText,
@@ -71,15 +76,34 @@ class CustomTextField extends StatelessWidget {
     this.hintColor = const Color(0xff4C838D),
     this.hintMaxLines = 2,
     this.textInputAction = TextInputAction.next,
+    this.validator,
+    this.hideErrorText = true,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final hasErrorState = useState(hasError);
+
+    useValueChanged<dynamic, dynamic>(hasError, (_, __) {
+      hasErrorState.value = hasError;
+    });
     return SizedBox(
       width: width,
       height: height,
-      child: TextField(
+      child: TextFormField(
+        validator: (value) {
+          if (validator != null) {
+            if (!hideErrorText)
+              return value;
+            else
+              hasErrorState.value = true;
+          }
+
+          // QQQQ explain
+          // Plus I dont like this at all
+          else if (hasErrorState.value) hasErrorState.value = false;
+        },
         controller: controller,
         style: RibnToolkitTextStyles.hintStyle,
         textAlignVertical: textAlignVertical,
@@ -103,15 +127,11 @@ class CustomTextField extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-                color: hasError
-                    ? Colors.red
-                    : enabledBorderColor ?? Colors.transparent),
+                color: hasErrorState.value ? Colors.red : enabledBorderColor ?? Colors.transparent),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-                color: hasError
-                    ? Colors.red
-                    : focusedBorderColor ?? Colors.transparent),
+                color: hasErrorState.value ? Colors.red : focusedBorderColor ?? Colors.transparent),
           ),
           filled: true,
           contentPadding: const EdgeInsets.all(5),

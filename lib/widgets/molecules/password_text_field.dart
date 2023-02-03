@@ -38,6 +38,8 @@ class PasswordTextField extends StatefulWidget {
 
   final TextInputAction textInputAction;
 
+  final Function(String?)? validator;
+
   const PasswordTextField({
     required this.controller,
     required this.hintText,
@@ -49,6 +51,7 @@ class PasswordTextField extends StatefulWidget {
     this.focusNode,
     this.fillColor = Colors.white,
     this.textInputAction = TextInputAction.done,
+    this.validator,
     Key? key,
   }) : super(key: key);
 
@@ -67,22 +70,20 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   @override
   Widget build(BuildContext context) {
     final OutlineInputBorder textFieldBorder = OutlineInputBorder(
-      borderSide:
-          BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
+      borderSide: BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
       borderRadius: BorderRadius.circular(5),
     );
     final OutlineInputBorder textFieldFocusBorder = OutlineInputBorder(
-      borderSide:
-          BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
+      borderSide: BorderSide(color: widget.hasError ? Colors.red : Colors.transparent),
       borderRadius: BorderRadius.circular(5),
     );
 
     return SizedBox(
       width: widget.width,
       height: widget.height,
-      child: TextField(
-        onSubmitted:
-            widget.onSubmitted != null ? (_) => widget.onSubmitted!() : null,
+      child: TextFormField(
+        validator: (value) => widget.validator != null ? widget.validator!(value) : null,
+        onFieldSubmitted: widget.onSubmitted != null ? (_) => widget.onSubmitted!() : null,
         focusNode: widget.focusNode,
         textInputAction: widget.textInputAction,
         obscureText: obscurePassword,
@@ -91,9 +92,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
           suffixIcon: ExcludeFocus(
             child: CustomIconButton(
               icon: Image.asset(
-                obscurePassword
-                    ? RibnAssets.passwordVisiblePng
-                    : RibnAssets.passwordHiddenPng,
+                obscurePassword ? RibnAssets.passwordVisiblePng : RibnAssets.passwordHiddenPng,
                 width: 17,
               ),
               onPressed: () {

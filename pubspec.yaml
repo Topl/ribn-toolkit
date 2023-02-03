@@ -49,6 +49,7 @@ dependencies:
   shimmer_animation: ^2.1.0+1
   step_progress_indicator: ^1.0.2
   import_sorter: ^4.6.0
+  flutter_hooks: ^0.18.5+1
 
 dev_dependencies:
   flutter_test:
