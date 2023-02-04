@@ -104,97 +104,87 @@ class _RibnFeedbackDescriptionState extends State<RibnFeedbackDescription> {
         ? const Color(0xffE80E00).withOpacity(0.7)
         : Colors.transparent;
     // TODO: implement build
-    return Container(
-      padding: const EdgeInsets.only(left: 20, top: 8, bottom: 12, right: 14),
-      width: widget.width,
-      height: 105,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(11.6)),
-        color: RibnColors.mediumGrey,
-      ),
-      child: Stack(
-        children: [
-          // text field for the note
-          Scrollbar(
-              controller: _controllerVertical,
-              thumbVisibility: true,
-              thickness: 10,
-              child: SizedBox(
-                width: widget.width,
-                height: widget.height,
-                child: TextField(
-                  scrollController: _controllerVertical,
-                  controller: widget.controller,
-                  style: RibnToolkitTextStyles.hintStyle,
-                  textAlignVertical: widget.textAlignVertical,
-                  onChanged: widget.onChanged,
-                  expands: true,
-                  minLines: null,
-                  maxLines: null,
-                  maxLength: widget.maxLength,
-                  showCursor: widget.showCursor,
-                  keyboardType: widget.keyboardType,
-                  inputFormatters: widget.inputFormatters,
-                  textInputAction: widget.textInputAction,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    counterText: '',
-                    hintText: widget.hintText,
-                    hintStyle: RibnToolkitTextStyles.hintStyle
-                        .copyWith(color: widget.hintColor),
-                    hintMaxLines: widget.hintMaxLines,
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Color(0xffE9E9E9)),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: widget.hasError
-                              ? Colors.red
-                              : widget.enabledBorderColor ??
-                                  Colors.transparent),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: widget.hasError
-                              ? Colors.red
-                              : widget.focusedBorderColor ??
-                                  Colors.transparent),
-                    ),
-                    filled: true,
-                    contentPadding: const EdgeInsets.all(5),
-                    fillColor: widget.fillColor ?? RibnColors.whiteBackground,
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
+    return Stack(
+      children: [
+        // text field for the note
+        Scrollbar(
+            controller: _controllerVertical,
+            thumbVisibility: true,
+            thickness: 10,
+            trackVisibility: true,
+            child: SizedBox(
+              width: widget.width,
+              height: widget.height,
+              child: TextField(
+                scrollController: _controllerVertical,
+                controller: widget.controller,
+                style: RibnToolkitTextStyles.hintStyle,
+                textAlignVertical: widget.textAlignVertical,
+                onChanged: widget.onChanged,
+                expands: true,
+                minLines: null,
+                maxLines: null,
+                maxLength: widget.maxLength,
+                showCursor: widget.showCursor,
+                keyboardType: widget.keyboardType,
+                inputFormatters: widget.inputFormatters,
+                textInputAction: widget.textInputAction,
+                decoration: InputDecoration(
+                  isDense: true,
+                  counterText: '',
+                  hintText: widget.hintText,
+                  hintStyle: RibnToolkitTextStyles.hintStyle
+                      .copyWith(color: widget.hintColor),
+                  hintMaxLines: widget.hintMaxLines,
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Color(0xffE9E9E9)),
+                    borderRadius: BorderRadius.circular(5),
                   ),
-                ),
-              )),
-          // character count indicator
-          Positioned(
-            right: 5,
-            bottom: 10,
-            child: Container(
-              child: Center(
-                child: Text(
-                  (widget.maxTextLength - widget.textLength).toString(),
-                  style: const TextStyle(
-                    fontFamily: 'DM Sans',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 12,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: widget.hasError
+                            ? Colors.red
+                            : widget.enabledBorderColor ?? Colors.transparent),
                   ),
-                  textAlign: TextAlign.center,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: widget.hasError
+                            ? Colors.red
+                            : widget.focusedBorderColor ?? Colors.transparent),
+                  ),
+                  filled: true,
+                  contentPadding: const EdgeInsets.all(5),
+                  fillColor: widget.fillColor ?? RibnColors.whiteBackground,
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
                 ),
               ),
-              width: 37,
-              height: 25,
-              decoration: BoxDecoration(
-                color: counterBoxColor,
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: counterBorderColor),
+            )),
+        // character count indicator
+        Positioned(
+          right: 5,
+          bottom: 10,
+          child: Container(
+            child: Center(
+              child: Text(
+                (widget.maxTextLength - widget.textLength).toString(),
+                style: const TextStyle(
+                  fontFamily: 'DM Sans',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 12,
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
+            width: 37,
+            height: 25,
+            decoration: BoxDecoration(
+              color: counterBoxColor,
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(color: counterBorderColor),
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
