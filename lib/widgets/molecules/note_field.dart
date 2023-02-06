@@ -22,6 +22,8 @@ class NoteField extends StatelessWidget {
   final Image tooltipIcon;
   final String hintText;
   final String hintTitle;
+  final double height;
+  final double width;
   const NoteField(
       {required this.controller,
       required this.noteLength,
@@ -29,7 +31,9 @@ class NoteField extends StatelessWidget {
       Key? key,
       this.hintText = Strings.noteHint,
       this.hintTitle = Strings.note,
-      this.maxNoteLength = 127})
+      this.maxNoteLength = 127,
+      this.height = 80,
+      this.width = 350})
       : super(key: key);
 
   @override
@@ -47,10 +51,11 @@ class NoteField extends StatelessWidget {
         children: [
           // text field for the note
           CustomTextField(
+            width: width,
             textInputAction: TextInputAction.done,
             controller: controller,
             hintText: hintText,
-            height: 80,
+            height: height,
             maxLength: maxNoteLength,
             textAlignVertical: TextAlignVertical.top,
             hintColor: RibnColors.hintTextColor,
