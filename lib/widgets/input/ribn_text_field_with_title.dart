@@ -55,7 +55,6 @@ class RibnTextFieldWithTitle extends StatelessWidget {
   final TextInputAction textInputAction;
 
   final String title;
-
   final Color titleColor;
   final FontWeight titleFontWeight;
   const RibnTextFieldWithTitle({
