@@ -1,7 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
@@ -63,7 +62,7 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.showCursor = true,
     this.hasError = false,
-    this.keyboardType = TextInputType.text,
+    this.keyboardType = TextInputType.multiline,
     this.inputFormatters = const [],
     this.fillColor,
     this.enabledBorderColor = const Color(0xffE9E9E9),
