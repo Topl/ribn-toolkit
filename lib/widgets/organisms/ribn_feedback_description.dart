@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -97,7 +96,6 @@ class _RibnFeedbackDescriptionState extends State<RibnFeedbackDescription> {
   @override
   Widget build(BuildContext context) {
     final bool maxLimitReached = widget.textLength >= widget.maxTextLength;
-    ;
     final Color counterBoxColor =
         maxLimitReached ? const Color(0xFFFFE5E5) : const Color(0xffefefef);
     final Color counterBorderColor = maxLimitReached
