@@ -78,7 +78,7 @@ class RibnDropdown extends StatelessWidget {
                       color: RibnColors.greyText,
                       width: 0.3), //border of dropdown button
                   borderRadius: BorderRadius.circular(
-                      11.4), //border raiuds of dropdown button
+                      5), //border raiuds of dropdown button
                   boxShadow: const <BoxShadow>[
                     //apply shadow on Dropdown button
                     BoxShadow(color: Colors.transparent) //blur radius of shadow
