@@ -102,7 +102,7 @@ class RibnDropdown extends StatelessWidget {
                                   color: Colors
                                       .transparent) //blur radius of shadow
                             ]),
-                        width: 270,
+                        width: 286,
                         height: 30,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 2),
@@ -168,7 +168,7 @@ class RibnDropdown extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 5),
+                        padding: const EdgeInsets.only(left: 10),
                         child: InkWell(
                           child: Container(
                             decoration: BoxDecoration(
