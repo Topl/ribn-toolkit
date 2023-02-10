@@ -1,11 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/widgets/atoms/text/ribn_bodyfont12_text_widget.dart';
 
 class RibnDropdown extends StatelessWidget {
   final String title;
-  final String dropDownValue;
+  final String? dropDownValue;
   final String dropDownIcon;
+  final String dropDownHintText;
   final Color titleColor;
   final Color dropDownIconColor;
   final FontWeight titleWeight;
@@ -23,6 +25,7 @@ class RibnDropdown extends StatelessWidget {
     required this.onChanged,
     required this.dropDownIcon,
     required this.dropDownIconColor,
+    required this.dropDownHintText,
   }) : super(key: key);
 
   void openDropdown() {
@@ -70,7 +73,7 @@ class RibnDropdown extends StatelessWidget {
           ),
           Container(
               height: 40,
-              width: 350,
+              width: kIsWeb ? 310 : 350,
               decoration: BoxDecoration(
                   color:
                       Colors.transparent, //background color of dropdown button
@@ -102,12 +105,20 @@ class RibnDropdown extends StatelessWidget {
                                   color: Colors
                                       .transparent) //blur radius of shadow
                             ]),
-                        width: 286,
+                        width: kIsWeb ? 246 : 286,
                         height: 30,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 2),
                           child: DropdownButton(
+                            underline: Container(),
+                            hint: Padding(
+                              child: Text(dropDownHintText,
+                                  style: const TextStyle(
+                                      color: RibnColors.defaultText)),
+                              padding: const EdgeInsets.only(top: 10, left: 10),
+                            ),
                             key: _dropdownButtonKey,
+                            value: dropDownValue,
                             selectedItemBuilder: (BuildContext context) =>
                                 dropDownItems
                                     .map<DropdownMenuItem<String>>(
@@ -134,7 +145,6 @@ class RibnDropdown extends StatelessWidget {
                                             ))
                                     .toList(),
                             borderRadius: BorderRadius.circular(11.4),
-                            value: dropDownValue,
                             items: dropDownItems
                                 .map<DropdownMenuItem<String>>((String item) =>
                                     DropdownMenuItem<String>(
@@ -162,7 +172,7 @@ class RibnDropdown extends StatelessWidget {
 
                             dropdownColor:
                                 Colors.white, //dropdown background color
-                            underline: Container(), //remove underline
+                            //underline: Container(), //remove underline
                             isExpanded: true, //make true to make width 100%
                           ),
                         ),
