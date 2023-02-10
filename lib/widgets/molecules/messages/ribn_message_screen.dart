@@ -37,6 +37,8 @@ class RibnMessageScreen extends StatelessWidget {
     return WaveContainer(
       containerChild: Padding(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
               child: Padding(
