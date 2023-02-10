@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/assets.dart';
 import '../../../constants/colors.dart';
-import '../../atoms/custom_icon_button.dart';
 import '../../atoms/large_button.dart';
 import '../../atoms/text/ribn_font13_text_widget.dart';
 import '../../atoms/text/ribn_h3_text_widget.dart';
@@ -42,26 +41,6 @@ class RibnMessageScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 50, left: 100),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: CustomIconButton(
-                      icon: const Icon(
-                        Icons.close,
-                        color: RibnColors.lightGreyTitle,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      highlightColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      splashColor: Colors.transparent,
-                    ),
-                  ),
-                ),
-              ),
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 50),
