@@ -68,7 +68,7 @@ class RibnMessageScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 20),
                   child: RibnFont13TextWidget(
                     text: topMessage,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     textColor: RibnColors.whiteColor,
                     fontWeight: FontWeight.w400,
                   ),
@@ -87,7 +87,7 @@ class RibnMessageScreen extends StatelessWidget {
                     child: LargeButton(
                       buttonChild: RibnFont13TextWidget(
                           text: buttonTitle,
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.start,
                           textColor: buttonTitleColor,
                           fontWeight: FontWeight.normal),
                       backgroundColor: RibnColors.primaryOffColor,
