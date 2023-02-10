@@ -11,7 +11,7 @@ import '../wave_container.dart';
 class RibnMessageScreen extends StatelessWidget {
   final String title;
   final String topMessage;
-  final String bottomMessage;
+  final Widget bottomMessage;
   final bool isError;
   final double width;
   final double height;
@@ -46,7 +46,7 @@ class RibnMessageScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 50),
                   child: RibnH3TextWidget(
                     text: title,
-                    textAlign: TextAlign.justify,
+                    textAlign: TextAlign.center,
                     textColor: RibnColors.whiteColor,
                     fontWeight: FontWeight.w700,
                   ),
@@ -56,8 +56,10 @@ class RibnMessageScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Image.asset(
-                    isError ? RibnAssets.errorFace : RibnAssets.checkCircleIcon,
-                    scale: isError ? 2 : 0.5,
+                    isError
+                        ? RibnAssets.sadFacePng
+                        : RibnAssets.feedbackCheckmark,
+                    scale: isError ? 4 : 1,
                   ),
                 ),
               ),
@@ -66,7 +68,7 @@ class RibnMessageScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 20),
                   child: RibnFont13TextWidget(
                     text: topMessage,
-                    textAlign: TextAlign.justify,
+                    textAlign: TextAlign.center,
                     textColor: RibnColors.whiteColor,
                     fontWeight: FontWeight.w400,
                   ),
@@ -75,29 +77,27 @@ class RibnMessageScreen extends StatelessWidget {
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20),
-                  child: RibnFont13TextWidget(
-                    text: bottomMessage,
-                    textAlign: TextAlign.justify,
-                    textColor: RibnColors.whiteColor,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  child: bottomMessage,
                 ),
               ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 80),
-                  child: LargeButton(
-                    buttonChild: RibnFont13TextWidget(
-                        text: buttonTitle,
-                        textAlign: TextAlign.center,
-                        textColor: buttonTitleColor,
-                        fontWeight: FontWeight.normal),
-                    backgroundColor: RibnColors.primaryOffColor,
-                    hoverColor: RibnColors.primaryButtonHover,
-                    dropShadowColor: RibnColors.primaryButtonShadow,
-                    onPressed: onTap,
+              Align(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 180),
+                    child: LargeButton(
+                      buttonChild: RibnFont13TextWidget(
+                          text: buttonTitle,
+                          textAlign: TextAlign.center,
+                          textColor: buttonTitleColor,
+                          fontWeight: FontWeight.normal),
+                      backgroundColor: RibnColors.primaryOffColor,
+                      hoverColor: RibnColors.primaryButtonHover,
+                      dropShadowColor: RibnColors.primaryButtonShadow,
+                      onPressed: onTap,
+                    ),
                   ),
                 ),
+                alignment: FractionalOffset.bottomCenter,
               )
             ],
           ),

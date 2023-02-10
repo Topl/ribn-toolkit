@@ -14,7 +14,7 @@ class RibnH3TextWidget extends StatelessWidget {
       required this.textAlign,
       required this.textColor,
       required this.fontWeight,
-      this.letterSpacing = 1})
+      this.letterSpacing})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
