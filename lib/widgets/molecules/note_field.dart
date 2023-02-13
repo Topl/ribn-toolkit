@@ -25,6 +25,7 @@ class NoteField extends StatelessWidget {
   final double height;
   final double width;
   final bool hasError;
+  final dynamic Function(String)? onChanged;
   const NoteField(
       {required this.controller,
       required this.noteLength,
@@ -35,7 +36,8 @@ class NoteField extends StatelessWidget {
       this.maxNoteLength = 127,
       this.height = 80,
       this.width = 350,
-      this.hasError = false})
+      this.hasError = false,
+      this.onChanged})
       : super(key: key);
 
   @override
@@ -53,6 +55,7 @@ class NoteField extends StatelessWidget {
         children: [
           // text field for the note
           CustomTextField(
+            onChanged: onChanged,
             hasError: hasError,
             width: width,
             textInputAction: TextInputAction.done,
