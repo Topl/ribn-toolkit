@@ -26,6 +26,7 @@ class CheckboxWrappableText extends StatelessWidget {
     required this.onChanged,
     this.checkboxTopPadding = kIsWeb ? 5 : 0,
     this.renderTooltipIcon = false,
+    this.checkboxKey,
     Key? key,
   })  : assert(wrapText ? wrappableText != null : label != null),
         super(key: key);
@@ -63,12 +64,14 @@ class CheckboxWrappableText extends StatelessWidget {
   /// Should render the tooltip icon
   final bool renderTooltipIcon;
 
+  /// Key for checkbox
+  final Key? checkboxKey;
+
   @override
   Widget build(BuildContext context) {
     return wrapText
         ? RichText(
-            textHeightBehavior:
-                const TextHeightBehavior(applyHeightToFirstAscent: false),
+            textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
             text: TextSpan(
               children: [
                 WidgetSpan(
@@ -82,6 +85,7 @@ class CheckboxWrappableText extends StatelessWidget {
                       width: 20,
                       height: 20,
                       child: Checkbox(
+                        key: checkboxKey,
                         fillColor: MaterialStateProperty.all(fillColor),
                         checkColor: checkColor,
                         value: value,
@@ -105,9 +109,7 @@ class CheckboxWrappableText extends StatelessWidget {
                 ),
                 if (renderTooltipIcon == true)
                   WidgetSpan(
-                    alignment: kIsWeb
-                        ? PlaceholderAlignment.top
-                        : PlaceholderAlignment.bottom,
+                    alignment: kIsWeb ? PlaceholderAlignment.top : PlaceholderAlignment.bottom,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 6),
                       child: CustomToolTip(
@@ -125,20 +127,16 @@ class CheckboxWrappableText extends StatelessWidget {
                           children: [
                             Text(
                               Strings.howIsMySeedPhraseUnrecoverable,
-                              style: RibnToolkitTextStyles.toolTipTextStyle
-                                  .copyWith(
+                              style: RibnToolkitTextStyles.toolTipTextStyle.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
                             ),
                             Text(
                               kIsWeb
-                                  ? Strings
-                                      .howIsMySeedPhraseUnrecoverableNewLine
-                                  : Strings
-                                      .howIsMySeedPhraseUnrecoverableMultipleLines,
-                              style: RibnToolkitTextStyles.toolTipTextStyle
-                                  .copyWith(
+                                  ? Strings.howIsMySeedPhraseUnrecoverableNewLine
+                                  : Strings.howIsMySeedPhraseUnrecoverableMultipleLines,
+                              style: RibnToolkitTextStyles.toolTipTextStyle.copyWith(
                                 color: Colors.white,
                               ),
                             ),
@@ -162,9 +160,9 @@ class CheckboxWrappableText extends StatelessWidget {
                     borderRadius: BorderRadius.circular(2),
                     border: Border.all(color: borderColor),
                   ),
-                  constraints:
-                      const BoxConstraints(maxHeight: 20, maxWidth: 20),
+                  constraints: const BoxConstraints(maxHeight: 20, maxWidth: 20),
                   child: Checkbox(
+                    key: checkboxKey,
                     fillColor: MaterialStateProperty.all(fillColor),
                     checkColor: checkColor,
                     value: value,

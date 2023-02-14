@@ -81,9 +81,8 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
     return SizedBox(
       width: widget.width,
       height: widget.height,
-      child: TextFormField(
-        validator: (value) => widget.validator != null ? widget.validator!(value) : null,
-        onFieldSubmitted: widget.onSubmitted != null ? (_) => widget.onSubmitted!() : null,
+      child: TextField(
+        onSubmitted: widget.onSubmitted != null ? (_) => widget.onSubmitted!() : null,
         focusNode: widget.focusNode,
         textInputAction: widget.textInputAction,
         obscureText: obscurePassword,

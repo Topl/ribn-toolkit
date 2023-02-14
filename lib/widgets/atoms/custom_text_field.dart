@@ -54,9 +54,18 @@ class CustomTextField extends HookWidget {
 
   final TextInputAction textInputAction;
 
+  /// Validator for the text form
   final Function(String?)? validator;
 
+  /// Set to true if you dont want to show error text
+  /// Be sure to pass in a blank string ('') into the validator if you dont want to show text
   final bool hideErrorText;
+
+  /// The initial value of the text field
+  final String? initialValue;
+
+  /// Text field key
+  final Key? textFieldKey;
 
   const CustomTextField({
     required this.controller,
@@ -78,6 +87,8 @@ class CustomTextField extends HookWidget {
     this.textInputAction = TextInputAction.next,
     this.validator,
     this.hideErrorText = true,
+    this.initialValue,
+    this.textFieldKey,
     Key? key,
   }) : super(key: key);
 
@@ -92,19 +103,10 @@ class CustomTextField extends HookWidget {
       width: width,
       height: height,
       child: TextFormField(
-        validator: (value) {
-          if (validator != null) {
-            if (!hideErrorText)
-              return value;
-            else
-              hasErrorState.value = true;
-          }
-
-          // QQQQ explain
-          // Plus I dont like this at all
-          else if (hasErrorState.value) hasErrorState.value = false;
-        },
+        key: textFieldKey,
+        validator: (value) => validator != null ? validator!(value) : null,
         controller: controller,
+        initialValue: initialValue,
         style: RibnToolkitTextStyles.hintStyle,
         textAlignVertical: textAlignVertical,
         onChanged: onChanged,
@@ -116,6 +118,13 @@ class CustomTextField extends HookWidget {
         inputFormatters: inputFormatters,
         textInputAction: textInputAction,
         decoration: InputDecoration(
+          errorStyle: hideErrorText
+              ? const TextStyle(
+                  height: 0,
+                  color: Colors.transparent,
+                  fontSize: 0,
+                )
+              : null,
           isDense: true,
           counterText: '',
           hintText: hintText,
