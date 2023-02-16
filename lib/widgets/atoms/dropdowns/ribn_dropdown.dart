@@ -73,7 +73,7 @@ class RibnDropdown extends StatelessWidget {
           ),
           Container(
               height: 40,
-              width: kIsWeb ? 310 : 350,
+              width: 350,
               decoration: BoxDecoration(
                   color:
                       Colors.transparent, //background color of dropdown button
