@@ -105,7 +105,7 @@ class RibnDropdown extends StatelessWidget {
                                   color: Colors
                                       .transparent) //blur radius of shadow
                             ]),
-                        width: kIsWeb ? 246 : 286,
+                        width: 286,
                         height: 30,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 2),
@@ -195,7 +195,7 @@ class RibnDropdown extends StatelessWidget {
                                       color: Colors
                                           .transparent) //blur radius of shadow
                                 ]),
-                            width: kIsWeb ? 35 : 40,
+                            width: 40,
                             height: 30,
                             child: const Icon(
                               Icons.arrow_drop_down_sharp,
