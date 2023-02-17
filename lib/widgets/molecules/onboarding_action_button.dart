@@ -55,6 +55,7 @@ class OnboardingActionButton extends StatelessWidget {
         child: ConstrainedBox(
           constraints: const BoxConstraints(
             maxWidth: 413,
+            minHeight: 250,
           ),
           child: Padding(
             padding: kIsWeb
@@ -105,6 +106,8 @@ class OnboardingActionButton extends StatelessWidget {
                     height: 2,
                     fontWeight: FontWeight.w400,
                   ),
+                  // overflow: TextOverflow.ellipsis,
+                  // maxLines: 3,
                 ),
               ],
             ),
