@@ -329,4 +329,12 @@ class RibnToolkitTextStyles {
     decoration: TextDecoration.none,
     height: 1,
   );
+  static const TextStyle linkText = TextStyle(
+    color: RibnColors.secondaryDark,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'DM Sans',
+    fontSize: 18,
+    height: 1.6,
+    decoration: TextDecoration.underline,
+  );
 }
