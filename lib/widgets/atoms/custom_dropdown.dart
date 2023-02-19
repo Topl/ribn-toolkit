@@ -1,10 +1,8 @@
 // Flutter imports:
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:flutter_portal/flutter_portal.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
@@ -13,8 +11,9 @@ import 'package:ribn_toolkit/constants/styles.dart';
 ///
 /// The [flutter_portal] library is leveraged to develop a custom drop down.
 ///
-/// Note: In the build method, the outer [PortalEntry] is added to handle dismissing the dropdown menu, in case
-/// the user clicks elesewhere on the screen, hence the usage of [GestureDetector] and [onDismissed].
+/// Note: In the build method, the outer [PortalTarget] is added to handle dismissing the dropdown menu, in case
+/// the user clicks elsewhere on the screen, hence the usage of [GestureDetector] and [onDismissed].
+//ignore: must_be_immutable
 class CustomDropDown extends StatefulWidget {
   /// The widget that's displayed upon the [dropdownButton] being pressed.
   final Widget dropdownChild;
@@ -56,7 +55,7 @@ class CustomDropDown extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomDropDownState createState() => _CustomDropDownState();
+  State<CustomDropDown> createState() => _CustomDropDownState();
 }
 
 class _CustomDropDownState extends State<CustomDropDown> {
@@ -101,7 +100,6 @@ class _CustomDropDownState extends State<CustomDropDown> {
             child: Container(
               width: 25,
               height: _fieldHeight - 10,
-              child: widget.chevronIcon,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(1),
@@ -111,6 +109,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
                 ),
                 color: RibnColors.lightGrey,
               ),
+              child: widget.chevronIcon,
             ),
           ),
         ],
@@ -120,18 +119,17 @@ class _CustomDropDownState extends State<CustomDropDown> {
 
   @override
   Widget build(BuildContext context) {
-    return PortalEntry(
+    return PortalTarget(
       visible: widget.visible,
-      portal: GestureDetector(
+      portalFollower: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: widget.onDismissed,
       ),
-      child: PortalEntry(
+      child: PortalTarget(
         visible: widget.visible,
+        portalFollower: widget.dropdownChild,
+        anchor: Aligned(follower: widget.childAlignment, target: widget.dropDownAlignment),
         child: widget.customDropdownButton ?? _buildIconDropdownButton(),
-        portal: widget.dropdownChild,
-        childAnchor: widget.childAlignment,
-        portalAnchor: widget.dropDownAlignment,
       ),
     );
   }

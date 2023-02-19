@@ -4,19 +4,13 @@ import 'dart:async';
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 // Package imports:
 import 'package:flutter_portal/flutter_portal.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/strings.dart';
-import 'package:ribn_toolkit/constants/styles.dart';
-import 'package:ribn_toolkit/constants/ui_constants.dart';
 import 'package:ribn_toolkit/transfer_utils.dart';
-import 'package:ribn_toolkit/utils.dart';
-import 'package:ribn_toolkit/widgets/atoms/custom_dropdown.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_input_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 import 'package:ribn_toolkit/widgets/atoms/error_bubble.dart';
@@ -61,7 +55,7 @@ class AssetAmountField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AssetAmountFieldState createState() => _AssetAmountFieldState();
+  State<AssetAmountField> createState() => _AssetAmountFieldState();
 }
 
 class _AssetAmountFieldState extends State<AssetAmountField> {
@@ -88,7 +82,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
 
   @override
   void didUpdateWidget(covariant AssetAmountField oldWidget) {
-    // Validate amount again bc maxTransferrableAmount could change if a different asset is selected from the dropdown
+    // Validate amount again bc maxTransferableAmount could change if a different asset is selected from the dropdown
     if (oldWidget.maxTransferrableAmount != widget.maxTransferrableAmount) {
       setState(() {
         hasError = !TransferUtils.validateAmount(
@@ -104,7 +98,7 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
 
   @override
   Widget build(BuildContext context) {
-    const double _fieldHeight = 36;
+    const double fieldHeight = 36;
 
     return CustomInputField(
       itemLabel: Strings.amount,
@@ -112,10 +106,18 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
         children: [
           Focus(
             onFocusChange: handleFocusChange,
-            child: PortalEntry(
+            child: PortalTarget(
               visible: displayErrorBubble,
+              portalFollower: const ErrorBubble(
+                inverted: true,
+                errorText: Strings.invalidAmountError,
+              ),
+              anchor: const Aligned(
+                follower: Alignment.topRight,
+                target: Alignment.bottomRight,
+              ),
               child: CustomTextField(
-                height: _fieldHeight,
+                height: fieldHeight,
                 controller: widget.controller,
                 hintText: Strings.amountHint,
                 keyboardType: TextInputType.number,
@@ -124,12 +126,6 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
                 onChanged: widget.onChanged,
                 hintColor: RibnColors.hintTextColor,
               ),
-              portal: const ErrorBubble(
-                inverted: true,
-                errorText: Strings.invalidAmountError,
-              ),
-              portalAnchor: Alignment.topRight,
-              childAnchor: Alignment.bottomRight,
             ),
           ),
         ],
