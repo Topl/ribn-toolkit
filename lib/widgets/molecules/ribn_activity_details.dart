@@ -424,7 +424,7 @@ class RibnActivityDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    Rules.txDetailsRedirectUrls[activityDetails.networkId]
+                    Rules.txDetailsRedirectUrlsNormal[activityDetails.networkId]
                         .toString(),
                     style: RibnToolkitTextStyles.h4.copyWith(
                       fontSize: 12,
