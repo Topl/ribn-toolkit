@@ -46,4 +46,5 @@ class RibnColors {
   static const Color mediumGrey = Color(0xffF0F0F0);
   static const Color vibrantGreen = Color(0xff0AEABA);
   static const Color transparentGrey = Color(0x99E0E9EA);
+  static const Color greyOutline = Color(0xffECECEC);
 }

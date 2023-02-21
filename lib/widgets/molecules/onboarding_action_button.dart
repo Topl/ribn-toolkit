@@ -53,32 +53,36 @@ class OnboardingActionButton extends StatelessWidget {
         hoverElevation: 0,
         color: backgroundColor,
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 413, maxHeight: 263),
+          constraints: const BoxConstraints(
+            maxWidth: 413,
+            minHeight: 250,
+          ),
           child: Padding(
             padding: kIsWeb
                 ? const EdgeInsets.fromLTRB(60, 30, 30, 80)
                 : const EdgeInsets.fromLTRB(20, 0, 20, 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                        decoration: const BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x408AE2CF),
-                              spreadRadius: 0,
-                              blurRadius: 24.13,
-                              offset: Offset(0, 6),
-                            ),
-                          ],
-                        ),
-                        width: 40,
-                        child: icon),
+                      decoration: const BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x408AE2CF),
+                            spreadRadius: 0,
+                            blurRadius: 24.13,
+                            offset: Offset(0, 6),
+                          ),
+                        ],
+                      ),
+                      width: 40,
+                      child: icon,
+                    ),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(left: 30, top: 8),
@@ -94,7 +98,6 @@ class OnboardingActionButton extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 40),
                 Text(
                   description,
                   style: RibnToolkitTextStyles.h3.copyWith(
@@ -103,6 +106,8 @@ class OnboardingActionButton extends StatelessWidget {
                     height: 2,
                     fontWeight: FontWeight.w400,
                   ),
+                  // overflow: TextOverflow.ellipsis,
+                  // maxLines: 3,
                 ),
               ],
             ),
