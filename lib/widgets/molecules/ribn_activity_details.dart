@@ -118,7 +118,7 @@ class RibnActivityDetails extends StatelessWidget {
                         reducedWidth: true,
                         tileTitle: 'Amount',
                         tileValue: Text(
-                          activityDetails.transactionAmount!,
+                          activityDetails.transactionAmount,
                           style: dataTileTextStyle,
                         ),
                       ),

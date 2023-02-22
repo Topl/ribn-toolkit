@@ -68,16 +68,16 @@ class CustomTextField extends HookWidget {
   final Key? textFieldKey;
 
   const CustomTextField({
+    this.width = 350,
+    this.height = 130,
     required this.controller,
     required this.hintText,
-    this.width = 350,
-    this.height = 40,
     this.maxLength,
     this.textAlignVertical,
     this.onChanged,
+    this.keyboardType = TextInputType.text,
     this.showCursor = true,
     this.hasError = false,
-    this.keyboardType = TextInputType.text,
     this.inputFormatters = const [],
     this.fillColor,
     this.enabledBorderColor = const Color(0xffE9E9E9),
