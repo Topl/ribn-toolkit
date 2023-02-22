@@ -68,6 +68,11 @@ push:
 analyze:
 	@flutter run dart_code_metrics:metrics analyze lib
 
+validate_packages:
+	@echo "╠ Validating packages..."
+	@flutter pub get
+	@flutter pub run dependency_validator
+
 ditto:
 	echo "hello world"
 run_web:

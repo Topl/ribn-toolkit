@@ -4,11 +4,9 @@ import 'dart:async';
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 // Package imports:
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/colors.dart';
@@ -59,7 +57,7 @@ class RecipientField extends StatefulWidget {
   bool isTextFieldEmpty() => controller.text.isEmpty;
 
   @override
-  _RecipientFieldState createState() => _RecipientFieldState();
+  State<RecipientField> createState() => _RecipientFieldState();
 }
 
 class _RecipientFieldState extends State<RecipientField> {
@@ -85,14 +83,17 @@ class _RecipientFieldState extends State<RecipientField> {
                     onFocusChange: handleFocusChange,
                     onKey: (focusNode, rawKeyEvent) {
                       // listen for backspace and call handler
-                      if (rawKeyEvent
-                          .isKeyPressed(LogicalKeyboardKey.backspace)) {
+                      if (rawKeyEvent.isKeyPressed(LogicalKeyboardKey.backspace)) {
                         widget.onBackspacePressed();
                       }
                       return KeyEventResult.ignored;
                     },
-                    child: PortalEntry(
+                    child: PortalTarget(
                       visible: displayErrorBubble,
+                      portalFollower: const ErrorBubble(
+                        errorText: Strings.invalidRecipientAddressError,
+                      ),
+                      anchor: const Aligned(follower: Alignment.topLeft, target: Alignment.bottomLeft),
                       child: CustomTextField(
                         height: 36,
                         controller: widget.controller,
@@ -102,16 +103,9 @@ class _RecipientFieldState extends State<RecipientField> {
                         hasError: hasError,
                         hintColor: RibnColors.hintTextColor,
                       ),
-                      portal: const ErrorBubble(
-                        errorText: Strings.invalidRecipientAddressError,
-                      ),
-                      portalAnchor: Alignment.topLeft,
-                      childAnchor: Alignment.bottomLeft,
                     ),
                   ),
-                  widget.isValidRecipient()
-                      ? _buildValidAddressDisplay()
-                      : const SizedBox(),
+                  widget.isValidRecipient() ? _buildValidAddressDisplay() : const SizedBox(),
                 ],
               ),
         tooltipIcon: Image.asset(
@@ -159,8 +153,7 @@ class _RecipientFieldState extends State<RecipientField> {
   /// If the textfield has an invalid address at the time of losing focus,
   /// the error message is displayed.
   void handleFocusChange(bool gotFocus) {
-    final bool invalidAddressEntered =
-        !widget.isTextFieldEmpty() && !widget.isValidRecipient();
+    final bool invalidAddressEntered = !widget.isTextFieldEmpty() && !widget.isValidRecipient();
     // if focus is lost and a invalid address entered
     if (!gotFocus && invalidAddressEntered) {
       setState(() {

@@ -11,6 +11,7 @@ import 'package:flutter_portal/flutter_portal.dart';
 // Project imports:
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_copy_button.dart';
 
 /// A button to copy [textToBeCopied] to [Clipboard] and display a confirmation bubble.
 class RibnCustomCopyButton extends StatefulWidget {
@@ -30,10 +31,10 @@ class RibnCustomCopyButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomCopyButtonState createState() => _CustomCopyButtonState();
+  State<RibnCustomCopyButton> createState() => _RibnCustomCopyButtonState();
 }
 
-class _CustomCopyButtonState extends State<RibnCustomCopyButton> {
+class _RibnCustomCopyButtonState extends State<RibnCustomCopyButton> {
   /// Timer for showing the copied indicator.
   Timer? copiedTimer;
 
@@ -48,23 +49,9 @@ class _CustomCopyButtonState extends State<RibnCustomCopyButton> {
 
   @override
   Widget build(BuildContext context) {
-    return PortalEntry(
+    return PortalTarget(
       visible: displayCopiedBubble,
-      child: GestureDetector(
-        onTap: () {
-          Clipboard.setData(ClipboardData(text: widget.textToBeCopied));
-          setState(() {
-            displayCopiedBubble = true;
-          });
-          copiedTimer = Timer(const Duration(seconds: 2), () {
-            setState(() {
-              displayCopiedBubble = false;
-            });
-          });
-        },
-        child: widget.icon,
-      ),
-      portal: Container(
+      portalFollower: Container(
         width: 100,
         height: 36,
         decoration: const BoxDecoration(
@@ -84,8 +71,24 @@ class _CustomCopyButtonState extends State<RibnCustomCopyButton> {
           ],
         ),
       ),
-      portalAnchor: Alignment.topCenter,
-      childAnchor: Alignment.bottomCenter,
+      anchor: const Aligned(
+        follower: Alignment.topCenter,
+        target: Alignment.bottomCenter,
+      ),
+      child: GestureDetector(
+        onTap: () {
+          Clipboard.setData(ClipboardData(text: widget.textToBeCopied));
+          setState(() {
+            displayCopiedBubble = true;
+          });
+          copiedTimer = Timer(const Duration(seconds: 2), () {
+            setState(() {
+              displayCopiedBubble = false;
+            });
+          });
+        },
+        child: widget.icon,
+      ),
     );
   }
 }
