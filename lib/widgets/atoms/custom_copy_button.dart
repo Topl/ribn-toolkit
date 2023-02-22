@@ -4,10 +4,8 @@ import 'dart:async';
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 // Package imports:
 import 'package:flutter_portal/flutter_portal.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/assets.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
@@ -30,7 +28,7 @@ class CustomCopyButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomCopyButtonState createState() => _CustomCopyButtonState();
+  State<CustomCopyButton> createState() => _CustomCopyButtonState();
 }
 
 class _CustomCopyButtonState extends State<CustomCopyButton> {
@@ -48,23 +46,9 @@ class _CustomCopyButtonState extends State<CustomCopyButton> {
 
   @override
   Widget build(BuildContext context) {
-    return PortalEntry(
+    return PortalTarget(
       visible: displayCopiedBubble,
-      child: GestureDetector(
-        onTap: () {
-          Clipboard.setData(ClipboardData(text: widget.textToBeCopied));
-          setState(() {
-            displayCopiedBubble = true;
-          });
-          copiedTimer = Timer(const Duration(seconds: 2), () {
-            setState(() {
-              displayCopiedBubble = false;
-            });
-          });
-        },
-        child: widget.icon,
-      ),
-      portal: Container(
+      portalFollower: Container(
         width: 100,
         height: 36,
         decoration: const BoxDecoration(
@@ -84,8 +68,21 @@ class _CustomCopyButtonState extends State<CustomCopyButton> {
           ],
         ),
       ),
-      portalAnchor: Alignment.topCenter,
-      childAnchor: Alignment.bottomCenter,
+      anchor: const Aligned(follower: Alignment.topCenter, target: Alignment.bottomCenter),
+      child: GestureDetector(
+        onTap: () {
+          Clipboard.setData(ClipboardData(text: widget.textToBeCopied));
+          setState(() {
+            displayCopiedBubble = true;
+          });
+          copiedTimer = Timer(const Duration(seconds: 2), () {
+            setState(() {
+              displayCopiedBubble = false;
+            });
+          });
+        },
+        child: widget.icon,
+      ),
     );
   }
 }
