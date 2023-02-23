@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 
@@ -20,7 +19,7 @@ class LargeButton extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   final dynamic buttonChild;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Color backgroundColor;
   final Color hoverColor;
   final Color dropShadowColor;

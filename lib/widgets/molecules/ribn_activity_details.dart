@@ -118,7 +118,7 @@ class RibnActivityDetails extends StatelessWidget {
                         reducedWidth: true,
                         tileTitle: 'Amount',
                         tileValue: Text(
-                          activityDetails.transactionAmount!,
+                          activityDetails.transactionAmount,
                           style: dataTileTextStyle,
                         ),
                       ),
@@ -424,7 +424,8 @@ class RibnActivityDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'www.topl.explorer',
+                    Rules.txDetailsRedirectUrlsNormal[activityDetails.networkId]
+                        .toString(),
                     style: RibnToolkitTextStyles.h4.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,

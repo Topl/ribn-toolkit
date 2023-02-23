@@ -1,6 +1,9 @@
 /// All the strings that are being used throughout the app.
 class Strings {
   Strings._();
+  static const String ribnSupportDescriptionHint =
+      "Write 50-500 characters about your experience, whether it was great or has room for improvement. You can also report technical bugs or request new features.";
+
   static const String useToplMainKey = 'USE TOPL MAIN KEY';
   static const String advancedOption = 'Advanced option';
   static const String amount = 'Amount';
@@ -31,7 +34,8 @@ class Strings {
   static const String assetLongName = 'Asset';
   static const String assetLongNameHint = 'Jackfruit, max 16 characters.';
   static const String note = 'Note';
-  static const String noteHint = 'Max 127 alpha numeric characters. No special characters';
+  static const String noteHint =
+      'Max 127 alpha numeric characters. No special characters';
   static const String gettingStarted = 'Getting Started';
   static const String mintAssetDesc =
       'Where would you like your Asset to be minted?';
