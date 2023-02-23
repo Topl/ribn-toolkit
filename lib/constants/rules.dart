@@ -16,6 +16,11 @@ class Rules {
     0x10: 'https://staging.toplnet.annulus.topl.services/#/transaction/',
     0x40: 'https://staging.valhalla.annulus.topl.services/#/transaction/',
   };
+  static Map<int, String> txDetailsRedirectUrlsNormal = {
+    0x01: 'https://staging.valhalla.annulus.topl.services',
+    0x10: 'https://staging.toplnet.annulus.topl.services',
+    0x40: 'https://staging.valhalla.annulus.topl.services',
+  };
 }
 
 enum TransferType {
