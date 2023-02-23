@@ -65,7 +65,8 @@ class RibnAssets {
   static const errorFace = 'assets/icons/error_face.png';
   static const fileCopyIcon = 'assets/icons/file_copy.png';
   static const checkCircleIcon = 'assets/icons/check_circle.png';
-  static const feedbackCheckmark = 'assets/icons/ribn_feedbackcheckmark.png';
+  static const feedbackCheckmark =
+      'assets/icons/ribn_feedback_checkmark.png.png';
   static const sadFacePng = 'assets/icons/sad_face.png';
   static const smsFailed = 'assets/icons/sms_failed.png';
   static const openInNewWindow = 'assets/icons/open_in_new.png';
