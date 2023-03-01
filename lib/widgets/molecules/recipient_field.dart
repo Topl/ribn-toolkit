@@ -93,7 +93,8 @@ class _RecipientFieldState extends State<RecipientField> {
                       portalFollower: const ErrorBubble(
                         errorText: Strings.invalidRecipientAddressError,
                       ),
-                      anchor: const Aligned(follower: Alignment.topLeft, target: Alignment.bottomLeft),
+                      anchor:
+                          const Aligned(follower: Alignment.topLeft, target: Alignment.bottomLeft),
                       child: CustomTextField(
                         height: 36,
                         controller: widget.controller,
