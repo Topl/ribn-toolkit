@@ -34,11 +34,9 @@ class Strings {
   static const String assetLongName = 'Asset';
   static const String assetLongNameHint = 'Jackfruit, max 16 characters.';
   static const String note = 'Note';
-  static const String noteHint =
-      'Max 127 alpha numeric characters. No special characters';
+  static const String noteHint = 'Max 127 alpha numeric characters. No special characters';
   static const String gettingStarted = 'Getting Started';
-  static const String mintAssetDesc =
-      'Where would you like your Asset to be minted?';
+  static const String mintAssetDesc = 'Where would you like your Asset to be minted?';
   static const String invalidAmountError =
       'The amount you entered exceeds\nyour wallet balance for this asset.\nPlease enter a valid amount!';
   static const String errorTitle = 'Oops!\nSomething went wrong';
@@ -48,11 +46,9 @@ class Strings {
   static const String tryAgain = 'Try Again';
   static const String supportEmail = 'support@topl.me';
   static const String transactionDetails = 'Activity details';
-  static const String supportEmailLink =
-      'mailto:$supportEmail?subject=Ribn Support&body=';
+  static const String supportEmailLink = 'mailto:$supportEmail?subject=Ribn Support&body=';
   static const String invalidRecipientAddressError =
       "Hmmm... That's not a valid Recipient address.\nTip: Instead of typing it out, try copy\nand pasting your Recipient's address.";
-  static const String connectDApp =
-      'allowing this site to see my Ribn address, and ';
+  static const String connectDApp = 'allowing this site to see my Ribn address, and ';
   static const String connectDAppLastPart = "suggest transactions to approve.";
 }

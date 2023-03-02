@@ -42,6 +42,9 @@ class AssetAmountField extends StatefulWidget {
 
   final Function(String)? onChanged;
 
+  // The error string to show
+  final String? errorString;
+
   const AssetAmountField({
     Key? key,
     this.onUnitSelected,
@@ -52,6 +55,7 @@ class AssetAmountField extends StatefulWidget {
     this.chevronIcon,
     this.maxTransferrableAmount = double.infinity,
     this.onChanged,
+    this.errorString,
   }) : super(key: key);
 
   @override
@@ -100,6 +104,8 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
   Widget build(BuildContext context) {
     const double fieldHeight = 36;
 
+    final String errorString = widget.errorString ?? Strings.invalidAmountError;
+
     return CustomInputField(
       itemLabel: Strings.amount,
       item: Stack(
@@ -108,10 +114,11 @@ class _AssetAmountFieldState extends State<AssetAmountField> {
             onFocusChange: handleFocusChange,
             child: PortalTarget(
               visible: displayErrorBubble,
-              portalFollower: const ErrorBubble(
+              portalFollower: ErrorBubble(
                 inverted: true,
-                errorText: Strings.invalidAmountError,
+                errorText: errorString,
               ),
+              closeDuration: Duration(seconds: 2),
               anchor: const Aligned(
                 follower: Alignment.topRight,
                 target: Alignment.bottomRight,
