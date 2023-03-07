@@ -10,13 +10,13 @@ import 'package:ribn_toolkit/widgets/molecules/wave_container.dart';
 
 /// A widget to display the title, back arrow button and cancel button on top of the page.
 class CustomPageTextTitle extends StatelessWidget {
-  const CustomPageTextTitle(
-      {required this.title,
-      this.hideBackArrow = false,
-      this.hideCloseCross = false,
-      this.hideWaveAnimation = false,
-      Key? key})
-      : super(key: key);
+  const CustomPageTextTitle({
+    required this.title,
+    this.hideBackArrow = false,
+    this.hideCloseCross = false,
+    this.hideWaveAnimation = false,
+    Key? key,
+  }) : super(key: key);
   final String title;
   final bool hideBackArrow;
   final bool hideCloseCross;
@@ -28,10 +28,7 @@ class CustomPageTextTitle extends StatelessWidget {
       return SizedBox(
           height: kIsWeb ? 90 : 128,
           width: double.infinity,
-          child: TitleBody(
-              title: title,
-              hideBackArrow: hideBackArrow,
-              hideCloseCross: hideCloseCross));
+          child: TitleBody(title: title, hideBackArrow: hideBackArrow, hideCloseCross: hideCloseCross));
     }
 
     return WaveContainer(
@@ -41,10 +38,7 @@ class CustomPageTextTitle extends StatelessWidget {
       containerChild: Padding(
         // padding to account for device notches etc
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: TitleBody(
-            title: title,
-            hideBackArrow: hideBackArrow,
-            hideCloseCross: hideCloseCross),
+        child: TitleBody(title: title, hideBackArrow: hideBackArrow, hideCloseCross: hideCloseCross),
       ),
     );
   }
@@ -106,8 +100,7 @@ class TitleBody extends StatelessWidget {
                   color: RibnColors.lightGreyTitle,
                 ),
                 onPressed: () {
-                  Navigator.popUntil(
-                      context, (Route route) => route.settings.name == '/home');
+                  Navigator.popUntil(context, (Route route) => route.settings.name == '/home');
                 },
                 highlightColor: Colors.transparent,
                 hoverColor: Colors.transparent,

@@ -64,6 +64,9 @@ class CustomTextField extends HookWidget {
   /// The initial value of the text field
   final String? initialValue;
 
+  /// The autovalidate mode
+  final AutovalidateMode? autovalidateMode;
+
   /// Text field key
   final Key? textFieldKey;
 
@@ -89,6 +92,7 @@ class CustomTextField extends HookWidget {
     this.hideErrorText = true,
     this.initialValue,
     this.textFieldKey,
+    this.autovalidateMode,
     Key? key,
   }) : super(key: key);
 
@@ -103,6 +107,7 @@ class CustomTextField extends HookWidget {
       width: width,
       height: height,
       child: TextFormField(
+        autovalidateMode: autovalidateMode,
         key: textFieldKey,
         validator: (value) => validator != null ? validator!(value) : null,
         controller: controller,
@@ -135,12 +140,10 @@ class CustomTextField extends HookWidget {
             borderRadius: BorderRadius.circular(5),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: hasErrorState.value ? Colors.red : enabledBorderColor ?? Colors.transparent),
+            borderSide: BorderSide(color: hasErrorState.value ? Colors.red : enabledBorderColor ?? Colors.transparent),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: hasErrorState.value ? Colors.red : focusedBorderColor ?? Colors.transparent),
+            borderSide: BorderSide(color: hasErrorState.value ? Colors.red : focusedBorderColor ?? Colors.transparent),
           ),
           filled: true,
           contentPadding: const EdgeInsets.all(5),

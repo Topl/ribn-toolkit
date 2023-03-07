@@ -19,6 +19,12 @@ class NoteField extends StatelessWidget {
   /// Max length of the note.
   final int maxNoteLength;
 
+  /// Validator for the text form
+  final Function(String?)? validator;
+
+  /// The autovalidate mode
+  final AutovalidateMode? autovalidateMode;
+
   final Image tooltipIcon;
   final String hintText;
   final String hintTitle;
@@ -37,16 +43,16 @@ class NoteField extends StatelessWidget {
       this.height = 80,
       this.width = 350,
       this.hasError = false,
+      this.validator,
+      this.autovalidateMode,
       this.onChanged})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final bool maxLimitReached = noteLength >= maxNoteLength;
-    final Color counterBoxColor =
-        maxLimitReached ? const Color(0xFFFFE5E5) : const Color(0xffefefef);
-    final Color counterBorderColor =
-        maxLimitReached ? const Color(0xffE80E00) : Colors.transparent;
+    final Color counterBoxColor = maxLimitReached ? const Color(0xFFFFE5E5) : const Color(0xffefefef);
+    final Color counterBorderColor = maxLimitReached ? const Color(0xffE80E00) : Colors.transparent;
 
     return CustomInputField(
       itemLabel: hintTitle,
@@ -55,6 +61,8 @@ class NoteField extends StatelessWidget {
         children: [
           // text field for the note
           CustomTextField(
+            autovalidateMode: autovalidateMode,
+            validator: validator,
             onChanged: onChanged,
             hasError: hasError,
             width: width,

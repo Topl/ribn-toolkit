@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 // Project imports:
 import 'package:ribn_toolkit/constants/colors.dart';
 import 'package:ribn_toolkit/constants/styles.dart';
+import 'package:ribn_toolkit/widgets/atoms/custom_text_field.dart';
 
 import '../atoms/text/ribn_font13_text_widget.dart';
 
@@ -54,6 +55,12 @@ class RibnTextFieldWithTitle extends StatelessWidget {
 
   final TextInputAction textInputAction;
 
+  /// Validator for the text form
+  final Function(String?)? validator;
+
+  /// The autovalidate mode
+  final AutovalidateMode? autovalidateMode;
+
   final String title;
   final Color titleColor;
   final FontWeight titleFontWeight;
@@ -79,6 +86,8 @@ class RibnTextFieldWithTitle extends StatelessWidget {
     required this.title,
     required this.titleColor,
     required this.titleFontWeight,
+    this.validator,
+    this.autovalidateMode,
   }) : super(key: key);
 
   @override
@@ -90,54 +99,23 @@ class RibnTextFieldWithTitle extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 8),
           child: RibnFont13TextWidget(
-              text: title,
-              textAlign: TextAlign.justify,
-              textColor: titleColor,
-              fontWeight: titleFontWeight),
+              text: title, textAlign: TextAlign.justify, textColor: titleColor, fontWeight: titleFontWeight),
         ),
         SizedBox(
           width: width,
           height: height,
-          child: TextField(
+          child: CustomTextField(
             controller: controller,
-            style: RibnToolkitTextStyles.hintStyle,
             textAlignVertical: textAlignVertical,
             onChanged: onChanged,
-            expands: true,
-            maxLines: null,
             maxLength: maxLength,
             showCursor: showCursor,
             keyboardType: keyboardType,
             inputFormatters: inputFormatters,
             textInputAction: textInputAction,
-            decoration: InputDecoration(
-              isDense: true,
-              counterText: '',
-              hintText: hintText,
-              hintStyle:
-                  RibnToolkitTextStyles.hintStyle.copyWith(color: hintColor),
-              hintMaxLines: hintMaxLines,
-              border: OutlineInputBorder(
-                borderSide: const BorderSide(color: Color(0xffE9E9E9)),
-                borderRadius: BorderRadius.circular(5),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    color: hasError
-                        ? Colors.red
-                        : enabledBorderColor ?? Colors.transparent),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    color: hasError
-                        ? Colors.red
-                        : focusedBorderColor ?? Colors.transparent),
-              ),
-              filled: true,
-              contentPadding: const EdgeInsets.all(5),
-              fillColor: fillColor ?? RibnColors.whiteBackground,
-              floatingLabelBehavior: FloatingLabelBehavior.never,
-            ),
+            hintText: hintText,
+            validator: validator,
+            autovalidateMode: autovalidateMode,
           ),
         )
       ],
