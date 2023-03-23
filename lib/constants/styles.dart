@@ -72,7 +72,6 @@ class RibnToolkitTextStyles {
     fontFamily: 'DM Sans',
     fontSize: 16,
     fontWeight: FontWeight.w500,
-    letterSpacing: 1,
   );
 
   static const TextStyle hintStyle = TextStyle(
