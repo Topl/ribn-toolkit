@@ -121,6 +121,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
     return Container(
       color: Colors.transparent,
       child: PopupMenuButton<String>(
+        onOpened: () => widget.onSelectChainDropdownOpen(),
         elevation: 0,
         child: SizedBox(width: 24, child: Image.asset(widget.hamburgerIconLink)),
         offset: const Offset(0, 30),
