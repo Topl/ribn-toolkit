@@ -14,7 +14,7 @@ class InputDropdown extends StatefulWidget {
     required this.chevronIconLink,
     this.enabled = true,
     this.hideCircleAvatar = false,
-    this.onOpened,
+    this.onOpen,
     Key? key,
   }) : super(key: key);
 
@@ -25,7 +25,8 @@ class InputDropdown extends StatefulWidget {
   final bool hideCircleAvatar;
   final bool enabled;
 
-  final Function? onOpened;
+  /// Callback when the dropdown is opened
+  final Function? onOpen;
 
   @override
   State<InputDropdown> createState() => _InputDropdownState();
@@ -60,8 +61,8 @@ class _InputDropdownState extends State<InputDropdown> {
           padding: const EdgeInsets.all(0.0),
           elevation: 0,
           onOpened: () {
-            if (widget.onOpened != null) {
-              widget.onOpened!();
+            if (widget.onOpen != null) {
+              widget.onOpen!();
             }
           },
           itemBuilder: (context) {

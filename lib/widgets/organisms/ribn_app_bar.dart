@@ -31,6 +31,7 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String ribnLogoIconLink;
   final String hamburgerIconLink;
 
+  /// Callback when the dropdown is opened
   final Function onSelectChainDropdownOpen;
 
   @override
@@ -84,7 +85,7 @@ class _RibnAppBarState extends State<RibnAppBar> {
             ),
             const Spacer(flex: 1),
             InputDropdown(
-              onOpened: () => widget.onSelectChainDropdownOpen(),
+              onOpen: () => widget.onSelectChainDropdownOpen(),
               selectedItem: currentNetworkName,
               items: networks,
               onChange: (selected) => widget.updateNetwork(widget.networks[networks.indexWhere((e) => e == selected)]),
