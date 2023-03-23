@@ -27,6 +27,9 @@ class CustomToolTip extends StatefulWidget {
   /// A color value to change the border.
   final Border? borderColor;
 
+  /// A callback function to be called when the tooltip is opened.
+  final Function(OverlayEntry)? onOpen;
+
   const CustomToolTip({
     Key? key,
     this.offsetPositionLeftValue = 150,
@@ -34,6 +37,7 @@ class CustomToolTip extends StatefulWidget {
     this.borderColor,
     required this.toolTipIcon,
     required this.toolTipChild,
+    this.onOpen,
   }) : super(key: key);
 
   @override
@@ -41,8 +45,7 @@ class CustomToolTip extends StatefulWidget {
 }
 
 class _CustomToolTipState extends State<CustomToolTip> {
-  OverlayEntry overlayEntry =
-      OverlayEntry(builder: (context) => const SizedBox());
+  OverlayEntry overlayEntry = OverlayEntry(builder: (context) => const SizedBox());
 
   @override
   void didUpdateWidget(covariant CustomToolTip oldWidget) {
@@ -95,8 +98,7 @@ class _CustomToolTipState extends State<CustomToolTip> {
             child: Stack(
               children: [
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                   constraints: const BoxConstraints(),
                   decoration: BoxDecoration(
                     color: widget.toolTipBackgroundColor,
@@ -128,6 +130,8 @@ class _CustomToolTipState extends State<CustomToolTip> {
         );
       },
     );
+
+    if (widget.onOpen != null) widget.onOpen!(overlayEntry);
 
     overlayState.insert(overlayEntry);
   }

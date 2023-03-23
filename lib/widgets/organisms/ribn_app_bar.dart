@@ -18,6 +18,7 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
     required this.chevronIconLink,
     required this.ribnLogoIconLink,
     required this.hamburgerIconLink,
+    required this.onSelectChainDropdownOpen,
   })  : preferredSize = const Size.fromHeight(40),
         super(key: key);
 
@@ -29,6 +30,8 @@ class RibnAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String chevronIconLink;
   final String ribnLogoIconLink;
   final String hamburgerIconLink;
+
+  final Function onSelectChainDropdownOpen;
 
   @override
   final Size preferredSize;
@@ -81,10 +84,10 @@ class _RibnAppBarState extends State<RibnAppBar> {
             ),
             const Spacer(flex: 1),
             InputDropdown(
+              onOpened: () => widget.onSelectChainDropdownOpen(),
               selectedItem: currentNetworkName,
               items: networks,
-              onChange: (selected) =>
-                  widget.updateNetwork(widget.networks[networks.indexWhere((e) => e == selected)]),
+              onChange: (selected) => widget.updateNetwork(widget.networks[networks.indexWhere((e) => e == selected)]),
               chevronIconLink: widget.chevronIconLink,
             ),
           ],
