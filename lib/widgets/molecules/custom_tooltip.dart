@@ -79,7 +79,7 @@ class _CustomToolTipState extends State<CustomToolTip> {
   /// [overlayEntry] is assigned a new widget, i.e. the tooltip bubble
   /// and inserted into the [overlayState].
   void _buildTooltip(BuildContext context) async {
-    final OverlayState overlayState = Overlay.of(context)!;
+    final OverlayState overlayState = Overlay.of(context);
     final RenderBox renderbox = context.findRenderObject() as RenderBox;
     // Position of the tooltip
     Offset offset = renderbox.localToGlobal(Offset.zero);
